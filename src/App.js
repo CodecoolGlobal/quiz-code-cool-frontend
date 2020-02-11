@@ -6,16 +6,19 @@ import QuestionCard from "./component/QuestionCard";
 import Result from "./component/Result";
 
 import { PlayerProvider } from "./context.PlayerContext";
+import { QuestionProvider } from "./context.QuestionContext";
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <PlayerProvider>
-        <Router>
-          <Route exact path='/' component={QuizStarterForm} />
-          <Route exact path='/quiz' component={QuestionCard} />
-          <Route exact path='/results' component={Result} />
-        </Router>
+        <QuestionProvider>
+          <Router>
+            <Route exact path="/" component={QuizStarterForm} />
+            <Route exact path="/quiz" component={QuestionCard} />
+            <Route exact path="/results" component={Result} />
+          </Router>
+        </QuestionProvider>
       </PlayerProvider>
     </div>
   );
