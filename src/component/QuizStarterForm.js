@@ -9,6 +9,7 @@ export default function QuizStarterForm() {
   const [players, setPlayers] = useContext(PlayerContext);
   const [categories, setCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
+  const [numberOfquestions, setNumberOfquestions] = useState(0);
 
   useEffect(() => {
     axios.get(CATEGORY_URL).then(res => {
@@ -16,20 +17,19 @@ export default function QuizStarterForm() {
     });
   }, []);
 
-  /*   const saveInputs = e => {
-    e.preventDefault();
-    for (let i = 0; i < players.length; i++) {
-      let playerName = this.elements[i];
-      setNames([...names], playerName);
-    }
-  }; */
-
   const handlePlayerName = e => {
     let currentNames = [...names];
     currentNames[e.target.name] = e.target.value;
     setNames(currentNames);
-    console.log("current names: " + currentNames);
-    console.log("names: " + names);
+    console.log(names);
+  };
+
+  const handleCategory = e => {
+    setSelectedCategoryId(e.target.value);
+  };
+
+  const handleNumberOfQuestions = e => {
+    setNumberOfquestions(e.target.value);
   };
 
   return (
@@ -45,18 +45,34 @@ export default function QuizStarterForm() {
               type="text"
               placeholder={player.name}
               required
-              onKeyup={handlePlayerName}
+              onKeyUp={handlePlayerName}
             ></input>
           </div>
         ))}
         <label htmlFor="category">Category: </label>
-        <select id="category" name="category">
-          {categories.map(category => (
+        <select id="category" name="category" onChange={handleCategory}>
+          {[
+            {
+              id: 8,
+              name: "Any Category"
+            },
+            ...categories
+          ].map(category => (
             <option value={category.id} key={category.id}>
               {category.name}
             </option>
           ))}
         </select>
+        <label htmlFor="numberOfQuestions">Questions / Player: </label>
+        <input
+          type="number"
+          id="numberOfQuestions"
+          required
+          name="numberOfQuestions"
+          min="5"
+          max="25"
+          onChange={handleNumberOfQuestions}
+        ></input>
         <button type="submit">Start Quiz</button>
       </form>
     </div>
