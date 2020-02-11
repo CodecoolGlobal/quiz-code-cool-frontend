@@ -69,7 +69,8 @@ export default function QuizStarterForm() {
     return finalUrl;
   };
 
-  const handleStartButton = () => {
+  const submitForm = e => {
+    e.preventDefault();
     createQuestionUrl();
     console.log(createQuestionUrl());
   };
@@ -77,57 +78,55 @@ export default function QuizStarterForm() {
   return (
     <div>
       <h1>Loading Quiz...</h1>
-      <form>
+      <form onSubmit={submitForm}>
         {players.map((player, index) => (
           <div key={index}>
             <label htmlFor={player.name}>Player {index + 1} name: </label>
             <input
               name={index}
               id={player.name}
-              type="text"
+              type='text'
               placeholder={player.name}
               required
               onKeyUp={handlePlayerName}
             ></input>
           </div>
         ))}
-        <label htmlFor="category">Category: </label>
-        <select id="category" name="category" onChange={handleCategory}>
+        <label htmlFor='category'>Category: </label>
+        <select id='category' name='category' onChange={handleCategory}>
           {[DEFAULT_CATEGORY, ...categories].map(category => (
             <option value={category.id} key={category.id}>
               {category.name}
             </option>
           ))}
         </select>
-        <label htmlFor="numberOfQuestions">Questions / Player: </label>
+        <label htmlFor='numberOfQuestions'>Questions / Player: </label>
         <input
-          type="number"
-          id="numberOfQuestions"
+          type='number'
+          id='numberOfQuestions'
           required
-          name="numberOfQuestions"
+          name='numberOfQuestions'
           min={MIN_QUESTIONS}
-          max="25"
+          max='25'
           onChange={handleNumberOfQuestions}
         ></input>
-        <label htmlFor="difficulty">Difficulty: </label>
-        <select id="difficulty" name="difficulty" onChange={handleDifficulty}>
+        <label htmlFor='difficulty'>Difficulty: </label>
+        <select id='difficulty' name='difficulty' onChange={handleDifficulty}>
           {DIFFICULTIES.map((difficulty, index) => (
             <option value={difficulty} key={index}>
               {difficulty}
             </option>
           ))}
         </select>
-        <label htmlFor="type">Type: </label>
-        <select id="type" name="type" onChange={handleType}>
+        <label htmlFor='type'>Type: </label>
+        <select id='type' name='type' onChange={handleType}>
           {Object.entries(TYPES).map((entry, index) => (
             <option value={entry[1]} key={index}>
               {entry[0]}
             </option>
           ))}
         </select>
-        <button type="button" onClick={handleStartButton}>
-          Start Quiz
-        </button>
+        <button type='submit'>Start Quiz</button>
       </form>
     </div>
   );
