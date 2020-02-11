@@ -1,0 +1,59 @@
+import React, { useContext } from "react";
+
+import PlayerNameInput from "./PlayerNameInput";
+import CategoryInput from "./CategoryInput";
+import QuestionNumberInput from "./QuestionNumberInput";
+import DifficultyInput from "./DifficultyInput";
+import { StarterFormContext } from "../../context/StarterFormContext";
+
+export default function QuizStarterForm() {
+  const {
+    BASE_URL_FOR_QUESTIONS_QUERY,
+    questionNumberInput,
+    categoryInput,
+    difficultyInput,
+    typeInput
+  } = useContext(StarterFormContext);
+
+  const questionNumber = questionNumberInput[0];
+  const selectedCategoryId = categoryInput[0];
+  const difficulty = difficultyInput[0];
+  const type = typeInput[0];
+
+  const createQuestionUrl = () => {
+    let QuestionNumberUrl = `amount=${questionNumber}`;
+    let categoryUrl =
+      selectedCategoryId === 8 ? "" : `&category=${selectedCategoryId}`;
+    let difficultyUrl =
+      difficulty === "Any Difficulty"
+        ? ""
+        : `&difficulty=${difficulty.toLowerCase()}`;
+    let typeUrl = type === "" ? "" : `&type=${type}`;
+    let finalUrl =
+      BASE_URL_FOR_QUESTIONS_QUERY +
+      QuestionNumberUrl +
+      categoryUrl +
+      difficultyUrl +
+      typeUrl;
+    return finalUrl;
+  };
+
+  const submitForm = e => {
+    e.preventDefault();
+    createQuestionUrl();
+    console.log(createQuestionUrl());
+  };
+
+  return (
+    <div>
+      <form onSubmit={submitForm}>
+        <h1>Loading Quiz...</h1>
+        <PlayerNameInput />
+        <CategoryInput />
+        <QuestionNumberInput />
+        <DifficultyInput />
+        <button type='submit'>Start Quiz</button>
+      </form>
+    </div>
+  );
+}
