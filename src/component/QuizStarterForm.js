@@ -4,12 +4,21 @@ import axios from "axios";
 
 export default function QuizStarterForm() {
   const CATEGORY_URL = "https://opentdb.com/api_category.php";
+  const DIFFICULTIES = ["Any Difficulty", "Easy", "Medium", "Hard"];
+  const DEFAULT_CATEGORY = {
+    id: 8,
+    name: "Any Category"
+  };
+  const MIN_QUESTIONS = 5;
 
-  const [names, setNames] = useState([]);
   const [players, setPlayers] = useContext(PlayerContext);
   const [categories, setCategories] = useState([]);
-  const [selectedCategoryId, setSelectedCategoryId] = useState("");
-  const [numberOfquestions, setNumberOfquestions] = useState(0);
+  const [names, setNames] = useState([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(
+    DEFAULT_CATEGORY.id
+  );
+  const [numberOfquestions, setNumberOfquestions] = useState(MIN_QUESTIONS);
+  const [difficulty, setDifficulty] = useState(DIFFICULTIES[0]);
 
   useEffect(() => {
     axios.get(CATEGORY_URL).then(res => {
@@ -32,6 +41,10 @@ export default function QuizStarterForm() {
     setNumberOfquestions(e.target.value);
   };
 
+  const handleDifficulty = e => {
+    setDifficulty(e.target.value);
+  };
+
   return (
     <div>
       <h1>Loading Quiz...</h1>
@@ -51,13 +64,7 @@ export default function QuizStarterForm() {
         ))}
         <label htmlFor="category">Category: </label>
         <select id="category" name="category" onChange={handleCategory}>
-          {[
-            {
-              id: 8,
-              name: "Any Category"
-            },
-            ...categories
-          ].map(category => (
+          {[DEFAULT_CATEGORY, ...categories].map(category => (
             <option value={category.id} key={category.id}>
               {category.name}
             </option>
@@ -69,10 +76,18 @@ export default function QuizStarterForm() {
           id="numberOfQuestions"
           required
           name="numberOfQuestions"
-          min="5"
+          min={MIN_QUESTIONS}
           max="25"
           onChange={handleNumberOfQuestions}
         ></input>
+        <label htmlFor="difficulty">Difficulty: </label>
+        <select id="difficulty" name="difficulty" onChange={handleDifficulty}>
+          {DIFFICULTIES.map((difficulty, index) => (
+            <option value={difficulty} key={index}>
+              {difficulty}
+            </option>
+          ))}
+        </select>
         <button type="submit">Start Quiz</button>
       </form>
     </div>
