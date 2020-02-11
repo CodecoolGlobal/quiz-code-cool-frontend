@@ -5,8 +5,8 @@ import QuizStarterForm from "./component/QuizStarterForm";
 import QuestionCard from "./component/QuestionCard";
 import Result from "./component/Result";
 
-import { PlayerProvider } from "./context.PlayerContext";
-import { QuestionProvider } from "./context.QuestionContext";
+import { QuestionProvider } from "./context/QuestionContext";
+import { PlayerProvider } from "./context/PlayerContext";
 
 function App() {
   return (
