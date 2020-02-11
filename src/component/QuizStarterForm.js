@@ -5,6 +5,11 @@ import axios from "axios";
 export default function QuizStarterForm() {
   const CATEGORY_URL = "https://opentdb.com/api_category.php";
   const DIFFICULTIES = ["Any Difficulty", "Easy", "Medium", "Hard"];
+  const TYPES = {
+    "Any Type": "",
+    "Multiple Choice": "multiple",
+    "True / False": "boolean"
+  };
   const DEFAULT_CATEGORY = {
     id: 8,
     name: "Any Category"
@@ -19,6 +24,7 @@ export default function QuizStarterForm() {
   );
   const [numberOfquestions, setNumberOfquestions] = useState(MIN_QUESTIONS);
   const [difficulty, setDifficulty] = useState(DIFFICULTIES[0]);
+  const [type, setType] = useState("");
 
   useEffect(() => {
     axios.get(CATEGORY_URL).then(res => {
@@ -30,7 +36,6 @@ export default function QuizStarterForm() {
     let currentNames = [...names];
     currentNames[e.target.name] = e.target.value;
     setNames(currentNames);
-    console.log(names);
   };
 
   const handleCategory = e => {
@@ -38,11 +43,35 @@ export default function QuizStarterForm() {
   };
 
   const handleNumberOfQuestions = e => {
-    setNumberOfquestions(e.target.value);
+    setNumberOfquestions(2 * e.target.value);
   };
 
   const handleDifficulty = e => {
     setDifficulty(e.target.value);
+  };
+
+  const handleType = e => {
+    setType(e.target.value);
+  };
+
+  const createQuestionUrl = () => {
+    let urlStart = "https://opentdb.com/api.php?";
+    let numofQuestionsUrl = `amount=${numberOfquestions}`;
+    let categoryUrl =
+      selectedCategoryId === 8 ? "" : `&category=${selectedCategoryId}`;
+    let difficultyUrl =
+      difficulty === "Any Difficulty"
+        ? ""
+        : `&difficulty=${difficulty.toLowerCase()}`;
+    let typeUrl = type === "" ? "" : `&type=${type}`;
+    let finalUrl =
+      urlStart + numofQuestionsUrl + categoryUrl + difficultyUrl + typeUrl;
+    return finalUrl;
+  };
+
+  const handleStartButton = () => {
+    createQuestionUrl();
+    console.log(createQuestionUrl());
   };
 
   return (
@@ -88,7 +117,17 @@ export default function QuizStarterForm() {
             </option>
           ))}
         </select>
-        <button type="submit">Start Quiz</button>
+        <label htmlFor="type">Type: </label>
+        <select id="type" name="type" onChange={handleType}>
+          {Object.entries(TYPES).map((entry, index) => (
+            <option value={entry[1]} key={index}>
+              {entry[0]}
+            </option>
+          ))}
+        </select>
+        <button type="button" onClick={handleStartButton}>
+          Start Quiz
+        </button>
       </form>
     </div>
   );
