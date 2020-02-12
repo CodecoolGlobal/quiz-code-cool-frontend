@@ -6,6 +6,8 @@ import QuestionNumberInput from "./QuestionNumberInput";
 import DifficultyInput from "./DifficultyInput";
 import { StarterFormContext } from "../../context/StarterFormContext";
 
+import { FormContainer, H3 } from "../../style/MyStyle";
+
 export default function QuizStarterForm() {
   const {
     BASE_URL_FOR_QUESTIONS_QUERY,
@@ -45,15 +47,15 @@ export default function QuizStarterForm() {
   };
 
   return (
-    <div>
+    <FormContainer>
       <form onSubmit={submitForm}>
-        <h1>Loading Quiz...</h1>
+        <H3>New Quiz</H3>
         <PlayerNameInput />
         <CategoryInput />
         <QuestionNumberInput />
         <DifficultyInput />
         <button type='submit'>Start Quiz</button>
       </form>
-    </div>
+    </FormContainer>
   );
 }
