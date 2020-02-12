@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { StarterFormContext } from "../../context/StarterFormContext";
-import { InputRow, Select, InputItem, InputLabel } from "../../style/MyStyle";
+import { Select, InputItem, InputLabel } from "../../style/MyStyle";
 
 export default function DifficultyInput() {
   const setDifficulty = useContext(StarterFormContext).difficultyInput[1];
