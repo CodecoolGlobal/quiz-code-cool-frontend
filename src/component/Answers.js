@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { QuestionContext } from "../context/QuestionContext";
-import { formatText } from "../Util";
+import { decodeStringToHtml } from "../Util";
 
 export default function Answers() {
   const [correctness, setCorrectness] = useState(0);
@@ -10,7 +10,7 @@ export default function Answers() {
 
   useEffect(() => {
     let answers = [correct_answer, ...incorrect_answers];
-    answers.map(answer => (answer = formatText(answer)));
+    answers.map(answer => (answer = decodeStringToHtml(answer)));
     const zip = zipAnswers(incorrect_answers.length, answers);
     shuffle(zip);
     setAnswersZip(zip);
