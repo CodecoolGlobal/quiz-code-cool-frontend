@@ -4,6 +4,8 @@ import PlayerNameInput from "./PlayerNameInput";
 import CategoryInput from "./CategoryInput";
 import QuestionNumberInput from "./QuestionNumberInput";
 import DifficultyInput from "./DifficultyInput";
+import TypeInput from "./TypeInput";
+
 import { StarterFormContext } from "../../context/StarterFormContext";
 
 import { FormContainer, H3 } from "../../style/MyStyle";
@@ -54,6 +56,7 @@ export default function QuizStarterForm() {
         <CategoryInput />
         <QuestionNumberInput />
         <DifficultyInput />
+        <TypeInput />
         <button type='submit'>Start Quiz</button>
       </form>
     </FormContainer>

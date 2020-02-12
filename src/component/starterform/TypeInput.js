@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { StarterFormContext } from "../../context/StarterFormContext";
 
 export default function TypeInput() {
-  const setType = useContext(StarterFormContext).TypeInput[1];
+  const setType = useContext(StarterFormContext).typeInput[1];
   const TYPES = useContext(StarterFormContext).TYPES;
 
   const handleType = e => {
