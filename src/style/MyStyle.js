@@ -87,10 +87,10 @@ export const InputLabel = styled.div`
 export const Select = styled.select`
   border: 1px solid ${theme.color1};
   border-radius: ${theme.inputBorderRadius};
-  background: ${theme.color3};
+  background: ${theme.color4};
   color: #fff;
   font-size: ${theme.inputFontSize};
-  padding: 5px;
+  padding: 7px 5px;
   width: 100%;
   & option {
     background: #fff;
@@ -115,7 +115,7 @@ export const Button = styled.button`
   font-size: ${theme.inputFontSize};
   font-weight: bolder;
   color: ${theme.color1};
-  background-color: white;
+  background-color: #fff;
   border-radius: 20px;
   border: 2px solid ${theme.color2};
   padding: 10px 15px;

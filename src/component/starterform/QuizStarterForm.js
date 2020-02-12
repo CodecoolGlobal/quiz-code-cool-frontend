@@ -92,8 +92,8 @@ export default function QuizStarterForm(props) {
           <PlayerNameInput />
         </InputRow>
         <InputRow>
-          <CategoryInput />
           <QuestionNumberInput />
+          <CategoryInput />
         </InputRow>
         <InputRow>
           <DifficultyInput />
