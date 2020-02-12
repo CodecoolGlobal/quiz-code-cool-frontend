@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { StarterFormContext } from "../../context/StarterFormContext";
 
+import { Select } from "../../style/MyStyle";
+
 export default function CategoryInput() {
   const [categories, setCategories] = useState([]);
   const setSelectedCategoryId = useContext(StarterFormContext).categoryInput[1];
@@ -21,13 +23,13 @@ export default function CategoryInput() {
   return (
     <div>
       <label htmlFor='category'>Category: </label>
-      <select id='category' name='category' onChange={handleCategory}>
+      <Select id='category' name='category' onChange={handleCategory}>
         {[DEFAULT_CATEGORY, ...categories].map(category => (
           <option value={category.id} key={category.id}>
             {category.name}
           </option>
         ))}
-      </select>
+      </Select>
     </div>
   );
 }

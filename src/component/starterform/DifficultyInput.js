@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { StarterFormContext } from "../../context/StarterFormContext";
+import { Select } from "../../style/MyStyle";
 
 export default function DifficultyInput() {
   const setDifficulty = useContext(StarterFormContext).difficultyInput[1];
@@ -12,13 +13,13 @@ export default function DifficultyInput() {
   return (
     <div>
       <label htmlFor='difficulty'>Difficulty: </label>
-      <select id='difficulty' name='difficulty' onChange={handleDifficulty}>
+      <Select id='difficulty' name='difficulty' onChange={handleDifficulty}>
         {DIFFICULTIES.map((difficulty, index) => (
           <option value={difficulty} key={index}>
             {difficulty}
           </option>
         ))}
-      </select>
+      </Select>
     </div>
   );
 }

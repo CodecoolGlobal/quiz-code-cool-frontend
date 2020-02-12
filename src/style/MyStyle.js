@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const theme = {
-  inputTextSize: "10px"
+  inputTextSize: "12px",
+  inputPadding: "8px 10px"
 };
 
 export const HeaderContainer = styled.div`
@@ -23,10 +24,17 @@ export const FormContainer = styled.div`
   }
 `;
 
+export const Select = styled.select`
+  font-size: ${theme.inputTextSize};
+  padding: ${theme.inputPadding};
+  width: 100%;
+  margin: 8px 0;
+`;
+
 export const TextInput = styled.input`
   font-size: ${theme.inputTextSize};
+  padding: ${theme.inputPadding};
   width: 100%;
-  padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
