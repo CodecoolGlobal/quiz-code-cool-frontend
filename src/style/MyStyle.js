@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import "./ideas.png";
 
 export const theme = {
+  inputBorderRadius: "2px",
   inputFontSize: "12px",
   labelFontSize: "12px",
   inputPadding: "8px 10px",
@@ -8,7 +10,8 @@ export const theme = {
   color2: "#35a79c",
   color3: "#54b2a9",
   color4: "#65c3ba",
-  color5: "#83d0c9"
+  color5: "#83d0c9",
+  purple: "#800080"
 };
 
 export const Container = styled.div`
@@ -16,18 +19,25 @@ export const Container = styled.div`
 `;
 
 export const HeaderContainer = styled.div`
-  background: #fff;
+  justify-content: center;
+  display: flex;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
-  margin: 10px 20px;
+  margin: 15px 20px;
+  padding: 8px 30px;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
 `;
 
-export const FormContainer = styled.div`
-  background: #fff;
-  border-radius: 10px;
-  margin: 40px 250px;
+export const QuestionsImage = styled.img`
+  display: block;
+  height: 70px;
+`;
 
-  padding: 20px 30px;
+export const FormContainer = styled.div`
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  margin: 30px 20%;
+  padding: 20px 40px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 992px) {
     margin: 20px 15%;
@@ -37,16 +47,17 @@ export const FormContainer = styled.div`
   }
 `;
 
-export const H2 = styled.h3`
+export const Title = styled.h2`
+  font-family: "Capriola", sans-serif;
+  padding: 20px 10px;
   text-align: center;
-  padding: 20px 20px;
   color: ${theme.color1};
 `;
 
 export const H3 = styled.h3`
   text-align: center;
   padding: 20px 20px;
-  color: ${theme.color1};
+  color: ${theme.color1}};
 `;
 
 export const InputRow = styled.div`
@@ -75,11 +86,11 @@ export const InputLabel = styled.div`
 
 export const Select = styled.select`
   border: 1px solid ${theme.color1};
-  border-radius: 2px;
+  border-radius: ${theme.inputBorderRadius};
   background: ${theme.color3};
   color: #fff;
   font-size: ${theme.inputFontSize};
-  padding: 5px 5px;
+  padding: 5px;
   width: 100%;
   & option {
     background: #fff;
@@ -93,10 +104,10 @@ export const TextInput = styled.input`
   width: 100%;
   display: inline-block;
   border: 1px solid ${theme.color1};
-  border-radius: 2px;
+  border-radius: ${theme.inputBorderRadius};
   box-sizing: border-box;
   &:active {
-    border-color: #ff3232;
+    border-color: ${theme.color5};
   }
 `;
 
@@ -106,9 +117,9 @@ export const Button = styled.button`
   color: ${theme.color1};
   background-color: white;
   border-radius: 20px;
-  border: 2px solid ${theme.color1};
+  border: 2px solid ${theme.color2};
   padding: 10px 15px;
-  margin: 10px 0 5px 0;
+  margin: 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
