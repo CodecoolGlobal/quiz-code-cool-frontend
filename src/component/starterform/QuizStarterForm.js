@@ -9,13 +9,14 @@ import TypeInput from "./TypeInput";
 
 import { StarterFormContext } from "../../context/StarterFormContext";
 import { QuestionContext } from "../../context/QuestionContext";
+import { PlayerContext } from "../../context/PlayerContext";
+
 import Question from "../../context/Question";
 import Player from "../../context/Player";
 
 import { FormContainer, H3 } from "../../style/MyStyle";
-import { PlayerContext } from "../../context/PlayerContext";
 
-export default function QuizStarterForm() {
+export default function QuizStarterForm(props) {
   const [questions, setQuestions] = useContext(QuestionContext);
   const [players, setPlayers] = useContext(PlayerContext);
 
@@ -62,7 +63,7 @@ export default function QuizStarterForm() {
         );
       } else {
         resp.data.results.map(questionData =>
-          setQuestions([
+          setQuestions(questions => [
             ...questions,
             new Question(
               questionData.category,
@@ -74,11 +75,13 @@ export default function QuizStarterForm() {
             )
           ])
         );
-        names.map(name => setPlayers([[...players], new Player(name)]));
+        names.map(name =>
+          setPlayers(players => [...players, new Player(name)])
+        );
+        props.history.push("/quiz");
       }
     });
-
-    console.log(createQuestionUrl());
+    console.log(questionUrl);
   };
 
   return (

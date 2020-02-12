@@ -12,15 +12,15 @@ export default function QuestionNumberInput() {
 
   return (
     <div>
-      <label htmlFor='numberOfQuestions'>Questions / Player: </label>
+      <label htmlFor="numberOfQuestions">Questions / Player: </label>
       <input
-        placeholder='5'
-        type='number'
-        id='numberOfQuestions'
+        placeholder="5"
+        type="number"
+        id="numberOfQuestions"
         required
-        name='numberOfQuestions'
+        name="numberOfQuestions"
         min={MIN_QUESTIONS}
-        max='25'
+        max="25"
         onChange={handleNumberOfQuestions}
       ></input>
     </div>
