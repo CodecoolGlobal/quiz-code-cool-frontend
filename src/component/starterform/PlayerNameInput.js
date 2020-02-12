@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-import { PlayerContext } from "../../context/PlayerContext";
 import { StarterFormContext } from "../../context/StarterFormContext";
 
 import { TextInput } from "../../style/MyStyle";
 
 export default function PlayerNameInput() {
-  const players = useContext(PlayerContext)[0];
   const [names, setNames] = useContext(StarterFormContext).nameInputs;
+  const playerNumber = useContext(StarterFormContext).playerNumber[0];
 
   const handlePlayerName = e => {
     let currentNames = [...names];
@@ -14,21 +13,25 @@ export default function PlayerNameInput() {
     setNames(currentNames);
   };
 
-  return (
-    <div>
-      {players.map((player, index) => (
-        <div key={index}>
-          <label htmlFor={player.name}>Player {index + 1} name: </label>
+  const createPlayerInput = n => {
+    let inputs = [];
+    for (let i = 0; i < n; i++) {
+      inputs.push(
+        <div key={i}>
+          <label htmlFor={i}>Player {i + 1} name: </label>
           <TextInput
-            name={index}
-            id={player.name}
-            type='text'
-            placeholder={player.name}
+            name={i}
+            id={i}
+            type="text"
+            placeholder={`Player ${i + 1}`}
             required
             onKeyUp={handlePlayerName}
           ></TextInput>
         </div>
-      ))}
-    </div>
-  );
+      );
+    }
+    return inputs;
+  };
+
+  return <div>{createPlayerInput(playerNumber)}</div>;
 }

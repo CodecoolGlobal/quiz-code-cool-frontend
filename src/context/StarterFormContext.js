@@ -26,6 +26,7 @@ export const StarterFormProvider = props => {
   );
   const [difficulty, setDifficulty] = useState(DIFFICULTIES[0]);
   const [type, setType] = useState("");
+  const [playerNumber, setPlayerNumber] = useState(2);
 
   return (
     <StarterFormContext.Provider
@@ -40,7 +41,8 @@ export const StarterFormProvider = props => {
         questionNumberInput: [questionNumber, setQuestionNumber],
         categoryInput: [selectedCategoryId, setSelectedCategoryId],
         difficultyInput: [difficulty, setDifficulty],
-        typeInput: [type, setType]
+        typeInput: [type, setType],
+        playerNumber: [playerNumber, setPlayerNumber]
       }}
     >
       {props.children}
