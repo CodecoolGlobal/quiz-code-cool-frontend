@@ -33,7 +33,7 @@ export const QuestionsImage = styled.img`
   height: 70px;
 `;
 
-export const FormContainer = styled.div`
+export const ContentContainer = styled.div`
   background: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   margin: 30px 20%;
