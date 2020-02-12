@@ -16,12 +16,14 @@ export const Container = styled.div`
 `;
 
 export const HeaderContainer = styled.div`
+  background: #fff;
   border-radius: 5px;
   margin: 10px 20px;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
 `;
 
 export const FormContainer = styled.div`
+  background: #fff;
   border-radius: 10px;
   margin: 40px 250px;
 
@@ -38,13 +40,13 @@ export const FormContainer = styled.div`
 export const H2 = styled.h3`
   text-align: center;
   padding: 20px 20px;
-  color: Black;
+  color: ${theme.color1};
 `;
 
 export const H3 = styled.h3`
   text-align: center;
   padding: 20px 20px;
-  color: Black;
+  color: ${theme.color1};
 `;
 
 export const InputRow = styled.div`
@@ -72,8 +74,9 @@ export const InputLabel = styled.div`
 `;
 
 export const Select = styled.select`
-  border-color: ${theme.color1};
-  background: ${theme.color2};
+  border: 1px solid ${theme.color1};
+  border-radius: 2px;
+  background: ${theme.color3};
   color: #fff;
   font-size: ${theme.inputFontSize};
   padding: 5px 5px;
@@ -90,7 +93,7 @@ export const TextInput = styled.input`
   width: 100%;
   display: inline-block;
   border: 1px solid ${theme.color1};
-  border-radius: 4px;
+  border-radius: 2px;
   box-sizing: border-box;
   &:active {
     border-color: #ff3232;
@@ -103,7 +106,7 @@ export const Button = styled.button`
   color: ${theme.color1};
   background-color: white;
   border-radius: 20px;
-  border: 2px solid ${theme.color2};
+  border: 2px solid ${theme.color1};
   padding: 10px 15px;
   margin: 10px 0 5px 0;
   text-align: center;
