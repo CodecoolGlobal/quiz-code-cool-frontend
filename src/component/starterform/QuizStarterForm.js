@@ -14,7 +14,7 @@ import { PlayerContext } from "../../context/PlayerContext";
 import Question from "../../context/Question";
 import Player from "../../context/Player";
 
-import { FormContainer, H3 } from "../../style/MyStyle";
+import { FormContainer, InputRow, H3, Button } from "../../style/MyStyle";
 
 export default function QuizStarterForm(props) {
   const [questions, setQuestions] = useContext(QuestionContext);
@@ -88,12 +88,18 @@ export default function QuizStarterForm(props) {
     <FormContainer>
       <form onSubmit={submitForm}>
         <H3>New Quiz</H3>
-        <PlayerNameInput />
-        <CategoryInput />
-        <QuestionNumberInput />
-        <DifficultyInput />
-        <TypeInput />
-        <button type="submit">Start Quiz</button>
+        <InputRow>
+          <PlayerNameInput />
+        </InputRow>
+        <InputRow>
+          <CategoryInput />
+          <QuestionNumberInput />
+        </InputRow>
+        <InputRow>
+          <DifficultyInput />
+          <TypeInput />
+        </InputRow>
+        <Button type='submit'>Start Quiz</Button>
       </form>
     </FormContainer>
   );

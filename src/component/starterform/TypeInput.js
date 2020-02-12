@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { StarterFormContext } from "../../context/StarterFormContext";
-import { Select } from "../../style/MyStyle";
+import { Select, InputItem, InputLabel } from "../../style/MyStyle";
 
 export default function TypeInput() {
   const setType = useContext(StarterFormContext).typeInput[1];
@@ -11,8 +11,8 @@ export default function TypeInput() {
   };
 
   return (
-    <div>
-      <label htmlFor='type'>Type: </label>
+    <InputItem width='50'>
+      <InputLabel htmlFor='type'>Type</InputLabel>
       <Select id='type' name='type' onChange={handleType}>
         {Object.entries(TYPES).map((entry, index) => (
           <option value={entry[1]} key={index}>
@@ -20,6 +20,6 @@ export default function TypeInput() {
           </option>
         ))}
       </Select>
-    </div>
+    </InputItem>
   );
 }
