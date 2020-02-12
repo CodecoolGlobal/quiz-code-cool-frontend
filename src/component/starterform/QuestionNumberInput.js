@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { StarterFormContext } from "../../context/StarterFormContext";
 
+import { TextInput, InputItem, InputLabel } from "../../style/MyStyle";
+
 export default function QuestionNumberInput() {
   const setQuestionNumber = useContext(StarterFormContext)
     .questionNumberInput[1];
@@ -11,9 +13,9 @@ export default function QuestionNumberInput() {
   };
 
   return (
-    <div>
-      <label htmlFor='numberOfQuestions'>Questions / Player: </label>
-      <input
+    <InputItem width='50'>
+      <InputLabel htmlFor='numberOfQuestions'>Questions / Player</InputLabel>
+      <TextInput
         placeholder='5'
         type='number'
         id='numberOfQuestions'
@@ -22,7 +24,7 @@ export default function QuestionNumberInput() {
         min={MIN_QUESTIONS}
         max='25'
         onChange={handleNumberOfQuestions}
-      ></input>
-    </div>
+      ></TextInput>
+    </InputItem>
   );
 }
