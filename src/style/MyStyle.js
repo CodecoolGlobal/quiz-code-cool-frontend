@@ -6,6 +6,10 @@ export const theme = {
   inputPadding: "8px 10px"
 };
 
+export const Container = styled.div`
+  text-align: center;
+`;
+
 export const HeaderContainer = styled.div`
   width: 100%;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
@@ -13,15 +17,14 @@ export const HeaderContainer = styled.div`
 
 export const FormContainer = styled.div`
   border-radius: 15px;
-  min-width: 80px;
-  margin: 5% 20%;
+  margin: 40px 250px;
   padding: 20px 30px;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5);
   @media screen and (max-width: 992px) {
-    margin: 0 15%;
+    margin: 20px 15%;
   }
   @media screen and (max-width: 600px) {
-    margin: 0 5%;
+    margin: 20px 5%;
   }
 `;
 
@@ -46,10 +49,10 @@ export const InputItem = styled.div`
   }
 `;
 
-export const InputLabel = styled.label`
+export const InputLabel = styled.div`
+  text-align: left;
   font-size: ${theme.labelFontSize};
-
-  padding: 5px;
+  padding: 5px 0px;
   width: 100%;
 `;
 
@@ -73,16 +76,15 @@ export const TextInput = styled.input`
 `;
 
 export const Button = styled.button`
+  font-size: ${theme.inputFontSize};
   background-color: white;
   border-radius: 20px;
-  color: black;
   border: 1px solid #4caf50;
   padding: 10px 15px;
+  margin: 10px 0 5px 0;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 10px;
-  margin: 4px 2px;
   cursor: pointer;
   &:hover {
     border-width: 2px;

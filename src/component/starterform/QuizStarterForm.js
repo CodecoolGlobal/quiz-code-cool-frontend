@@ -96,8 +96,8 @@ export default function QuizStarterForm() {
           <DifficultyInput />
           <TypeInput />
         </InputRow>
+        <Button type='submit'>Start Quiz</Button>
       </form>
-      <Button type='submit'>Start Quiz</Button>
     </FormContainer>
   );
 }
