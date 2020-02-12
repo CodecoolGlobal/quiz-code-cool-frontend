@@ -112,7 +112,7 @@ export const TextInput = styled.input`
 `;
 
 export const Button = styled.button`
-  font-size: ${theme.inputFontSize};
+  font-size: 16;
   font-weight: bolder;
   color: ${theme.color1};
   background-color: #fff;

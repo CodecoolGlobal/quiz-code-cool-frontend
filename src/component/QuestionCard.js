@@ -4,6 +4,8 @@ import { PlayerContext } from "../context/PlayerContext";
 import Answers from "./Answers";
 import { formatText } from "../Util";
 
+import { ContentContainer, H3, Button } from "../style/MyStyle";
+
 export default function QuestionCard() {
   const [questions, setQuestions] = useContext(QuestionContext);
   const [players, setPlayers] = useContext(PlayerContext);
@@ -14,17 +16,15 @@ export default function QuestionCard() {
   };
 
   return (
-    <div>
+    <ContentContainer>
+      <h1>Player: {players[currentPlayerIndex].name}</h1>
+      <H3>{formatText(questions[0].question)}</H3>
+      <Answers />
       <div>
-        <h1>Player: {players[currentPlayerIndex].name}</h1>
-        <h3>{formatText(questions[0].question)}</h3>
-        <Answers />
-        <div>
-          <button type='button' id='next' onClick={handleNextButton} disabled>
-            Next
-          </button>
-        </div>
+        <Button type='button' id='next' onClick={handleNextButton} disabled>
+          Next
+        </Button>
       </div>
-    </div>
+    </ContentContainer>
   );
 }
