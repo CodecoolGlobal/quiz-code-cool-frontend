@@ -10,7 +10,7 @@ export const HeaderContainer = styled.div`
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 `;
 
-export const FormContainer = styled.div`
+export const ContentContainer = styled.div`
   border-radius: 15px;
   min-width: 80px;
   margin: 5% 20%;

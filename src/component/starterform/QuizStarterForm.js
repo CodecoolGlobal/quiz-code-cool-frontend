@@ -12,7 +12,7 @@ import { QuestionContext } from "../../context/QuestionContext";
 import Question from "../../context/Question";
 import Player from "../../context/Player";
 
-import { FormContainer, H3 } from "../../style/MyStyle";
+import { ContentContainer, H3 } from "../../style/MyStyle";
 import { PlayerContext } from "../../context/PlayerContext";
 
 export default function QuizStarterForm() {
@@ -82,7 +82,7 @@ export default function QuizStarterForm() {
   };
 
   return (
-    <FormContainer>
+    <ContentContainer>
       <form onSubmit={submitForm}>
         <H3>New Quiz</H3>
         <PlayerNameInput />
@@ -90,8 +90,8 @@ export default function QuizStarterForm() {
         <QuestionNumberInput />
         <DifficultyInput />
         <TypeInput />
-        <button type="submit">Start Quiz</button>
+        <button type='submit'>Start Quiz</button>
       </form>
-    </FormContainer>
+    </ContentContainer>
   );
 }
