@@ -24,6 +24,7 @@ export const HeaderContainer = styled.div`
 export const FormContainer = styled.div`
   border-radius: 10px;
   margin: 40px 250px;
+
   padding: 20px 30px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 992px) {
