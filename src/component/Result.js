@@ -27,16 +27,20 @@ export default function Result(props) {
 
       <TableContainer>
         <ResultTable>
-          <ResultTableRow>
-            <ResultTableHead>Name</ResultTableHead>
-            <ResultTableHead>Score</ResultTableHead>
-          </ResultTableRow>
-          {players.map(player => (
+          <thead>
             <ResultTableRow>
-              <ResultTableData>{player.name}</ResultTableData>
-              <ResultTableData>{player.score}</ResultTableData>
+              <ResultTableHead>Name</ResultTableHead>
+              <ResultTableHead>Score</ResultTableHead>
             </ResultTableRow>
-          ))}
+          </thead>
+          <tbody>
+            {players.map((player, index) => (
+              <ResultTableRow key={index}>
+                <ResultTableData>{player.name}</ResultTableData>
+                <ResultTableData>{player.score}</ResultTableData>
+              </ResultTableRow>
+            ))}
+          </tbody>
         </ResultTable>
       </TableContainer>
       <Button type='button' id='restart' onClick={handleRestart}>

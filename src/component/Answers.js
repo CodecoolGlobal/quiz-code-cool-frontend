@@ -56,11 +56,11 @@ export default function Answers() {
   return (
     <div>
       {answersZip.map((answer, index) => (
-        <div>
+        <div key={index}>
           <RadioButton
             id={index}
-            type="radio"
-            name="answer"
+            type='radio'
+            name='answer'
             value={answer[1]}
             onClick={chooseAnswer}
             defaultChecked={false}
