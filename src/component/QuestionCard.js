@@ -24,9 +24,12 @@ export default function QuestionCard(props) {
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
 
   const handleNextButton = () => {
-    if (correctness) {
+    console.log(selectedAnswerCorrectness);
+    if (selectedAnswerCorrectness === "1") {
       players[currentPlayerIndex].score++;
     }
+    console.log(players[currentPlayerIndex].score);
+
     setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
     if (questions.length === 1) {
       props.history.push("/results");
