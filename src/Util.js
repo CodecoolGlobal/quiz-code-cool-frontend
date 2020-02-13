@@ -1,5 +1,6 @@
+import he from "he";
+
 export const decodeStringToHtml = text => {
-  var txt = document.createElement("textarea");
-  txt.innerHTML = text;
-  return txt.value;
+  text = he.decode(text);
+  return text;
 };

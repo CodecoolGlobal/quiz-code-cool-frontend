@@ -3,9 +3,10 @@ import { PlayerContext } from "../context/PlayerContext";
 import { ContentContainer, H3, Button } from "../style/MyStyle";
 
 export default function Result(props) {
-  const players = useContext(PlayerContext)[0];
+  const [players, setPlayers] = useContext(PlayerContext);
 
   const handleRestart = () => {
+    setPlayers([]);
     props.history.push("/");
   };
 
@@ -21,7 +22,7 @@ export default function Result(props) {
           </p>
         </div>
       ))}
-      <Button type='button' id='restart' onClick={handleRestart}>
+      <Button type="button" id="restart" onClick={handleRestart}>
         New Game
       </Button>
     </ContentContainer>

@@ -22,7 +22,7 @@ export default function Answers() {
   useEffect(() => {
     setIsProceeded(false);
     let answers = [correct_answer, ...incorrect_answers];
-    answers.map(answer => (answer = decodeStringToHtml(answer)));
+    answers = answers.map(answer => (answer = decodeStringToHtml(answer)));
     const zip = zipAnswers(incorrect_answers.length, answers);
     shuffle(zip);
     setAnswersZip(zip);
@@ -59,8 +59,8 @@ export default function Answers() {
         <div>
           <RadioButton
             id={index}
-            type='radio'
-            name='answer'
+            type="radio"
+            name="answer"
             value={answer[1]}
             onClick={chooseAnswer}
             defaultChecked={false}
