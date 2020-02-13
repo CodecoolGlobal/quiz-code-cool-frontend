@@ -7,13 +7,11 @@ import { decodeStringToHtml } from "../../Util";
 import { RadioButton, RadioButtonLabel } from "../../style/MyStyle";
 
 export default function Answers() {
-  const [questions, setQuestions] = useContext(QuestionContext);
+  const questions = useContext(QuestionContext)[0];
 
-  const { proceeded, readyToProceed, correctness } = useContext(
-    ProgressContext
-  );
-  const [isReadyToProceed, setIsReadyToProceed] = readyToProceed;
-  const [selectedAnswerCorrectness, setSelectedAnswerCorrectness] = correctness;
+  const { readyToProceed, correctness } = useContext(ProgressContext);
+  const setIsReadyToProceed = readyToProceed[1];
+  const setSelectedAnswerCorrectness = correctness[1];
 
   const { incorrect_answers, correct_answer } = questions[0];
   const [answersZip, setAnswersZip] = useState([]);
@@ -53,17 +51,17 @@ export default function Answers() {
 
   return (
     <div>
-      {answersZip.map((answer, index) => (
+      {answersZip.map((answerZip, index) => (
         <div key={index}>
           <RadioButton
             id={index}
             type='radio'
             name='answer'
-            value={answer[1]}
+            value={answerZip[1]}
             onClick={chooseAnswer}
             defaultChecked={false}
           />
-          <RadioButtonLabel htmlFor={index}>{answer[0]}</RadioButtonLabel>
+          <RadioButtonLabel htmlFor={index}>{answerZip[0]}</RadioButtonLabel>
         </div>
       ))}
     </div>

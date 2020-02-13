@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { QuestionContext } from "../../context/QuestionContext";
 import { PlayerContext } from "../../context/PlayerContext";
 import { ProgressContext } from "../../context/ProgressContext";
@@ -7,7 +7,6 @@ import Answers from "./Answers";
 import PlayerData from "./PlayerData";
 
 import { decodeStringToHtml } from "../../Util";
-
 import { ContentContainer, H3, Button } from "../../style/MyStyle";
 
 export default function QuestionCard(props) {
@@ -16,18 +15,17 @@ export default function QuestionCard(props) {
     success: "rgba(92, 216, 43, 0.7)",
     failed: "rgba(216, 43, 43, 0.7)"
   };
-
-  const [questions, setQuestions] = useContext(QuestionContext);
-
-  const { readyToProceed, correctness } = useContext(ProgressContext);
-  const [isReadyToProceed, setIsReadyToProceed] = readyToProceed;
-  const [selectedAnswerCorrectness, setSelectedAnswerCorrectness] = correctness;
   const [questionCardBackground, setQuestionCardBackground] = useState(
     questionCardBgThemes.empty
   );
 
-  const [players, setPlayers] = useContext(PlayerContext);
+  const [questions, setQuestions] = useContext(QuestionContext);
+  const players = useContext(PlayerContext)[0];
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
+
+  const { readyToProceed, correctness } = useContext(ProgressContext);
+  const [isReadyToProceed, setIsReadyToProceed] = readyToProceed;
+  const selectedAnswerCorrectness = correctness[0];
 
   const addScoreIfNeeded = () => {
     if (selectedAnswerCorrectness === "1") {
