@@ -1,6 +1,6 @@
 import React from "react";
-import { H1, PlayerHeader, QuestionsImage } from "../style/MyStyle";
-import question_mark from "../style/question-mark.png";
+import { H1, PlayerHeader, QuestionsImage } from "../../style/MyStyle";
+import question_mark from "../../style/question-mark.png";
 
 export default function PlayerData(props) {
   return (

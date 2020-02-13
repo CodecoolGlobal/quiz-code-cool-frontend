@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import QuizStarterForm from "./component/starterform/QuizStarterForm";
-import QuestionCard from "./component/QuestionCard";
-import Result from "./component/Result";
+import QuestionCard from "./component/questioncard/QuestionCard";
+import Result from "./component/result/Result";
 
 import { QuestionProvider } from "./context/QuestionContext";
 import { PlayerProvider } from "./context/PlayerContext";

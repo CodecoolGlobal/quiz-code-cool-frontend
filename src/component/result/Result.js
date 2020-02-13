@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { PlayerContext } from "../context/PlayerContext";
+import { PlayerContext } from "../../context/PlayerContext";
 import {
   ContentContainer,
   H2,
@@ -10,7 +10,7 @@ import {
   ResultTableRow,
   ResultTableData,
   ResultTableHead
-} from "../style/MyStyle";
+} from "../../style/MyStyle";
 
 export default function Result(props) {
   const [players, setPlayers] = useContext(PlayerContext);

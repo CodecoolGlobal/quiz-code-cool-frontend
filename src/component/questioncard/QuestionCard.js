@@ -1,14 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
-import { QuestionContext } from "../context/QuestionContext";
-import { PlayerContext } from "../context/PlayerContext";
-import { ProgressContext } from "../context/ProgressContext";
+import { QuestionContext } from "../../context/QuestionContext";
+import { PlayerContext } from "../../context/PlayerContext";
+import { ProgressContext } from "../../context/ProgressContext";
 
 import Answers from "./Answers";
 import PlayerData from "./PlayerData";
 
-import { decodeStringToHtml } from "../Util";
+import { decodeStringToHtml } from "../../Util";
 
-import { ContentContainer, H3, Button } from "../style/MyStyle";
+import { ContentContainer, H3, Button } from "../../style/MyStyle";
 
 export default function QuestionCard(props) {
   const questionCardBgThemes = {

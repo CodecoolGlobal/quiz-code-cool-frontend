@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
-import { QuestionContext } from "../context/QuestionContext";
-import { ProgressContext } from "../context/ProgressContext";
+import { QuestionContext } from "../../context/QuestionContext";
+import { ProgressContext } from "../../context/ProgressContext";
 
-import { decodeStringToHtml } from "../Util";
+import { decodeStringToHtml } from "../../Util";
 
-import { RadioButton, RadioButtonLabel } from "../style/MyStyle";
+import { RadioButton, RadioButtonLabel } from "../../style/MyStyle";
 
 export default function Answers() {
   const [questions, setQuestions] = useContext(QuestionContext);
