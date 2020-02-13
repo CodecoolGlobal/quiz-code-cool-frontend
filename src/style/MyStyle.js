@@ -2,6 +2,7 @@ import styled from "styled-components";
 import "./ideas.png";
 
 export const theme = {
+  mainLightOpaque: "rgba(255, 255, 255, 0.8)",
   inputBorderRadius: "2px",
   inputFontSize: "12px",
   labelFontSize: "12px",
@@ -21,7 +22,7 @@ export const Container = styled.div`
 export const HeaderContainer = styled.div`
   justify-content: center;
   display: flex;
-  background: rgba(255, 255, 255, 0.8);
+  background: ${theme.mainLightOpaque};
   border-radius: 5px;
   margin: 15px 20px;
   padding: 8px 30px;
@@ -35,10 +36,7 @@ export const QuestionsImage = styled.img`
 
 export const ContentContainer = styled.div`
   background: ${props =>
-    props.customBackground
-      ? props.customBackground
-      : "rgba(255, 255, 255, 0.8)"};
-
+    props.customBackground ? props.customBackground : theme.mainLightOpaque};
   border-radius: 10px;
   margin: 30px 25%;
   padding: 15px 40px;
