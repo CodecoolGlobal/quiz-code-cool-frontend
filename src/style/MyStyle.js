@@ -11,7 +11,7 @@ export const theme = {
   color3: "#54b2a9",
   color4: "#65c3ba",
   color5: "#83d0c9",
-  purple: "#800080"
+  disabled: "gray"
 };
 
 export const Container = styled.div`
@@ -132,6 +132,11 @@ export const Button = styled.button`
   &:hover {
     color: ${theme.color4};
     border-color: ${theme.color4};
+  }
+  &:disabled {
+    color: ${theme.disabled};
+    border-color: ${theme.disabled};
+    cursor: default;
   }
 `;
 

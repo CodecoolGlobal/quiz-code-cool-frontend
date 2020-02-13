@@ -40,7 +40,7 @@ export default function Answers() {
   const chooseAnswer = () => {
     let nextButton = document.querySelector("#next");
     nextButton.disabled = false;
-    const guess = document.querySelector('input[name="answer"]:checked').value;
+    const guess = document.querySelector('input[type="radio"]:checked').value;
     setCorrectness(guess);
   };
 
@@ -48,10 +48,14 @@ export default function Answers() {
     <div>
       {answersZip.map((answer, index) => (
         <div>
-          <RadioButton id={index} type='radio' name='answer' />
-          <RadioButtonLabel htmlFor={index} onClick={chooseAnswer}>
-            {answer[0]}
-          </RadioButtonLabel>
+          <RadioButton
+            id={index}
+            type='radio'
+            name='answer'
+            value={answer[1]}
+            onClick={chooseAnswer}
+          />
+          <RadioButtonLabel htmlFor={index}>{answer[0]}</RadioButtonLabel>
         </div>
       ))}
     </div>
