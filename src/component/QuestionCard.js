@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { QuestionContext } from "../context/QuestionContext";
 import { PlayerContext } from "../context/PlayerContext";
+import { ProgressContext } from "../context/ProgressContext";
+
 import Answers from "./Answers";
 import PlayerData from "./PlayerData";
 
@@ -10,6 +12,7 @@ import { ContentContainer, H3, Button } from "../style/MyStyle";
 
 export default function QuestionCard() {
   const [questions, setQuestions] = useContext(QuestionContext);
+  const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
   const [players, setPlayers] = useContext(PlayerContext);
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
 
@@ -20,11 +23,15 @@ export default function QuestionCard() {
   return (
     <ContentContainer>
       <PlayerData actualPlayer={players[currentPlayerIndex]} />
-
       <H3>{decodeStringToHtml(questions[0].question)}</H3>
       <Answers />
       <div>
-        <Button type='button' id='next' onClick={handleNextButton} disabled>
+        <Button
+          type='button'
+          id='next'
+          onClick={handleNextButton}
+          disabled={!isReadyToProceed}
+        >
           Next
         </Button>
       </div>

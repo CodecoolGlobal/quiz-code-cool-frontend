@@ -8,6 +8,8 @@ import Result from "./component/Result";
 import { QuestionProvider } from "./context/QuestionContext";
 import { PlayerProvider } from "./context/PlayerContext";
 import { StarterFormProvider } from "./context/StarterFormContext";
+import { ProgressProvider } from "./context/ProgressContext";
+
 import Header from "./component/Header";
 
 import { Container } from "./style/MyStyle";
@@ -23,7 +25,9 @@ function App() {
               <StarterFormProvider>
                 <Route exact path='/' component={QuizStarterForm} />
               </StarterFormProvider>
-              <Route exact path='/quiz' component={QuestionCard} />
+              <ProgressProvider>
+                <Route exact path='/quiz' component={QuestionCard} />
+              </ProgressProvider>
               <Route exact path='/results' component={Result} />
             </Router>
           </QuestionProvider>

@@ -1,12 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import { QuestionContext } from "../context/QuestionContext";
+import { ProgressContext } from "../context/ProgressContext";
+
 import { decodeStringToHtml } from "../Util";
 
 import { RadioButton, RadioButtonLabel } from "../style/MyStyle";
 
 export default function Answers() {
-  const [correctness, setCorrectness] = useState(0);
+  const [correctness, setCorrectness] = useState(null);
   const [questions, setQuestions] = useContext(QuestionContext);
+  const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
   const { incorrect_answers, correct_answer } = questions[0];
   const [answersZip, setAnswersZip] = useState([]);
 
@@ -38,11 +41,9 @@ export default function Answers() {
   };
 
   const chooseAnswer = () => {
-    let nextButton = document.querySelector("#next");
-    nextButton.disabled = false;
     const guess = document.querySelector('input[type="radio"]:checked').value;
-    console.log(guess);
     setCorrectness(guess);
+    setIsReadyToProceed(true);
   };
 
   return (
