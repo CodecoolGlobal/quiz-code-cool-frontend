@@ -11,6 +11,7 @@ import { StarterFormProvider } from "./context/StarterFormContext";
 import { ProgressProvider } from "./context/ProgressContext";
 
 import Header from "./component/Header";
+import Footer from "./component/Footer";
 
 import { Container } from "./style/MyStyle";
 
@@ -33,6 +34,7 @@ function App() {
           </QuestionProvider>
         </PlayerProvider>
       </Container>
+      <Footer />
     </div>
   );
 }

@@ -212,3 +212,13 @@ export const ResultTableHead = styled.th`
 
   margin-bottom: 5px;
 `;
+
+export const FooterContainer = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+`;
