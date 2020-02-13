@@ -10,18 +10,31 @@ import { decodeStringToHtml } from "../Util";
 
 import { ContentContainer, H3, Button } from "../style/MyStyle";
 
-export default function QuestionCard() {
+export default function QuestionCard(props) {
   const [questions, setQuestions] = useContext(QuestionContext);
 
-  const { proceed, correctness } = useContext(ProgressContext);
-  const [isReadyToProceed, setIsReadyToProceed] = proceed;
+  const { proceeded, readyToProceed, correctness } = useContext(
+    ProgressContext
+  );
+  const [isProceeded, setIsProceeded] = proceeded;
+  const [isReadyToProceed, setIsReadyToProceed] = readyToProceed;
   const [selectedAnswerCorrectness, setSelectedAnswerCorrectness] = correctness;
 
   const [players, setPlayers] = useContext(PlayerContext);
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
 
   const handleNextButton = () => {
-    console.log("HE");
+    if (correctness) {
+      players[currentPlayerIndex].score++;
+    }
+    setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
+    if (questions.length === 1) {
+      props.history.push("/results");
+    } else {
+      setQuestions(questions.slice(1));
+    }
+    setIsReadyToProceed(false);
+    setIsProceeded(true);
   };
 
   return (
@@ -36,7 +49,7 @@ export default function QuestionCard() {
           onClick={handleNextButton}
           disabled={!isReadyToProceed}
         >
-          Next
+          {questions.length > 1 ? "Next" : "Finish Quiz"}
         </Button>
       </div>
     </ContentContainer>

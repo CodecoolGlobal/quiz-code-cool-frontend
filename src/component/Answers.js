@@ -9,20 +9,24 @@ import { RadioButton, RadioButtonLabel } from "../style/MyStyle";
 export default function Answers() {
   const [questions, setQuestions] = useContext(QuestionContext);
 
-  const { proceed, correctness } = useContext(ProgressContext);
-  const [isReadyToProceed, setIsReadyToProceed] = proceed;
+  const { proceeded, readyToProceed, correctness } = useContext(
+    ProgressContext
+  );
+  const [isProceeded, setIsProceeded] = proceeded;
+  const [isReadyToProceed, setIsReadyToProceed] = readyToProceed;
   const [selectedAnswerCorrectness, setSelectedAnswerCorrectness] = correctness;
 
   const { incorrect_answers, correct_answer } = questions[0];
   const [answersZip, setAnswersZip] = useState([]);
 
   useEffect(() => {
+    setIsProceeded(false);
     let answers = [correct_answer, ...incorrect_answers];
     answers.map(answer => (answer = decodeStringToHtml(answer)));
     const zip = zipAnswers(incorrect_answers.length, answers);
     shuffle(zip);
     setAnswersZip(zip);
-  }, [correct_answer, incorrect_answers]);
+  }, [correct_answer, incorrect_answers, setIsProceeded]);
 
   const zipAnswers = (incorrectAnswersLength, answers) => {
     let mapAnswers = [1];
@@ -43,8 +47,8 @@ export default function Answers() {
     }
   };
 
-  const chooseAnswer = () => {
-    const guess = document.querySelector('input[type="radio"]:checked').value;
+  const chooseAnswer = event => {
+    const guess = event.target.value;
     setSelectedAnswerCorrectness(guess);
     setIsReadyToProceed(true);
   };
@@ -52,13 +56,14 @@ export default function Answers() {
   return (
     <div>
       {answersZip.map((answer, index) => (
-        <div key={index}>
+        <div>
           <RadioButton
             id={index}
             type='radio'
             name='answer'
             value={answer[1]}
             onClick={chooseAnswer}
+            defaultChecked={false}
           />
           <RadioButtonLabel htmlFor={index}>{answer[0]}</RadioButtonLabel>
         </div>

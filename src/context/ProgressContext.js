@@ -7,11 +7,13 @@ export const ProgressProvider = props => {
     null
   );
   const [isReadyToProceed, setIsReadyToProceed] = useState(false);
+  const [isProceeded, setIsProceeded] = useState(true);
 
   return (
     <ProgressContext.Provider
       value={{
-        proceed: [isReadyToProceed, setIsReadyToProceed],
+        proceeded: [isProceeded, setIsProceeded],
+        readyToProceed: [isReadyToProceed, setIsReadyToProceed],
         correctness: [selectedAnswerCorrectness, setSelectedAnswerCorrectness]
       }}
     >
