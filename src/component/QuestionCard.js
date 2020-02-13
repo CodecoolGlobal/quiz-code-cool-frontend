@@ -4,7 +4,7 @@ import { PlayerContext } from "../context/PlayerContext";
 import Answers from "./Answers";
 import { decodeStringToHtml } from "../Util";
 
-import { ContentContainer, H3, Button } from "../style/MyStyle";
+import { ContentContainer, H1, H3, Button } from "../style/MyStyle";
 
 export default function QuestionCard() {
   const [questions, setQuestions] = useContext(QuestionContext);
@@ -17,7 +17,7 @@ export default function QuestionCard() {
 
   return (
     <ContentContainer>
-      <h1>Player: {players[currentPlayerIndex].name}</h1>
+      <H1>Player: {players[currentPlayerIndex].name}</H1>
       <H3>{decodeStringToHtml(questions[0].question)}</H3>
       <Answers />
       <div>

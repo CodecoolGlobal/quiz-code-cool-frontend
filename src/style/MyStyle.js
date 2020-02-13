@@ -47,6 +47,11 @@ export const ContentContainer = styled.div`
   }
 `;
 
+export const H1 = styled.h1`
+  padding: 10px;
+  text-align: center;
+`;
+
 export const Title = styled.h2`
   font-family: "Capriola", sans-serif;
   padding: 20px 10px;
@@ -56,7 +61,7 @@ export const Title = styled.h2`
 
 export const H3 = styled.h3`
   text-align: center;
-  padding: 20px 20px;
+  padding: 15px;
   color: ${theme.color1}};
 `;
 
@@ -127,5 +132,30 @@ export const Button = styled.button`
   &:hover {
     color: ${theme.color4};
     border-color: ${theme.color4};
+  }
+`;
+
+export const RadioButtonContainer = styled.div``;
+
+export const RadioButtonLabel = styled.label`
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  font-size: ${theme.inputFontSize};
+  margin: 0 50px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  background-color: #454545;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 3px;
+  &:hover {
+    background: ${theme.color3};
+  }
+`;
+
+export const RadioButton = styled.input`
+  visibility: hidden;
+  &:checked + label {
+    background-color: ${theme.color2};
   }
 `;
