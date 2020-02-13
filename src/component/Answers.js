@@ -41,6 +41,7 @@ export default function Answers() {
     let nextButton = document.querySelector("#next");
     nextButton.disabled = false;
     const guess = document.querySelector('input[type="radio"]:checked').value;
+    console.log(guess);
     setCorrectness(guess);
   };
 
