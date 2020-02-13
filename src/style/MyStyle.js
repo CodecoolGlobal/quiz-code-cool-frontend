@@ -204,8 +204,8 @@ export const ResultTableRow = styled.tr``;
 
 export const ResultTableData = styled.td`
   border: 2px dotted #fff;
-
-  padding: 5px 15px;
+  font-size: ${theme.inputFontSize};
+  padding: 10px 15px;
 `;
 
 export const ResultTableHead = styled.th`
