@@ -7,9 +7,12 @@ import { decodeStringToHtml } from "../Util";
 import { RadioButton, RadioButtonLabel } from "../style/MyStyle";
 
 export default function Answers() {
-  const [correctness, setCorrectness] = useState(null);
   const [questions, setQuestions] = useContext(QuestionContext);
-  const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
+
+  const { proceed, correctness } = useContext(ProgressContext);
+  const [isReadyToProceed, setIsReadyToProceed] = proceed;
+  const [selectedAnswerCorrectness, setSelectedAnswerCorrectness] = correctness;
+
   const { incorrect_answers, correct_answer } = questions[0];
   const [answersZip, setAnswersZip] = useState([]);
 
@@ -42,14 +45,14 @@ export default function Answers() {
 
   const chooseAnswer = () => {
     const guess = document.querySelector('input[type="radio"]:checked').value;
-    setCorrectness(guess);
+    setSelectedAnswerCorrectness(guess);
     setIsReadyToProceed(true);
   };
 
   return (
     <div>
       {answersZip.map((answer, index) => (
-        <div>
+        <div key={index}>
           <RadioButton
             id={index}
             type='radio'

@@ -12,7 +12,11 @@ import { ContentContainer, H3, Button } from "../style/MyStyle";
 
 export default function QuestionCard() {
   const [questions, setQuestions] = useContext(QuestionContext);
-  const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
+
+  const { proceed, correctness } = useContext(ProgressContext);
+  const [isReadyToProceed, setIsReadyToProceed] = proceed;
+  const [selectedAnswerCorrectness, setSelectedAnswerCorrectness] = correctness;
+
   const [players, setPlayers] = useContext(PlayerContext);
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
 
