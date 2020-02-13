@@ -38,14 +38,14 @@ export const ContentContainer = styled.div`
   background: ${props =>
     props.customBackground ? props.customBackground : theme.mainLightOpaque};
   border-radius: 10px;
-  margin: 30px 25%;
+  margin: 30px 25% 60px 25%;
   padding: 15px 40px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 992px) {
-    margin: 20px 15%;
+    margin: 20px 15% 60px 15%;
   }
   @media screen and (max-width: 600px) {
-    margin: 20px 5%;
+    margin: 20px 5% 60px 5%;
   }
 `;
 
@@ -217,11 +217,15 @@ export const ResultTableHead = styled.th`
 `;
 
 export const FooterContainer = styled.div`
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  position: fixed;
   left: 0;
-  padding: 1rem;
-  background-color: #efefef;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  font-size: ${theme.inputFontSize};
+  color: ${theme.color1};
+  font-family: "Capriola", sans-serif;
+  background: ${theme.mainLightOpaque};
   text-align: center;
 `;

@@ -3,5 +3,9 @@ import React from "react";
 import { FooterContainer } from "../style/MyStyle";
 
 export default function Footer() {
-  return <FooterContainer>&copy; 2020 Codecool Budapest</FooterContainer>;
+  return (
+    <FooterContainer>
+      Copyright &copy; 2020 Reacty Budapest, All rights reserved.
+    </FooterContainer>
+  );
 }
