@@ -12,7 +12,6 @@ export default function Answers() {
   const { proceeded, readyToProceed, correctness } = useContext(
     ProgressContext
   );
-  const [isProceeded, setIsProceeded] = proceeded;
   const [isReadyToProceed, setIsReadyToProceed] = readyToProceed;
   const [selectedAnswerCorrectness, setSelectedAnswerCorrectness] = correctness;
 
@@ -20,13 +19,12 @@ export default function Answers() {
   const [answersZip, setAnswersZip] = useState([]);
 
   useEffect(() => {
-    setIsProceeded(false);
     let answers = [correct_answer, ...incorrect_answers];
     answers = answers.map(answer => (answer = decodeStringToHtml(answer)));
     const zip = zipAnswers(incorrect_answers.length, answers);
     shuffle(zip);
     setAnswersZip(zip);
-  }, [correct_answer, incorrect_answers, setIsProceeded]);
+  }, [correct_answer, incorrect_answers]);
 
   const zipAnswers = (incorrectAnswersLength, answers) => {
     let mapAnswers = [1];

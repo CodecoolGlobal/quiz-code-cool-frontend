@@ -19,10 +19,7 @@ export default function QuestionCard(props) {
 
   const [questions, setQuestions] = useContext(QuestionContext);
 
-  const { proceeded, readyToProceed, correctness } = useContext(
-    ProgressContext
-  );
-  const [isProceeded, setIsProceeded] = proceeded;
+  const { readyToProceed, correctness } = useContext(ProgressContext);
   const [isReadyToProceed, setIsReadyToProceed] = readyToProceed;
   const [selectedAnswerCorrectness, setSelectedAnswerCorrectness] = correctness;
   const [questionCardBackground, setQuestionCardBackground] = useState(
@@ -54,7 +51,6 @@ export default function QuestionCard(props) {
       setQuestions(questions.slice(1));
     }
     setIsReadyToProceed(false);
-    setIsProceeded(true);
   };
 
   const setRadioButtonsUnchecked = () => {
