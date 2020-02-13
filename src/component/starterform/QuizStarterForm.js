@@ -17,8 +17,8 @@ import Player from "../../context/Player";
 import { ContentContainer, InputRow, H3, Button } from "../../style/MyStyle";
 
 export default function QuizStarterForm(props) {
-  const [questions, setQuestions] = useContext(QuestionContext);
-  const [players, setPlayers] = useContext(PlayerContext);
+  const setQuestions = useContext(QuestionContext)[1];
+  const setPlayers = useContext(PlayerContext)[1];
 
   const {
     BASE_URL_FOR_QUESTIONS_QUERY,

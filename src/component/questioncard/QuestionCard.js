@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { QuestionContext } from "../../context/QuestionContext";
 import { PlayerContext } from "../../context/PlayerContext";
 import { ProgressContext } from "../../context/ProgressContext";
@@ -21,12 +21,12 @@ export default function QuestionCard(props) {
 
   const { readyToProceed, correctness } = useContext(ProgressContext);
   const [isReadyToProceed, setIsReadyToProceed] = readyToProceed;
-  const [selectedAnswerCorrectness, setSelectedAnswerCorrectness] = correctness;
+  const selectedAnswerCorrectness = correctness[0];
   const [questionCardBackground, setQuestionCardBackground] = useState(
     questionCardBgThemes.empty
   );
 
-  const [players, setPlayers] = useContext(PlayerContext);
+  const players = useContext(PlayerContext)[0];
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
 
   const addScoreIfNeeded = () => {
