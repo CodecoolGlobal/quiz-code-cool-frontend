@@ -9,7 +9,7 @@ export const StarterFormProvider = props => {
   const MIN_QUESTIONS = 1;
   const CATEGORY_URL = "https://opentdb.com/api_category.php";
   const DEFAULT_CATEGORY = {
-    id: 8,
+    id: "8",
     name: "Any Category"
   };
   const TYPES = {

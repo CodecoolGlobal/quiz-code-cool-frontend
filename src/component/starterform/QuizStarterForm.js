@@ -38,7 +38,7 @@ export default function QuizStarterForm(props) {
   const createQuestionUrl = () => {
     let QuestionNumberUrl = `amount=${questionNumber}`;
     let categoryUrl =
-      selectedCategoryId === 8 ? "" : `&category=${selectedCategoryId}`;
+      selectedCategoryId === "8" ? "" : `&category=${selectedCategoryId}`;
     let difficultyUrl =
       difficulty === "Any Difficulty"
         ? ""
