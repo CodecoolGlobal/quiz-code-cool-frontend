@@ -34,7 +34,11 @@ export const QuestionsImage = styled.img`
 `;
 
 export const ContentContainer = styled.div`
-  background: rgba(255, 255, 255, 0.8);
+  background: ${props =>
+    props.customBackground
+      ? props.customBackground
+      : "rgba(255, 255, 255, 0.8)"};
+
   border-radius: 10px;
   margin: 30px 25%;
   padding: 15px 40px;
