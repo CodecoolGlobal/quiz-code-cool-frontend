@@ -1,6 +1,16 @@
 import React, { useContext } from "react";
 import { PlayerContext } from "../context/PlayerContext";
-import { ContentContainer, H3, Button } from "../style/MyStyle";
+import {
+  ContentContainer,
+  H2,
+  H3,
+  Button,
+  ResultTable,
+  TableContainer,
+  ResultTableRow,
+  ResultTableData,
+  ResultTableHead
+} from "../style/MyStyle";
 
 export default function Result(props) {
   const [players, setPlayers] = useContext(PlayerContext);
@@ -13,16 +23,23 @@ export default function Result(props) {
   return (
     <ContentContainer>
       <H3>Game over!</H3>
-      Results
-      {players.map(player => (
-        <div>
-          <p>
-            {player.name}
-            {player.score}
-          </p>
-        </div>
-      ))}
-      <Button type="button" id="restart" onClick={handleRestart}>
+      <H2>Results</H2>
+
+      <TableContainer>
+        <ResultTable>
+          <ResultTableRow>
+            <ResultTableHead>Name</ResultTableHead>
+            <ResultTableHead>Score</ResultTableHead>
+          </ResultTableRow>
+          {players.map(player => (
+            <ResultTableRow>
+              <ResultTableData>{player.name}</ResultTableData>
+              <ResultTableData>{player.score}</ResultTableData>
+            </ResultTableRow>
+          ))}
+        </ResultTable>
+      </TableContainer>
+      <Button type='button' id='restart' onClick={handleRestart}>
         New Game
       </Button>
     </ContentContainer>

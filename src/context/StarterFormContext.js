@@ -6,7 +6,7 @@ export const StarterFormProvider = props => {
   // Constants
   const BASE_URL_FOR_QUESTIONS_QUERY = "https://opentdb.com/api.php?";
   const DIFFICULTIES = ["Any Difficulty", "Easy", "Medium", "Hard"];
-  const MIN_QUESTIONS = 5;
+  const MIN_QUESTIONS = 1;
   const CATEGORY_URL = "https://opentdb.com/api_category.php";
   const DEFAULT_CATEGORY = {
     id: 8,

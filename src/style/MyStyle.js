@@ -55,6 +55,11 @@ export const H1 = styled.h2`
   text-align: center;
 `;
 
+export const H2 = styled.h2`
+  text-align: center;
+  color: ${theme.color3};
+`;
+
 export const Title = styled.h2`
   font-family: "Capriola", sans-serif;
   padding: 20px 10px;
@@ -178,4 +183,34 @@ export const RadioButton = styled.input`
   &:checked + label {
     background-color: ${theme.color2};
   }
+`;
+
+export const TableContainer = styled.div`
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+`;
+
+export const ResultTable = styled.table`
+  border-collapse: collapse;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  background: ${theme.color3};
+  color: #fff;
+  margin: 0 auto;
+`;
+
+export const ResultTableRow = styled.tr``;
+
+export const ResultTableData = styled.td`
+  border: 2px dotted #fff;
+  font-size: ${theme.inputFontSize};
+  padding: 10px 15px;
+`;
+
+export const ResultTableHead = styled.th`
+  border: 2px dotted #fff;
+  padding: 10px 25px;
+
+  margin-bottom: 5px;
 `;
