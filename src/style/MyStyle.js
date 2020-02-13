@@ -36,8 +36,8 @@ export const QuestionsImage = styled.img`
 export const ContentContainer = styled.div`
   background: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
-  margin: 30px 20%;
-  padding: 20px 40px;
+  margin: 30px 25%;
+  padding: 15px 40px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 992px) {
     margin: 20px 15%;
@@ -47,8 +47,7 @@ export const ContentContainer = styled.div`
   }
 `;
 
-export const H1 = styled.h1`
-  padding: 10px;
+export const H1 = styled.h2`
   text-align: center;
 `;
 
@@ -61,8 +60,9 @@ export const Title = styled.h2`
 
 export const H3 = styled.h3`
   text-align: center;
-  padding: 15px;
-  color: ${theme.color1}};
+  margin: 10px;
+  padding-top: 10px;
+  color: ${theme.color1};
 `;
 
 export const InputRow = styled.div`
@@ -135,12 +135,23 @@ export const Button = styled.button`
   }
 `;
 
-export const RadioButtonContainer = styled.div``;
+export const PlayerHeader = styled.div`
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  color: #fff;
+  margin-top: 10px;
+  padding: 5px 15px;
+  background: rgba(19, 140, 154, 0.3);
+`;
 
 export const RadioButtonLabel = styled.label`
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+
   font-size: ${theme.inputFontSize};
-  margin: 0 50px;
+  margin-top: 15px;
   display: block;
   text-align: center;
   cursor: pointer;
@@ -154,7 +165,7 @@ export const RadioButtonLabel = styled.label`
 `;
 
 export const RadioButton = styled.input`
-  visibility: hidden;
+  display: none;
   &:checked + label {
     background-color: ${theme.color2};
   }

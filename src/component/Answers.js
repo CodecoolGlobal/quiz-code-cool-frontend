@@ -2,11 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { QuestionContext } from "../context/QuestionContext";
 import { decodeStringToHtml } from "../Util";
 
-import {
-  RadioButton,
-  RadioButtonLabel,
-  RadioButtonContainer
-} from "../style/MyStyle";
+import { RadioButton, RadioButtonLabel } from "../style/MyStyle";
 
 export default function Answers() {
   const [correctness, setCorrectness] = useState(0);
@@ -48,12 +44,16 @@ export default function Answers() {
     setCorrectness(guess);
   };
 
-  return answersZip.map((answer, index) => (
-    <RadioButtonContainer key={index}>
-      <RadioButton id={index} type='radio' name='answer' />
-      <RadioButtonLabel htmlFor={index} onClick={chooseAnswer}>
-        {answer[0]}
-      </RadioButtonLabel>
-    </RadioButtonContainer>
-  ));
+  return (
+    <div>
+      {answersZip.map((answer, index) => (
+        <div>
+          <RadioButton id={index} type='radio' name='answer' />
+          <RadioButtonLabel htmlFor={index} onClick={chooseAnswer}>
+            {answer[0]}
+          </RadioButtonLabel>
+        </div>
+      ))}
+    </div>
+  );
 }

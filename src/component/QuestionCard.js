@@ -2,9 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import { QuestionContext } from "../context/QuestionContext";
 import { PlayerContext } from "../context/PlayerContext";
 import Answers from "./Answers";
+import PlayerData from "./PlayerData";
+
 import { decodeStringToHtml } from "../Util";
 
-import { ContentContainer, H1, H3, Button } from "../style/MyStyle";
+import { ContentContainer, H3, Button } from "../style/MyStyle";
 
 export default function QuestionCard() {
   const [questions, setQuestions] = useContext(QuestionContext);
@@ -17,7 +19,8 @@ export default function QuestionCard() {
 
   return (
     <ContentContainer>
-      <H1>Player: {players[currentPlayerIndex].name}</H1>
+      <PlayerData actualPlayer={players[currentPlayerIndex]} />
+
       <H3>{decodeStringToHtml(questions[0].question)}</H3>
       <Answers />
       <div>
