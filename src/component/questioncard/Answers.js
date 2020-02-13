@@ -51,17 +51,17 @@ export default function Answers() {
 
   return (
     <div>
-      {answersZip.map((answer, index) => (
+      {answersZip.map((answerZip, index) => (
         <div key={index}>
           <RadioButton
             id={index}
             type='radio'
             name='answer'
-            value={answer[1]}
+            value={answerZip[1]}
             onClick={chooseAnswer}
             defaultChecked={false}
           />
-          <RadioButtonLabel htmlFor={index}>{answer[0]}</RadioButtonLabel>
+          <RadioButtonLabel htmlFor={index}>{answerZip[0]}</RadioButtonLabel>
         </div>
       ))}
     </div>
