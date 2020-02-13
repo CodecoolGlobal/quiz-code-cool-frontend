@@ -198,7 +198,11 @@ export const ResultTable = styled.table`
   margin: 0 auto;
 `;
 
-export const ResultTableRow = styled.tr``;
+export const ResultTableRow = styled.tr`
+  &:hover {
+    background: ${theme.color2};
+  }
+`;
 
 export const ResultTableData = styled.td`
   border: 2px dotted #fff;
@@ -209,7 +213,6 @@ export const ResultTableData = styled.td`
 export const ResultTableHead = styled.th`
   border: 2px dotted #fff;
   padding: 10px 25px;
-
   margin-bottom: 5px;
 `;
 
