@@ -57,10 +57,18 @@ export default function QuestionCard(props) {
     setIsProceeded(true);
   };
 
+  const setRadioButtonsUnchecked = () => {
+    let buttons = document.querySelectorAll('input[type="radio"]');
+    for (let button of buttons) {
+      button.checked = false;
+    }
+  };
+
   const handleNextButton = () => {
     addScoreIfNeeded();
     setTemporaryBackground();
     setTimeout(() => {
+      setRadioButtonsUnchecked();
       setQuestionCardBackground(questionCardBgThemes.empty);
       goToNext();
     }, 1000);
