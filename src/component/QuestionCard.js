@@ -32,31 +32,37 @@ export default function QuestionCard(props) {
   const [players, setPlayers] = useContext(PlayerContext);
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
 
-  const handleNextButton = () => {
+  const addScoreIfNeeded = () => {
     if (selectedAnswerCorrectness === "1") {
       players[currentPlayerIndex].score++;
     }
+  };
 
+  const setTemporaryBackground = () => {
     setQuestionCardBackground(
       selectedAnswerCorrectness === "1"
         ? questionCardBgThemes.success
         : questionCardBgThemes.failed
     );
+  };
 
+  const goToNext = () => {
+    setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
+    if (questions.length === 1) {
+      props.history.push("/results");
+    } else {
+      setQuestions(questions.slice(1));
+    }
+    setIsReadyToProceed(false);
+    setIsProceeded(true);
+  };
+
+  const handleNextButton = () => {
+    addScoreIfNeeded();
+    setTemporaryBackground();
     setTimeout(() => {
       setQuestionCardBackground(questionCardBgThemes.empty);
-      console.log(selectedAnswerCorrectness);
-
-      console.log(players[currentPlayerIndex].score);
-
-      setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
-      if (questions.length === 1) {
-        props.history.push("/results");
-      } else {
-        setQuestions(questions.slice(1));
-      }
-      setIsReadyToProceed(false);
-      setIsProceeded(true);
+      goToNext();
     }, 1000);
   };
 
