@@ -2,10 +2,14 @@ import React, { useContext } from "react";
 import { PlayerContext } from "../context/PlayerContext";
 import {
   ContentContainer,
+  H2,
   H3,
   Button,
   ResultTable,
-  TableContainer
+  TableContainer,
+  ResultTableRow,
+  ResultTableData,
+  ResultTableHead
 } from "../style/MyStyle";
 
 export default function Result(props) {
@@ -18,18 +22,19 @@ export default function Result(props) {
   return (
     <ContentContainer>
       <H3>Game over!</H3>
-      Results
+      <H2>Results</H2>
+
       <TableContainer>
         <ResultTable>
-          <tr>
-            <th>Name</th>
-            <th>Score</th>
-          </tr>
+          <ResultTableRow>
+            <ResultTableHead>Name</ResultTableHead>
+            <ResultTableHead>Score</ResultTableHead>
+          </ResultTableRow>
           {players.map(player => (
-            <tr>
-              <td>{player.name}</td>
-              <td>{player.score}</td>
-            </tr>
+            <ResultTableRow>
+              <ResultTableData>{player.name}</ResultTableData>
+              <ResultTableData>{player.score}</ResultTableData>
+            </ResultTableRow>
           ))}
         </ResultTable>
       </TableContainer>
