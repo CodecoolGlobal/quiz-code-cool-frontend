@@ -175,3 +175,14 @@ export const RadioButton = styled.input`
     background-color: ${theme.color2};
   }
 `;
+
+export const TableContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export const ResultTable = styled.table`
+  border-style: dotted;
+  border-color: #fff;
+  margin: 0 auto;
+`;
