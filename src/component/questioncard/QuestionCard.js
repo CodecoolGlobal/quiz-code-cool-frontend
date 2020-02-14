@@ -45,9 +45,8 @@ export default function QuestionCard(props) {
     setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
     if (questions.length === 1) {
       props.history.push("/results");
-    } else {
-      setQuestions(questions.slice(1));
     }
+    setQuestions(questions.slice(1));
     setIsReadyToProceed(false);
   };
 
@@ -75,8 +74,8 @@ export default function QuestionCard(props) {
       <Answers />
       <div>
         <Button
-          type='button'
-          id='next'
+          type="button"
+          id="next"
           onClick={handleNextButton}
           disabled={!isReadyToProceed}
         >
