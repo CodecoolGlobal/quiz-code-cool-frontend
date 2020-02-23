@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { PlayerContext } from "../../context/PlayerContext";
+import { QuestionContext } from "../../context/QuestionContext";
+
 import {
   ContentContainer,
   H2,
@@ -11,12 +13,15 @@ import {
   ResultTableData,
   ResultTableHead
 } from "../../style/MyStyle";
+import ColorsForPlayers from "../../style/PlayerColors";
 
 export default function Result(props) {
   const [players, setPlayers] = useContext(PlayerContext);
+  const setQuestions = useContext(QuestionContext)[1];
 
   const handleRestart = () => {
     setPlayers([]);
+    setQuestions([]);
     props.history.push("/");
   };
 
@@ -35,7 +40,7 @@ export default function Result(props) {
           </thead>
           <tbody>
             {players.map((player, index) => (
-              <ResultTableRow key={index}>
+              <ResultTableRow playerTheme={ColorsForPlayers[index]} key={index}>
                 <ResultTableData>{player.name}</ResultTableData>
                 <ResultTableData>{player.score}</ResultTableData>
               </ResultTableRow>

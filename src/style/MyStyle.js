@@ -35,10 +35,9 @@ export const QuestionsImage = styled.img`
 `;
 
 export const ContentContainer = styled.div`
-  background: ${props =>
-    props.customBackground
-      ? props.customBackground
-      : applicationTheme.mainLightOpaque};
+  background: ${applicationTheme.mainLightOpaque};
+  border: ${props =>
+    props.borderColor ? "2px solid " + props.borderColor : "none"};
   border-radius: 10px;
   margin: 30px 25% 60px 25%;
   padding: 15px 40px;
@@ -158,7 +157,7 @@ export const PlayerHeader = styled.div`
   color: #fff;
   margin-top: 10px;
   padding: 5px 15px;
-  background: ${props => props.theme.backgroundColor};
+  background: ${props => props.playerTheme.backgroundColor};
 `;
 
 export const RadioButtonLabel = styled.label`
@@ -192,28 +191,29 @@ export const TableContainer = styled.div`
 `;
 
 export const ResultTable = styled.table`
+  border: 2px solid #fff;
   border-collapse: collapse;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
   padding: 5px;
-  background: ${applicationTheme.color3};
-  color: #fff;
   margin: 0 auto;
 `;
 
 export const ResultTableRow = styled.tr`
-  &:hover {
-    background: ${applicationTheme.color2};
-  }
+  background: ${props =>
+    props.playerTheme
+      ? props.playerTheme.backgroundColor
+      : applicationTheme.color3};
+  color: ${props => (props.playerTheme ? applicationTheme.color1 : "#fff")};
 `;
 
 export const ResultTableData = styled.td`
-  border: 2px dotted #fff;
+  border: 1px solid #fff;
   font-size: ${applicationTheme.inputFontSize};
   padding: 10px 15px;
 `;
 
 export const ResultTableHead = styled.th`
-  border: 2px dotted #fff;
+  border: 1px solid #fff;
   padding: 10px 25px;
   margin-bottom: 5px;
 `;

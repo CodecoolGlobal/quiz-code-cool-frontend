@@ -8,18 +8,14 @@ import PlayerData from "./PlayerData";
 
 import { decodeStringToHtml } from "../../Util";
 import { ContentContainer, H3, Button } from "../../style/MyStyle";
-import ColorsForPlayers from "../../style/PlayerColors";
-import { ThemeProvider } from "styled-components";
 
 export default function QuestionCard(props) {
-  const questionCardBgThemes = {
-    empty: " rgba(255, 255, 255, 0.8)",
-    success: "rgba(92, 216, 43, 0.7)",
-    failed: "rgba(216, 43, 43, 0.7)"
+  const borderColors = {
+    empty: " rgba(255, 255, 255, 0.4)",
+    success: "rgb(51, 153, 51, 0.8)",
+    failed: "rgb(204, 0, 0, 0.8)"
   };
-  const [questionCardBackground, setQuestionCardBackground] = useState(
-    questionCardBgThemes.empty
-  );
+  const [borderColor, setQuestionCardBackground] = useState(borderColors.empty);
 
   const [questions, setQuestions] = useContext(QuestionContext);
   const players = useContext(PlayerContext)[0];
@@ -38,8 +34,8 @@ export default function QuestionCard(props) {
   const setTemporaryBackground = () => {
     setQuestionCardBackground(
       selectedAnswerCorrectness === "1"
-        ? questionCardBgThemes.success
-        : questionCardBgThemes.failed
+        ? borderColors.success
+        : borderColors.failed
     );
   };
 
@@ -65,16 +61,14 @@ export default function QuestionCard(props) {
     setTemporaryBackground();
     setTimeout(() => {
       setRadioButtonsUnchecked();
-      setQuestionCardBackground(questionCardBgThemes.empty);
+      setQuestionCardBackground(borderColors.empty);
       goToNext();
     }, 1000);
   };
 
   return (
-    <ContentContainer customBackground={questionCardBackground}>
-      <ThemeProvider theme={ColorsForPlayers[currentPlayerIndex]}>
-        <PlayerData actualPlayer={players[currentPlayerIndex]} />
-      </ThemeProvider>
+    <ContentContainer borderColor={borderColor}>
+      <PlayerData currentPlayerIndex={currentPlayerIndex} />
       <H3>{decodeStringToHtml(questions[0].question)}</H3>
       <Answers />
       <div>
