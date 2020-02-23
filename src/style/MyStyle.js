@@ -50,11 +50,13 @@ export const ContentContainer = styled.div`
   }
 `;
 
-export const H1 = styled.h2`
+export const PlayerName = styled.h2`
+  overflow: hidden;
   text-align: center;
 `;
 
 export const H2 = styled.h2`
+  padding: 0 10px;
   text-align: center;
   color: ${applicationTheme.color3};
 `;
