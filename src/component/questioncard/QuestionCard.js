@@ -8,6 +8,8 @@ import PlayerData from "./PlayerData";
 
 import { decodeStringToHtml } from "../../Util";
 import { ContentContainer, H3, Button } from "../../style/MyStyle";
+import ColorsForPlayers from "../../style/PlayerColors";
+import { ThemeProvider } from "styled-components";
 
 export default function QuestionCard(props) {
   const questionCardBgThemes = {
@@ -70,7 +72,9 @@ export default function QuestionCard(props) {
 
   return (
     <ContentContainer customBackground={questionCardBackground}>
-      <PlayerData actualPlayer={players[currentPlayerIndex]} />
+      <ThemeProvider theme={ColorsForPlayers[currentPlayerIndex]}>
+        <PlayerData actualPlayer={players[currentPlayerIndex]} />
+      </ThemeProvider>
       <H3>{decodeStringToHtml(questions[0].question)}</H3>
       <Answers />
       <div>
