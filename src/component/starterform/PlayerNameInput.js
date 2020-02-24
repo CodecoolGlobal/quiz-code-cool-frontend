@@ -24,6 +24,7 @@ export default function PlayerNameInput() {
             id={i}
             type='text'
             placeholder={`Player ${i + 1}`}
+            maxLength='30'
             required
             onKeyUp={handlePlayerName}
           ></TextInput>
