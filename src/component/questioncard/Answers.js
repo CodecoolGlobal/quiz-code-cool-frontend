@@ -4,7 +4,11 @@ import { ProgressContext } from "../../context/ProgressContext";
 
 import { decodeStringToHtml } from "../../Util";
 
-import { RadioButton, RadioButtonLabel } from "../../style/MyStyle";
+import {
+  RadioButton,
+  RadioButtonLabel,
+  AnswerContainer
+} from "../../style/MyStyle";
 
 export default function Answers() {
   const questions = useContext(QuestionContext)[0];
@@ -50,7 +54,7 @@ export default function Answers() {
   };
 
   return (
-    <div>
+    <AnswerContainer>
       {answersZip.map((answerZip, index) => (
         <div key={index}>
           <RadioButton
@@ -64,6 +68,6 @@ export default function Answers() {
           <RadioButtonLabel htmlFor={index}>{answerZip[0]}</RadioButtonLabel>
         </div>
       ))}
-    </div>
+    </AnswerContainer>
   );
 }

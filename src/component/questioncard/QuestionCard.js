@@ -7,15 +7,20 @@ import Answers from "./Answers";
 import PlayerData from "./PlayerData";
 
 import { decodeStringToHtml } from "../../Util";
-import { ContentContainer, H3, Button } from "../../style/MyStyle";
+import {
+  ContentContainer,
+  QuestionContainer,
+  H3,
+  Button
+} from "../../style/MyStyle";
 
 export default function QuestionCard(props) {
-  const borderColors = {
-    empty: " rgba(255, 255, 255, 0.4)",
-    success: "rgb(51, 153, 51, 0.8)",
-    failed: "rgb(204, 0, 0, 0.8)"
+  const questionColors = {
+    empty: "#FFF",
+    success: "rgba(92, 216, 43, 0.5)",
+    failed: "rgba(216, 43, 43, 0.5)"
   };
-  const [borderColor, setQuestionCardBackground] = useState(borderColors.empty);
+  const [questionColor, setQuestionColor] = useState(questionColors.empty);
 
   const [questions, setQuestions] = useContext(QuestionContext);
   const players = useContext(PlayerContext)[0];
@@ -32,10 +37,10 @@ export default function QuestionCard(props) {
   };
 
   const setTemporaryBackground = () => {
-    setQuestionCardBackground(
+    setQuestionColor(
       selectedAnswerCorrectness === "1"
-        ? borderColors.success
-        : borderColors.failed
+        ? questionColors.success
+        : questionColors.failed
     );
   };
 
@@ -61,17 +66,17 @@ export default function QuestionCard(props) {
     setTemporaryBackground();
     setTimeout(() => {
       setRadioButtonsUnchecked();
-      setQuestionCardBackground(borderColors.empty);
+      setQuestionColor(questionColors.empty);
       goToNext();
     }, 1000);
   };
 
   return (
-    <ContentContainer borderColor={borderColor}>
+    <ContentContainer>
       <PlayerData currentPlayerIndex={currentPlayerIndex} />
-      <H3>{decodeStringToHtml(questions[0].question)}</H3>
-      <Answers />
-      <div>
+      <QuestionContainer questionColor={questionColor}>
+        <H3>{decodeStringToHtml(questions[0].question)}</H3>
+        <Answers />
         <Button
           type='button'
           id='next'
@@ -80,7 +85,7 @@ export default function QuestionCard(props) {
         >
           {questions.length > 1 ? "Next" : "Finish Quiz"}
         </Button>
-      </div>
+      </QuestionContainer>
     </ContentContainer>
   );
 }
