@@ -7,17 +7,20 @@ import Answers from "./Answers";
 import PlayerData from "./PlayerData";
 
 import { decodeStringToHtml } from "../../Util";
-import { ContentContainer, H3, Button } from "../../style/MyStyle";
+import {
+  ContentContainer,
+  QuestionContainer,
+  H3,
+  Button
+} from "../../style/MyStyle";
 
 export default function QuestionCard(props) {
-  const questionCardBgThemes = {
-    empty: " rgba(255, 255, 255, 0.8)",
-    success: "rgba(92, 216, 43, 0.7)",
-    failed: "rgba(216, 43, 43, 0.7)"
+  const questionColors = {
+    empty: "none",
+    success: "rgba(92, 216, 43, 0.5)",
+    failed: "rgba(216, 43, 43, 0.5)"
   };
-  const [questionCardBackground, setQuestionCardBackground] = useState(
-    questionCardBgThemes.empty
-  );
+  const [questionColor, setQuestionColor] = useState(questionColors.empty);
 
   const [questions, setQuestions] = useContext(QuestionContext);
   const players = useContext(PlayerContext)[0];
@@ -34,10 +37,10 @@ export default function QuestionCard(props) {
   };
 
   const setTemporaryBackground = () => {
-    setQuestionCardBackground(
+    setQuestionColor(
       selectedAnswerCorrectness === "1"
-        ? questionCardBgThemes.success
-        : questionCardBgThemes.failed
+        ? questionColors.success
+        : questionColors.failed
     );
   };
 
@@ -62,17 +65,17 @@ export default function QuestionCard(props) {
     setTemporaryBackground();
     setTimeout(() => {
       setRadioButtonsUnchecked();
-      setQuestionCardBackground(questionCardBgThemes.empty);
+      setQuestionColor(questionColors.empty);
       goToNext();
     }, 1000);
   };
 
   return (
-    <ContentContainer customBackground={questionCardBackground}>
-      <PlayerData actualPlayer={players[currentPlayerIndex]} />
-      <H3>{decodeStringToHtml(questions[0].question)}</H3>
-      <Answers />
-      <div>
+    <ContentContainer>
+      <PlayerData currentPlayerIndex={currentPlayerIndex} />
+      <QuestionContainer questionColor={questionColor}>
+        <H3>{decodeStringToHtml(questions[0].question)}</H3>
+        <Answers />
         <Button
           type="button"
           id="next"
@@ -81,7 +84,7 @@ export default function QuestionCard(props) {
         >
           {questions.length > 1 ? "Next" : "Finish Quiz"}
         </Button>
-      </div>
+      </QuestionContainer>
     </ContentContainer>
   );
 }

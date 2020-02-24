@@ -1,18 +1,22 @@
 import styled from "styled-components";
 import "./ideas.png";
 
-export const theme = {
+export const applicationTheme = {
   mainLightOpaque: "rgba(255, 255, 255, 0.8)",
-  inputBorderRadius: "2px",
-  inputFontSize: "12px",
-  labelFontSize: "12px",
+  fontSize1: "12px",
   inputPadding: "8px 10px",
   color1: "#009688",
   color2: "#35a79c",
   color3: "#54b2a9",
   color4: "#65c3ba",
   color5: "#83d0c9",
-  disabled: "gray"
+  disabled: "gray",
+  borderRadius1: "2px",
+  borderRadius2: "5px",
+  borderRadius3: "8px",
+  borderRadius4: "20px",
+  shadow1: "0 1px 4px 0 rgba(0, 0, 0, 0.2)",
+  shadow2: "0 1px 2px 0 rgba(0, 0, 0, 0.2)"
 };
 
 export const Container = styled.div`
@@ -22,11 +26,11 @@ export const Container = styled.div`
 export const HeaderContainer = styled.div`
   justify-content: center;
   display: flex;
-  background: ${theme.mainLightOpaque};
-  border-radius: 5px;
+  background: ${applicationTheme.mainLightOpaque};
+  border-radius: ${applicationTheme.borderRadius2};
   margin: 15px 20px;
   padding: 8px 30px;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: ${applicationTheme.shadow1};
 `;
 
 export const QuestionsImage = styled.img`
@@ -35,12 +39,12 @@ export const QuestionsImage = styled.img`
 `;
 
 export const ContentContainer = styled.div`
-  background: ${props =>
-    props.customBackground ? props.customBackground : theme.mainLightOpaque};
-  border-radius: 10px;
-  margin: 30px 25% 60px 25%;
-  padding: 15px 40px;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  background: ${applicationTheme.mainLightOpaque};
+  border: ${props =>
+    props.borderColor ? "2px solid " + props.borderColor : "none"};
+  border-radius: ${applicationTheme.borderRadius3};
+  margin: 20px 25% 60px 25%;
+  box-shadow: ${applicationTheme.shadow1};
   @media screen and (max-width: 992px) {
     margin: 20px 15% 60px 15%;
   }
@@ -49,27 +53,48 @@ export const ContentContainer = styled.div`
   }
 `;
 
-export const H1 = styled.h2`
+export const ContainerMorePadding = styled.div`
+  padding: 15px 40px;
+`;
+
+export const QuestionContainer = styled.div`
+  border-top: 2px solid #fff;
+  padding: 10px 30px;
+  background: ${props =>
+    props.questionColor
+      ? props.questionColor
+      : applicationTheme.mainLightOpaque};
+  border-radius: 0 0 ${applicationTheme.borderRadius3}
+    ${applicationTheme.borderRadius3};
+`;
+
+export const AnswerContainer = styled.div`
+  padding: 0 50px 5px 50px;
+`;
+
+export const PlayerName = styled.h2`
+  overflow: hidden;
   text-align: center;
 `;
 
 export const H2 = styled.h2`
+  padding: 0 10px;
   text-align: center;
-  color: ${theme.color3};
+  color: ${applicationTheme.color3};
 `;
 
 export const Title = styled.h2`
   font-family: "Capriola", sans-serif;
   padding: 20px 10px;
   text-align: center;
-  color: ${theme.color1};
+  color: ${applicationTheme.color1};
 `;
 
 export const H3 = styled.h3`
   text-align: center;
   margin: 10px;
   padding-top: 10px;
-  color: ${theme.color1};
+  color: ${applicationTheme.color1};
 `;
 
 export const InputRow = styled.div`
@@ -90,18 +115,18 @@ export const InputItem = styled.div`
 export const InputLabel = styled.div`
   font-weight: bolder;
   text-align: left;
-  font-size: ${theme.labelFontSize};
-  color: ${theme.color1};
+  font-size: ${applicationTheme.fontSize1};
+  color: ${applicationTheme.color1};
   padding: 5px 0px;
   width: 100%;
 `;
 
 export const Select = styled.select`
-  border: 1px solid ${theme.color1};
-  border-radius: ${theme.inputBorderRadius};
-  background: ${theme.color4};
+  border: 1px solid ${applicationTheme.color1};
+  border-radius: ${applicationTheme.borderRadius1};
+  background: ${applicationTheme.color4};
   color: #fff;
-  font-size: ${theme.inputFontSize};
+  font-size: ${applicationTheme.fontSize1};
   padding: 7px 5px;
   width: 100%;
   & option {
@@ -111,38 +136,38 @@ export const Select = styled.select`
 `;
 
 export const TextInput = styled.input`
-  font-size: ${theme.inputFontSize};
-  padding: ${theme.inputPadding};
+  font-size: ${applicationTheme.fontSize1};
+  padding: ${applicationTheme.inputPadding};
   width: 100%;
   display: inline-block;
-  border: 1px solid ${theme.color1};
-  border-radius: ${theme.inputBorderRadius};
+  border: 1px solid ${applicationTheme.color1};
+  border-radius: ${applicationTheme.borderRadius1};
   box-sizing: border-box;
   &:active {
-    border-color: ${theme.color5};
+    border-color: ${applicationTheme.color5};
   }
 `;
 
 export const Button = styled.button`
   font-size: 16;
   font-weight: bolder;
-  color: ${theme.color1};
+  color: ${applicationTheme.color1};
   background-color: #fff;
-  border-radius: 20px;
-  border: 2px solid ${theme.color2};
+  border-radius: ${applicationTheme.borderRadius4};
+  border: 2px solid ${applicationTheme.color2};
   padding: 10px 15px;
-  margin: 20px;
+  margin: 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
   &:hover {
-    color: ${theme.color4};
-    border-color: ${theme.color4};
+    color: ${applicationTheme.color4};
+    border-color: ${applicationTheme.color4};
   }
   &:disabled {
-    color: ${theme.disabled};
-    border-color: ${theme.disabled};
+    color: ${applicationTheme.disabled};
+    border-color: ${applicationTheme.disabled};
     cursor: default;
   }
 `;
@@ -151,18 +176,17 @@ export const PlayerHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   display: flex;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
+  border-radius: ${applicationTheme.borderRadius3}
+    ${applicationTheme.borderRadius3} 0 0;
   color: #fff;
   margin-top: 10px;
-  padding: 5px 15px;
-  background: rgba(19, 140, 154, 0.3);
+  padding: 10px 30px;
+  background: ${props => props.playerTheme.backgroundColor};
 `;
 
 export const RadioButtonLabel = styled.label`
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-
-  font-size: ${theme.inputFontSize};
+  box-shadow: ${applicationTheme.shadow2};
+  font-size: ${applicationTheme.fontSize1};
   margin-top: 15px;
   display: block;
   text-align: center;
@@ -170,16 +194,16 @@ export const RadioButtonLabel = styled.label`
   background-color: #454545;
   color: white;
   padding: 10px 15px;
-  border-radius: 3px;
+  border-radius: ${applicationTheme.borderRadius1};
   &:hover {
-    background: ${theme.color3};
+    background: ${applicationTheme.color3};
   }
 `;
 
 export const RadioButton = styled.input`
   display: none;
   &:checked + label {
-    background-color: ${theme.color2};
+    background-color: ${applicationTheme.color2};
   }
 `;
 
@@ -190,28 +214,29 @@ export const TableContainer = styled.div`
 `;
 
 export const ResultTable = styled.table`
+  border: 2px solid #fff;
   border-collapse: collapse;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: ${applicationTheme.shadow1};
   padding: 5px;
-  background: ${theme.color3};
-  color: #fff;
   margin: 0 auto;
 `;
 
 export const ResultTableRow = styled.tr`
-  &:hover {
-    background: ${theme.color2};
-  }
+  background: ${props =>
+    props.playerTheme
+      ? props.playerTheme.backgroundColor
+      : applicationTheme.color3};
+  color: ${props => (props.playerTheme ? applicationTheme.color1 : "#fff")};
 `;
 
 export const ResultTableData = styled.td`
-  border: 2px dotted #fff;
-  font-size: ${theme.inputFontSize};
+  border: 1px solid #fff;
+  font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
 `;
 
 export const ResultTableHead = styled.th`
-  border: 2px dotted #fff;
+  border: 1px solid #fff;
   padding: 10px 25px;
   margin-bottom: 5px;
 `;
@@ -223,9 +248,9 @@ export const FooterContainer = styled.div`
   width: 100%;
   padding: 10px;
   text-align: center;
-  font-size: ${theme.inputFontSize};
-  color: ${theme.color1};
+  font-size: ${applicationTheme.fontSize1};
+  color: ${applicationTheme.color1};
   font-family: "Capriola", sans-serif;
-  background: ${theme.mainLightOpaque};
+  background: #fff;
   text-align: center;
 `;
