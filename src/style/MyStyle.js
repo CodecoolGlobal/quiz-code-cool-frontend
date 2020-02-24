@@ -59,7 +59,7 @@ export const ContainerMorePadding = styled.div`
 
 export const QuestionContainer = styled.div`
   border-top: 2px solid #fff;
-  padding: 10px 20px;
+  padding: 10px 30px;
   background: ${props =>
     props.questionColor
       ? props.questionColor
@@ -69,7 +69,7 @@ export const QuestionContainer = styled.div`
 `;
 
 export const AnswerContainer = styled.div`
-  padding: 0 40px 5px 40px;
+  padding: 0 50px 5px 50px;
 `;
 
 export const PlayerName = styled.h2`
@@ -180,7 +180,7 @@ export const PlayerHeader = styled.div`
     ${applicationTheme.borderRadius3} 0 0;
   color: #fff;
   margin-top: 10px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   background: ${props => props.playerTheme.backgroundColor};
 `;
 
