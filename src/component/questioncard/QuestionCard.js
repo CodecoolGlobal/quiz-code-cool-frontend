@@ -16,7 +16,7 @@ import {
 
 export default function QuestionCard(props) {
   const questionColors = {
-    empty: "#FFF",
+    empty: "none",
     success: "rgba(92, 216, 43, 0.5)",
     failed: "rgba(216, 43, 43, 0.5)"
   };

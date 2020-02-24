@@ -44,7 +44,6 @@ export const ContentContainer = styled.div`
     props.borderColor ? "2px solid " + props.borderColor : "none"};
   border-radius: ${applicationTheme.borderRadius3};
   margin: 20px 25% 60px 25%;
-  padding: 15px 40px;
   box-shadow: ${applicationTheme.shadow1};
   @media screen and (max-width: 992px) {
     margin: 20px 15% 60px 15%;
@@ -54,14 +53,19 @@ export const ContentContainer = styled.div`
   }
 `;
 
+export const ContainerMorePadding = styled.div`
+  padding: 15px 40px;
+`;
+
 export const QuestionContainer = styled.div`
-  margin: 20px 0;
-  padding: 5px 20px;
+  border-top: 2px solid #fff;
+  padding: 10px 20px;
   background: ${props =>
     props.questionColor
       ? props.questionColor
       : applicationTheme.mainLightOpaque};
-  border-radius: ${applicationTheme.borderRadius3};
+  border-radius: 0 0 ${applicationTheme.borderRadius3}
+    ${applicationTheme.borderRadius3};
 `;
 
 export const AnswerContainer = styled.div`
@@ -172,11 +176,11 @@ export const PlayerHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   display: flex;
-  box-shadow: ${applicationTheme.shadow2};
-  border-radius: ${applicationTheme.borderRadius2};
+  border-radius: ${applicationTheme.borderRadius3}
+    ${applicationTheme.borderRadius3} 0 0;
   color: #fff;
   margin-top: 10px;
-  padding: 5px 15px;
+  padding: 10px 20px;
   background: ${props => props.playerTheme.backgroundColor};
 `;
 
