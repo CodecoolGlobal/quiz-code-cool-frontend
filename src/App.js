@@ -23,10 +23,10 @@ function App() {
   return (
     <div className='App'>
       <Container>
-        <Header />
         <PlayerProvider>
           <QuestionProvider>
             <Router>
+              <Header />
               <RandomStarterFormProvider>
                 <Route
                   exact

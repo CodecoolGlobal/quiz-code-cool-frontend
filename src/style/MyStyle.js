@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import "./ideas.png";
+import { NavLink } from "react-router-dom";
 
 export const applicationTheme = {
   mainLightOpaque: "rgba(255, 255, 255, 0.8)",
@@ -21,21 +22,61 @@ export const applicationTheme = {
 
 export const Container = styled.div`
   text-align: center;
+  @media screen and (max-width: 600px) {
+  }
 `;
 
 export const HeaderContainer = styled.div`
+  width: 100%;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+`;
+
+export const TitleContainer = styled.div`
   justify-content: center;
   display: flex;
   background: ${applicationTheme.mainLightOpaque};
-  border-radius: ${applicationTheme.borderRadius2};
-  margin: 15px 20px;
   padding: 8px 30px;
-  box-shadow: ${applicationTheme.shadow1};
 `;
 
 export const QuestionsImage = styled.img`
   display: block;
   height: 70px;
+`;
+
+export const NavigBar = styled.ul`
+  top: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+`;
+
+export const NavigLink = styled(NavLink)`
+  color: ${applicationTheme.color1};
+  font-size: ${applicationTheme.fontSize1};
+  text-decoration: none;
+  float: left;
+  &.active {
+    color: #fff;
+    background: ${applicationTheme.color1};
+  }
+  @media screen and (max-width: 600px) {
+    float: none;
+    display: block;
+  }
+`;
+
+export const NavItem = styled.li`
+  margin: 0;
+  display: block;
+  padding: 14px 16px;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+    background: ${applicationTheme.color4};
+    color: #fff;
+  }
 `;
 
 export const ContentContainer = styled.div`
