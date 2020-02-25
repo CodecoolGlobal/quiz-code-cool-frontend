@@ -11,7 +11,7 @@ export default function TypeInput() {
   };
 
   return (
-    <InputItem width='50'>
+    <InputItem>
       <InputLabel htmlFor='type'>Type</InputLabel>
       <Select id='type' name='type' onChange={handleType}>
         {Object.entries(TYPES).map((entry, index) => (

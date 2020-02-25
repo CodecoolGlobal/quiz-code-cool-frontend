@@ -16,7 +16,6 @@ import Player from "../../context/Player";
 import {
   ContentContainer,
   ContainerMorePadding,
-  InputRow,
   H3,
   Button
 } from "../../style/MyStyle";
@@ -82,19 +81,11 @@ export default function QuizStarterForm(props) {
   return (
     <ContentContainer>
       <ContainerMorePadding>
-        <div>
-          <H3>New Quiz</H3>
-          <InputRow>
-            <PlayerNameInput />
-          </InputRow>
-          <InputRow>
-            <QuestionNumberInput />
-            <CategoryInput />
-          </InputRow>
-          <InputRow>
-            <TypeInput />
-          </InputRow>
-        </div>
+        <H3>New Quiz</H3>
+        <PlayerNameInput />
+        <QuestionNumberInput />
+        <CategoryInput />
+        <TypeInput />
         <Button onClick={submit}>Start Quiz</Button>
       </ContainerMorePadding>
     </ContentContainer>

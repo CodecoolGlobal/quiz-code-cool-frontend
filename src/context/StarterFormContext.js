@@ -4,11 +4,11 @@ export const StarterFormContext = createContext();
 
 export const StarterFormProvider = props => {
   // Constants
-  const BASE_URL_FOR_QUESTIONS_QUERY = "https://opentdb.com/api.php?";
+  const BASE_URL_FOR_QUESTIONS_QUERY = "http://localhost:8080/questions";
   const MIN_QUESTIONS = 1;
   const CATEGORY_URL = "http://localhost:8080/categories";
   const DEFAULT_CATEGORY = {
-    id: "8",
+    id: "0",
     name: "Any Category"
   };
   const TYPES = {

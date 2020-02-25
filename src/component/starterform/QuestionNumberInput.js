@@ -13,7 +13,7 @@ export default function QuestionNumberInput() {
   };
 
   return (
-    <InputItem width='50'>
+    <InputItem>
       <InputLabel htmlFor='numberOfQuestions'>Questions / Player</InputLabel>
       <TextInput
         placeholder='5'
