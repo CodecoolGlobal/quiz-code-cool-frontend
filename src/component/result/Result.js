@@ -4,7 +4,6 @@ import { QuestionContext } from "../../context/QuestionContext";
 
 import {
   ContentContainer,
-  ContainerMorePadding,
   H2,
   H3,
   Button,
