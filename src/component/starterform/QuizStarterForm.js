@@ -61,7 +61,7 @@ export default function QuizStarterForm(props) {
           setQuestions(questions => [
             ...questions,
             new Question(
-              questionData.category,
+              questionData.category.name,
               questionData.type,
               questionData.difficulty,
               questionData.question,
