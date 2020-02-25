@@ -48,16 +48,16 @@ export default function QuizStarterForm(props) {
     return finalUrl;
   };
 
-  const submitForm = e => {
+  const submit = e => {
     e.preventDefault();
     const questionUrl = createQuestionUrl();
     axios.get(questionUrl).then(resp => {
-      if (resp.data.response_code === 1) {
+      if (resp.data === []) {
         alert(
           "There are not enough questions matching the entered parameters :("
         );
       } else {
-        resp.data.results.map(questionData =>
+        resp.data.map(questionData =>
           setQuestions(questions => [
             ...questions,
             new Question(
@@ -82,7 +82,7 @@ export default function QuizStarterForm(props) {
   return (
     <ContentContainer>
       <ContainerMorePadding>
-        <form onSubmit={submitForm}>
+        <div>
           <H3>New Quiz</H3>
           <InputRow>
             <PlayerNameInput />
@@ -94,8 +94,8 @@ export default function QuizStarterForm(props) {
           <InputRow>
             <TypeInput />
           </InputRow>
-          <Button type='submit'>Start Quiz</Button>
-        </form>
+        </div>
+        <Button onClick={submit}>Start Quiz</Button>
       </ContainerMorePadding>
     </ContentContainer>
   );
