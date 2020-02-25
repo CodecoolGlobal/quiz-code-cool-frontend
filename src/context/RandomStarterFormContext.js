@@ -1,8 +1,8 @@
 import React, { useState, createContext } from "react";
 
-export const StarterFormContext = createContext();
+export const RandomStarterFormContext = createContext();
 
-export const StarterFormProvider = props => {
+export const RandomStarterFormProvider = props => {
   // Constants
   const BASE_URL_FOR_QUESTIONS_QUERY = "http://localhost:8080/questions?";
   const MIN_QUESTIONS = 1;
@@ -27,7 +27,7 @@ export const StarterFormProvider = props => {
   const [playerNumber, setPlayerNumber] = useState(2);
 
   return (
-    <StarterFormContext.Provider
+    <RandomStarterFormContext.Provider
       value={{
         BASE_URL_FOR_QUESTIONS_QUERY,
         MIN_QUESTIONS,
@@ -42,6 +42,6 @@ export const StarterFormProvider = props => {
       }}
     >
       {props.children}
-    </StarterFormContext.Provider>
+    </RandomStarterFormContext.Provider>
   );
 };

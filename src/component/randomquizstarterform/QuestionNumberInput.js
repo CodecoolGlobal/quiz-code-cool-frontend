@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { StarterFormContext } from "../../context/StarterFormContext";
+import { RandomStarterFormContext } from "../../context/RandomStarterFormContext";
 
 import { TextInput, InputItem, InputLabel } from "../../style/MyStyle";
 
 export default function QuestionNumberInput() {
-  const setQuestionNumber = useContext(StarterFormContext)
+  const setQuestionNumber = useContext(RandomStarterFormContext)
     .questionNumberInput[1];
-  const MIN_QUESTIONS = useContext(StarterFormContext).MIN_QUESTIONS;
+  const MIN_QUESTIONS = useContext(RandomStarterFormContext).MIN_QUESTIONS;
 
   const handleNumberOfQuestions = e => {
     setQuestionNumber(2 * e.target.value);

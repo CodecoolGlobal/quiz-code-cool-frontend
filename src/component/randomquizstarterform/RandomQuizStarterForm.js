@@ -6,7 +6,7 @@ import CategoryInput from "./CategoryInput";
 import QuestionNumberInput from "./QuestionNumberInput";
 import TypeInput from "./TypeInput";
 
-import { StarterFormContext } from "../../context/StarterFormContext";
+import { RandomStarterFormContext } from "../../context/RandomStarterFormContext";
 import { QuestionContext } from "../../context/QuestionContext";
 import { PlayerContext } from "../../context/PlayerContext";
 
@@ -25,7 +25,7 @@ export default function QuizStarterForm(props) {
     categoryInput,
     typeInput,
     nameInputs
-  } = useContext(StarterFormContext);
+  } = useContext(RandomStarterFormContext);
 
   const questionNumber = questionNumberInput[0];
   const selectedCategoryId = categoryInput[0];

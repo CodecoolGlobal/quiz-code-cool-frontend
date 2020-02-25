@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { StarterFormContext } from "../../context/StarterFormContext";
+import { RandomStarterFormContext } from "../../context/RandomStarterFormContext";
 import { Select, InputItem, InputLabel } from "../../style/MyStyle";
 
 export default function TypeInput() {
-  const setType = useContext(StarterFormContext).typeInput[1];
-  const TYPES = useContext(StarterFormContext).TYPES;
+  const setType = useContext(RandomStarterFormContext).typeInput[1];
+  const TYPES = useContext(RandomStarterFormContext).TYPES;
 
   const handleType = e => {
     setType(e.target.value);

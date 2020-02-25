@@ -2,12 +2,16 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import RandomQuizStarterForm from "./component/randomquizstarterform/RandomQuizStarterForm";
+import CustomQuizStarterForm from "./component/customquizstarterform/CustomQuizStarterForm";
+
 import QuestionCard from "./component/questioncard/QuestionCard";
 import Result from "./component/result/Result";
 
 import { QuestionProvider } from "./context/QuestionContext";
 import { PlayerProvider } from "./context/PlayerContext";
-import { StarterFormProvider } from "./context/StarterFormContext";
+import { RandomStarterFormProvider } from "./context/RandomStarterFormContext";
+import { CustomQuizProvider } from "./context/CustomQuizContext";
+
 import { ProgressProvider } from "./context/ProgressContext";
 
 import Header from "./component/Header";
@@ -23,9 +27,20 @@ function App() {
         <PlayerProvider>
           <QuestionProvider>
             <Router>
-              <StarterFormProvider>
-                <Route exact path='/' component={RandomQuizStarterForm} />
-              </StarterFormProvider>
+              <RandomStarterFormProvider>
+                <Route
+                  exact
+                  path='/random-quiz'
+                  component={RandomQuizStarterForm}
+                />
+              </RandomStarterFormProvider>
+              <CustomQuizProvider>
+                <Route
+                  exact
+                  path='/custom-quiz'
+                  component={CustomQuizStarterForm}
+                />
+              </CustomQuizProvider>
               <ProgressProvider>
                 <Route exact path='/quiz' component={QuestionCard} />
               </ProgressProvider>
