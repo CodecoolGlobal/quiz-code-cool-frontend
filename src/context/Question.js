@@ -2,16 +2,14 @@ export default class Question {
   constructor(
     category,
     type,
-    difficulty,
     question,
-    correct_answer,
-    incorrect_answers
+    correctAnswer,
+    incorrectAnswers
   ) {
     this.category = category;
     this.type = type;
-    this.difficulty = difficulty;
     this.question = question;
-    this.correct_answer = correct_answer;
-    this.incorrect_answers = incorrect_answers;
+    this.correct_answer = correctAnswer;
+    this.incorrect_answers = incorrectAnswers;
   }
 }

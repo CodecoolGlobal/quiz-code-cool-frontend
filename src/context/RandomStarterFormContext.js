@@ -4,7 +4,7 @@ export const RandomStarterFormContext = createContext();
 
 export const RandomStarterFormProvider = props => {
   // Constants
-  const BASE_URL_FOR_QUESTIONS_QUERY = "http://localhost:8080/questions";
+  const BASE_URL_FOR_QUESTIONS_QUERY = "http://localhost:8080/questions?";
   const MIN_QUESTIONS = 1;
   const CATEGORY_URL = "http://localhost:8080/categories";
   const DEFAULT_CATEGORY = {
