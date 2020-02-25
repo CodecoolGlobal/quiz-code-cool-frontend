@@ -5,7 +5,6 @@ export const StarterFormContext = createContext();
 export const StarterFormProvider = props => {
   // Constants
   const BASE_URL_FOR_QUESTIONS_QUERY = "https://opentdb.com/api.php?";
-  const DIFFICULTIES = ["Any Difficulty", "Easy", "Medium", "Hard"];
   const MIN_QUESTIONS = 1;
   const CATEGORY_URL = "http://localhost:8080/categories";
   const DEFAULT_CATEGORY = {
@@ -24,7 +23,6 @@ export const StarterFormProvider = props => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(
     DEFAULT_CATEGORY.id
   );
-  const [difficulty, setDifficulty] = useState(DIFFICULTIES[0]);
   const [type, setType] = useState("");
   const [playerNumber, setPlayerNumber] = useState(2);
 
@@ -33,14 +31,12 @@ export const StarterFormProvider = props => {
       value={{
         BASE_URL_FOR_QUESTIONS_QUERY,
         MIN_QUESTIONS,
-        DIFFICULTIES,
         CATEGORY_URL,
         DEFAULT_CATEGORY,
         TYPES,
         nameInputs: [names, setNames],
         questionNumberInput: [questionNumber, setQuestionNumber],
         categoryInput: [selectedCategoryId, setSelectedCategoryId],
-        difficultyInput: [difficulty, setDifficulty],
         typeInput: [type, setType],
         playerNumber: [playerNumber, setPlayerNumber]
       }}

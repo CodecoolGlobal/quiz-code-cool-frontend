@@ -4,7 +4,6 @@ import axios from "axios";
 import PlayerNameInput from "./PlayerNameInput";
 import CategoryInput from "./CategoryInput";
 import QuestionNumberInput from "./QuestionNumberInput";
-import DifficultyInput from "./DifficultyInput";
 import TypeInput from "./TypeInput";
 
 import { StarterFormContext } from "../../context/StarterFormContext";
@@ -30,14 +29,12 @@ export default function QuizStarterForm(props) {
     BASE_URL_FOR_QUESTIONS_QUERY,
     questionNumberInput,
     categoryInput,
-    difficultyInput,
     typeInput,
     nameInputs
   } = useContext(StarterFormContext);
 
   const questionNumber = questionNumberInput[0];
   const selectedCategoryId = categoryInput[0];
-  const difficulty = difficultyInput[0];
   const type = typeInput[0];
   const names = nameInputs[0];
 
@@ -45,17 +42,9 @@ export default function QuizStarterForm(props) {
     let QuestionNumberUrl = `amount=${questionNumber}`;
     let categoryUrl =
       selectedCategoryId === "8" ? "" : `&category=${selectedCategoryId}`;
-    let difficultyUrl =
-      difficulty === "Any Difficulty"
-        ? ""
-        : `&difficulty=${difficulty.toLowerCase()}`;
     let typeUrl = type === "" ? "" : `&type=${type}`;
     let finalUrl =
-      BASE_URL_FOR_QUESTIONS_QUERY +
-      QuestionNumberUrl +
-      categoryUrl +
-      difficultyUrl +
-      typeUrl;
+      BASE_URL_FOR_QUESTIONS_QUERY + QuestionNumberUrl + categoryUrl + typeUrl;
     return finalUrl;
   };
 
@@ -103,7 +92,6 @@ export default function QuizStarterForm(props) {
             <CategoryInput />
           </InputRow>
           <InputRow>
-            <DifficultyInput />
             <TypeInput />
           </InputRow>
           <Button type='submit'>Start Quiz</Button>
