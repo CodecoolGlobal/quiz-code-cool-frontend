@@ -81,7 +81,7 @@ export default function QuizStarterForm(props) {
   return (
     <ContentContainer>
       <ContainerMorePadding>
-        <H3>New Quiz</H3>
+        <H3>New Random Quiz</H3>
         <PlayerNameInput />
         <QuestionNumberInput />
         <CategoryInput />
