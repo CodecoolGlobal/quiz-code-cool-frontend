@@ -54,12 +54,9 @@ export const ContentContainer = styled.div`
 `;
 
 export const ContainerMorePadding = styled.div`
-  padding: 15px 150px;
-  @media screen and (max-width: 992px) {
-    padding: 15px 100px;
-  }
+  padding: 15px 15%;
   @media screen and (max-width: 600px) {
-    padding: 15px 50px;
+    padding: 15px 10%;
   }
 `;
 
@@ -102,8 +99,6 @@ export const H3 = styled.h3`
   padding-top: 10px;
   color: ${applicationTheme.color1};
 `;
-
-export const InputRow = styled.div``;
 
 export const InputItem = styled.div`
   width: 100%;

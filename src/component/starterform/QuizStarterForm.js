@@ -16,7 +16,6 @@ import Player from "../../context/Player";
 import {
   ContentContainer,
   ContainerMorePadding,
-  InputRow,
   H3,
   Button
 } from "../../style/MyStyle";

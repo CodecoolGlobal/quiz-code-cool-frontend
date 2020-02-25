@@ -1,12 +1,7 @@
 import React, { useContext } from "react";
 import { StarterFormContext } from "../../context/StarterFormContext";
 
-import {
-  InputRow,
-  InputItem,
-  InputLabel,
-  TextInput
-} from "../../style/MyStyle";
+import { InputItem, InputLabel, TextInput } from "../../style/MyStyle";
 
 export default function PlayerNameInput() {
   const [names, setNames] = useContext(StarterFormContext).nameInputs;

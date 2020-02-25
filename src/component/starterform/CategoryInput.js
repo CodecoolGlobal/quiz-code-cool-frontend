@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { StarterFormContext } from "../../context/StarterFormContext";
 
-import { InputRow, Select, InputItem, InputLabel } from "../../style/MyStyle";
+import { Select, InputItem, InputLabel } from "../../style/MyStyle";
 
 export default function CategoryInput() {
   const [categories, setCategories] = useState([]);
