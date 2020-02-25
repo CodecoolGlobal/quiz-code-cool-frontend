@@ -54,7 +54,13 @@ export const ContentContainer = styled.div`
 `;
 
 export const ContainerMorePadding = styled.div`
-  padding: 15px 40px;
+  padding: 15px 150px;
+  @media screen and (max-width: 992px) {
+    padding: 15px 100px;
+  }
+  @media screen and (max-width: 600px) {
+    padding: 15px 50px;
+  }
 `;
 
 export const QuestionContainer = styled.div`
@@ -97,15 +103,15 @@ export const H3 = styled.h3`
   color: ${applicationTheme.color1};
 `;
 
-export const InputRow = styled.div`
-  width: 100%;
-`;
+export const InputRow = styled.div``;
 
 export const InputItem = styled.div`
+  width: 100%;
+  clear: both;
+  display: block;
+  position: relative;
   box-sizing: border-box;
-  float: left;
   padding: 10px;
-  width: ${props => props.width}%;
   @media screen and (max-width: 600px) {
     width: 100%;
     display: block;
@@ -149,6 +155,7 @@ export const TextInput = styled.input`
 `;
 
 export const Button = styled.button`
+  clear: both;
   font-size: 16;
   font-weight: bolder;
   color: ${applicationTheme.color1};

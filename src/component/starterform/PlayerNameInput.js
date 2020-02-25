@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 import { StarterFormContext } from "../../context/StarterFormContext";
 
-import { InputItem, InputLabel, TextInput } from "../../style/MyStyle";
+import {
+  InputRow,
+  InputItem,
+  InputLabel,
+  TextInput
+} from "../../style/MyStyle";
 
 export default function PlayerNameInput() {
   const [names, setNames] = useContext(StarterFormContext).nameInputs;
@@ -17,7 +22,7 @@ export default function PlayerNameInput() {
     let inputs = [];
     for (let i = 0; i < n; i++) {
       inputs.push(
-        <InputItem width='50' key={i}>
+        <InputItem key={i}>
           <InputLabel htmlFor={i}>Player {i + 1} name</InputLabel>
           <TextInput
             name={i}
