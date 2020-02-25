@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <HeaderContainer>
       <QuestionsImage src={mainLogo} alt='mainLogo'></QuestionsImage>
-      <Title>Reacty</Title>
+      <Title>Codecool Quiz</Title>
     </HeaderContainer>
   );
 }
