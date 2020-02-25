@@ -6,9 +6,8 @@ import { ProgressContext } from "../../context/ProgressContext";
 import Answers from "./Answers";
 import PlayerData from "./PlayerData";
 
-import { decodeStringToHtml } from "../../Util";
 import {
-  ContentContainer,
+  QuestionCardContainer,
   QuestionContainer,
   H3,
   Button
@@ -72,20 +71,21 @@ export default function QuestionCard(props) {
   };
 
   return (
-    <ContentContainer>
+    <QuestionCardContainer>
       <PlayerData currentPlayerIndex={currentPlayerIndex} />
       <QuestionContainer questionColor={questionColor}>
-        <H3>{decodeStringToHtml(questions[0].question)}</H3>
+        {/* <H3>{decodeStringToHtml(questions[0].question)}</H3> */}
+        <H3>{questions[0].question}</H3>
         <Answers />
         <Button
-          type='button'
-          id='next'
+          type="button"
+          id="next"
           onClick={handleNextButton}
           disabled={!isReadyToProceed}
         >
           {questions.length > 1 ? "Next" : "Finish Quiz"}
         </Button>
       </QuestionContainer>
-    </ContentContainer>
+    </QuestionCardContainer>
   );
 }

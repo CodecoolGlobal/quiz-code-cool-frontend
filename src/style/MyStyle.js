@@ -53,21 +53,26 @@ export const ContentContainer = styled.div`
   }
 `;
 
+export const QuestionCardContainer = styled.div`
+  background: ${applicationTheme.mainLightOpaque};
+  border-radius: ${applicationTheme.borderRadius3};
+  margin: 20px 30% 60px 30%;
+  box-shadow: ${applicationTheme.shadow1};
+  @media screen and (max-width: 992px) {
+    margin: 20px 25% 60px 25%;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 20px 10% 60px 10%;
+  }
+`;
+
 export const QuestionContainer = styled.div`
   background: ${applicationTheme.mainLightOpaque};
   border: ${props =>
     props.borderColor ? "2px solid " + props.borderColor : "none"};
   border-radius: ${applicationTheme.borderRadius3};
-  margin: 20px 25% 60px 25%;
   box-shadow: ${applicationTheme.shadow1};
-  @media screen and (max-width: 992px) {
-    margin: 20px 15% 60px 15%;
-  }
-  @media screen and (max-width: 600px) {
-    margin: 20px 5% 60px 5%;
-  }
   border-top: 2px solid #fff;
-  padding: 10px 30px;
   background: ${props =>
     props.questionColor
       ? props.questionColor
