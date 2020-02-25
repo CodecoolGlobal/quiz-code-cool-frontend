@@ -1,14 +1,16 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
-import { StarterFormContext } from "../../context/StarterFormContext";
+import { RandomStarterFormContext } from "../../context/RandomStarterFormContext";
 
 import { Select, InputItem, InputLabel } from "../../style/MyStyle";
 
 export default function CategoryInput() {
   const [categories, setCategories] = useState([]);
-  const setSelectedCategoryId = useContext(StarterFormContext).categoryInput[1];
-  const CATEGORY_URL = useContext(StarterFormContext).CATEGORY_URL;
-  const DEFAULT_CATEGORY = useContext(StarterFormContext).DEFAULT_CATEGORY;
+  const setSelectedCategoryId = useContext(RandomStarterFormContext)
+    .categoryInput[1];
+  const CATEGORY_URL = useContext(RandomStarterFormContext).CATEGORY_URL;
+  const DEFAULT_CATEGORY = useContext(RandomStarterFormContext)
+    .DEFAULT_CATEGORY;
 
   useEffect(() => {
     axios.get(CATEGORY_URL).then(res => {

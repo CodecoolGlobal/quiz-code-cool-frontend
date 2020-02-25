@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { StarterFormContext } from "../../context/StarterFormContext";
+import { RandomStarterFormContext } from "../../context/RandomStarterFormContext";
 
 import { InputItem, InputLabel, TextInput } from "../../style/MyStyle";
 
 export default function PlayerNameInput() {
-  const [names, setNames] = useContext(StarterFormContext).nameInputs;
-  const playerNumber = useContext(StarterFormContext).playerNumber[0];
+  const [names, setNames] = useContext(RandomStarterFormContext).nameInputs;
+  const playerNumber = useContext(RandomStarterFormContext).playerNumber[0];
 
   const handlePlayerName = e => {
     let currentNames = [...names];
