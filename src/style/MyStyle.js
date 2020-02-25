@@ -39,6 +39,21 @@ export const QuestionsImage = styled.img`
 `;
 
 export const ContentContainer = styled.div`
+  padding: 15px 5%;
+  background: ${applicationTheme.mainLightOpaque};
+  border-radius: ${applicationTheme.borderRadius3};
+  margin: 20px 30% 60px 30%;
+  box-shadow: ${applicationTheme.shadow1};
+  @media screen and (max-width: 992px) {
+    margin: 20px 25% 60px 25%;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 20px 10% 60px 10%;
+    padding: 15px 10%;
+  }
+`;
+
+export const QuestionContainer = styled.div`
   background: ${applicationTheme.mainLightOpaque};
   border: ${props =>
     props.borderColor ? "2px solid " + props.borderColor : "none"};
@@ -51,16 +66,6 @@ export const ContentContainer = styled.div`
   @media screen and (max-width: 600px) {
     margin: 20px 5% 60px 5%;
   }
-`;
-
-export const ContainerMorePadding = styled.div`
-  padding: 15px 15%;
-  @media screen and (max-width: 600px) {
-    padding: 15px 10%;
-  }
-`;
-
-export const QuestionContainer = styled.div`
   border-top: 2px solid #fff;
   padding: 10px 30px;
   background: ${props =>

@@ -28,35 +28,29 @@ export default function Result(props) {
 
   return (
     <ContentContainer>
-      <ContainerMorePadding>
-        <H3>Game over!</H3>
-        <H2>Results</H2>
-
-        <TableContainer>
-          <ResultTable>
-            <thead>
-              <ResultTableRow>
-                <ResultTableHead>Name</ResultTableHead>
-                <ResultTableHead>Score</ResultTableHead>
+      <H3>Game over!</H3>
+      <H2>Results</H2>
+      <TableContainer>
+        <ResultTable>
+          <thead>
+            <ResultTableRow>
+              <ResultTableHead>Name</ResultTableHead>
+              <ResultTableHead>Score</ResultTableHead>
+            </ResultTableRow>
+          </thead>
+          <tbody>
+            {players.map((player, index) => (
+              <ResultTableRow playerTheme={ColorsForPlayers[index]} key={index}>
+                <ResultTableData>{player.name}</ResultTableData>
+                <ResultTableData>{player.score}</ResultTableData>
               </ResultTableRow>
-            </thead>
-            <tbody>
-              {players.map((player, index) => (
-                <ResultTableRow
-                  playerTheme={ColorsForPlayers[index]}
-                  key={index}
-                >
-                  <ResultTableData>{player.name}</ResultTableData>
-                  <ResultTableData>{player.score}</ResultTableData>
-                </ResultTableRow>
-              ))}
-            </tbody>
-          </ResultTable>
-        </TableContainer>
-        <Button type='button' id='restart' onClick={handleRestart}>
-          New Game
-        </Button>
-      </ContainerMorePadding>
+            ))}
+          </tbody>
+        </ResultTable>
+      </TableContainer>
+      <Button type='button' id='restart' onClick={handleRestart}>
+        New Game
+      </Button>
     </ContentContainer>
   );
 }

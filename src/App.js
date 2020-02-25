@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import QuizStarterForm from "./component/starterform/QuizStarterForm";
+import RandomQuizStarterForm from "./component/randomquizstarterform/RandomQuizStarterForm";
 import QuestionCard from "./component/questioncard/QuestionCard";
 import Result from "./component/result/Result";
 
@@ -24,7 +24,7 @@ function App() {
           <QuestionProvider>
             <Router>
               <StarterFormProvider>
-                <Route exact path='/' component={QuizStarterForm} />
+                <Route exact path='/' component={RandomQuizStarterForm} />
               </StarterFormProvider>
               <ProgressProvider>
                 <Route exact path='/quiz' component={QuestionCard} />
