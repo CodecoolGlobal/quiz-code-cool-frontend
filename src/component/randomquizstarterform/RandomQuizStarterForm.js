@@ -35,7 +35,7 @@ export default function QuizStarterForm(props) {
   const createQuestionUrl = () => {
     let QuestionNumberUrl = `amount=${questionNumber}`;
     let categoryUrl =
-      selectedCategoryId === "8" ? "" : `&category=${selectedCategoryId}`;
+      selectedCategoryId === "0" ? "" : `&category=${selectedCategoryId}`;
     let typeUrl = type === "" ? "" : `&type=${type}`;
     let finalUrl =
       BASE_URL_FOR_QUESTIONS_QUERY + QuestionNumberUrl + categoryUrl + typeUrl;
@@ -51,16 +51,16 @@ export default function QuizStarterForm(props) {
           "There are not enough questions matching the entered parameters :("
         );
       } else {
+        console.log(resp);
         resp.data.map(questionData =>
           setQuestions(questions => [
             ...questions,
             new Question(
               questionData.category.name,
               questionData.type,
-              questionData.difficulty,
               questionData.question,
-              questionData.correct_answer,
-              questionData.incorrect_answers
+              questionData.correctAnswer,
+              questionData.incorrectAnswers
             )
           ])
         );
