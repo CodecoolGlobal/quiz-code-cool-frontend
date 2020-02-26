@@ -44,7 +44,6 @@ export const QuestionsImage = styled.img`
 `;
 
 export const NavigBar = styled.ul`
-  top: 0;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -76,6 +75,17 @@ export const NavItem = styled.li`
     cursor: pointer;
     background: ${applicationTheme.color4};
     color: #fff;
+  }
+`;
+
+export const CoPage = styled.a`
+  color: ${applicationTheme.color1};
+  font-size: ${applicationTheme.fontSize1};
+  text-decoration: none;
+  float: right;
+  @media screen and (max-width: 600px) {
+    float: none;
+    display: block;
   }
 `;
 
