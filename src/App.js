@@ -21,7 +21,7 @@ import { Container } from "./style/MyStyle";
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <Container>
         <PlayerProvider>
           <QuestionProvider>
@@ -30,21 +30,21 @@ function App() {
               <RandomStarterFormProvider>
                 <Route
                   exact
-                  path='/random-quiz'
+                  path="/random-quiz"
                   component={RandomQuizStarterForm}
                 />
               </RandomStarterFormProvider>
               <CustomQuizProvider>
                 <Route
                   exact
-                  path='/custom-quiz'
+                  path="/custom-quiz"
                   component={CustomQuizStarterForm}
                 />
               </CustomQuizProvider>
               <ProgressProvider>
-                <Route exact path='/quiz' component={QuestionCard} />
+                <Route exact path="/quiz" component={QuestionCard} />
               </ProgressProvider>
-              <Route exact path='/results' component={Result} />
+              <Route exact path="/results" component={Result} />
             </Router>
           </QuestionProvider>
         </PlayerProvider>
