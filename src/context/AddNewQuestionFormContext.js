@@ -14,6 +14,7 @@ export const AddNewQuestionFormProvider = props => {
   const [selectedCategoryId, setSelectedCategoryId] = useState([]);
   const [type, setType] = useState([]);
   const [question, setQuestion] = useState("");
+  const [possibleAnswers, setPossibleAnswers] = useState([true, false]);
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [incorrectAnswers, setIncorrectAnswers] = useState([]);
 
@@ -23,6 +24,7 @@ export const AddNewQuestionFormProvider = props => {
         BASE_URL_FOR_POST_REQUEST,
         CATEGORY_URL,
         TYPES,
+        possibleAnswersInput: [possibleAnswers, setPossibleAnswers],
         categoryInput: [selectedCategoryId, setSelectedCategoryId],
         typeInput: [type, setType],
         questionInput: [question, setQuestion],
