@@ -18,6 +18,7 @@ import Header from "./component/Header";
 import Footer from "./component/Footer";
 
 import { Container } from "./style/MyStyle";
+import { AddNewQuestionFormProvider } from "./context/AddNewQuestionFormContext";
 
 function App() {
   return (
@@ -45,6 +46,9 @@ function App() {
                 <Route exact path="/quiz" component={QuestionCard} />
               </ProgressProvider>
               <Route exact path="/results" component={Result} />
+              <AddNewQuestionFormProvider>
+                <Route exact path="/add-question" component={} />
+              </AddNewQuestionFormProvider>
             </Router>
           </QuestionProvider>
         </PlayerProvider>
