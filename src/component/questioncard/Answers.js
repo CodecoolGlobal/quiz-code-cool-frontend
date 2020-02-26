@@ -17,7 +17,7 @@ export default function Answers() {
   const setIsReadyToProceed = readyToProceed[1];
   const setSelectedAnswerCorrectness = correctness[1];
 
-  const { incorrectAnswers, correctAnswer } = questions[0];
+  const { incorrectAnswers, correctAnswer } = questions[currentQuestionIndex];
   const [answersZip, setAnswersZip] = useState([]);
 
   useEffect(() => {
@@ -58,8 +58,8 @@ export default function Answers() {
         <div key={index}>
           <RadioButton
             id={index}
-            type="radio"
-            name="answer"
+            type='radio'
+            name='answer'
             value={answerZip[1]}
             onClick={chooseAnswer}
             defaultChecked={false}
