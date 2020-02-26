@@ -40,7 +40,7 @@ export const TitleContainer = styled.div`
 
 export const QuestionsImage = styled.img`
   display: block;
-  height: 70px;
+  height: 60px;
 `;
 
 export const NavigBar = styled.ul`

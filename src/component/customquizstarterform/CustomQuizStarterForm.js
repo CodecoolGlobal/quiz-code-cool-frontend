@@ -16,11 +16,13 @@ export default function CustomQuizStarterForm(props) {
   const {
     currentQuestionIndexState,
     allQuestionsState,
-    quizModeState
+    quizModeState,
+    questionNumberState
   } = useContext(QuestionContext);
   const setQuestions = allQuestionsState[1];
   const setCurrentQuestionIndex = currentQuestionIndexState[1];
   const setQuizMode = quizModeState[1];
+  const setQuestionNumber = questionNumberState[1];
 
   const setPlayers = useContext(PlayerContext)[1];
 
@@ -54,6 +56,7 @@ export default function CustomQuizStarterForm(props) {
         props.history.push("/quiz");
       }
     });
+    setQuestionNumber(1);
     setQuizMode("Custom");
   };
 
