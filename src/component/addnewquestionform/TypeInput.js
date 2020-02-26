@@ -14,6 +14,9 @@ export default function TypeInput() {
     <InputItem>
       <InputLabel htmlFor="type">Type</InputLabel>
       <Select id="type" name="type" onChange={handleType}>
+        <option disabled defaultValue="" selected>
+          -- Select Type --
+        </option>
         {Object.entries(TYPES).map((entry, index) => (
           <option value={entry[1]} key={index}>
             {entry[0]}
