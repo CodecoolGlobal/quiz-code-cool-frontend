@@ -13,12 +13,10 @@ import Player from "../../context/Player";
 import { ContentContainer, H3, Button } from "../../style/MyStyle";
 
 export default function CustomQuizStarterForm(props) {
-  const {
-    currentQuestionIndexState,
-    allQuestionsState,
-    questionsPerPlayerState
-  } = useContext(QuestionContext);
-  const [questions, setQuestions] = allQuestionsState;
+  const { currentQuestionIndexState, allQuestionsState } = useContext(
+    QuestionContext
+  );
+  const setQuestions = allQuestionsState[1];
   const setCurrentQuestionIndex = currentQuestionIndexState[1];
 
   const setPlayers = useContext(PlayerContext)[1];

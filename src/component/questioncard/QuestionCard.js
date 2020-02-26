@@ -56,15 +56,19 @@ export default function QuestionCard(props) {
   };
 
   const goToNext = () => {
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
     if ((currentQuestionIndex + 1) % players.length === 0) {
       setQuestionNumber(questionNumber + 1);
     }
+
     setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
+
     if (currentQuestionIndex === questions.length - 1) {
       props.history.push("/results");
     }
+
     setIsReadyToProceed(false);
+
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
   const setRadioButtonsUnchecked = () => {
