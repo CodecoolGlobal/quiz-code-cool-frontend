@@ -11,7 +11,7 @@ export const applicationTheme = {
   color3: "#54b2a9",
   color4: "#65c3ba",
   color5: "#83d0c9",
-  disabled: "gray",
+  gray: "gray",
   borderRadius1: "2px",
   borderRadius2: "5px",
   borderRadius3: "8px",
@@ -90,7 +90,7 @@ export const CoPage = styled.a`
 `;
 
 export const ContentContainer = styled.div`
-  padding: 15px 5%;
+  padding: 25px 5% 15px 5%;
   background: ${applicationTheme.mainLightOpaque};
   border-radius: ${applicationTheme.borderRadius3};
   margin: 20px 30% 60px 30%;
@@ -118,6 +118,7 @@ export const QuestionCardContainer = styled.div`
 `;
 
 export const QuestionContainer = styled.div`
+  padding: 15px 0 10px 0;
   background: ${applicationTheme.mainLightOpaque};
   border: ${props =>
     props.borderColor ? "2px solid " + props.borderColor : "none"};
@@ -157,8 +158,12 @@ export const Title = styled.h2`
 export const H3 = styled.h3`
   text-align: center;
   margin: 10px;
-  padding-top: 10px;
   color: ${applicationTheme.color1};
+`;
+
+export const CategoryTitle = styled.h4`
+  text-align: center;
+  color: ${applicationTheme.gray};
 `;
 
 export const InputItem = styled.div`
@@ -229,8 +234,8 @@ export const Button = styled.button`
     border-color: ${applicationTheme.color4};
   }
   &:disabled {
-    color: ${applicationTheme.disabled};
-    border-color: ${applicationTheme.disabled};
+    color: ${applicationTheme.gray};
+    border-color: ${applicationTheme.gray};
     cursor: default;
   }
 `;

@@ -10,6 +10,7 @@ import {
   QuestionCardContainer,
   QuestionContainer,
   H3,
+  CategoryTitle,
   Button
 } from "../../style/MyStyle";
 
@@ -75,11 +76,12 @@ export default function QuestionCard(props) {
       <PlayerData currentPlayerIndex={currentPlayerIndex} />
       <QuestionContainer questionColor={questionColor}>
         {/* <H3>{decodeStringToHtml(questions[0].question)}</H3> */}
+        <CategoryTitle>{questions[0].category}</CategoryTitle>
         <H3>{questions[0].question}</H3>
         <Answers />
         <Button
-          type="button"
-          id="next"
+          type='button'
+          id='next'
           onClick={handleNextButton}
           disabled={!isReadyToProceed}
         >
