@@ -16,11 +16,14 @@ import Player from "../../context/Player";
 import { ContentContainer, H3, Button } from "../../style/MyStyle";
 
 export default function QuizStarterForm(props) {
-  const { currentQuestionIndexState, allQuestionsState } = useContext(
-    QuestionContext
-  );
+  const {
+    currentQuestionIndexState,
+    allQuestionsState,
+    quizModeState
+  } = useContext(QuestionContext);
   const setQuestions = allQuestionsState[1];
   const setCurrentQuestionIndex = currentQuestionIndexState[1];
+  const setQuizMode = quizModeState[1];
 
   const setPlayers = useContext(PlayerContext)[1];
 
@@ -79,6 +82,7 @@ export default function QuizStarterForm(props) {
         props.history.push("/quiz");
       }
     });
+    setQuizMode("Random");
   };
 
   return (

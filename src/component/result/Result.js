@@ -18,11 +18,13 @@ import ColorsForPlayers from "../../style/PlayerColors";
 export default function Result(props) {
   const [players, setPlayers] = useContext(PlayerContext);
   const setQuestions = useContext(QuestionContext).allQuestionsState[1];
+  const quizMode = useContext(QuestionContext).quizModeState[0];
 
   const handleRestart = () => {
     setPlayers([]);
     setQuestions([]);
-    props.history.push("/");
+    const route = quizMode === "Random" ? "/random-quiz" : "/custom-quiz";
+    props.history.push(route);
   };
 
   return (
