@@ -10,28 +10,32 @@ import {
 } from "../../style/MyStyle";
 
 export default function TrueFalseAnswers() {
-  const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
-  const [possibleAnswers] = useContext(AddNewQuestionFormContext);
-  const [correctAnswer, setCorrectAnswer] = useContext(
+  const { readyToProceed } = useContext(ProgressContext);
+  const setIsReadyToProceed = readyToProceed[1];
+  const { possibleAnswersInput } = useContext(AddNewQuestionFormContext);
+  const { correctAnswerInput } = useContext(
     AddNewQuestionFormContext
   );
-  const [incorrectAnswers, setIncorrectAnswers] = useContext(
+  const { incorrectAnswersInput } = useContext(
     AddNewQuestionFormContext
   );
 
   const chooseAnswer = event => {
     const guess = event.target.value;
-    setCorrectAnswer(guess);
-    setIncorrectAnswers(...possibleAnswers.filter(answer => answer !== guess));
+    correctAnswerInput[1](guess);
+    incorrectAnswersInput[1](new Array (
+      ...possibleAnswersInput[0].filter(answer => answer !== guess)
+    ));
     setIsReadyToProceed(true);
   };
 
   return (
     <AnswerContainer>
       <InputLabel htmlFor="answer">Click on the correct answer</InputLabel>
-      {possibleAnswers.map(answer => (
+      {possibleAnswersInput[0].map(answer => (
         <div key={answer}>
           <RadioButton
+            id={answer}
             type="radio"
             name="answer"
             value={answer}
