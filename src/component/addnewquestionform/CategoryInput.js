@@ -6,8 +6,7 @@ import { Select, InputItem, InputLabel } from "../../style/MyStyle";
 
 export default function CategoryInput() {
   const [categories, setCategories] = useState([]);
-  const setSelectedCategoryId = useContext(AddNewQuestionFormContext)
-    .categoryInput[1];
+  const { categoryInput } = useContext(AddNewQuestionFormContext);
   const CATEGORY_URL = useContext(AddNewQuestionFormContext).CATEGORY_URL;
 
   useEffect(() => {
@@ -17,7 +16,7 @@ export default function CategoryInput() {
   }, [CATEGORY_URL]);
 
   const handleCategory = e => {
-    setSelectedCategoryId(e.target.value);
+    categoryInput[1](JSON.parse(e.target.value));
   };
 
   return (
@@ -25,7 +24,7 @@ export default function CategoryInput() {
       <InputLabel htmlFor="category">Category</InputLabel>
       <Select id="category" name="category" onChange={handleCategory}>
         {categories.map(category => (
-          <option value={category.id} key={category.id}>
+          <option value={JSON.stringify(category)} key={category.id}>
             {category.name}
           </option>
         ))}

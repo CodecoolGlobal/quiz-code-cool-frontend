@@ -11,10 +11,13 @@ export const AddNewQuestionFormProvider = props => {
   };
 
   // States
-  const [selectedCategoryId, setSelectedCategoryId] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState({
+    id: 0,
+    name: ""
+  });
   const [type, setType] = useState([]);
   const [question, setQuestion] = useState("");
-  const [possibleAnswers, setPossibleAnswers] = useState([true, false]);
+  const [possibleAnswers, setPossibleAnswers] = useState(["True", "False"]);
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [incorrectAnswers, setIncorrectAnswers] = useState([]);
 
@@ -25,7 +28,7 @@ export const AddNewQuestionFormProvider = props => {
         CATEGORY_URL,
         TYPES,
         possibleAnswersInput: [possibleAnswers, setPossibleAnswers],
-        categoryInput: [selectedCategoryId, setSelectedCategoryId],
+        categoryInput: [selectedCategory, setSelectedCategory],
         typeInput: [type, setType],
         questionInput: [question, setQuestion],
         correctAnswerInput: [correctAnswer, setCorrectAnswer],

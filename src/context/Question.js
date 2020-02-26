@@ -9,7 +9,7 @@ export default class Question {
     this.category = category;
     this.type = type;
     this.question = question;
-    this.correct_answer = correctAnswer;
-    this.incorrect_answers = incorrectAnswers;
+    this.correctAnswer = correctAnswer;
+    this.incorrectAnswers = incorrectAnswers;
   }
 }

@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import RandomQuizStarterForm from "./component/randomquizstarterform/RandomQuizStarterForm";
 import CustomQuizStarterForm from "./component/customquizstarterform/CustomQuizStarterForm";
+import AddNewQuestionForm from "./component/addnewquestionform/AddNewQuestionForm";
 
 import QuestionCard from "./component/questioncard/QuestionCard";
 import Result from "./component/result/Result";
@@ -44,11 +45,15 @@ function App() {
               </CustomQuizProvider>
               <ProgressProvider>
                 <Route exact path="/quiz" component={QuestionCard} />
+                <AddNewQuestionFormProvider>
+                  <Route
+                    exact
+                    path="/add-question"
+                    component={AddNewQuestionForm}
+                  />
+                </AddNewQuestionFormProvider>
               </ProgressProvider>
               <Route exact path="/results" component={Result} />
-              <AddNewQuestionFormProvider>
-                <Route exact path="/add-question" component={} />
-              </AddNewQuestionFormProvider>
             </Router>
           </QuestionProvider>
         </PlayerProvider>
