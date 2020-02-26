@@ -15,6 +15,8 @@ import {
 } from "../../style/MyStyle";
 
 export default function QuestionCard(props) {
+  const [questionNumber, setQuestionNumber] = useState(1);
+
   const questionColors = {
     empty: "none",
     success: "rgba(92, 216, 43, 0.5)",
@@ -22,12 +24,15 @@ export default function QuestionCard(props) {
   };
   const [questionColor, setQuestionColor] = useState(questionColors.empty);
 
-  const { allQuestionsState, questionsPerPlayerState } = useContext(
+  const { allQuestionsState, currentQuestionIndexState } = useContext(
     QuestionContext
   );
 
-  const [questions, setQuestions] = allQuestionsState;
-  const [questionsPerPlayer, setQuestionsPerPlayer] = questionsPerPlayerState;
+  const questions = allQuestionsState[0];
+  const [
+    currentQuestionIndex,
+    setCurrentQuestionIndex
+  ] = currentQuestionIndexState;
 
   const players = useContext(PlayerContext)[0];
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
@@ -51,11 +56,13 @@ export default function QuestionCard(props) {
   };
 
   const goToNext = () => {
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+    if ((currentQuestionIndex + 1) % players.length === 0) {
+      setQuestionNumber(questionNumber + 1);
+    }
     setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
-    if (questions.length === 1) {
+    if (currentQuestionIndex === questions.length - 1) {
       props.history.push("/results");
-    } else {
-      setQuestions(questions.slice(1));
     }
     setIsReadyToProceed(false);
   };
@@ -82,8 +89,10 @@ export default function QuestionCard(props) {
       <PlayerData currentPlayerIndex={currentPlayerIndex} />
       <QuestionContainer questionColor={questionColor}>
         {/* <H3>{decodeStringToHtml(questions[0].question)}</H3> */}
-        <CategoryTitle>{questions[0].category}</CategoryTitle>
-        <H3>{questions[0].question}</H3>
+        <CategoryTitle>
+          {questions[currentQuestionIndex].category}
+        </CategoryTitle>
+        <H3>{questions[currentQuestionIndex].question}</H3>
         <Answers />
         <Button
           type='button'
@@ -91,8 +100,13 @@ export default function QuestionCard(props) {
           onClick={handleNextButton}
           disabled={!isReadyToProceed}
         >
-          {questions.length > 1 ? "Next" : "Finish Quiz"}
+          {currentQuestionIndex === questions.length - 1
+            ? "Finish Quiz"
+            : "Next"}
         </Button>
+        <p>
+          {questionNumber} / {questions.length / players.length}
+        </p>
       </QuestionContainer>
     </QuestionCardContainer>
   );

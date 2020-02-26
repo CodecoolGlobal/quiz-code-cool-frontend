@@ -16,21 +16,23 @@ import Player from "../../context/Player";
 import { ContentContainer, H3, Button } from "../../style/MyStyle";
 
 export default function QuizStarterForm(props) {
-  const { allQuestionsState, questionsPerPlayerState } = useContext(
+  const { currentQuestionIndexState, allQuestionsState } = useContext(
     QuestionContext
   );
   const setQuestions = allQuestionsState[1];
-  const questionsPerPlayer = questionsPerPlayerState[0];
+  const setCurrentQuestionIndex = currentQuestionIndexState[1];
 
-  const [players, setPlayers] = useContext(PlayerContext);
+  const setPlayers = useContext(PlayerContext)[1];
 
   const {
+    questionsPerPlayerState,
     BASE_URL_FOR_QUESTIONS_QUERY,
     categoryInput,
     typeInput,
     nameInputs
   } = useContext(RandomStarterFormContext);
 
+  const questionsPerPlayer = questionsPerPlayerState[0];
   const selectedCategoryId = categoryInput[0];
   const type = typeInput[0];
   const names = nameInputs[0];
@@ -47,6 +49,10 @@ export default function QuizStarterForm(props) {
   };
 
   const submit = e => {
+    setPlayers([]);
+    setQuestions([]);
+    setCurrentQuestionIndex(0);
+
     const questionUrl = createQuestionUrl();
 
     axios.get(questionUrl).then(resp => {

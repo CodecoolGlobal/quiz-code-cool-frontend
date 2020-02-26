@@ -13,9 +13,14 @@ import Player from "../../context/Player";
 import { ContentContainer, H3, Button } from "../../style/MyStyle";
 
 export default function CustomQuizStarterForm(props) {
-  const [questions, setQuestions] = useContext(
-    QuestionContext
-  ).allQuestionsState;
+  const {
+    currentQuestionIndexState,
+    allQuestionsState,
+    questionsPerPlayerState
+  } = useContext(QuestionContext);
+  const [questions, setQuestions] = allQuestionsState;
+  const setCurrentQuestionIndex = currentQuestionIndexState[1];
+
   const setPlayers = useContext(PlayerContext)[1];
 
   const selectedCustomQuizId = useContext(CustomQuizContext)
@@ -23,7 +28,10 @@ export default function CustomQuizStarterForm(props) {
   const BASE_URL_FOR_CUSTOM_QUIZ = useContext(CustomQuizContext)
     .BASE_URL_FOR_CUSTOM_QUIZ;
 
-  const submit = e => {
+  const submit = () => {
+    setPlayers([]);
+    setQuestions([]);
+    setCurrentQuestionIndex(0);
     const URL = BASE_URL_FOR_CUSTOM_QUIZ + `/${selectedCustomQuizId}`;
     axios.get(URL).then(resp => {
       if (resp.data === []) {
