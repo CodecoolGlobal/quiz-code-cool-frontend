@@ -4,9 +4,7 @@ import { AddNewQuestionFormContext } from "../../context/AddNewQuestionFormConte
 import { InputItem, InputLabel, TextInput } from "../../style/MyStyle";
 
 export default function QuestionInput() {
-  const [question, setQuestion] = useContext(
-    AddNewQuestionFormContext
-  ).questionInput;
+  const setQuestion = useContext(AddNewQuestionFormContext).questionInput;
 
   const handleQuestion = e => {
     setQuestion(e.target.value);

@@ -9,9 +9,8 @@ import {
 } from "../../style/MyStyle";
 
 export default function MultipleAnswers() {
-  const [correctAnswer, setCorrectAnswer] = useContext(
-    AddNewQuestionFormContext
-  ).correctAnswerInput;
+  const setCorrectAnswer = useContext(AddNewQuestionFormContext)
+    .correctAnswerInput;
   const [incorrectAnswers, setIncorrectAnswers] = useContext(
     AddNewQuestionFormContext
   ).incorrectAnswersInput;
