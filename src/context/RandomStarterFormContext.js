@@ -4,6 +4,7 @@ export const RandomStarterFormContext = createContext();
 
 export const RandomStarterFormProvider = props => {
   // Constants
+  const [questionsPerPlayer, setQuestionsPerPlayer] = useState(0);
   const BASE_URL_FOR_QUESTIONS_QUERY = "http://localhost:8080/questions?";
   const MIN_QUESTIONS = 1;
   const CATEGORY_URL = "http://localhost:8080/categories";
@@ -38,7 +39,8 @@ export const RandomStarterFormProvider = props => {
         questionNumberInput: [questionNumber, setQuestionNumber],
         categoryInput: [selectedCategoryId, setSelectedCategoryId],
         typeInput: [type, setType],
-        playerNumber: [playerNumber, setPlayerNumber]
+        playerNumber: [playerNumber, setPlayerNumber],
+        questionsPerPlayerState: [questionsPerPlayer, setQuestionsPerPlayer]
       }}
     >
       {props.children}

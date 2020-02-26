@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { PlayerContext } from "../../context/PlayerContext";
+
 import {
   PlayerName,
   H2,
@@ -17,7 +18,7 @@ export default function PlayerData(props) {
   return (
     <PlayerHeader playerTheme={ColorsForPlayers[props.currentPlayerIndex]}>
       <QuestionsImage src={questionMark} alt='question_mark'></QuestionsImage>
-      <PlayerName>{currentPlayer.name}</PlayerName>
+      <PlayerName>{currentPlayer ? currentPlayer.name : "test"}</PlayerName>
       <H2>{currentPlayer.score}</H2>
     </PlayerHeader>
   );

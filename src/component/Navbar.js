@@ -1,5 +1,5 @@
 import React from "react";
-import { NavigBar, NavigLink, NavItem } from "../style/MyStyle";
+import { CoPage, NavigBar, NavigLink, NavItem } from "../style/MyStyle";
 
 export default function Navbar() {
   return (
@@ -10,6 +10,9 @@ export default function Navbar() {
       <NavigLink to='/random-quiz'>
         <NavItem>Random quiz</NavItem>
       </NavigLink>
+      <CoPage href='https://reacty.netlify.com/' target='_blank'>
+        <NavItem>Reacty</NavItem>
+      </CoPage>
     </NavigBar>
   );
 }

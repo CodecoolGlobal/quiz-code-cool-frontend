@@ -15,7 +15,6 @@ export default function CategoryInput() {
   useEffect(() => {
     axios.get(CATEGORY_URL).then(res => {
       setCategories(res.data);
-      console.log(res.data);
     });
   }, [CATEGORY_URL]);
 
