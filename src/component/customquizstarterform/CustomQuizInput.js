@@ -1,14 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
-import { RandomStarterFormContext } from "../../context/RandomStarterFormContext";
+import { CustomQuizContext } from "../../context/CustomQuizContext";
 import axios from "axios";
 
 import { Select, InputItem, InputLabel } from "../../style/MyStyle";
 
 export default function CustomQuizInput() {
   const [customQuizzes, setCustomQuizzes] = useState([]);
-  const setSelectedCustomQuizId = useContext(RandomStarterFormContext)
-    .customQuizInput[1];
-  const BASE_URL_FOR_CUSTOM_QUIZ = useContext(RandomStarterFormContext)
+  const setSelectedCustomQuizId = useContext(CustomQuizContext)
+    .selectedCustomQuiz[1];
+  const BASE_URL_FOR_CUSTOM_QUIZ = useContext(CustomQuizContext)
     .BASE_URL_FOR_CUSTOM_QUIZ;
 
   useEffect(() => {

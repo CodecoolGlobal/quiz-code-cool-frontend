@@ -43,7 +43,6 @@ export default function QuizStarterForm(props) {
   };
 
   const submit = e => {
-    e.preventDefault();
     const questionUrl = createQuestionUrl();
     axios.get(questionUrl).then(resp => {
       if (resp.data === []) {
