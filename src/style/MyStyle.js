@@ -69,7 +69,7 @@ export const NavigLink = styled(NavLink)`
 export const NavItem = styled.li`
   margin: 0;
   display: block;
-  padding: 14px 16px;
+  padding: 10px 20px;
   text-align: center;
   &:hover {
     cursor: pointer;
