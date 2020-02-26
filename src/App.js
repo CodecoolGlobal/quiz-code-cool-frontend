@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import RandomQuizStarterForm from "./component/randomquizstarterform/RandomQuizStarterForm";
 import CustomQuizStarterForm from "./component/customquizstarterform/CustomQuizStarterForm";
+import AddNewQuestionForm from "./component/addnewquestionform/AddNewQuestionForm";
 
 import QuestionCard from "./component/questioncard/QuestionCard";
 import Result from "./component/result/Result";
@@ -18,10 +19,11 @@ import Header from "./component/Header";
 import Footer from "./component/Footer";
 
 import { Container } from "./style/MyStyle";
+import { AddNewQuestionFormProvider } from "./context/AddNewQuestionFormContext";
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <Container>
         <PlayerProvider>
           <QuestionProvider>
@@ -30,21 +32,28 @@ function App() {
               <RandomStarterFormProvider>
                 <Route
                   exact
-                  path='/random-quiz'
+                  path="/random-quiz"
                   component={RandomQuizStarterForm}
                 />
               </RandomStarterFormProvider>
               <CustomQuizProvider>
                 <Route
                   exact
-                  path='/custom-quiz'
+                  path="/custom-quiz"
                   component={CustomQuizStarterForm}
                 />
               </CustomQuizProvider>
               <ProgressProvider>
-                <Route exact path='/quiz' component={QuestionCard} />
+                <Route exact path="/quiz" component={QuestionCard} />
+                <AddNewQuestionFormProvider>
+                  <Route
+                    exact
+                    path="/add-question"
+                    component={AddNewQuestionForm}
+                  />
+                </AddNewQuestionFormProvider>
               </ProgressProvider>
-              <Route exact path='/results' component={Result} />
+              <Route exact path="/results" component={Result} />
             </Router>
           </QuestionProvider>
         </PlayerProvider>

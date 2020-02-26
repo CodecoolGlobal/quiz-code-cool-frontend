@@ -17,15 +17,15 @@ export default function Answers() {
   const setIsReadyToProceed = readyToProceed[1];
   const setSelectedAnswerCorrectness = correctness[1];
 
-  const { incorrect_answers, correct_answer } = questions[currentQuestionIndex];
+  const { incorrectAnswers, correctAnswer } = questions[currentQuestionIndex];
   const [answersZip, setAnswersZip] = useState([]);
 
   useEffect(() => {
-    let answers = [correct_answer, ...incorrect_answers];
-    const zip = zipAnswers(incorrect_answers.length, answers);
+    let answers = [correctAnswer, ...incorrectAnswers];
+    const zip = zipAnswers(incorrectAnswers.length, answers);
     shuffle(zip);
     setAnswersZip(zip);
-  }, [correct_answer, incorrect_answers]);
+  }, [correctAnswer, incorrectAnswers]);
 
   const zipAnswers = (incorrectAnswersLength, answers) => {
     let mapAnswers = [1];

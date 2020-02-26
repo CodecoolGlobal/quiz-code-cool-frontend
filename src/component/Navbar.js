@@ -10,6 +10,9 @@ export default function Navbar() {
       <NavigLink to='/random-quiz'>
         <NavItem>Random quiz</NavItem>
       </NavigLink>
+      <NavigLink to='/add-question'>
+        <NavItem>Add question</NavItem>
+      </NavigLink>
       <CoPage href='https://reacty.netlify.com/' target='_blank'>
         <NavItem>Reacty</NavItem>
       </CoPage>
