@@ -9,7 +9,7 @@ import {
 } from "../../style/MyStyle";
 
 export default function Answers() {
-  const questions = useContext(QuestionContext)[0];
+  const questions = useContext(QuestionContext).allQuestionsState[0];
 
   const { readyToProceed, correctness } = useContext(ProgressContext);
   const setIsReadyToProceed = readyToProceed[1];

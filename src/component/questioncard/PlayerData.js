@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { PlayerContext } from "../../context/PlayerContext";
+import { QuestionContext } from "../../context/QuestionContext";
+
 import {
   PlayerName,
   H2,
@@ -12,6 +14,7 @@ import questionMark from "../../style/question-mark.png";
 
 export default function PlayerData(props) {
   const players = useContext(PlayerContext)[0];
+  const questions = useContext(QuestionContext)[0];
   const currentPlayer = players[props.currentPlayerIndex];
 
   return (

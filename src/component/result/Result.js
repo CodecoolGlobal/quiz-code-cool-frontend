@@ -17,7 +17,7 @@ import ColorsForPlayers from "../../style/PlayerColors";
 
 export default function Result(props) {
   const [players, setPlayers] = useContext(PlayerContext);
-  const setQuestions = useContext(QuestionContext)[1];
+  const setQuestions = useContext(QuestionContext).allQuestionsState[1];
 
   const handleRestart = () => {
     setPlayers([]);

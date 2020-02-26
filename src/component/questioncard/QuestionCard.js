@@ -22,7 +22,13 @@ export default function QuestionCard(props) {
   };
   const [questionColor, setQuestionColor] = useState(questionColors.empty);
 
-  const [questions, setQuestions] = useContext(QuestionContext);
+  const { allQuestionsState, questionsPerPlayerState } = useContext(
+    QuestionContext
+  );
+
+  const [questions, setQuestions] = allQuestionsState;
+  const [questionsPerPlayer, setQuestionsPerPlayer] = questionsPerPlayerState;
+
   const players = useContext(PlayerContext)[0];
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
 

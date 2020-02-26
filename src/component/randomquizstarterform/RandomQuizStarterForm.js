@@ -16,21 +16,25 @@ import Player from "../../context/Player";
 import { ContentContainer, H3, Button } from "../../style/MyStyle";
 
 export default function QuizStarterForm(props) {
-  const setQuestions = useContext(QuestionContext)[1];
-  const setPlayers = useContext(PlayerContext)[1];
+  const { allQuestionsState, questionsPerPlayerState } = useContext(
+    QuestionContext
+  );
+  const setQuestions = allQuestionsState[1];
+  const questionsPerPlayer = questionsPerPlayerState[0];
+
+  const [players, setPlayers] = useContext(PlayerContext);
 
   const {
     BASE_URL_FOR_QUESTIONS_QUERY,
-    questionNumberInput,
     categoryInput,
     typeInput,
     nameInputs
   } = useContext(RandomStarterFormContext);
 
-  const questionNumber = questionNumberInput[0];
   const selectedCategoryId = categoryInput[0];
   const type = typeInput[0];
   const names = nameInputs[0];
+  const questionNumber = questionsPerPlayer * names.length;
 
   const createQuestionUrl = () => {
     let QuestionNumberUrl = `amount=${questionNumber}`;
@@ -44,13 +48,13 @@ export default function QuizStarterForm(props) {
 
   const submit = e => {
     const questionUrl = createQuestionUrl();
+
     axios.get(questionUrl).then(resp => {
       if (resp.data === []) {
         alert(
           "There are not enough questions matching the entered parameters :("
         );
       } else {
-        console.log(resp);
         resp.data.map(questionData =>
           setQuestions(questions => [
             ...questions,
@@ -69,7 +73,6 @@ export default function QuizStarterForm(props) {
         props.history.push("/quiz");
       }
     });
-    console.log(questionUrl);
   };
 
   return (
