@@ -10,12 +10,14 @@ import {
 
 export default function Answers() {
   const questions = useContext(QuestionContext).allQuestionsState[0];
+  const currentQuestionIndex = useContext(QuestionContext)
+    .currentQuestionIndexState[0];
 
   const { readyToProceed, correctness } = useContext(ProgressContext);
   const setIsReadyToProceed = readyToProceed[1];
   const setSelectedAnswerCorrectness = correctness[1];
 
-  const { incorrect_answers, correct_answer } = questions[0];
+  const { incorrect_answers, correct_answer } = questions[currentQuestionIndex];
   const [answersZip, setAnswersZip] = useState([]);
 
   useEffect(() => {
