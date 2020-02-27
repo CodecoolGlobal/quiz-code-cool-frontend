@@ -61,7 +61,7 @@ export default function QuizStarterForm(props) {
     const questionUrl = createQuestionUrl();
 
     axios.get(questionUrl).then(resp => {
-      if (resp.data === []) {
+      if (resp.data === "") {
         alert(
           "There are not enough questions matching the entered parameters :("
         );
