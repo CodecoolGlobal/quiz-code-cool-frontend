@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import Question from "../../context/Question";
-
-import { NavLink } from "react-router-dom";
 import {
   ResultTableRow,
   ResultTableHead,

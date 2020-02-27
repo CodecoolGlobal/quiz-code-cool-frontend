@@ -5,7 +5,6 @@ import Question from "../../context/Question";
 import Answers from "./Answers";
 
 import {
-  QuestionsTd,
   ResultTableRow,
   ResultTableHead,
   QuestionListContainer,

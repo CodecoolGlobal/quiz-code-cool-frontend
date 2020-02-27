@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { QuestionContext } from "../../context/QuestionContext";
 import { ProgressContext } from "../../context/ProgressContext";
+import { shuffle } from "../../Util";
 
 import {
   RadioButton,
@@ -37,13 +38,6 @@ export default function Answers() {
       mapAnswers[index]
     ]);
     return answerZip;
-  };
-
-  const shuffle = array => {
-    for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
   };
 
   const chooseAnswer = event => {
