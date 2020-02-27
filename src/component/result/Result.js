@@ -7,7 +7,7 @@ import {
   H2,
   H3,
   Button,
-  ResultTable,
+  Table,
   TableContainer,
   ResultTableRow,
   ResultTableData,
@@ -32,7 +32,7 @@ export default function Result(props) {
       <H3>Game over!</H3>
       <H2>Results</H2>
       <TableContainer>
-        <ResultTable>
+        <Table>
           <thead>
             <ResultTableRow>
               <ResultTableHead>Name</ResultTableHead>
@@ -47,7 +47,7 @@ export default function Result(props) {
               </ResultTableRow>
             ))}
           </tbody>
-        </ResultTable>
+        </Table>
       </TableContainer>
       <Button type='button' id='restart' onClick={handleRestart}>
         New Game

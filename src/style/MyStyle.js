@@ -275,18 +275,15 @@ export const RadioButton = styled.input`
   }
 `;
 
+export const Table = styled.table`
+  box-shadow: ${applicationTheme.shadow1};
+  border-radius: ${applicationTheme.borderRadius1};
+`;
+
 export const TableContainer = styled.div`
   padding: 10px;
   display: flex;
   justify-content: center;
-`;
-
-export const ResultTable = styled.table`
-  border: 2px solid #fff;
-  border-collapse: collapse;
-  box-shadow: ${applicationTheme.shadow1};
-  padding: 5px;
-  margin: 0 auto;
 `;
 
 export const ResultTableRow = styled.tr`
@@ -298,12 +295,13 @@ export const ResultTableRow = styled.tr`
 `;
 
 export const ResultTableData = styled.td`
-  border: 1px solid #fff;
+  border-radius: ${applicationTheme.borderRadius1};
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
 `;
 
 export const ResultTableHead = styled.th`
+  border-radius: ${applicationTheme.borderRadius1};
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
   margin-bottom: 5px;
@@ -363,6 +361,8 @@ export const QuestionListElement = styled(NavLink)`
 `;
 
 export const QuestionsTd = styled.td`
+  border-radius: ${applicationTheme.borderRadius1};
+
   padding: 5px 10px;
 `;
 

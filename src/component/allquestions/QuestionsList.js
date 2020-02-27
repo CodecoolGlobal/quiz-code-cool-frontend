@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import {
+  Table,
   ResultTableRow,
   ResultTableHead,
   QuestionListContainer,
@@ -25,7 +26,7 @@ export default function QuestionsList() {
     <QuestionListContainer>
       <H3>All questions</H3>
       <TableContainer>
-        <table>
+        <Table>
           <thead>
             <ResultTableRow>
               <ResultTableHead>Id</ResultTableHead>
@@ -44,7 +45,7 @@ export default function QuestionsList() {
               </QuestionsTr>
             ))}
           </tbody>
-        </table>
+        </Table>
       </TableContainer>
     </QuestionListContainer>
   );
