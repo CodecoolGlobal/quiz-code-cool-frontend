@@ -1,5 +1,4 @@
 import React, { useState, createContext } from "react";
-import {useHistory } from "react-router-dom";
 
 export const AddNewQuestionFormContext = createContext();
 
@@ -10,7 +9,6 @@ export const AddNewQuestionFormProvider = props => {
     "Multiple Choice": "multiple",
     "True / False": "boolean"
   };
-  const history = useHistory();
 
   // States
   const [selectedCategory, setSelectedCategory] = useState({

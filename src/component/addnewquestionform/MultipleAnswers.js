@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { AddNewQuestionFormContext } from "../../context/AddNewQuestionFormContext";
 
 import {
-  AnswerContainer,
   InputLabel,
   TextInput,
   InputItem
