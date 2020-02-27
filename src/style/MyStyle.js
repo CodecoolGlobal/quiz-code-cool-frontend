@@ -44,6 +44,7 @@ export const QuestionsImage = styled.img`
 `;
 
 export const NavigBar = styled.ul`
+  position: sticky;
   list-style-type: none;
   margin: 0;
   padding: 0;

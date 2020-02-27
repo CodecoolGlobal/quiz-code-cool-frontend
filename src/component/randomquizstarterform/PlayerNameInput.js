@@ -18,7 +18,7 @@ export default function PlayerNameInput() {
     for (let i = 0; i < n; i++) {
       inputs.push(
         <InputItem key={i}>
-          <InputLabel htmlFor={i}>Player {i + 1} name</InputLabel>
+          <InputLabel htmlFor={i}>Player {i + 1}</InputLabel>
           <TextInput
             name={i}
             id={i}

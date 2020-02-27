@@ -33,7 +33,7 @@ ValueLabelComponent.propTypes = {
 export const StepSlider = () => {
   return (
     <InputItem>
-      <InputLabel>Player number</InputLabel>
+      <InputLabel>Number of players</InputLabel>
       <Slider
         style={{ color: "#35a79c" }}
         min={1}
