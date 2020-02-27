@@ -304,6 +304,8 @@ export const ResultTableData = styled.td`
 `;
 
 export const ResultTableHead = styled.th`
+  border: 1px solid #fff;
+
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
   margin-bottom: 5px;
