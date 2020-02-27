@@ -45,7 +45,7 @@ export default function AddNewQuestionForm(props) {
         typeInput[0].length === 0 ||
         questionInput[0] === "" ||
         correctAnswerInput[0] === "" ||
-        incorrectAnswersInput[0].length !== 3 || 
+        incorrectAnswersInput[0].length === 0 || 
         incorrectAnswersInput[0].includes(undefined)) {
       alert("Please fill out all the fields!");
       return;
