@@ -5,13 +5,13 @@ import Question from "../../context/Question";
 import Answers from "./Answers";
 
 import {
+  H3,
   Table,
-  CategoryTitle,
+  ResultTableData,
   ResultTableRow,
   ResultTableHead,
-  QuestionListContainer,
-  TableContainer,
-  H3
+  ContentContainer,
+  TableContainer
 } from "../../style/MyStyle";
 
 export default function QuestionDetails(props) {
@@ -37,19 +37,32 @@ export default function QuestionDetails(props) {
   }, [url]);
 
   return (
-    <QuestionListContainer>
-      <CategoryTitle>{question.category}</CategoryTitle>
-      <H3>{question.question}</H3>
+    <ContentContainer>
+      <H3>Details</H3>
       <TableContainer>
         <Table>
-          <thead>
-            <ResultTableRow>
-              <ResultTableHead>Possible answers</ResultTableHead>
-            </ResultTableRow>
-          </thead>
-          <Answers question={question} />
+          <ResultTableRow>
+            <ResultTableHead>Question</ResultTableHead>
+            <ResultTableHead>{question.question}</ResultTableHead>
+          </ResultTableRow>
+          <ResultTableRow>
+            <ResultTableHead>Publish date</ResultTableHead>
+            <ResultTableData>03.02.2020</ResultTableData>
+          </ResultTableRow>
+          <ResultTableRow>
+            <ResultTableHead>Created By</ResultTableHead>
+            <ResultTableData>Zokni kutya</ResultTableData>
+          </ResultTableRow>
+          <ResultTableRow>
+            <ResultTableHead>Category</ResultTableHead>
+            <ResultTableData>{question.category}</ResultTableData>
+          </ResultTableRow>
+          <ResultTableRow>
+            <ResultTableHead>Possible answers</ResultTableHead>
+            <Answers question={question} />
+          </ResultTableRow>
         </Table>
       </TableContainer>
-    </QuestionListContainer>
+    </ContentContainer>
   );
 }

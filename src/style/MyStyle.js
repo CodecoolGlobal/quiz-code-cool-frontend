@@ -281,6 +281,7 @@ export const Table = styled.table`
 `;
 
 export const TableContainer = styled.div`
+  font-size: ${applicationTheme.fontSize1};
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -362,10 +363,5 @@ export const QuestionListElement = styled(NavLink)`
 
 export const QuestionsTd = styled.td`
   border-radius: ${applicationTheme.borderRadius1};
-
   padding: 5px 10px;
-`;
-
-export const AnswerTd = styled(QuestionsTd)`
-  text-align: center;
 `;

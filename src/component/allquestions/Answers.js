@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { shuffle } from "../../Util";
-import { QuestionsTr, AnswerTd } from "../../style/MyStyle";
+import { ResultTableData, AnswerInTable } from "../../style/MyStyle";
 
 export default function Answers(props) {
   const [answers, setAnswers] = useState([]);
@@ -20,12 +20,10 @@ export default function Answers(props) {
   ]);
 
   return (
-    <tbody>
+    <ResultTableData>
       {answers.map(answer => (
-        <QuestionsTr>
-          <AnswerTd>{answer}</AnswerTd>
-        </QuestionsTr>
+        <div>{answer}</div>
       ))}
-    </tbody>
+    </ResultTableData>
   );
 }
