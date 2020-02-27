@@ -5,6 +5,7 @@ import PlayerNameInput from "./PlayerNameInput";
 import CategoryInput from "./CategoryInput";
 import QuestionNumberInput from "./QuestionNumberInput";
 import TypeInput from "./TypeInput";
+import StepSlider from "./StepSlider";
 
 import { RandomStarterFormContext } from "../../context/RandomStarterFormContext";
 import { QuestionContext } from "../../context/QuestionContext";
@@ -104,6 +105,7 @@ export default function QuizStarterForm(props) {
   return (
     <ContentContainer>
       <H3>New Random Quiz</H3>
+      <StepSlider />
       <PlayerNameInput />
       <QuestionNumberInput />
       <CategoryInput />
