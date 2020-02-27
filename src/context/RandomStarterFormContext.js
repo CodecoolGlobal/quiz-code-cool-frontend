@@ -19,13 +19,14 @@ export const RandomStarterFormProvider = props => {
   };
 
   // States
-  const [names, setNames] = useState([]);
+  
   const [questionNumber, setQuestionNumber] = useState(MIN_QUESTIONS);
   const [selectedCategoryId, setSelectedCategoryId] = useState(
     DEFAULT_CATEGORY.id
   );
   const [type, setType] = useState("");
   const [playerNumber, setPlayerNumber] = useState(2);
+  const [names, setNames] = useState(new Array(playerNumber));
 
   return (
     <RandomStarterFormContext.Provider

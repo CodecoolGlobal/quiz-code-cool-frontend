@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import axios from "axios";
 
 import PlayerNameInput from "./PlayerNameInput";
@@ -38,10 +38,15 @@ export default function QuizStarterForm(props) {
   } = useContext(RandomStarterFormContext);
 
   const questionsPerPlayer = questionsPerPlayerState[0];
+  const setQuestionsPerPlayer = questionsPerPlayerState[1];
   const selectedCategoryId = categoryInput[0];
   const type = typeInput[0];
   const names = nameInputs[0];
   const questionNumber = questionsPerPlayer * names.length;
+
+  useEffect(() => {
+    setQuestionsPerPlayer(0);
+  }, [setQuestionsPerPlayer]);
 
   const createQuestionUrl = () => {
     let QuestionNumberUrl = `amount=${questionNumber}`;
@@ -59,9 +64,19 @@ export default function QuizStarterForm(props) {
     setCurrentQuestionIndex(0);
 
     const questionUrl = createQuestionUrl();
+    if (
+      names.includes(undefined) ||
+      names.includes("") ||
+      questionsPerPlayer < 1
+    ) {
+      alert("Please fill out all the fields!");
+      return;
+    } else {
+      names.map(name => setPlayers(players => [...players, new Player(name)]));
+    }
 
     axios.get(questionUrl).then(resp => {
-      if (resp.data === []) {
+      if (resp.data === "") {
         alert(
           "There are not enough questions matching the entered parameters :("
         );
@@ -78,9 +93,7 @@ export default function QuizStarterForm(props) {
             )
           ])
         );
-        names.map(name =>
-          setPlayers(players => [...players, new Player(name)])
-        );
+
         props.history.push("/quiz");
       }
     });
