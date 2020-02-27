@@ -35,12 +35,14 @@ export default function QuestionsList() {
             </ResultTableRow>
           </thead>
           <tbody>
-            {questions.map(question => (
-              <QuestionsTr>
+            {questions.map((question, index) => (
+              <QuestionsTr key={index}>
                 <QuestionsTd>{question.id}</QuestionsTd>
-                <QuestionListElement to={`/questions/${question.id}`}>
-                  <QuestionsTd>{question.question}</QuestionsTd>
-                </QuestionListElement>
+                <QuestionsTd>
+                  <QuestionListElement to={`/questions/${question.id}`}>
+                    {question.question}
+                  </QuestionListElement>
+                </QuestionsTd>
                 <QuestionsTd>{question.category.name}</QuestionsTd>
               </QuestionsTr>
             ))}
