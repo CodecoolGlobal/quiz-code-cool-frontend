@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import axios from "axios";
 
 import PlayerNameInput from "./PlayerNameInput";
@@ -44,6 +44,10 @@ export default function QuizStarterForm(props) {
   const names = nameInputs[0];
   const questionNumber = questionsPerPlayer * names.length;
 
+  useEffect(() => {
+    setQuestionsPerPlayer(0);
+  }, [setQuestionsPerPlayer]);
+
   const createQuestionUrl = () => {
     let QuestionNumberUrl = `amount=${questionNumber}`;
     let categoryUrl =
@@ -58,13 +62,12 @@ export default function QuizStarterForm(props) {
     setPlayers([]);
     setQuestions([]);
     setCurrentQuestionIndex(0);
-    setQuestionsPerPlayer(0);
 
     const questionUrl = createQuestionUrl();
     if (
       names.includes(undefined) ||
       names.includes("") ||
-      questionsPerPlayer === 0
+      questionsPerPlayer < 1
     ) {
       alert("Please fill out all the fields!");
       return;
