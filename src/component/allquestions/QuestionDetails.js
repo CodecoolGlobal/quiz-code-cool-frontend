@@ -5,6 +5,7 @@ import Question from "../../context/Question";
 import Answers from "./Answers";
 
 import {
+  CategoryTitle,
   ResultTableRow,
   ResultTableHead,
   QuestionListContainer,
@@ -36,12 +37,13 @@ export default function QuestionDetails(props) {
 
   return (
     <QuestionListContainer>
-      <H3>Question details</H3>
+      <CategoryTitle>{question.category}</CategoryTitle>
+      <H3>{question.question}</H3>
       <TableContainer>
         <table>
           <thead>
             <ResultTableRow>
-              <ResultTableHead>{question.question}</ResultTableHead>
+              <ResultTableHead>Possible answers</ResultTableHead>
             </ResultTableRow>
           </thead>
           <Answers question={question} />

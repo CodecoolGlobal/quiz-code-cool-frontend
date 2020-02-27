@@ -304,8 +304,6 @@ export const ResultTableData = styled.td`
 `;
 
 export const ResultTableHead = styled.th`
-  border: 1px solid #fff;
-
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
   margin-bottom: 5px;
@@ -345,7 +343,7 @@ export const QuestionsTr = styled.tr`
   color: ${applicationTheme.color1};
   font-size: ${applicationTheme.fontSize1};
   &:nth-child(even) {
-    background-color: #fff;
+    background-color: ${applicationTheme.color5};
   }
   &:nth-child(odd) {
     background-color: lightgray;
