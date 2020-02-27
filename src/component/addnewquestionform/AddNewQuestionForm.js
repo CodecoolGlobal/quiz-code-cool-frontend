@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 import CategoryInput from "./CategoryInput";
@@ -16,7 +15,6 @@ import { ContentContainer, H3, Button } from "../../style/MyStyle";
 
 export default function AddNewQuestionForm(props) {
   const [answerComponent, setAnswerComponent] = useState(<div></div>);
-  const history = useHistory();
 
   const {
     BASE_URL_FOR_POST_REQUEST,
