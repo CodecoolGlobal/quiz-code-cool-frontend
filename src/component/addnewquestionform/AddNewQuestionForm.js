@@ -22,7 +22,8 @@ export default function AddNewQuestionForm(props) {
     typeInput,
     questionInput,
     correctAnswerInput,
-    incorrectAnswersInput
+    incorrectAnswersInput,
+    clearAddNewQuestionContext
   } = useContext(AddNewQuestionFormContext);
 
   useEffect(() => {
@@ -40,13 +41,15 @@ export default function AddNewQuestionForm(props) {
 
   const submit = e => {
     e.preventDefault();
-    
-    if (categoryInput[0].name === "" || 
-        typeInput[0].length === 0 ||
-        questionInput[0] === "" ||
-        correctAnswerInput[0] === "" ||
-        incorrectAnswersInput[0].length !== 3 || 
-        incorrectAnswersInput[0].includes(undefined)) {
+
+    if (
+      categoryInput[0].name === "" ||
+      typeInput[0].length === 0 ||
+      questionInput[0] === "" ||
+      correctAnswerInput[0] === "" ||
+      incorrectAnswersInput[0].length === 0 ||
+      incorrectAnswersInput[0].includes(undefined)
+    ) {
       alert("Please fill out all the fields!");
       return;
     }
@@ -64,7 +67,18 @@ export default function AddNewQuestionForm(props) {
       method: "post",
       url: questionUrl,
       data: newQuestion
-    });
+    }).then(
+      response => {
+        if (response.status === 200) {
+          alert("Question saved successfully! :)");
+          clearAddNewQuestionContext();
+          props.history.push("/questions");
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
   };
 
   return (

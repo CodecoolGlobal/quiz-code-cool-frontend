@@ -21,12 +21,20 @@ export const AddNewQuestionFormProvider = props => {
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [incorrectAnswers, setIncorrectAnswers] = useState([]);
 
+  const clearAddNewQuestionContext = () => {
+    setType([]);
+    setQuestion("");
+    setCorrectAnswer("");
+    setIncorrectAnswers([]);
+  };
+
   return (
     <AddNewQuestionFormContext.Provider
       value={{
         BASE_URL_FOR_POST_REQUEST,
         CATEGORY_URL,
         TYPES,
+        clearAddNewQuestionContext,
         possibleAnswersInput: [possibleAnswers, setPossibleAnswers],
         categoryInput: [selectedCategory, setSelectedCategory],
         typeInput: [type, setType],
