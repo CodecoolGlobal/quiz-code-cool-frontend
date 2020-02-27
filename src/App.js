@@ -5,6 +5,8 @@ import RandomQuizStarterForm from "./component/randomquizstarterform/RandomQuizS
 import CustomQuizStarterForm from "./component/customquizstarterform/CustomQuizStarterForm";
 import AddNewQuestionForm from "./component/addnewquestionform/AddNewQuestionForm";
 import QuestionsList from "./component/allquestions/QuestionsList";
+import QuestionDetails from "./component/allquestions/QuestionDetails";
+
 import QuestionCard from "./component/questioncard/QuestionCard";
 import Result from "./component/result/Result";
 
@@ -57,6 +59,7 @@ function App() {
             </QuestionProvider>
           </PlayerProvider>
           <Route exact path='/questions' component={QuestionsList} />
+          <Route exact path='/questions/:id' component={QuestionDetails} />
         </Router>
       </Container>
       <Footer />

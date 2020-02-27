@@ -367,3 +367,7 @@ export const QuestionListElement = styled(NavLink)`
 export const QuestionsTd = styled.td`
   padding: 5px 10px;
 `;
+
+export const AnswerTd = styled(QuestionsTd)`
+  text-align: center;
+`;
