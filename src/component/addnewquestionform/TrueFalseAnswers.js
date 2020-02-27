@@ -5,7 +5,7 @@ import { ProgressContext } from "../../context/ProgressContext";
 import {
   RadioButton,
   RadioButtonLabel,
-  AnswerContainer,
+  InputItem,
   InputLabel
 } from "../../style/MyStyle";
 
@@ -26,7 +26,7 @@ export default function TrueFalseAnswers() {
   };
 
   return (
-    <AnswerContainer>
+    <InputItem>
       <InputLabel htmlFor="answer">Click on the correct answer</InputLabel>
       {possibleAnswersInput[0].map(answer => (
         <div key={answer}>
@@ -41,6 +41,6 @@ export default function TrueFalseAnswers() {
           <RadioButtonLabel htmlFor={answer}>{answer}</RadioButtonLabel>
         </div>
       ))}
-    </AnswerContainer>
+    </InputItem>
   );
 }
