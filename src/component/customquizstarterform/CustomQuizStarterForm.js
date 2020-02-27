@@ -52,7 +52,7 @@ export default function CustomQuizStarterForm(props) {
             )
           ])
         );
-        setPlayers([new Player("Login name")]);
+        setPlayers([new Player("User")]);
         props.history.push("/quiz");
       }
     });
