@@ -304,8 +304,8 @@ export const ResultTableData = styled.td`
 `;
 
 export const ResultTableHead = styled.th`
-  border: 1px solid #fff;
-  padding: 10px 25px;
+  font-size: ${applicationTheme.fontSize1};
+  padding: 10px 15px;
   margin-bottom: 5px;
 `;
 
@@ -321,4 +321,47 @@ export const FooterContainer = styled.div`
   font-family: "Capriola", sans-serif;
   background: #fff;
   text-align: center;
+`;
+
+export const QuestionListContainer = styled.div`
+  padding: 25px 5%;
+  background: ${applicationTheme.mainLightOpaque};
+  border-radius: ${applicationTheme.borderRadius3};
+  margin: 20px 20% 60px 20%;
+  box-shadow: ${applicationTheme.shadow1};
+  @media screen and (max-width: 992px) {
+    margin: 20px 15% 60px 15%;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 20px 10% 60px 10%;
+    padding: 15px 10%;
+  }
+`;
+
+export const QuestionsTr = styled.tr`
+  text-align: left;
+  color: ${applicationTheme.color1};
+  font-size: ${applicationTheme.fontSize1};
+  &:nth-child(even) {
+    background-color: #fff;
+  }
+  &:nth-child(odd) {
+    background-color: lightgray;
+  }
+  &:hover {
+    background: ${applicationTheme.color4};
+  }
+`;
+
+export const QuestionListElement = styled(NavLink)`
+  text-align: left;
+  text-decoration: none;
+  color: ${applicationTheme.color1};
+  &:hover {
+    color: #fff;
+  }
+`;
+
+export const QuestionsTd = styled.td`
+  padding: 5px 10px;
 `;
