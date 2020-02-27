@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { shuffle } from "../../Util";
-import { ResultTableData, AnswerInTable } from "../../style/MyStyle";
+import { ResultTableData } from "../../style/MyStyle";
 
 export default function Answers(props) {
   const [answers, setAnswers] = useState([]);

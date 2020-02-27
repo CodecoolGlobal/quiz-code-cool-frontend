@@ -64,16 +64,16 @@ export default function QuizStarterForm(props) {
     setCurrentQuestionIndex(0);
 
     const questionUrl = createQuestionUrl();
-    if (
-      names.includes(undefined) ||
-      names.includes("") ||
-      questionsPerPlayer < 1
-    ) {
+    if (names.includes(undefined) || names.includes("")) {
       alert("Please fill out all the fields!");
       return;
-    } else {
-      names.map(name => setPlayers(players => [...players, new Player(name)]));
     }
+    if (questionsPerPlayer < 1) {
+      alert("Questions / Player must be a positive number.");
+      return;
+    }
+
+    names.map(name => setPlayers(players => [...players, new Player(name)]));
 
     axios.get(questionUrl).then(resp => {
       if (resp.data === "") {

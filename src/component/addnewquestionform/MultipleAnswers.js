@@ -1,12 +1,7 @@
 import React, { useContext } from "react";
 import { AddNewQuestionFormContext } from "../../context/AddNewQuestionFormContext";
 
-import {
-  AnswerContainer,
-  InputLabel,
-  TextInput,
-  InputItem
-} from "../../style/MyStyle";
+import { InputLabel, TextInput, InputItem } from "../../style/MyStyle";
 
 export default function MultipleAnswers() {
   const setCorrectAnswer = useContext(AddNewQuestionFormContext)
@@ -33,9 +28,9 @@ export default function MultipleAnswers() {
           <TextInput
             name={i}
             id={i}
-            type="text"
+            type='text'
             placeholder={`Incorrect answer ${i + 1}`}
-            maxLength="30"
+            maxLength='30'
             required
             onKeyUp={handleIncorrectAnswers}
           ></TextInput>
@@ -48,20 +43,20 @@ export default function MultipleAnswers() {
   return (
     <div>
       <InputItem>
-        <InputLabel htmlFor="correct-answer">Correct answer</InputLabel>
+        <InputLabel htmlFor='correct-answer'>Correct answer</InputLabel>
         <TextInput
-          name="correct-answer"
-          id="correct-answer"
-          type="text"
-          placeholder="Add correct question..."
-          maxLength="150"
+          name='correct-answer'
+          id='correct-answer'
+          type='text'
+          placeholder='Add correct question...'
+          maxLength='150'
           required
           onKeyUp={handleCorrectAnswer}
         ></TextInput>
       </InputItem>
       <div>
         <InputItem>
-          <InputLabel htmlFor="incorrect-answers">Incorrect answers</InputLabel>
+          <InputLabel htmlFor='incorrect-answers'>Incorrect answers</InputLabel>
         </InputItem>
         {createIncorrectAnswersInput(3)}
       </div>
