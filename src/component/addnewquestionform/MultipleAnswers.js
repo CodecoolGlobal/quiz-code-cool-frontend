@@ -33,9 +33,9 @@ export default function MultipleAnswers() {
           <TextInput
             name={i}
             id={i}
-            type='text'
+            type="text"
             placeholder={`Incorrect answer ${i + 1}`}
-            maxLength='30'
+            maxLength="30"
             required
             onKeyUp={handleIncorrectAnswers}
           ></TextInput>
@@ -46,21 +46,25 @@ export default function MultipleAnswers() {
   };
 
   return (
-    <AnswerContainer>
-      <InputLabel htmlFor='correct-answer'>Correct answer</InputLabel>
-      <TextInput
-        name='correct-answer'
-        id='correct-answer'
-        type='text'
-        placeholder='Add correct question...'
-        maxLength='150'
-        required
-        onKeyUp={handleCorrectAnswer}
-      ></TextInput>
-
-      <InputLabel htmlFor='incorrect-answers'>Incorrect answers</InputLabel>
-
-      <div>{createIncorrectAnswersInput(3)}</div>
-    </AnswerContainer>
+    <div>
+      <InputItem>
+        <InputLabel htmlFor="correct-answer">Correct answer</InputLabel>
+        <TextInput
+          name="correct-answer"
+          id="correct-answer"
+          type="text"
+          placeholder="Add correct question..."
+          maxLength="150"
+          required
+          onKeyUp={handleCorrectAnswer}
+        ></TextInput>
+      </InputItem>
+      <div>
+        <InputItem>
+          <InputLabel htmlFor="incorrect-answers">Incorrect answers</InputLabel>
+        </InputItem>
+        {createIncorrectAnswersInput(3)}
+      </div>
+    </div>
   );
 }
