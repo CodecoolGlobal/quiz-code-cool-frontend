@@ -38,6 +38,7 @@ export default function QuizStarterForm(props) {
   } = useContext(RandomStarterFormContext);
 
   const questionsPerPlayer = questionsPerPlayerState[0];
+  const setQuestionsPerPlayer = questionsPerPlayerState[1];
   const selectedCategoryId = categoryInput[0];
   const type = typeInput[0];
   const names = nameInputs[0];
@@ -57,8 +58,19 @@ export default function QuizStarterForm(props) {
     setPlayers([]);
     setQuestions([]);
     setCurrentQuestionIndex(0);
+    setQuestionsPerPlayer(0);
 
     const questionUrl = createQuestionUrl();
+    if (
+      names.includes(undefined) ||
+      names.includes("") ||
+      questionsPerPlayer === 0
+    ) {
+      alert("Please fill out all the fields!");
+      return;
+    } else {
+      names.map(name => setPlayers(players => [...players, new Player(name)]));
+    }
 
     axios.get(questionUrl).then(resp => {
       if (resp.data === "") {
@@ -78,9 +90,7 @@ export default function QuizStarterForm(props) {
             )
           ])
         );
-        names.map(name =>
-          setPlayers(players => [...players, new Player(name)])
-        );
+
         props.history.push("/quiz");
       }
     });
