@@ -41,26 +41,30 @@ export default function QuestionDetails(props) {
       <H3>Details</H3>
       <TableContainer>
         <Table>
-          <ResultTableRow>
-            <ResultTableHead>Question</ResultTableHead>
-            <ResultTableHead>{question.question}</ResultTableHead>
-          </ResultTableRow>
-          <ResultTableRow>
-            <ResultTableHead>Publish date</ResultTableHead>
-            <ResultTableData>03.02.2020</ResultTableData>
-          </ResultTableRow>
-          <ResultTableRow>
-            <ResultTableHead>Created By</ResultTableHead>
-            <ResultTableData>Zokni kutya</ResultTableData>
-          </ResultTableRow>
-          <ResultTableRow>
-            <ResultTableHead>Category</ResultTableHead>
-            <ResultTableData>{question.category}</ResultTableData>
-          </ResultTableRow>
-          <ResultTableRow>
-            <ResultTableHead>Possible answers</ResultTableHead>
-            <Answers question={question} />
-          </ResultTableRow>
+          <thead>
+            <ResultTableRow>
+              <ResultTableHead>Question</ResultTableHead>
+              <ResultTableHead>{question.question}</ResultTableHead>
+            </ResultTableRow>
+          </thead>
+          <tbody>
+            <ResultTableRow>
+              <ResultTableHead>Publish date</ResultTableHead>
+              <ResultTableData>03.02.2020</ResultTableData>
+            </ResultTableRow>
+            <ResultTableRow>
+              <ResultTableHead>Created By</ResultTableHead>
+              <ResultTableData>Zokni kutya</ResultTableData>
+            </ResultTableRow>
+            <ResultTableRow>
+              <ResultTableHead>Category</ResultTableHead>
+              <ResultTableData>{question.category}</ResultTableData>
+            </ResultTableRow>
+            <ResultTableRow>
+              <ResultTableHead>Possible answers</ResultTableHead>
+              <Answers question={question} />
+            </ResultTableRow>
+          </tbody>
         </Table>
       </TableContainer>
     </ContentContainer>
