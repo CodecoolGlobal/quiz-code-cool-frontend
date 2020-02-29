@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { RandomStarterFormContext } from "../../context/RandomStarterFormContext";
+import { RandomQuizContext } from "../../context/RandomQuizContext";
 import { Select, InputItem, InputLabel } from "../../style/MyStyle";
 
 export default function TypeInput() {
-  const setType = useContext(RandomStarterFormContext).typeInput[1];
-  const TYPES = useContext(RandomStarterFormContext).TYPES;
+  const setType = useContext(RandomQuizContext).typeInput[1];
+  const TYPES = useContext(RandomQuizContext).TYPES;
 
   const handleType = e => {
     setType(e.target.value);

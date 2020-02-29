@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { RandomStarterFormContext } from "../../context/RandomStarterFormContext";
+import { RandomQuizContext } from "../../context/RandomQuizContext";
 
 import PropTypes from "prop-types";
 
@@ -11,7 +11,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 function ValueLabelComponent(props) {
   const { children, open, value } = props;
-  const setPlayerNumber = useContext(RandomStarterFormContext).playerNumber[1];
+  const setPlayerNumber = useContext(RandomQuizContext).playerNumber[1];
 
   useEffect(() => {
     setPlayerNumber(value);

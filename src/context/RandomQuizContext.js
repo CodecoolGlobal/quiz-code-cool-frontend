@@ -1,11 +1,10 @@
 import React, { useState, createContext } from "react";
 
-export const RandomStarterFormContext = createContext();
+export const RandomQuizContext = createContext();
 
-export const RandomStarterFormProvider = props => {
+export const RandomQuizProvider = props => {
   // Constants
-  const [questionsPerPlayer, setQuestionsPerPlayer] = useState(0);
-  const BASE_URL_FOR_QUESTIONS_QUERY = "http://localhost:8080/questions?";
+  const BASE_URL_FOR_RANDOM_QUIZ = "http://localhost:8080/questions?";
   const MIN_QUESTIONS = 1;
   const CATEGORY_URL = "http://localhost:8080/categories";
   const DEFAULT_CATEGORY = {
@@ -19,7 +18,7 @@ export const RandomStarterFormProvider = props => {
   };
 
   // States
-  
+  const [questionsPerPlayer, setQuestionsPerPlayer] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(MIN_QUESTIONS);
   const [selectedCategoryId, setSelectedCategoryId] = useState(
     DEFAULT_CATEGORY.id
@@ -29,9 +28,9 @@ export const RandomStarterFormProvider = props => {
   const [names, setNames] = useState(new Array(playerNumber));
 
   return (
-    <RandomStarterFormContext.Provider
+    <RandomQuizContext.Provider
       value={{
-        BASE_URL_FOR_QUESTIONS_QUERY,
+        BASE_URL_FOR_RANDOM_QUIZ,
         MIN_QUESTIONS,
         CATEGORY_URL,
         DEFAULT_CATEGORY,
@@ -45,6 +44,6 @@ export const RandomStarterFormProvider = props => {
       }}
     >
       {props.children}
-    </RandomStarterFormContext.Provider>
+    </RandomQuizContext.Provider>
   );
 };

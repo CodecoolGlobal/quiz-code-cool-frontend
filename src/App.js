@@ -12,7 +12,7 @@ import Result from "./component/result/Result";
 
 import { QuestionProvider } from "./context/QuestionContext";
 import { PlayerProvider } from "./context/PlayerContext";
-import { RandomStarterFormProvider } from "./context/RandomStarterFormContext";
+import { RandomQuizProvider } from "./context/RandomQuizContext";
 import { CustomQuizProvider } from "./context/CustomQuizContext";
 
 import { ProgressProvider } from "./context/ProgressContext";
@@ -28,36 +28,33 @@ function App() {
     <div className='App'>
       <Container>
         <Router>
-          <PlayerProvider>
-            <QuestionProvider>
-              <Header />
-              <RandomStarterFormProvider>
-                <Route
-                  exact
-                  path='/random-quiz'
-                  component={RandomQuizStarterForm}
-                />
-              </RandomStarterFormProvider>
-              <CustomQuizProvider>
-                <Route
-                  exact
-                  path='/custom-quiz'
-                  component={CustomQuizStarterForm}
-                />
-              </CustomQuizProvider>
-              <ProgressProvider>
-                <Route exact path='/quiz' component={QuestionCard} />
-                <AddNewQuestionFormProvider>
+          <CustomQuizProvider>
+            <RandomQuizProvider>
+              <PlayerProvider>
+                <QuestionProvider>
+                  <Header />
                   <Route
                     exact
-                    path='/add-question'
-                    component={AddNewQuestionForm}
+                    path='/random-quiz'
+                    component={RandomQuizStarterForm}
                   />
-                </AddNewQuestionFormProvider>
-              </ProgressProvider>
-              <Route exact path='/results' component={Result} />
-            </QuestionProvider>
-          </PlayerProvider>
+                  <Route
+                    exact
+                    path='/custom-quiz'
+                    component={CustomQuizStarterForm}
+                  />
+                  <ProgressProvider>
+                    <Route exact path='/quiz' component={QuestionCard} />
+                  </ProgressProvider>
+                  <Route exact path='/results' component={Result} />
+                </QuestionProvider>
+              </PlayerProvider>
+            </RandomQuizProvider>
+          </CustomQuizProvider>
+
+          <AddNewQuestionFormProvider>
+            <Route exact path='/add-question' component={AddNewQuestionForm} />
+          </AddNewQuestionFormProvider>
           <Route exact path='/questions' component={QuestionsList} />
           <Route exact path='/questions/:id' component={QuestionDetails} />
         </Router>
