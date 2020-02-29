@@ -5,7 +5,8 @@ export const CustomQuizContext = createContext();
 
 export const CustomQuizProvider = props => {
   // Constants
-  const BASE_URL_FOR_CUSTOM_QUIZ = "http://localhost:8080/customquizzes";
+  const BASE_URL_FOR_CUSTOM_QUIZ =
+    process.env.REACT_APP_BASE_URL_FOR_CUSTOM_QUIZ;
 
   // States
   const [selectedCustomQuizId, setSelectedCustomQuizId] = useState(1);

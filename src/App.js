@@ -58,7 +58,6 @@ function App() {
               />
             </AddNewQuestionFormProvider>
           </ProgressProvider>
-
           <Route exact path='/questions' component={QuestionsList} />
           <Route exact path='/questions/:id' component={QuestionDetails} />
         </Router>
