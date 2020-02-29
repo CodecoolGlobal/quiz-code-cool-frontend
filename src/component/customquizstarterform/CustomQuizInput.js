@@ -1,21 +1,18 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { CustomQuizContext } from "../../context/CustomQuizContext";
-import axios from "axios";
 
 import { Select, InputItem, InputLabel } from "../../style/MyStyle";
 
 export default function CustomQuizInput() {
-  const [customQuizzes, setCustomQuizzes] = useState([]);
-  const setSelectedCustomQuizId = useContext(CustomQuizContext)
-    .selectedCustomQuiz[1];
-  const BASE_URL_FOR_CUSTOM_QUIZ = useContext(CustomQuizContext)
-    .BASE_URL_FOR_CUSTOM_QUIZ;
+  const { getAllCustomQuizzes, selectedCustomQuiz, customQuizzes } = useContext(
+    CustomQuizContext
+  );
+
+  const setSelectedCustomQuizId = selectedCustomQuiz[1];
 
   useEffect(() => {
-    axios.get(BASE_URL_FOR_CUSTOM_QUIZ).then(res => {
-      setCustomQuizzes(res.data);
-    });
-  }, [BASE_URL_FOR_CUSTOM_QUIZ]);
+    getAllCustomQuizzes();
+  }, [getAllCustomQuizzes]);
 
   const handleCustomQuiz = e => {
     setSelectedCustomQuizId(e.target.value);
