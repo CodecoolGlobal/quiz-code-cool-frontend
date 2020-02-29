@@ -48,7 +48,7 @@ export const QuestionProvider = props => {
 
   const validateInputs = quizMode => {
     switch (quizMode) {
-      case quizMode === "Random":
+      case "Random":
         if (names.includes(undefined) || names.includes("")) {
           alert("Please fill out all the fields!");
           return false;
