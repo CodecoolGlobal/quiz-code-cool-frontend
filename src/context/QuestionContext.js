@@ -23,7 +23,7 @@ export const QuestionProvider = props => {
   const questionsPerPlayer = questionsPerPlayerState[0];
   const selectedCategoryId = categoryInput[0];
   const type = typeInput[0];
-  const names = nameInputs[0];
+  const [names, setNames] = nameInputs;
 
   //Custom quiz
   const { selectedCustomQuiz, BASE_URL_FOR_CUSTOM_QUIZ } = useContext(
@@ -41,6 +41,7 @@ export const QuestionProvider = props => {
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
 
   const initBeforeSubmit = () => {
+    setNames([]);
     setPlayers([]);
     setQuestions([]);
     setCurrentQuestionIndex(0);

@@ -25,7 +25,7 @@ export const RandomQuizProvider = props => {
   );
   const [type, setType] = useState("");
   const [playerNumber, setPlayerNumber] = useState(2);
-  const [names, setNames] = useState(new Array(playerNumber));
+  const [names, setNames] = useState([]);
 
   return (
     <RandomQuizContext.Provider
