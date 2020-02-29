@@ -1,18 +1,28 @@
 import React, { useState, createContext } from "react";
+import axios from "axios";
 
 export const CustomQuizContext = createContext();
 
 export const CustomQuizProvider = props => {
   // Constants
-  const BASE_URL_FOR_CUSTOM_QUIZ = "http://localhost:8080/customquizzes";
+  const CUSTOM_QUIZ_BASE_URL = process.env.REACT_APP_CUSTOM_QUIZ_BASE_URL;
 
   // States
   const [selectedCustomQuizId, setSelectedCustomQuizId] = useState(1);
+  const [customQuizzes, setCustomQuizzes] = useState([]);
+
+  const getAllCustomQuizzes = () => {
+    axios.get(CUSTOM_QUIZ_BASE_URL).then(res => {
+      setCustomQuizzes(res.data);
+    });
+  };
 
   return (
     <CustomQuizContext.Provider
       value={{
-        BASE_URL_FOR_CUSTOM_QUIZ,
+        CUSTOM_QUIZ_BASE_URL,
+        getAllCustomQuizzes,
+        customQuizzes,
         selectedCustomQuiz: [selectedCustomQuizId, setSelectedCustomQuizId]
       }}
     >

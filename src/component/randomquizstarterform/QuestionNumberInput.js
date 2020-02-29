@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { RandomStarterFormContext } from "../../context/RandomStarterFormContext";
+import { RandomQuizContext } from "context/RandomQuizContext";
 
-import { TextInput, InputItem, InputLabel } from "../../style/MyStyle";
+import { TextInput, InputItem, InputLabel } from "style/MyStyle";
 
 export default function QuestionNumberInput() {
-  const setQuestionsPerPlayer = useContext(RandomStarterFormContext)
-    .questionsPerPlayerState[1];
-  const MIN_QUESTIONS = useContext(RandomStarterFormContext).MIN_QUESTIONS;
+  const { questionsPerPlayerState } = useContext(RandomQuizContext);
+
+  const setQuestionsPerPlayer = questionsPerPlayerState[1];
 
   const handleNumberOfQuestions = e => {
     setQuestionsPerPlayer(e.target.value);
@@ -18,12 +18,6 @@ export default function QuestionNumberInput() {
       <TextInput
         placeholder='5'
         type='number'
-        id='numberOfQuestions'
-        style
-        required
-        name='numberOfQuestions'
-        min={MIN_QUESTIONS}
-        max='25'
         onChange={handleNumberOfQuestions}
       ></TextInput>
     </InputItem>

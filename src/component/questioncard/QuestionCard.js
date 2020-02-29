@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
-import { QuestionContext } from "../../context/QuestionContext";
-import { PlayerContext } from "../../context/PlayerContext";
-import { ProgressContext } from "../../context/ProgressContext";
 
-import Answers from "./Answers";
-import PlayerData from "./PlayerData";
+import Answers from "component/questioncard/Answers";
+import PlayerData from "component/questioncard/PlayerData";
+
+import { QuestionContext } from "context/QuestionContext";
+import { PlayerContext } from "context/PlayerContext";
+import { ProgressContext } from "context/ProgressContext";
 
 import {
   QuestionCardContainer,
@@ -15,8 +16,6 @@ import {
 } from "../../style/MyStyle";
 
 export default function QuestionCard(props) {
-  const [questionNumber, setQuestionNumber] = useState(1);
-
   const questionColors = {
     empty: "none",
     success: "rgba(92, 216, 43, 0.5)",
@@ -24,15 +23,18 @@ export default function QuestionCard(props) {
   };
   const [questionColor, setQuestionColor] = useState(questionColors.empty);
 
-  const { allQuestionsState, currentQuestionIndexState } = useContext(
-    QuestionContext
-  );
+  const {
+    allQuestionsState,
+    currentQuestionIndexState,
+    questionNumberState
+  } = useContext(QuestionContext);
 
   const questions = allQuestionsState[0];
   const [
     currentQuestionIndex,
     setCurrentQuestionIndex
   ] = currentQuestionIndexState;
+  const [questionNumber, setQuestionNumber] = questionNumberState;
 
   const players = useContext(PlayerContext)[0];
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
@@ -108,9 +110,6 @@ export default function QuestionCard(props) {
             ? "Finish Quiz"
             : "Next"}
         </Button>
-        <p>
-          {questionNumber} / {questions.length / players.length}
-        </p>
       </QuestionContainer>
     </QuestionCardContainer>
   );

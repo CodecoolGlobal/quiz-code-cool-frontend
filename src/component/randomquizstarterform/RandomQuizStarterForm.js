@@ -1,93 +1,26 @@
 import React, { useContext } from "react";
-import axios from "axios";
 
-import PlayerNameInput from "./PlayerNameInput";
-import CategoryInput from "./CategoryInput";
-import QuestionNumberInput from "./QuestionNumberInput";
-import TypeInput from "./TypeInput";
+import PlayerNameInput from "component/randomquizstarterform/PlayerNameInput";
+import CategoryInput from "component/randomquizstarterform/CategoryInput";
+import QuestionNumberInput from "component/randomquizstarterform/QuestionNumberInput";
+import TypeInput from "component/randomquizstarterform/TypeInput";
+import StepSlider from "component/randomquizstarterform/StepSlider";
 
-import { RandomStarterFormContext } from "../../context/RandomStarterFormContext";
-import { QuestionContext } from "../../context/QuestionContext";
-import { PlayerContext } from "../../context/PlayerContext";
+import { QuestionContext } from "context/QuestionContext";
 
-import Question from "../../context/Question";
-import Player from "../../context/Player";
-
-import { ContentContainer, H3, Button } from "../../style/MyStyle";
+import { ContentContainer, H3, Button } from "style/MyStyle";
 
 export default function QuizStarterForm(props) {
-  const {
-    currentQuestionIndexState,
-    allQuestionsState,
-    quizModeState
-  } = useContext(QuestionContext);
-  const setQuestions = allQuestionsState[1];
-  const setCurrentQuestionIndex = currentQuestionIndexState[1];
-  const setQuizMode = quizModeState[1];
+  const submitStarterForm = useContext(QuestionContext).submitStarterForm;
 
-  const setPlayers = useContext(PlayerContext)[1];
-
-  const {
-    questionsPerPlayerState,
-    BASE_URL_FOR_QUESTIONS_QUERY,
-    categoryInput,
-    typeInput,
-    nameInputs
-  } = useContext(RandomStarterFormContext);
-
-  const questionsPerPlayer = questionsPerPlayerState[0];
-  const selectedCategoryId = categoryInput[0];
-  const type = typeInput[0];
-  const names = nameInputs[0];
-  const questionNumber = questionsPerPlayer * names.length;
-
-  const createQuestionUrl = () => {
-    let QuestionNumberUrl = `amount=${questionNumber}`;
-    let categoryUrl =
-      selectedCategoryId === "0" ? "" : `&category=${selectedCategoryId}`;
-    let typeUrl = type === "" ? "" : `&type=${type}`;
-    let finalUrl =
-      BASE_URL_FOR_QUESTIONS_QUERY + QuestionNumberUrl + categoryUrl + typeUrl;
-    return finalUrl;
-  };
-
-  const submit = e => {
-    setPlayers([]);
-    setQuestions([]);
-    setCurrentQuestionIndex(0);
-
-    const questionUrl = createQuestionUrl();
-
-    axios.get(questionUrl).then(resp => {
-      if (resp.data === []) {
-        alert(
-          "There are not enough questions matching the entered parameters :("
-        );
-      } else {
-        resp.data.map(questionData =>
-          setQuestions(questions => [
-            ...questions,
-            new Question(
-              questionData.category.name,
-              questionData.type,
-              questionData.question,
-              questionData.correctAnswer,
-              questionData.incorrectAnswers
-            )
-          ])
-        );
-        names.map(name =>
-          setPlayers(players => [...players, new Player(name)])
-        );
-        props.history.push("/quiz");
-      }
-    });
-    setQuizMode("Random");
+  const submit = () => {
+    submitStarterForm(props, "Random");
   };
 
   return (
     <ContentContainer>
       <H3>New Random Quiz</H3>
+      <StepSlider />
       <PlayerNameInput />
       <QuestionNumberInput />
       <CategoryInput />

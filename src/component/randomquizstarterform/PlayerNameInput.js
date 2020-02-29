@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
-import { RandomStarterFormContext } from "../../context/RandomStarterFormContext";
+import { RandomQuizContext } from "context/RandomQuizContext";
 
-import { InputItem, InputLabel, TextInput } from "../../style/MyStyle";
+import { InputItem, InputLabel, TextInput } from "style/MyStyle";
 
 export default function PlayerNameInput() {
-  const [names, setNames] = useContext(RandomStarterFormContext).nameInputs;
-  const playerNumber = useContext(RandomStarterFormContext).playerNumber[0];
+  const { modifyName, playerNumberState } = useContext(RandomQuizContext);
+
+  const playerNumber = playerNumberState[0];
 
   const handlePlayerName = e => {
-    let currentNames = [...names];
-    currentNames[e.target.name] = e.target.value;
-    setNames(currentNames);
+    const index = e.target.name;
+    const value = e.target.value;
+    modifyName(index, value);
   };
 
   const createPlayerInput = n => {
@@ -18,7 +19,7 @@ export default function PlayerNameInput() {
     for (let i = 0; i < n; i++) {
       inputs.push(
         <InputItem key={i}>
-          <InputLabel htmlFor={i}>Player {i + 1} name</InputLabel>
+          <InputLabel htmlFor={i}>Player {i + 1}</InputLabel>
           <TextInput
             name={i}
             id={i}

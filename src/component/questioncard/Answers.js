@@ -1,53 +1,23 @@
 import React, { useContext, useState, useEffect } from "react";
-import { QuestionContext } from "../../context/QuestionContext";
-import { ProgressContext } from "../../context/ProgressContext";
 
-import {
-  RadioButton,
-  RadioButtonLabel,
-  AnswerContainer
-} from "../../style/MyStyle";
+import { QuestionContext } from "context/QuestionContext";
+import { ProgressContext } from "context/ProgressContext";
+
+import { RadioButton, RadioButtonLabel, AnswerContainer } from "style/MyStyle";
 
 export default function Answers() {
-  const questions = useContext(QuestionContext).allQuestionsState[0];
-
-  const { readyToProceed, correctness } = useContext(ProgressContext);
-  const setIsReadyToProceed = readyToProceed[1];
-  const setSelectedAnswerCorrectness = correctness[1];
-
-  const { incorrect_answers, correct_answer } = questions[0];
+  const { getAnswersZip } = useContext(QuestionContext);
   const [answersZip, setAnswersZip] = useState([]);
 
   useEffect(() => {
-    let answers = [correct_answer, ...incorrect_answers];
-    const zip = zipAnswers(incorrect_answers.length, answers);
-    shuffle(zip);
-    setAnswersZip(zip);
-  }, [correct_answer, incorrect_answers]);
+    setAnswersZip(getAnswersZip());
+  }, [getAnswersZip]);
 
-  const zipAnswers = (incorrectAnswersLength, answers) => {
-    let mapAnswers = [1];
-    for (let i = 0; i < incorrectAnswersLength; i++) {
-      mapAnswers[i + 1] = 0;
-    }
-    const answerZip = answers.map((answers, index) => [
-      answers,
-      mapAnswers[index]
-    ]);
-    return answerZip;
-  };
-
-  const shuffle = array => {
-    for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  };
+  const { processGuess } = useContext(ProgressContext);
 
   const chooseAnswer = event => {
     const guess = event.target.value;
-    setSelectedAnswerCorrectness(guess);
-    setIsReadyToProceed(true);
+    processGuess(guess);
   };
 
   return (

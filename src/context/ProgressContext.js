@@ -8,9 +8,15 @@ export const ProgressProvider = props => {
   );
   const [isReadyToProceed, setIsReadyToProceed] = useState(false);
 
+  const processGuess = guess => {
+    setSelectedAnswerCorrectness(guess);
+    setIsReadyToProceed(true);
+  };
+
   return (
     <ProgressContext.Provider
       value={{
+        processGuess,
         readyToProceed: [isReadyToProceed, setIsReadyToProceed],
         correctness: [selectedAnswerCorrectness, setSelectedAnswerCorrectness]
       }}

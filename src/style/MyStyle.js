@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import "./ideas.png";
+import "style/ideas.png";
 import { NavLink } from "react-router-dom";
 
 export const applicationTheme = {
@@ -40,10 +40,11 @@ export const TitleContainer = styled.div`
 
 export const QuestionsImage = styled.img`
   display: block;
-  height: 70px;
+  height: 60px;
 `;
 
 export const NavigBar = styled.ul`
+  position: sticky;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -275,18 +276,16 @@ export const RadioButton = styled.input`
   }
 `;
 
+export const Table = styled.table`
+  box-shadow: ${applicationTheme.shadow1};
+  border-radius: ${applicationTheme.borderRadius1};
+`;
+
 export const TableContainer = styled.div`
+  font-size: ${applicationTheme.fontSize1};
   padding: 10px;
   display: flex;
   justify-content: center;
-`;
-
-export const ResultTable = styled.table`
-  border: 2px solid #fff;
-  border-collapse: collapse;
-  box-shadow: ${applicationTheme.shadow1};
-  padding: 5px;
-  margin: 0 auto;
 `;
 
 export const ResultTableRow = styled.tr`
@@ -298,14 +297,15 @@ export const ResultTableRow = styled.tr`
 `;
 
 export const ResultTableData = styled.td`
-  border: 1px solid #fff;
+  border-radius: ${applicationTheme.borderRadius1};
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
 `;
 
 export const ResultTableHead = styled.th`
-  border: 1px solid #fff;
-  padding: 10px 25px;
+  border-radius: ${applicationTheme.borderRadius1};
+  font-size: ${applicationTheme.fontSize1};
+  padding: 10px 15px;
   margin-bottom: 5px;
 `;
 
@@ -321,4 +321,48 @@ export const FooterContainer = styled.div`
   font-family: "Capriola", sans-serif;
   background: #fff;
   text-align: center;
+`;
+
+export const QuestionListContainer = styled.div`
+  padding: 25px 5%;
+  background: ${applicationTheme.mainLightOpaque};
+  border-radius: ${applicationTheme.borderRadius3};
+  margin: 20px 20% 60px 20%;
+  box-shadow: ${applicationTheme.shadow1};
+  @media screen and (max-width: 992px) {
+    margin: 20px 15% 60px 15%;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 20px 10% 60px 10%;
+    padding: 15px 10%;
+  }
+`;
+
+export const QuestionsTr = styled.tr`
+  text-align: left;
+  color: ${applicationTheme.color1};
+  font-size: ${applicationTheme.fontSize1};
+  &:nth-child(even) {
+    background-color: ${applicationTheme.color5};
+  }
+  &:nth-child(odd) {
+    background-color: lightgray;
+  }
+  &:hover {
+    background: ${applicationTheme.color4};
+  }
+`;
+
+export const QuestionListElement = styled(NavLink)`
+  text-align: left;
+  text-decoration: none;
+  color: ${applicationTheme.color1};
+  &:hover {
+    color: #fff;
+  }
+`;
+
+export const QuestionsTd = styled.td`
+  border-radius: ${applicationTheme.borderRadius1};
+  padding: 5px 10px;
 `;

@@ -1,12 +1,14 @@
 import React from "react";
-import Navbar from "./Navbar";
+
+import Navbar from "component/Navbar";
+
 import {
   HeaderContainer,
   TitleContainer,
   Title,
   QuestionsImage
-} from "../style/MyStyle";
-import mainLogo from "../style/ideas.png";
+} from "style/MyStyle";
+import mainLogo from "style/ideas.png";
 
 export default function Header() {
   return (
