@@ -8,6 +8,8 @@ import { RandomQuizContext } from "./RandomQuizContext";
 import Question from "./Question";
 import Player from "./Player";
 
+import { shuffle } from "../Util";
+
 export const QuestionContext = createContext();
 
 export const QuestionProvider = props => {
@@ -139,9 +141,28 @@ export const QuestionProvider = props => {
     }
   };
 
+  //Answers
+  const zipAnswers = (incorrectAnswersLength, answers) => {
+    let mapAnswers = [1];
+    for (let i = 0; i < incorrectAnswersLength; i++) {
+      mapAnswers[i + 1] = 0;
+    }
+    const zip = answers.map((answers, index) => [answers, mapAnswers[index]]);
+    return zip;
+  };
+
+  const getAnswersZip = () => {
+    const { incorrectAnswers, correctAnswer } = questions[currentQuestionIndex];
+    let answers = [correctAnswer, ...incorrectAnswers];
+    const zip = zipAnswers(incorrectAnswers.length, answers);
+    shuffle(zip);
+    return zip;
+  };
+
   return (
     <QuestionContext.Provider
       value={{
+        getAnswersZip,
         submitStarterForm: submitStarterForm,
         questionNumberState: [currentQuestionNumber, setCurrentQuestionNumber],
         quizModeState: [quizMode, setQuizMode],
