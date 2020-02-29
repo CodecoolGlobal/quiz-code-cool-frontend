@@ -17,13 +17,13 @@ export const QuestionProvider = props => {
     BASE_URL_FOR_RANDOM_QUIZ,
     categoryInput,
     typeInput,
-    nameInputs
+    nameInputsState
   } = useContext(RandomQuizContext);
 
   const questionsPerPlayer = questionsPerPlayerState[0];
   const selectedCategoryId = categoryInput[0];
   const type = typeInput[0];
-  const [names, setNames] = nameInputs;
+  const [names, setNames] = nameInputsState;
 
   //Custom quiz
   const { selectedCustomQuiz, BASE_URL_FOR_CUSTOM_QUIZ } = useContext(

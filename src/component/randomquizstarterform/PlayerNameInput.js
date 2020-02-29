@@ -4,13 +4,14 @@ import { RandomQuizContext } from "../../context/RandomQuizContext";
 import { InputItem, InputLabel, TextInput } from "../../style/MyStyle";
 
 export default function PlayerNameInput() {
-  const [names, setNames] = useContext(RandomQuizContext).nameInputs;
-  const playerNumber = useContext(RandomQuizContext).playerNumber[0];
+  const { modifyName, playerNumberState } = useContext(RandomQuizContext);
+
+  const playerNumber = playerNumberState[0];
 
   const handlePlayerName = e => {
-    let currentNames = [...names];
-    currentNames[e.target.name] = e.target.value;
-    setNames(currentNames);
+    const index = e.target.name;
+    const value = e.target.value;
+    modifyName(index, value);
   };
 
   const createPlayerInput = n => {

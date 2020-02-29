@@ -11,7 +11,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 function ValueLabelComponent(props) {
   const { children, open, value } = props;
-  const setPlayerNumber = useContext(RandomQuizContext).playerNumber[1];
+  const setPlayerNumber = useContext(RandomQuizContext).playerNumberState[1];
 
   useEffect(() => {
     setPlayerNumber(value);

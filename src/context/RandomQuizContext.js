@@ -35,7 +35,15 @@ export const RandomQuizProvider = props => {
   );
   const [type, setType] = useState("");
   const [playerNumber, setPlayerNumber] = useState(2);
+
+  //Name
   const [names, setNames] = useState([]);
+
+  const modifyName = (index, value) => {
+    let currentNames = [...names];
+    currentNames[index] = value;
+    setNames(currentNames);
+  };
 
   return (
     <RandomQuizContext.Provider
@@ -45,11 +53,12 @@ export const RandomQuizProvider = props => {
         BASE_URL_FOR_RANDOM_QUIZ,
         MIN_QUESTIONS,
         TYPES,
-        nameInputs: [names, setNames],
+        nameInputsState: [names, setNames],
+        modifyName,
         questionNumberInput: [questionNumber, setQuestionNumber],
         categoryInput: [selectedCategoryId, setSelectedCategoryId],
         typeInput: [type, setType],
-        playerNumber: [playerNumber, setPlayerNumber],
+        playerNumberState: [playerNumber, setPlayerNumber],
         questionsPerPlayerState: [questionsPerPlayer, setQuestionsPerPlayer]
       }}
     >
