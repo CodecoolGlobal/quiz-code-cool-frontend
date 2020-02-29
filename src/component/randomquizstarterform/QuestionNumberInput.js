@@ -4,9 +4,7 @@ import { RandomQuizContext } from "../../context/RandomQuizContext";
 import { TextInput, InputItem, InputLabel } from "../../style/MyStyle";
 
 export default function QuestionNumberInput() {
-  const { questionsPerPlayerState, MIN_QUESTIONS } = useContext(
-    RandomQuizContext
-  );
+  const { questionsPerPlayerState } = useContext(RandomQuizContext);
 
   const setQuestionsPerPlayer = questionsPerPlayerState[1];
 
@@ -20,12 +18,6 @@ export default function QuestionNumberInput() {
       <TextInput
         placeholder='5'
         type='number'
-        id='numberOfQuestions'
-        style
-        required
-        name='numberOfQuestions'
-        min={MIN_QUESTIONS}
-        max='25'
         onChange={handleNumberOfQuestions}
       ></TextInput>
     </InputItem>

@@ -15,6 +15,7 @@ export const QuestionProvider = props => {
   const {
     questionsPerPlayerState,
     BASE_URL_FOR_RANDOM_QUIZ,
+    MIN_QUESTIONS,
     categoryInput,
     typeInput,
     nameInputsState
@@ -54,7 +55,7 @@ export const QuestionProvider = props => {
           alert("Please fill out all the fields!");
           return false;
         }
-        if (questionsPerPlayer < 1) {
+        if (questionsPerPlayer < MIN_QUESTIONS) {
           alert("Questions / Player must be a positive number.");
           return false;
         }
