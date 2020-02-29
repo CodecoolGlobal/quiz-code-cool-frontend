@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
-import { QuestionContext } from "../../context/QuestionContext";
-import { PlayerContext } from "../../context/PlayerContext";
-import { ProgressContext } from "../../context/ProgressContext";
 
-import Answers from "./Answers";
-import PlayerData from "./PlayerData";
+import Answers from "component/questioncard/Answers";
+import PlayerData from "component/questioncard/PlayerData";
+
+import { QuestionContext } from "context/QuestionContext";
+import { PlayerContext } from "context/PlayerContext";
+import { ProgressContext } from "context/ProgressContext";
 
 import {
   QuestionCardContainer,

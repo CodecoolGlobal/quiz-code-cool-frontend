@@ -1,14 +1,13 @@
 import React, { useState, createContext, useContext } from "react";
 import axios from "axios";
 
-import { PlayerContext } from "./PlayerContext";
-import { CustomQuizContext } from "./CustomQuizContext";
-import { RandomQuizContext } from "./RandomQuizContext";
+import { PlayerContext } from "context/PlayerContext";
+import { CustomQuizContext } from "context/CustomQuizContext";
+import { RandomQuizContext } from "context/RandomQuizContext";
+import Question from "context/Question";
+import Player from "context/Player";
 
-import Question from "./Question";
-import Player from "./Player";
-
-import { shuffle } from "../Util";
+import { shuffle } from "Util";
 
 export const QuestionContext = createContext();
 

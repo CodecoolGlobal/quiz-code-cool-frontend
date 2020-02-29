@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { AddNewQuestionFormContext } from "../../context/AddNewQuestionFormContext";
-import { Select, InputItem, InputLabel } from "../../style/MyStyle";
+import { AddNewQuestionFormContext } from "context/AddNewQuestionFormContext";
+import { Select, InputItem, InputLabel } from "style/MyStyle";
 
 export default function TypeInput() {
   const setType = useContext(AddNewQuestionFormContext).typeInput[1];
@@ -12,9 +12,9 @@ export default function TypeInput() {
 
   return (
     <InputItem>
-      <InputLabel htmlFor="type">Type</InputLabel>
-      <Select id="type" name="type" onChange={handleType}>
-        <option disabled defaultValue="" selected>
+      <InputLabel htmlFor='type'>Type</InputLabel>
+      <Select id='type' name='type' onChange={handleType}>
+        <option disabled defaultValue='' selected>
           -- Select Type --
         </option>
         {Object.entries(TYPES).map((entry, index) => (

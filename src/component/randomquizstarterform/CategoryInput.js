@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { RandomQuizContext } from "../../context/RandomQuizContext";
+import { RandomQuizContext } from "context/RandomQuizContext";
 
-import { Select, InputItem, InputLabel } from "../../style/MyStyle";
+import { Select, InputItem, InputLabel } from "style/MyStyle";
 
 export default function CategoryInput() {
   const { categoryInput, getAllCategories, categories } = useContext(

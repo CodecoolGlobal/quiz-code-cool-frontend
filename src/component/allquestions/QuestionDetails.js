@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import Question from "../../context/Question";
-import Answers from "./Answers";
+import Question from "context/Question";
+import Answers from "component/allquestions/Answers";
 
 import {
   H3,

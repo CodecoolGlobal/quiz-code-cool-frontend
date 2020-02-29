@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
-import { AddNewQuestionFormContext } from "../../context/AddNewQuestionFormContext";
-import { ProgressContext } from "../../context/ProgressContext";
+
+import { AddNewQuestionFormContext } from "context/AddNewQuestionFormContext";
+import { ProgressContext } from "context/ProgressContext";
 
 import {
   RadioButton,
   RadioButtonLabel,
   InputItem,
   InputLabel
-} from "../../style/MyStyle";
+} from "style/MyStyle";
 
 export default function TrueFalseAnswers() {
   const { readyToProceed } = useContext(ProgressContext);
@@ -27,13 +28,13 @@ export default function TrueFalseAnswers() {
 
   return (
     <InputItem>
-      <InputLabel htmlFor="answer">Click on the correct answer</InputLabel>
+      <InputLabel htmlFor='answer'>Click on the correct answer</InputLabel>
       {possibleAnswersInput[0].map(answer => (
         <div key={answer}>
           <RadioButton
             id={answer}
-            type="radio"
-            name="answer"
+            type='radio'
+            name='answer'
             value={answer}
             onClick={chooseAnswer}
             defaultChecked={false}

@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import { AddNewQuestionFormContext } from "../../context/AddNewQuestionFormContext";
 
-import { InputLabel, TextInput, InputItem } from "../../style/MyStyle";
+import { AddNewQuestionFormContext } from "context/AddNewQuestionFormContext";
+
+import { InputLabel, TextInput, InputItem } from "style/MyStyle";
 
 export default function MultipleAnswers() {
   const setCorrectAnswer = useContext(AddNewQuestionFormContext)

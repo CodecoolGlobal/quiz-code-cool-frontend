@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
-import { QuestionContext } from "../../context/QuestionContext";
 
-import PlayerNameInput from "./PlayerNameInput";
-import CategoryInput from "./CategoryInput";
-import QuestionNumberInput from "./QuestionNumberInput";
-import TypeInput from "./TypeInput";
-import StepSlider from "./StepSlider";
+import PlayerNameInput from "component/randomquizstarterform/PlayerNameInput";
+import CategoryInput from "component/randomquizstarterform/CategoryInput";
+import QuestionNumberInput from "component/randomquizstarterform/QuestionNumberInput";
+import TypeInput from "component/randomquizstarterform/TypeInput";
+import StepSlider from "component/randomquizstarterform/StepSlider";
 
-import { ContentContainer, H3, Button } from "../../style/MyStyle";
+import { QuestionContext } from "context/QuestionContext";
+
+import { ContentContainer, H3, Button } from "style/MyStyle";
 
 export default function QuizStarterForm(props) {
   const submitStarterForm = useContext(QuestionContext).submitStarterForm;

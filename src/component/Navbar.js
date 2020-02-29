@@ -1,5 +1,5 @@
 import React from "react";
-import { CoPage, NavigBar, NavigLink, NavItem } from "../style/MyStyle";
+import { CoPage, NavigBar, NavigLink, NavItem } from "style/MyStyle";
 
 export default function Navbar() {
   return (

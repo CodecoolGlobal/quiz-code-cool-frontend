@@ -11,7 +11,7 @@ import {
   QuestionsTr,
   H3,
   QuestionListElement
-} from "../../style/MyStyle";
+} from "style/MyStyle";
 
 export default function QuestionsList() {
   const [questions, setQuestions] = useState([]);

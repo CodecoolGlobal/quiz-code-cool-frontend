@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import "./ideas.png";
+import "style/ideas.png";
 import { NavLink } from "react-router-dom";
 
 export const applicationTheme = {

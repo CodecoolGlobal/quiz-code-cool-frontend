@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
-import { AddNewQuestionFormContext } from "../../context/AddNewQuestionFormContext";
+import { AddNewQuestionFormContext } from "context/AddNewQuestionFormContext";
 
-import { Select, InputItem, InputLabel } from "../../style/MyStyle";
+import { Select, InputItem, InputLabel } from "style/MyStyle";
 
 export default function CategoryInput() {
   const [categories, setCategories] = useState([]);
@@ -21,9 +21,9 @@ export default function CategoryInput() {
 
   return (
     <InputItem>
-      <InputLabel htmlFor="category">Category</InputLabel>
-      <Select id="category" name="category" onChange={handleCategory}>
-        <option disabled defaultValue="" selected>
+      <InputLabel htmlFor='category'>Category</InputLabel>
+      <Select id='category' name='category' onChange={handleCategory}>
+        <option disabled defaultValue='' selected>
           -- Select Category --
         </option>
         {categories.map(category => (

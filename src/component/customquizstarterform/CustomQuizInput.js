@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { CustomQuizContext } from "../../context/CustomQuizContext";
+import { CustomQuizContext } from "context/CustomQuizContext";
 
-import { Select, InputItem, InputLabel } from "../../style/MyStyle";
+import { Select, InputItem, InputLabel } from "style/MyStyle";
 
 export default function CustomQuizInput() {
   const { getAllCustomQuizzes, selectedCustomQuiz, customQuizzes } = useContext(

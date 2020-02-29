@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 
-import { QuestionContext } from "../../context/QuestionContext";
+import CustomQuizInput from "component/customquizstarterform/CustomQuizInput";
 
-import CustomQuizInput from "./CustomQuizInput";
+import { QuestionContext } from "context/QuestionContext";
 
-import { ContentContainer, H3, Button } from "../../style/MyStyle";
+import { ContentContainer, H3, Button } from "style/MyStyle";
 
 export default function CustomQuizStarterForm(props) {
   const submitStarterForm = useContext(QuestionContext).submitStarterForm;

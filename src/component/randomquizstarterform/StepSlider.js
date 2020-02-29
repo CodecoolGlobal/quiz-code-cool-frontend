@@ -1,12 +1,11 @@
 import React, { useEffect, useContext } from "react";
-import { RandomQuizContext } from "../../context/RandomQuizContext";
 
-import PropTypes from "prop-types";
+import { RandomQuizContext } from "context/RandomQuizContext";
 
-import { InputItem, InputLabel } from "../../style/MyStyle";
+import { InputItem, InputLabel } from "style/MyStyle";
 
 import { Slider } from "@material-ui/core";
-
+import PropTypes from "prop-types";
 import Tooltip from "@material-ui/core/Tooltip";
 
 function ValueLabelComponent(props) {

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { PlayerContext } from "../../context/PlayerContext";
-import { QuestionContext } from "../../context/QuestionContext";
+import { PlayerContext } from "context/PlayerContext";
+import { QuestionContext } from "context/QuestionContext";
 
 import {
   ContentContainer,
@@ -12,8 +12,8 @@ import {
   ResultTableRow,
   ResultTableData,
   ResultTableHead
-} from "../../style/MyStyle";
-import ColorsForPlayers from "../../style/PlayerColors";
+} from "style/MyStyle";
+import ColorsForPlayers from "style/PlayerColors";
 
 export default function Result(props) {
   const players = useContext(PlayerContext)[0];

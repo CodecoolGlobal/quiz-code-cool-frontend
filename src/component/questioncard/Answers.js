@@ -1,12 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
-import { QuestionContext } from "../../context/QuestionContext";
-import { ProgressContext } from "../../context/ProgressContext";
 
-import {
-  RadioButton,
-  RadioButtonLabel,
-  AnswerContainer
-} from "../../style/MyStyle";
+import { QuestionContext } from "context/QuestionContext";
+import { ProgressContext } from "context/ProgressContext";
+
+import { RadioButton, RadioButtonLabel, AnswerContainer } from "style/MyStyle";
 
 export default function Answers() {
   const { getAnswersZip } = useContext(QuestionContext);

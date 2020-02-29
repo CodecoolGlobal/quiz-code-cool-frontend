@@ -1,17 +1,16 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 
-import CategoryInput from "./CategoryInput";
-import TypeInput from "./TypeInput";
-import QuestionInput from "./QuestionInput";
-import MultipleAnswers from "./MultipleAnswers";
-import TrueFalseAnswers from "./TrueFalseAnswers";
+import CategoryInput from "component/addnewquestionform/CategoryInput";
+import TypeInput from "component/addnewquestionform/TypeInput";
+import QuestionInput from "component/addnewquestionform/QuestionInput";
+import MultipleAnswers from "component/addnewquestionform/MultipleAnswers";
+import TrueFalseAnswers from "component/addnewquestionform/TrueFalseAnswers";
 
-import { AddNewQuestionFormContext } from "../../context/AddNewQuestionFormContext";
+import Question from "context/Question";
+import { AddNewQuestionFormContext } from "context/AddNewQuestionFormContext";
 
-import Question from "../../context/Question";
-
-import { ContentContainer, H3, Button } from "../../style/MyStyle";
+import { ContentContainer, H3, Button } from "style/MyStyle";
 
 export default function AddNewQuestionForm(props) {
   const [answerComponent, setAnswerComponent] = useState(<div></div>);

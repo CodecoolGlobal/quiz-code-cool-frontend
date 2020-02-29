@@ -1,16 +1,11 @@
 import React, { useContext } from "react";
-import { PlayerContext } from "../../context/PlayerContext";
-import { QuestionContext } from "../../context/QuestionContext";
 
-import {
-  PlayerName,
-  H2,
-  PlayerHeader,
-  QuestionsImage
-} from "../../style/MyStyle";
-import ColorsForPlayers from "../../style/PlayerColors";
+import { PlayerContext } from "context/PlayerContext";
+import { QuestionContext } from "context/QuestionContext";
 
-import questionMark from "../../style/question-mark.png";
+import { PlayerName, H2, PlayerHeader, QuestionsImage } from "style/MyStyle";
+import ColorsForPlayers from "style/PlayerColors";
+import questionMark from "style/question-mark.png";
 
 export default function PlayerData(props) {
   const players = useContext(PlayerContext)[0];
