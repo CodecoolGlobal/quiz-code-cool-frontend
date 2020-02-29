@@ -21,8 +21,8 @@ export default function Answers(props) {
 
   return (
     <ResultTableData>
-      {answers.map(answer => (
-        <div>{answer}</div>
+      {answers.map((answer, index) => (
+        <div key={index}>{answer}</div>
       ))}
     </ResultTableData>
   );
