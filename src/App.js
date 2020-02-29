@@ -51,10 +51,16 @@ function App() {
               </PlayerProvider>
             </RandomQuizProvider>
           </CustomQuizProvider>
+          <ProgressProvider>
+            <AddNewQuestionFormProvider>
+              <Route
+                exact
+                path='/add-question'
+                component={AddNewQuestionForm}
+              />
+            </AddNewQuestionFormProvider>
+          </ProgressProvider>
 
-          <AddNewQuestionFormProvider>
-            <Route exact path='/add-question' component={AddNewQuestionForm} />
-          </AddNewQuestionFormProvider>
           <Route exact path='/questions' component={QuestionsList} />
           <Route exact path='/questions/:id' component={QuestionDetails} />
         </Router>
