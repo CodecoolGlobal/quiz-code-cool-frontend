@@ -3,8 +3,9 @@ import React, { useState, createContext } from "react";
 export const AddNewQuestionFormContext = createContext();
 
 export const AddNewQuestionFormProvider = props => {
-  const BASE_URL_FOR_POST_REQUEST = "http://localhost:8080/questions/add";
-  const CATEGORY_URL = "http://localhost:8080/categories";
+  const ADD_NEW_QUESTION_BASE_URL =
+    process.env.REACT_APP_ADD_NEW_QUESTION_BASE_URL;
+  const CATEGORY_URL = process.env.REACT_APP_CATEGORY_URL;
   const TYPES = {
     "Multiple Choice": "multiple",
     "True / False": "boolean"
@@ -31,7 +32,7 @@ export const AddNewQuestionFormProvider = props => {
   return (
     <AddNewQuestionFormContext.Provider
       value={{
-        BASE_URL_FOR_POST_REQUEST,
+        ADD_NEW_QUESTION_BASE_URL,
         CATEGORY_URL,
         TYPES,
         clearAddNewQuestionContext,

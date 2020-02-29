@@ -4,11 +4,11 @@ import axios from "axios";
 export const RandomQuizContext = createContext();
 
 export const RandomQuizProvider = props => {
-  const BASE_URL_FOR_RANDOM_QUIZ = "http://localhost:8080/questions?";
+  const RANDOM_QUIZ_BASE_URL = process.env.REACT_APP_RANDOM_QUIZ_BASE_URL;
   const MIN_QUESTIONS = 1;
 
   //Category
-  const CATEGORY_URL = "http://localhost:8080/categories";
+  const CATEGORY_URL = process.env.REACT_APP_CATEGORY_URL;
   const DEFAULT_CATEGORY = {
     id: "0",
     name: "Any Category"
@@ -50,7 +50,7 @@ export const RandomQuizProvider = props => {
       value={{
         getAllCategories,
         categories,
-        BASE_URL_FOR_RANDOM_QUIZ,
+        RANDOM_QUIZ_BASE_URL,
         MIN_QUESTIONS,
         TYPES,
         nameInputsState: [names, setNames],

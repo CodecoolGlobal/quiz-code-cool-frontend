@@ -15,7 +15,7 @@ export const QuestionProvider = props => {
   //RandomQuiz
   const {
     questionsPerPlayerState,
-    BASE_URL_FOR_RANDOM_QUIZ,
+    RANDOM_QUIZ_BASE_URL,
     MIN_QUESTIONS,
     categoryInput,
     typeInput,
@@ -28,7 +28,7 @@ export const QuestionProvider = props => {
   const [names, setNames] = nameInputsState;
 
   //Custom quiz
-  const { selectedCustomQuiz, BASE_URL_FOR_CUSTOM_QUIZ } = useContext(
+  const { selectedCustomQuiz, CUSTOM_QUIZ_BASE_URL } = useContext(
     CustomQuizContext
   );
   const selectedCustomQuizId = selectedCustomQuiz[0];
@@ -116,13 +116,13 @@ export const QuestionProvider = props => {
           selectedCategoryId === "0" ? "" : `&category=${selectedCategoryId}`;
         let typeUrlPart = type === "" ? "" : `&type=${type}`;
         let finalUrl =
-          BASE_URL_FOR_RANDOM_QUIZ +
+          RANDOM_QUIZ_BASE_URL +
           questionNumberUrlPart +
           categoryUrlPart +
           typeUrlPart;
         return finalUrl;
       case "Custom":
-        return BASE_URL_FOR_CUSTOM_QUIZ + `/${selectedCustomQuizId}`;
+        return CUSTOM_QUIZ_BASE_URL + `/${selectedCustomQuizId}`;
       default:
         break;
     }

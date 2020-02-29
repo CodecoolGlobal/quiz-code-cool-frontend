@@ -16,7 +16,7 @@ export default function AddNewQuestionForm(props) {
   const [answerComponent, setAnswerComponent] = useState(<div></div>);
 
   const {
-    BASE_URL_FOR_POST_REQUEST,
+    ADD_NEW_QUESTION_BASE_URL,
     categoryInput,
     typeInput,
     questionInput,
@@ -61,7 +61,7 @@ export default function AddNewQuestionForm(props) {
       incorrectAnswersInput[0]
     );
 
-    const questionUrl = BASE_URL_FOR_POST_REQUEST;
+    const questionUrl = ADD_NEW_QUESTION_BASE_URL;
     axios({
       method: "post",
       url: questionUrl,

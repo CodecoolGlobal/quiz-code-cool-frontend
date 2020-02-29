@@ -5,15 +5,14 @@ export const CustomQuizContext = createContext();
 
 export const CustomQuizProvider = props => {
   // Constants
-  const BASE_URL_FOR_CUSTOM_QUIZ =
-    process.env.REACT_APP_BASE_URL_FOR_CUSTOM_QUIZ;
+  const CUSTOM_QUIZ_BASE_URL = process.env.REACT_APP_CUSTOM_QUIZ_BASE_URL;
 
   // States
   const [selectedCustomQuizId, setSelectedCustomQuizId] = useState(1);
   const [customQuizzes, setCustomQuizzes] = useState([]);
 
   const getAllCustomQuizzes = () => {
-    axios.get(BASE_URL_FOR_CUSTOM_QUIZ).then(res => {
+    axios.get(CUSTOM_QUIZ_BASE_URL).then(res => {
       setCustomQuizzes(res.data);
     });
   };
@@ -21,7 +20,7 @@ export const CustomQuizProvider = props => {
   return (
     <CustomQuizContext.Provider
       value={{
-        BASE_URL_FOR_CUSTOM_QUIZ,
+        CUSTOM_QUIZ_BASE_URL,
         getAllCustomQuizzes,
         customQuizzes,
         selectedCustomQuiz: [selectedCustomQuizId, setSelectedCustomQuizId]
