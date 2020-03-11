@@ -18,48 +18,51 @@ import { RandomQuizProvider } from "context/RandomQuizContext";
 import { CustomQuizProvider } from "context/CustomQuizContext";
 import { ProgressProvider } from "context/ProgressContext";
 import { AddNewQuestionFormProvider } from "context/AddNewQuestionFormContext";
+import { CategoryProvider } from "context/CategoryContext";
 
 import { Container } from "style/MyStyle";
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <Container>
         <Router>
-          <CustomQuizProvider>
-            <RandomQuizProvider>
-              <PlayerProvider>
-                <QuestionProvider>
-                  <Header />
-                  <Route
-                    exact
-                    path='/random-quiz'
-                    component={RandomQuizStarterForm}
-                  />
-                  <Route
-                    exact
-                    path='/custom-quiz'
-                    component={CustomQuizStarterForm}
-                  />
-                  <ProgressProvider>
-                    <Route exact path='/quiz' component={QuestionCard} />
-                  </ProgressProvider>
-                  <Route exact path='/results' component={Result} />
-                </QuestionProvider>
-              </PlayerProvider>
-            </RandomQuizProvider>
-          </CustomQuizProvider>
-          <ProgressProvider>
-            <AddNewQuestionFormProvider>
-              <Route
-                exact
-                path='/add-question'
-                component={AddNewQuestionForm}
-              />
-            </AddNewQuestionFormProvider>
-          </ProgressProvider>
-          <Route exact path='/questions' component={QuestionsList} />
-          <Route exact path='/questions/:id' component={QuestionDetails} />
+          <CategoryProvider>
+            <CustomQuizProvider>
+              <RandomQuizProvider>
+                <PlayerProvider>
+                  <QuestionProvider>
+                    <Header />
+                    <Route
+                      exact
+                      path="/random-quiz"
+                      component={RandomQuizStarterForm}
+                    />
+                    <Route
+                      exact
+                      path="/custom-quiz"
+                      component={CustomQuizStarterForm}
+                    />
+                    <ProgressProvider>
+                      <Route exact path="/quiz" component={QuestionCard} />
+                    </ProgressProvider>
+                    <Route exact path="/results" component={Result} />
+                  </QuestionProvider>
+                </PlayerProvider>
+              </RandomQuizProvider>
+            </CustomQuizProvider>
+            <ProgressProvider>
+              <AddNewQuestionFormProvider>
+                <Route
+                  exact
+                  path="/add-question"
+                  component={AddNewQuestionForm}
+                />
+              </AddNewQuestionFormProvider>
+            </ProgressProvider>
+          </CategoryProvider>
+          <Route exact path="/questions" component={QuestionsList} />
+          <Route exact path="/questions/:id" component={QuestionDetails} />
         </Router>
       </Container>
       <Footer />

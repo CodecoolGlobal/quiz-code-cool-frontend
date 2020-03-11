@@ -5,7 +5,6 @@ export const AddNewQuestionFormContext = createContext();
 export const AddNewQuestionFormProvider = props => {
   const ADD_NEW_QUESTION_BASE_URL =
     process.env.REACT_APP_ADD_NEW_QUESTION_BASE_URL;
-  const CATEGORY_URL = process.env.REACT_APP_CATEGORY_URL;
   const TYPES = {
     "Multiple Choice": "multiple",
     "True / False": "boolean"
@@ -33,7 +32,6 @@ export const AddNewQuestionFormProvider = props => {
     <AddNewQuestionFormContext.Provider
       value={{
         ADD_NEW_QUESTION_BASE_URL,
-        CATEGORY_URL,
         TYPES,
         clearAddNewQuestionContext,
         possibleAnswersInput: [possibleAnswers, setPossibleAnswers],
