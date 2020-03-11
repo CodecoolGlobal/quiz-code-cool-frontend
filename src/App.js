@@ -36,33 +36,33 @@ function App() {
               <RandomQuizProvider>
                 <PlayerProvider>
                   <QuestionProvider>
-                    <Header />
-                    <Route
-                      exact
-                      path='/random-quiz'
-                      component={RandomQuizStarterForm}
-                    />
-                    <Route
-                      exact
-                      path='/custom-quiz/new'
-                      component={NewCustomQuiz}
-                    />
-                    <Route
-                      exact
-                      path='/custom-quiz/start'
-                      component={CustomQuizStarterForm}
-                    />
-                    <Route
-                      exact
-                      path='/custom-quiz'
-                      component={CustomQuizSelect}
-                    />
                     <ProgressProvider>
+                      <Header />
+                      <Route
+                        exact
+                        path='/random-quiz'
+                        component={RandomQuizStarterForm}
+                      />
+                      <Route
+                        exact
+                        path='/custom-quiz/new'
+                        component={NewCustomQuiz}
+                      />
+                      <Route
+                        exact
+                        path='/custom-quiz/start'
+                        component={CustomQuizStarterForm}
+                      />
+                      <Route
+                        exact
+                        path='/custom-quiz'
+                        component={CustomQuizSelect}
+                      />
                       <AnswerCorrectnessProvider>
                         <Route exact path='/quiz' component={QuestionCard} />
                       </AnswerCorrectnessProvider>
+                      <Route exact path='/results' component={Result} />
                     </ProgressProvider>
-                    <Route exact path='/results' component={Result} />
                   </QuestionProvider>
                 </PlayerProvider>
               </RandomQuizProvider>
