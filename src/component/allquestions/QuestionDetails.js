@@ -91,7 +91,11 @@ export default function QuestionDetails(props) {
             </ResultTableRow>
             <ResultTableRow>
               <ResultTableHead>Validation date</ResultTableHead>
-              <ResultTableData>{question.validationDate}</ResultTableData>
+              <ResultTableData>
+                {question.validationDate === null
+                  ? "Not validated yet"
+                  : question.validationDate}
+              </ResultTableData>
             </ResultTableRow>
             <ResultTableRow>
               <ResultTableHead>Created By</ResultTableHead>
