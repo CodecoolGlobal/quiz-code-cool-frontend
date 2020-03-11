@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import RandomQuizStarterForm from "component/randomquizstarterform/RandomQuizStarterForm";
-import CustomQuizStarterForm from "component/customquizstarterform/CustomQuizStarterForm";
+import CustomQuizStarterForm from "component/customquiz/customquizstarterform/CustomQuizStarterForm";
 import AddNewQuestionForm from "component/addnewquestionform/AddNewQuestionForm";
 import QuestionsList from "component/allquestions/QuestionsList";
 import QuestionDetails from "component/allquestions/QuestionDetails";

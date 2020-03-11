@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import CustomQuizInput from "component/customquizstarterform/CustomQuizInput";
+import CustomQuizInput from "component/customquiz/customquizstarterform/CustomQuizInput";
 
 import { QuestionContext } from "context/QuestionContext";
 
