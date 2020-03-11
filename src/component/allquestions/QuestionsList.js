@@ -15,7 +15,6 @@ import {
 
 export default function QuestionsList() {
   const [questions, setQuestions] = useState([]);
-  const [validatedText, setValidatedText] = useState("");
 
   useEffect(() => {
     axios

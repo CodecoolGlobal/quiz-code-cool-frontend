@@ -10,7 +10,7 @@ export default function CategoryInput() {
 
   useEffect(() => {
     getAllCategories();
-  }, []);
+  }, [getAllCategories]);
 
   const handleCategory = e => {
     setSelectedCategoryId(e.target.value);
