@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import Question from "context/Question";
-import Answers from "component/allquestions/Answers";
+import Answers from "component/questions/Answers";
 import { Button } from "style/MyStyle";
 
 import {

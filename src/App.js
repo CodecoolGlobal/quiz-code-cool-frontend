@@ -2,17 +2,17 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import RandomQuizStarterForm from "component/randomquizstarterform/RandomQuizStarterForm";
-import CustomQuizStarterForm from "component/customquiz/customquizstarterform/CustomQuizStarterForm";
-import AddNewQuestionForm from "component/addnewquestionform/AddNewQuestionForm";
-import QuestionsList from "component/allquestions/QuestionsList";
-import QuestionDetails from "component/allquestions/QuestionDetails";
+import RandomQuizStarterForm from "component/quizzes/random/randomquizstarterform/RandomQuizStarterForm";
+import CustomQuizStarterForm from "component/quizzes/custom/customquizstarterform/CustomQuizStarterForm";
+import AddNewQuestionForm from "component/newquestion/AddNewQuestionForm";
+import QuestionsList from "component/questions/QuestionsList";
+import QuestionDetails from "component/questions/QuestionDetails";
 import QuestionCard from "component/questioncard/QuestionCard";
 import Result from "component/result/Result";
 import Header from "component/layout/Header";
 import Footer from "component/layout/Footer";
-import CustomQuizSelect from "component/customquiz/CustomQuizSelect";
-import NewCustomQuiz from "component/customquiz/newcustomquiz/NewCustomQuiz";
+import CustomQuizSelect from "component/quizzes/custom/CustomQuizSelect";
+import NewCustomQuiz from "component/quizzes/custom/newcustomquiz/NewCustomQuiz";
 
 import { QuestionProvider } from "context/QuestionContext";
 import { PlayerProvider } from "context/PlayerContext";

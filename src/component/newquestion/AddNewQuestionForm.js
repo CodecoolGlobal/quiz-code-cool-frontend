@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 
-import CategoryInput from "component/addnewquestionform/CategoryInput";
-import TypeInput from "component/addnewquestionform/TypeInput";
-import QuestionInput from "component/addnewquestionform/QuestionInput";
-import MultipleAnswers from "component/addnewquestionform/MultipleAnswers";
-import TrueFalseAnswers from "component/addnewquestionform/TrueFalseAnswers";
+import CategoryInput from "component/newquestion/CategoryInput";
+import TypeInput from "component/newquestion/TypeInput";
+import QuestionInput from "component/newquestion/QuestionInput";
+import MultipleAnswers from "component/newquestion/MultipleAnswers";
+import TrueFalseAnswers from "component/newquestion/TrueFalseAnswers";
 
 import Question from "context/Question";
 import { AddNewQuestionFormContext } from "context/AddNewQuestionFormContext";
