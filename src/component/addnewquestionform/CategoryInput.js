@@ -11,7 +11,7 @@ export default function CategoryInput() {
 
   useEffect(() => {
     getAllCategories();
-  }, []);
+  }, [getAllCategories]);
 
   const handleCategory = e => {
     setSelectedCategoryId(JSON.parse(e.target.value));
@@ -19,9 +19,9 @@ export default function CategoryInput() {
 
   return (
     <InputItem>
-      <InputLabel htmlFor="category">Category</InputLabel>
-      <Select id="category" name="category" onChange={handleCategory}>
-        <option disabled defaultValue="" selected>
+      <InputLabel htmlFor='category'>Category</InputLabel>
+      <Select id='category' name='category' onChange={handleCategory}>
+        <option disabled defaultValue='' selected>
           -- Select Category --
         </option>
         {categories.map(category => (
