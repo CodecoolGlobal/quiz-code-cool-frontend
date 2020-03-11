@@ -1,14 +1,12 @@
 import React, { useContext, useEffect } from "react";
+import { CategoryContext } from "context/CategoryContext";
 import { RandomQuizContext } from "context/RandomQuizContext";
 
 import { Select, InputItem, InputLabel } from "style/MyStyle";
 
 export default function CategoryInput() {
-  const { categoryInput, getAllCategories, categories } = useContext(
-    RandomQuizContext
-  );
-
-  const setSelectedCategoryId = categoryInput[1];
+  const setSelectedCategoryId = useContext(RandomQuizContext).categoryInput[1];
+  const { getAllCategories, categories } = useContext(CategoryContext);
 
   useEffect(() => {
     getAllCategories();

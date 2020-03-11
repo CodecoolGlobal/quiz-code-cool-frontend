@@ -1,22 +1,20 @@
-import React, { useContext, useState, useEffect } from "react";
-import axios from "axios";
+import React, { useContext, useEffect } from "react";
+import { CategoryContext } from "context/CategoryContext";
 import { AddNewQuestionFormContext } from "context/AddNewQuestionFormContext";
 
 import { Select, InputItem, InputLabel } from "style/MyStyle";
 
 export default function CategoryInput() {
-  const [categories, setCategories] = useState([]);
-  const { categoryInput } = useContext(AddNewQuestionFormContext);
-  const CATEGORY_URL = useContext(AddNewQuestionFormContext).CATEGORY_URL;
+  const setSelectedCategoryId = useContext(AddNewQuestionFormContext)
+    .categoryInput[1];
+  const { getAllCategories, categories } = useContext(CategoryContext);
 
   useEffect(() => {
-    axios.get(CATEGORY_URL).then(res => {
-      setCategories(res.data);
-    });
-  }, [CATEGORY_URL]);
+    getAllCategories();
+  }, [getAllCategories]);
 
   const handleCategory = e => {
-    categoryInput[1](JSON.parse(e.target.value));
+    setSelectedCategoryId(JSON.parse(e.target.value));
   };
 
   return (

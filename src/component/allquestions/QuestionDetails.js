@@ -3,6 +3,7 @@ import axios from "axios";
 
 import Question from "context/Question";
 import Answers from "component/allquestions/Answers";
+import { Button } from "style/MyStyle";
 
 import {
   H3,
@@ -16,6 +17,7 @@ import {
 
 export default function QuestionDetails(props) {
   const [question, setQuestion] = useState(new Question("", "", "", "", []));
+  const [validateButton, setValidateButton] = useState(<div></div>);
 
   const { id } = props.match.params;
   const url = `http://localhost:8080/questions/${id}`;
@@ -30,11 +32,46 @@ export default function QuestionDetails(props) {
             resp.data.type,
             resp.data.question,
             resp.data.correctAnswer,
-            resp.data.incorrectAnswers
+            resp.data.incorrectAnswers,
+            resp.data.creationDate,
+            resp.data.validationDate,
+            resp.data.validated
           )
         )
       );
-  }, [url]);
+  }, [props.history, question.id, question.validated, url]);
+
+  useEffect(() => {
+    const validate = e => {
+      e.preventDefault();
+      axios({
+        method: "put",
+        url: url,
+        data: question.id
+      }).then(
+        response => {
+          if (response.status === 200) {
+            alert("Question validated successfully! :)");
+            props.history.push("/questions");
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    };
+
+    switch (question.validated) {
+      case false:
+        setValidateButton(<Button onClick={validate}>Validate</Button>);
+        break;
+      case true:
+        setValidateButton(<div></div>);
+        break;
+      default:
+        setValidateButton(<div></div>);
+    }
+  }, [props.history, question, url]);
 
   return (
     <ContentContainer>
@@ -49,8 +86,16 @@ export default function QuestionDetails(props) {
           </thead>
           <tbody>
             <ResultTableRow>
-              <ResultTableHead>Publish date</ResultTableHead>
-              <ResultTableData>03.02.2020</ResultTableData>
+              <ResultTableHead>Creation date</ResultTableHead>
+              <ResultTableData>{question.creationDate}</ResultTableData>
+            </ResultTableRow>
+            <ResultTableRow>
+              <ResultTableHead>Validation date</ResultTableHead>
+              <ResultTableData>
+                {question.validationDate === null
+                  ? "Not validated yet"
+                  : question.validationDate}
+              </ResultTableData>
             </ResultTableRow>
             <ResultTableRow>
               <ResultTableHead>Created By</ResultTableHead>
@@ -67,6 +112,7 @@ export default function QuestionDetails(props) {
           </tbody>
         </Table>
       </TableContainer>
+      {validateButton}
     </ContentContainer>
   );
 }
