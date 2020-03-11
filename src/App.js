@@ -62,22 +62,28 @@ function App() {
                         <Route exact path='/quiz' component={QuestionCard} />
                       </AnswerCorrectnessProvider>
                       <Route exact path='/results' component={Result} />
+                      <AddNewQuestionFormProvider>
+                        <Route
+                          exact
+                          path='/add-question'
+                          component={AddNewQuestionForm}
+                        />
+                      </AddNewQuestionFormProvider>
+                      <Route
+                        exact
+                        path='/questions'
+                        component={QuestionsList}
+                      />
+                      <Route
+                        exact
+                        path='/questions/:id'
+                        component={QuestionDetails}
+                      />
                     </ProgressProvider>
                   </QuestionProvider>
                 </PlayerProvider>
               </RandomQuizProvider>
             </CustomQuizProvider>
-            <ProgressProvider>
-              <AddNewQuestionFormProvider>
-                <Route
-                  exact
-                  path='/add-question'
-                  component={AddNewQuestionForm}
-                />
-              </AddNewQuestionFormProvider>
-            </ProgressProvider>
-            <Route exact path='/questions' component={QuestionsList} />
-            <Route exact path='/questions/:id' component={QuestionDetails} />
           </CategoryProvider>
         </Router>
       </Container>
