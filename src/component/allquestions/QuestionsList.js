@@ -32,6 +32,8 @@ export default function QuestionsList() {
               <ResultTableHead>Id</ResultTableHead>
               <ResultTableHead>Question</ResultTableHead>
               <ResultTableHead>Category</ResultTableHead>
+              <ResultTableHead>Type</ResultTableHead>
+              <ResultTableHead>Status</ResultTableHead>
             </ResultTableRow>
           </thead>
           <tbody>
@@ -44,6 +46,8 @@ export default function QuestionsList() {
                   </QuestionListElement>
                 </QuestionsTd>
                 <QuestionsTd>{question.category.name}</QuestionsTd>
+                <QuestionsTd>{question.type}</QuestionsTd>
+                <QuestionsTd>{question.isValidated}</QuestionsTd>
               </QuestionsTr>
             ))}
           </tbody>
