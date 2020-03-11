@@ -11,6 +11,8 @@ import QuestionCard from "component/questioncard/QuestionCard";
 import Result from "component/result/Result";
 import Header from "component/Header";
 import Footer from "component/Footer";
+import CustomQuizSelect from "component/customquiz/CustomQuizSelect";
+import NewCustomQuiz from "component/customquiz/newcustomquiz/NewCustomQuiz";
 
 import { QuestionProvider } from "context/QuestionContext";
 import { PlayerProvider } from "context/PlayerContext";
@@ -39,7 +41,17 @@ function App() {
                   <Route
                     exact
                     path='/custom-quiz'
+                    component={CustomQuizSelect}
+                  />
+                  <Route
+                    exact
+                    path='/custom-quiz/start'
                     component={CustomQuizStarterForm}
+                  />
+                  <Route
+                    exact
+                    path='/custom-quiz/new'
+                    component={NewCustomQuiz}
                   />
                   <ProgressProvider>
                     <Route exact path='/quiz' component={QuestionCard} />

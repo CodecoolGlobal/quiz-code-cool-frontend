@@ -15,7 +15,7 @@ export default function CustomQuizStarterForm(props) {
 
   return (
     <ContentContainer>
-      <H3>New Custom Quiz</H3>
+      <H3>Start Custom Quiz</H3>
       <CustomQuizInput />
       <Button onClick={submit}>Start Quiz</Button>
     </ContentContainer>
