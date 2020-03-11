@@ -6,6 +6,7 @@ import PlayerData from "component/questioncard/PlayerData";
 import { QuestionContext } from "context/QuestionContext";
 import { PlayerContext } from "context/PlayerContext";
 import { ProgressContext } from "context/ProgressContext";
+import { AnswerCorrectnessContext } from "context/AnswerCorrectnessContext";
 
 import {
   QuestionCardContainer,
@@ -39,9 +40,8 @@ export default function QuestionCard(props) {
   const players = useContext(PlayerContext)[0];
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
 
-  const { readyToProceed, correctness } = useContext(ProgressContext);
-  const [isReadyToProceed, setIsReadyToProceed] = readyToProceed;
-  const selectedAnswerCorrectness = correctness[0];
+  const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
+  const selectedAnswerCorrectness = useContext(AnswerCorrectnessContext)[0];
 
   const addScoreIfNeeded = () => {
     if (selectedAnswerCorrectness === "1") {

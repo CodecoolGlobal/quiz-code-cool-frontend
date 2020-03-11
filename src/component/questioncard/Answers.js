@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 
 import { QuestionContext } from "context/QuestionContext";
 import { ProgressContext } from "context/ProgressContext";
+import { AnswerCorrectnessContext } from "context/AnswerCorrectnessContext";
 
 import { RadioButton, RadioButtonLabel, AnswerContainer } from "style/MyStyle";
 
@@ -13,11 +14,13 @@ export default function Answers() {
     setAnswersZip(getAnswersZip());
   }, [getAnswersZip]);
 
-  const { processGuess } = useContext(ProgressContext);
+  const setIsReadyToProceed = useContext(ProgressContext)[1];
+  const setSelectedAnswerCorrectness = useContext(AnswerCorrectnessContext)[1];
 
   const chooseAnswer = event => {
     const guess = event.target.value;
-    processGuess(guess);
+    setIsReadyToProceed(true);
+    setSelectedAnswerCorrectness(guess);
   };
 
   return (

@@ -8,7 +8,7 @@ export const CustomQuizProvider = props => {
   const CUSTOM_QUIZ_BASE_URL = process.env.REACT_APP_CUSTOM_QUIZ_BASE_URL;
 
   // States
-  const [selectedCustomQuizId, setSelectedCustomQuizId] = useState(1);
+  const [selectedCustomQuizId, setSelectedCustomQuizId] = useState(0);
   const [customQuizzes, setCustomQuizzes] = useState([]);
 
   const getAllCustomQuizzes = () => {

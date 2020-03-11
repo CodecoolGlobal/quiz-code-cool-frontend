@@ -17,6 +17,8 @@ import { PlayerProvider } from "context/PlayerContext";
 import { RandomQuizProvider } from "context/RandomQuizContext";
 import { CustomQuizProvider } from "context/CustomQuizContext";
 import { ProgressProvider } from "context/ProgressContext";
+import { AnswerCorrectnessProvider } from "context/AnswerCorrectnessContext";
+
 import { AddNewQuestionFormProvider } from "context/AddNewQuestionFormContext";
 
 import { Container } from "style/MyStyle";
@@ -42,7 +44,9 @@ function App() {
                     component={CustomQuizStarterForm}
                   />
                   <ProgressProvider>
-                    <Route exact path='/quiz' component={QuestionCard} />
+                    <AnswerCorrectnessProvider>
+                      <Route exact path='/quiz' component={QuestionCard} />
+                    </AnswerCorrectnessProvider>
                   </ProgressProvider>
                   <Route exact path='/results' component={Result} />
                 </QuestionProvider>
