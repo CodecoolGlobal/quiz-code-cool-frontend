@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 
 import { AddNewQuestionFormContext } from "context/AddNewQuestionFormContext";
-import { ProgressContext } from "context/ProgressContext";
 
 import {
   RadioButton,
@@ -11,8 +10,6 @@ import {
 } from "style/MyStyle";
 
 export default function TrueFalseAnswers() {
-  const { readyToProceed } = useContext(ProgressContext);
-  const setIsReadyToProceed = readyToProceed[1];
   const { possibleAnswersInput } = useContext(AddNewQuestionFormContext);
   const { correctAnswerInput } = useContext(AddNewQuestionFormContext);
   const { incorrectAnswersInput } = useContext(AddNewQuestionFormContext);
@@ -23,7 +20,6 @@ export default function TrueFalseAnswers() {
     incorrectAnswersInput[1](
       new Array(...possibleAnswersInput[0].filter(answer => answer !== guess))
     );
-    setIsReadyToProceed(true);
   };
 
   return (
