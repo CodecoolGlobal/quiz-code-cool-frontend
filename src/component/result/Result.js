@@ -24,7 +24,7 @@ export default function Result(props) {
       case "Random":
         return "/random-quiz";
       case "Custom":
-        return "/custom-quiz";
+        return "/custom-quiz/start";
       default:
         break;
     }
