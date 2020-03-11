@@ -9,8 +9,8 @@ import QuestionsList from "component/allquestions/QuestionsList";
 import QuestionDetails from "component/allquestions/QuestionDetails";
 import QuestionCard from "component/questioncard/QuestionCard";
 import Result from "component/result/Result";
-import Header from "component/Header";
-import Footer from "component/Footer";
+import Header from "component/layout/Header";
+import Footer from "component/layout/Footer";
 import CustomQuizSelect from "component/customquiz/CustomQuizSelect";
 import NewCustomQuiz from "component/customquiz/newcustomquiz/NewCustomQuiz";
 
