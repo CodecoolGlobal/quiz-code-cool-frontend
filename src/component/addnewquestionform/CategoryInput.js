@@ -19,9 +19,9 @@ export default function CategoryInput() {
 
   return (
     <InputItem>
-      <InputLabel htmlFor="category">Category</InputLabel>
-      <Select id="category" name="category" onChange={handleCategory}>
-        <option disabled defaultValue="" selected>
+      <InputLabel htmlFor='category'>Category</InputLabel>
+      <Select id='category' name='category' onChange={handleCategory}>
+        <option disabled defaultValue='' selected>
           -- Select Category --
         </option>
         {categories.map(category => (

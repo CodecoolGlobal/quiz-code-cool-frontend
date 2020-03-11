@@ -18,8 +18,8 @@ export default function CategoryInput() {
 
   return (
     <InputItem>
-      <InputLabel htmlFor="category">Category</InputLabel>
-      <Select id="category" name="category" onChange={handleCategory}>
+      <InputLabel htmlFor='category'>Category</InputLabel>
+      <Select id='category' name='category' onChange={handleCategory}>
         {categories.map(category => (
           <option value={category.id} key={category.id}>
             {category.name}
