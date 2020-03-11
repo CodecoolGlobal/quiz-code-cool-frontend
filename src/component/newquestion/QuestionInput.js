@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { AddNewQuestionFormContext } from "context/NewQuestionFormContext";
+import { NewQuestionFormContext } from "context/NewQuestionFormContext";
 
 import { InputItem, InputLabel, TextInput } from "style/MyStyle";
 
 export default function QuestionInput() {
-  const setQuestion = useContext(AddNewQuestionFormContext).questionInput[1];
+  const setQuestion = useContext(NewQuestionFormContext).questionInput[1];
 
   const handleQuestion = e => {
     setQuestion(e.target.value);

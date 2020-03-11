@@ -21,7 +21,7 @@ import { CustomQuizProvider } from "context/CustomQuizContext";
 import { ProgressProvider } from "context/ProgressContext";
 import { AnswerCorrectnessProvider } from "context/AnswerCorrectnessContext";
 
-import { AddNewQuestionFormProvider } from "context/NewQuestionFormContext";
+import { NewQuestionFormProvider } from "context/NewQuestionFormContext";
 import { CategoryProvider } from "context/CategoryContext";
 
 import { Container } from "style/MyStyle";
@@ -62,13 +62,13 @@ function App() {
                         <Route exact path='/quiz' component={QuestionCard} />
                       </AnswerCorrectnessProvider>
                       <Route exact path='/results' component={Result} />
-                      <AddNewQuestionFormProvider>
+                      <NewQuestionFormProvider>
                         <Route
                           exact
                           path='/add-question'
                           component={AddNewQuestionForm}
                         />
-                      </AddNewQuestionFormProvider>
+                      </NewQuestionFormProvider>
                       <Route
                         exact
                         path='/questions'

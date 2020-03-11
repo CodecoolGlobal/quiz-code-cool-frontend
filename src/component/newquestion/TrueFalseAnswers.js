@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { AddNewQuestionFormContext } from "context/NewQuestionFormContext";
+import { NewQuestionFormContext } from "context/NewQuestionFormContext";
 
 import {
   RadioButton,
@@ -10,9 +10,9 @@ import {
 } from "style/MyStyle";
 
 export default function TrueFalseAnswers() {
-  const { possibleAnswersInput } = useContext(AddNewQuestionFormContext);
-  const { correctAnswerInput } = useContext(AddNewQuestionFormContext);
-  const { incorrectAnswersInput } = useContext(AddNewQuestionFormContext);
+  const { possibleAnswersInput } = useContext(NewQuestionFormContext);
+  const { correctAnswerInput } = useContext(NewQuestionFormContext);
+  const { incorrectAnswersInput } = useContext(NewQuestionFormContext);
 
   const chooseAnswer = event => {
     const guess = event.target.value;

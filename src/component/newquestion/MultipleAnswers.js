@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 
-import { AddNewQuestionFormContext } from "context/NewQuestionFormContext";
+import { NewQuestionFormContext } from "context/NewQuestionFormContext";
 
 import { InputLabel, TextInput, InputItem } from "style/MyStyle";
 
 export default function MultipleAnswers() {
-  const setCorrectAnswer = useContext(AddNewQuestionFormContext)
+  const setCorrectAnswer = useContext(NewQuestionFormContext)
     .correctAnswerInput[1];
   const [incorrectAnswers, setIncorrectAnswers] = useContext(
-    AddNewQuestionFormContext
+    NewQuestionFormContext
   ).incorrectAnswersInput;
 
   const handleCorrectAnswer = e => {

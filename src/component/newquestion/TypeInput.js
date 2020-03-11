@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { AddNewQuestionFormContext } from "context/NewQuestionFormContext";
+import { NewQuestionFormContext } from "context/NewQuestionFormContext";
 import { Select, InputItem, InputLabel } from "style/MyStyle";
 
 export default function TypeInput() {
-  const setType = useContext(AddNewQuestionFormContext).typeInput[1];
-  const TYPES = useContext(AddNewQuestionFormContext).TYPES;
+  const setType = useContext(NewQuestionFormContext).typeInput[1];
+  const TYPES = useContext(NewQuestionFormContext).TYPES;
 
   const handleType = e => {
     setType(e.target.value);
