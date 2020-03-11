@@ -1,5 +1,4 @@
 import React, { useState, createContext } from "react";
-import axios from "axios";
 
 export const RandomQuizContext = createContext();
 
@@ -8,16 +7,9 @@ export const RandomQuizProvider = props => {
   const MIN_QUESTIONS = 1;
 
   //Category
-  const CATEGORY_URL = process.env.REACT_APP_CATEGORY_URL;
   const DEFAULT_CATEGORY = {
     id: "0",
     name: "Any Category"
-  };
-  const [categories, setCategories] = useState([]);
-  const getAllCategories = () => {
-    axios.get(CATEGORY_URL).then(res => {
-      setCategories([DEFAULT_CATEGORY, ...res.data]);
-    });
   };
 
   //Type
@@ -48,8 +40,6 @@ export const RandomQuizProvider = props => {
   return (
     <RandomQuizContext.Provider
       value={{
-        getAllCategories,
-        categories,
         RANDOM_QUIZ_BASE_URL,
         MIN_QUESTIONS,
         TYPES,
