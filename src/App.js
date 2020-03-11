@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import RandomQuizStarterForm from "component/quizzes/random/randomquizstarterform/RandomQuizStarterForm";
 import CustomQuizStarterForm from "component/quizzes/custom/customquizstarterform/CustomQuizStarterForm";
-import AddNewQuestionForm from "component/newquestion/AddNewQuestionForm";
+import AddNewQuestionForm from "component/newquestion/NewQuestionForm";
 import QuestionsList from "component/questions/QuestionsList";
 import QuestionDetails from "component/questions/QuestionDetails";
 import QuestionCard from "component/questioncard/QuestionCard";
@@ -21,7 +21,7 @@ import { CustomQuizProvider } from "context/CustomQuizContext";
 import { ProgressProvider } from "context/ProgressContext";
 import { AnswerCorrectnessProvider } from "context/AnswerCorrectnessContext";
 
-import { AddNewQuestionFormProvider } from "context/AddNewQuestionFormContext";
+import { AddNewQuestionFormProvider } from "context/NewQuestionFormContext";
 import { CategoryProvider } from "context/CategoryContext";
 
 import { Container } from "style/MyStyle";

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { AddNewQuestionFormContext } from "context/AddNewQuestionFormContext";
+import { AddNewQuestionFormContext } from "context/NewQuestionFormContext";
 
 import { InputLabel, TextInput, InputItem } from "style/MyStyle";
 

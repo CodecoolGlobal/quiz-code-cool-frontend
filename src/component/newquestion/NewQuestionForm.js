@@ -8,7 +8,7 @@ import MultipleAnswers from "component/newquestion/MultipleAnswers";
 import TrueFalseAnswers from "component/newquestion/TrueFalseAnswers";
 
 import Question from "context/Question";
-import { AddNewQuestionFormContext } from "context/AddNewQuestionFormContext";
+import { AddNewQuestionFormContext } from "context/NewQuestionFormContext";
 
 import { ContentContainer, H3, Button } from "style/MyStyle";
 
