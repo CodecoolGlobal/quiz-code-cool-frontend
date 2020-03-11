@@ -7,8 +7,8 @@ import CustomQuizStarterForm from "component/quizzes/custom/customquizstarterfor
 import AddNewQuestionForm from "component/newquestion/NewQuestionForm";
 import QuestionsList from "component/questions/QuestionsList";
 import QuestionDetails from "component/questions/QuestionDetails";
-import QuestionCard from "component/questioncard/QuestionCard";
-import Result from "component/result/Result";
+import QuestionCard from "component/quizzes/questioncard/QuestionCard";
+import Result from "component/quizzes/result/Result";
 import Header from "component/layout/Header";
 import Footer from "component/layout/Footer";
 import CustomQuizSelect from "component/quizzes/custom/CustomQuizSelect";

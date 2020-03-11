@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 
-import Answers from "component/questioncard/Answers";
-import PlayerData from "component/questioncard/PlayerData";
+import Answers from "component/quizzes/questioncard/Answers";
+import PlayerData from "component/quizzes/questioncard/PlayerData";
 
 import { QuestionContext } from "context/QuestionContext";
 import { PlayerContext } from "context/PlayerContext";
@@ -14,7 +14,7 @@ import {
   H3,
   CategoryTitle,
   Button
-} from "../../style/MyStyle";
+} from "../../../style/MyStyle";
 
 export default function QuestionCard(props) {
   const questionColors = {
