@@ -15,6 +15,7 @@ import {
 
 export default function QuestionsList() {
   const [questions, setQuestions] = useState([]);
+  const [validatedText, setValidatedText] = useState("");
 
   useEffect(() => {
     axios
@@ -47,7 +48,9 @@ export default function QuestionsList() {
                 </QuestionsTd>
                 <QuestionsTd>{question.category.name}</QuestionsTd>
                 <QuestionsTd>{question.type}</QuestionsTd>
-                <QuestionsTd>{question.isValidated}</QuestionsTd>
+                <QuestionsTd>
+                  {question.validated === true ? "Validated" : "Not validated"}
+                </QuestionsTd>
               </QuestionsTr>
             ))}
           </tbody>
