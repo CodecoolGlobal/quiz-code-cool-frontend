@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 
-import CategoryInput from "component/newquestion/CategoryInput";
+import CategoryInput from "component/inputs/CategoryInput";
 import TypeInput from "component/newquestion/TypeInput";
 import QuestionInput from "component/newquestion/QuestionInput";
 import MultipleAnswers from "component/newquestion/MultipleAnswers";
@@ -83,7 +83,7 @@ export default function AddNewQuestionForm(props) {
   return (
     <ContentContainer>
       <H3>Add new question</H3>
-      <CategoryInput />
+      <CategoryInput mode='WithoutAnyCategory' />
       <TypeInput />
       <QuestionInput />
       {answerComponent}

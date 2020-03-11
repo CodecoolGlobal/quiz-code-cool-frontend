@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import PlayerNameInput from "component/quizzes/random/randomquizstarterform/PlayerNameInput";
-import CategoryInput from "component/quizzes/random/randomquizstarterform/CategoryInput";
+import CategoryInput from "component/inputs/CategoryInput";
 import QuestionNumberInput from "component/quizzes/random/randomquizstarterform/QuestionNumberInput";
 import TypeInput from "component/quizzes/random/randomquizstarterform/TypeInput";
 import StepSlider from "component/quizzes/random/randomquizstarterform/StepSlider";
