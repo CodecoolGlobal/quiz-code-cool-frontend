@@ -10,10 +10,13 @@ export default function CategoryInput(props) {
     categoryInput,
     fetchAllCategories
   } = useContext(CategoryContext);
+
   const setSelectedCategoryId = categoryInput[1];
 
   useEffect(() => {
     fetchAllCategories();
+    console.log("fetchCategories");
+
   }, [fetchAllCategories]);
 
   const handleCategory = e => {

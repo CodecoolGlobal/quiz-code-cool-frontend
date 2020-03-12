@@ -13,9 +13,16 @@ export const TypeProvider = props => {
     BOOLEAN: "True / False"
   };
 
+  const clearSelectedType = () => {
+    setSelectedType("");
+  };
+
+  console.log("TypeProvider INITIALIZED");
+
   return (
     <TypeContext.Provider
       value={{
+        clearSelectedType,
         selectedTypeInput: [selectedType, setSelectedType],
         ANY_TYPE,
         ALL_TYPES,

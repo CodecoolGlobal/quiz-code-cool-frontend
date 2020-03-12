@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import PlayerNameInput from "component/quizzes/random/randomquizstarterform/PlayerNameInput";
 import CategoryInput from "component/inputs/CategoryInput";
@@ -7,11 +7,17 @@ import QuestionNumberInput from "component/quizzes/random/randomquizstarterform/
 import StepSlider from "component/quizzes/random/randomquizstarterform/StepSlider";
 
 import { QuestionContext } from "context/QuestionContext";
+import { RestoreFiltersContext } from "context/RestoreFiltersContext";
 
 import { ContentContainer, H3, Button } from "style/MyStyle";
 
 export default function QuizStarterForm(props) {
   const submitStarterForm = useContext(QuestionContext).submitStarterForm;
+  const { clearFilters } = useContext(RestoreFiltersContext);
+
+  useEffect(() => {
+    clearFilters();
+  }, [clearFilters]);
 
   const submit = () => {
     submitStarterForm(props, "Random");

@@ -1,6 +1,7 @@
 import React, { useState, createContext, useContext } from "react";
 import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
+import { RestoreFiltersContext } from "context/RestoreFiltersContext";
 
 import Question from "context/Question";
 import axios from "axios";
@@ -16,7 +17,9 @@ export const NewQuestionFormProvider = props => {
   const selectedCategoryId = categoryInput[0];
 
   const { selectedTypeInput } = useContext(TypeContext);
-  const [selectedType, setSelectedType] = selectedTypeInput;
+  const selectedType = selectedTypeInput[0];
+
+  const { clearFilters } = useContext(RestoreFiltersContext);
 
   const [question, setQuestion] = useState("");
   const [possibleAnswers, setPossibleAnswers] = useState(["True", "False"]);
@@ -24,7 +27,7 @@ export const NewQuestionFormProvider = props => {
   const [incorrectAnswers, setIncorrectAnswers] = useState([]);
 
   const clearAddNewQuestionContext = () => {
-    setSelectedType("");
+    clearFilters();
     setQuestion("");
     setCorrectAnswer("");
     setIncorrectAnswers([]);

@@ -24,6 +24,7 @@ import { AnswerCorrectnessProvider } from "context/AnswerCorrectnessContext";
 import { NewQuestionFormProvider } from "context/NewQuestionFormContext";
 import { CategoryProvider } from "context/CategoryContext";
 import { TypeProvider } from "context/TypeContext";
+import { RestoreFiltersProvider } from "context/RestoreFiltersContext";
 
 import { Container } from "style/MyStyle";
 
@@ -31,64 +32,70 @@ function App() {
   return (
     <div className='App'>
       <Container>
-        <Router>
-          <CategoryProvider>
-            <TypeProvider>
+        <CategoryProvider>
+          <TypeProvider>
+            <RestoreFiltersProvider>
               <CustomQuizProvider>
                 <RandomQuizProvider>
                   <PlayerProvider>
                     <QuestionProvider>
                       <ProgressProvider>
-                        <Header />
-                        <Route
-                          exact
-                          path='/random-quiz'
-                          component={RandomQuizStarterForm}
-                        />
-                        <Route
-                          exact
-                          path='/custom-quiz/new'
-                          component={NewCustomQuiz}
-                        />
-                        <Route
-                          exact
-                          path='/custom-quiz/start'
-                          component={CustomQuizStarterForm}
-                        />
-                        <Route
-                          exact
-                          path='/custom-quiz'
-                          component={CustomQuizSelect}
-                        />
-                        <AnswerCorrectnessProvider>
-                          <Route exact path='/quiz' component={QuestionCard} />
-                        </AnswerCorrectnessProvider>
-                        <Route exact path='/results' component={Result} />
-                        <NewQuestionFormProvider>
+                        <Router>
+                          <Header />
                           <Route
                             exact
-                            path='/add-question'
-                            component={AddNewQuestionForm}
+                            path='/random-quiz'
+                            component={RandomQuizStarterForm}
                           />
-                        </NewQuestionFormProvider>
-                        <Route
-                          exact
-                          path='/questions'
-                          component={QuestionsList}
-                        />
-                        <Route
-                          exact
-                          path='/questions/:id'
-                          component={QuestionDetails}
-                        />
+                          <Route
+                            exact
+                            path='/custom-quiz/new'
+                            component={NewCustomQuiz}
+                          />
+                          <Route
+                            exact
+                            path='/custom-quiz/start'
+                            component={CustomQuizStarterForm}
+                          />
+                          <Route
+                            exact
+                            path='/custom-quiz'
+                            component={CustomQuizSelect}
+                          />
+                          <AnswerCorrectnessProvider>
+                            <Route
+                              exact
+                              path='/quiz'
+                              component={QuestionCard}
+                            />
+                          </AnswerCorrectnessProvider>
+                          <Route exact path='/results' component={Result} />
+                          <NewQuestionFormProvider>
+                            <Route
+                              exact
+                              path='/add-question'
+                              component={AddNewQuestionForm}
+                            />
+                          </NewQuestionFormProvider>
+                          <Route
+                            exact
+                            path='/questions'
+                            component={QuestionsList}
+                          />
+                          <Route
+                            exact
+                            path='/questions/:id'
+                            component={QuestionDetails}
+                          />
+                        </Router>
                       </ProgressProvider>
                     </QuestionProvider>
                   </PlayerProvider>
                 </RandomQuizProvider>
               </CustomQuizProvider>
-            </TypeProvider>
-          </CategoryProvider>
-        </Router>
+            </RestoreFiltersProvider>
+          </TypeProvider>
+        </CategoryProvider>
       </Container>
       <Footer />
     </div>

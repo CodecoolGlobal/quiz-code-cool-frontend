@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useCallback } from "react";
 import axios from "axios";
 
 export const CategoryContext = createContext();
@@ -14,15 +14,22 @@ export const CategoryProvider = props => {
     DEFAULT_CATEGORY.id
   );
 
-  const fetchAllCategories = () => {
+  console.log("CategoryProvider INITIALIZED");
+
+  const fetchAllCategories = useCallback(() => {
     axios.get(CATEGORY_URL).then(res => {
       setAllCategories([...res.data]);
     });
+  }, [CATEGORY_URL]);
+
+  const clearSelectedCategory = () => {
+    setSelectedCategoryId(DEFAULT_CATEGORY.id);
   };
 
   return (
     <CategoryContext.Provider
       value={{
+        clearSelectedCategory,
         fetchAllCategories,
         DEFAULT_CATEGORY,
         allCategories,
