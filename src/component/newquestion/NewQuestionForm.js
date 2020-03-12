@@ -1,32 +1,36 @@
 import React, { useContext, useState, useEffect } from "react";
 
 import CategoryInput from "component/inputs/CategoryInput";
-import TypeInput from "component/newquestion/TypeInput";
+import TypeInput from "component/inputs/TypeInput";
 import QuestionInput from "component/newquestion/QuestionInput";
 import MultipleAnswers from "component/newquestion/MultipleAnswers";
 import TrueFalseAnswers from "component/newquestion/TrueFalseAnswers";
 
 import { NewQuestionFormContext } from "context/NewQuestionFormContext";
+import { TypeContext } from "context/TypeContext";
 
 import { ContentContainer, H3, Button } from "style/MyStyle";
 
 export default function NewQuestionForm(props) {
   const [answerComponent, setAnswerComponent] = useState(<div></div>);
 
-  const { submitForm, typeInput } = useContext(NewQuestionFormContext);
+  const { selectedTypeInput } = useContext(TypeContext);
+  const type = selectedTypeInput[0];
+
+  const { submitForm } = useContext(NewQuestionFormContext);
 
   useEffect(() => {
-    switch (typeInput[0]) {
-      case "boolean":
+    switch (type) {
+      case "BOOLEAN":
         setAnswerComponent(<TrueFalseAnswers />);
         break;
-      case "multiple":
+      case "MULTIPLE":
         setAnswerComponent(<MultipleAnswers />);
         break;
       default:
         setAnswerComponent(<div></div>);
     }
-  }, [typeInput]);
+  }, [type]);
 
   const submit = () => {
     submitForm(props);
@@ -36,7 +40,7 @@ export default function NewQuestionForm(props) {
     <ContentContainer>
       <H3>Add new question</H3>
       <CategoryInput mode='WithoutAnyCategory' />
-      <TypeInput />
+      <TypeInput mode='WithoutAnyType' />
       <QuestionInput />
       {answerComponent}
       <Button onClick={submit}>Save question</Button>

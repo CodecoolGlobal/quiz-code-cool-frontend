@@ -1,20 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { TypeContext } from "context/TypeContext";
 import { Select, InputItem, InputLabel } from "style/MyStyle";
 
 export default function TypeInput(props) {
-  const {
-    selectedTypeInput,
-    ANY_TYPE,
-    allTypes,
-    typesMap,
-    fetchAllTypes
-  } = useContext(TypeContext);
+  const { selectedTypeInput, ANY_TYPE, ALL_TYPES, typesMap } = useContext(
+    TypeContext
+  );
   const setSelectedType = selectedTypeInput[1];
-
-  useEffect(() => {
-    fetchAllTypes();
-  }, [fetchAllTypes]);
 
   const handleType = e => {
     setSelectedType(e.target.value);
@@ -42,7 +34,7 @@ export default function TypeInput(props) {
       <InputLabel htmlFor='type'>Type</InputLabel>
       <Select id='type' name='type' onChange={handleType}>
         {getDefaultType()}
-        {allTypes.map((type, index) => (
+        {ALL_TYPES.map((type, index) => (
           <option value={type} key={index}>
             {typesMap[type]}
           </option>

@@ -1,5 +1,7 @@
 import React, { useState, createContext, useContext } from "react";
 import { CategoryContext } from "context/CategoryContext";
+import { TypeContext } from "context/TypeContext";
+
 import Question from "context/Question";
 import axios from "axios";
 
@@ -8,23 +10,21 @@ export const NewQuestionFormContext = createContext();
 export const NewQuestionFormProvider = props => {
   const ADD_NEW_QUESTION_BASE_URL =
     process.env.REACT_APP_ADD_NEW_QUESTION_BASE_URL;
-  const TYPES = {
-    "Multiple Choice": "multiple",
-    "True / False": "boolean"
-  };
 
   // States
   const { categoryInput, allCategories } = useContext(CategoryContext);
   const selectedCategoryId = categoryInput[0];
 
-  const [type, setType] = useState([]);
+  const { selectedTypeInput } = useContext(TypeContext);
+  const [selectedType, setSelectedType] = selectedTypeInput;
+
   const [question, setQuestion] = useState("");
   const [possibleAnswers, setPossibleAnswers] = useState(["True", "False"]);
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [incorrectAnswers, setIncorrectAnswers] = useState([]);
 
   const clearAddNewQuestionContext = () => {
-    setType([]);
+    setSelectedType("");
     setQuestion("");
     setCorrectAnswer("");
     setIncorrectAnswers([]);
@@ -41,7 +41,7 @@ export const NewQuestionFormProvider = props => {
   const submitForm = formProps => {
     if (
       selectedCategoryId === "0" ||
-      type.length === 0 ||
+      selectedType.length === 0 ||
       question === "" ||
       correctAnswer === "" ||
       incorrectAnswers.length === 0 ||
@@ -53,7 +53,7 @@ export const NewQuestionFormProvider = props => {
 
     const newQuestion = new Question(
       getSelectedCategory(),
-      type,
+      selectedType,
       question,
       correctAnswer,
       incorrectAnswers
@@ -82,9 +82,7 @@ export const NewQuestionFormProvider = props => {
     <NewQuestionFormContext.Provider
       value={{
         submitForm,
-        TYPES,
         possibleAnswersInput: [possibleAnswers, setPossibleAnswers],
-        typeInput: [type, setType],
         questionInput: [question, setQuestion],
         correctAnswerInput: [correctAnswer, setCorrectAnswer],
         incorrectAnswersInput: [incorrectAnswers, setIncorrectAnswers]
