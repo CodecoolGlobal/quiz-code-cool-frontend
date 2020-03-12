@@ -17,7 +17,7 @@ export default function QuizStarterForm(props) {
 
   useEffect(() => {
     clearFilters();
-  }, [clearFilters]);
+  }, []);
 
   const submit = () => {
     submitStarterForm(props, "Random");

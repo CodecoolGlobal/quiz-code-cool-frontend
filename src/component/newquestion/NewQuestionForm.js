@@ -16,7 +16,7 @@ export default function NewQuestionForm(props) {
 
   useEffect(() => {
     clearFilters();
-  }, [clearFilters]);
+  }, []);
 
   const submit = () => {
     submitForm(props);

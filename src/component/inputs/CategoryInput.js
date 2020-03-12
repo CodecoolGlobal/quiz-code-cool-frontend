@@ -16,8 +16,7 @@ export default function CategoryInput(props) {
   useEffect(() => {
     fetchAllCategories();
     console.log("fetchCategories");
-
-  }, [fetchAllCategories]);
+  }, []);
 
   const handleCategory = e => {
     setSelectedCategoryId(e.target.value);
