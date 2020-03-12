@@ -4,6 +4,9 @@ import axios from "axios";
 import { PlayerContext } from "context/PlayerContext";
 import { CustomQuizContext } from "context/CustomQuizContext";
 import { RandomQuizContext } from "context/RandomQuizContext";
+import { CategoryContext } from "context/CategoryContext";
+import { TypeContext } from "context/TypeContext";
+
 import Question from "context/Question";
 import Player from "context/Player";
 
@@ -12,19 +15,18 @@ import { shuffle } from "Util";
 export const QuestionContext = createContext();
 
 export const QuestionProvider = props => {
+  const selectedCategoryId = useContext(CategoryContext).categoryInput[0];
+  const type = useContext(TypeContext).selectedTypeInput[0];
+
   //RandomQuiz
   const {
     questionsPerPlayerState,
     RANDOM_QUIZ_BASE_URL,
     MIN_QUESTIONS,
-    categoryInput,
-    typeInput,
     nameInputsState
   } = useContext(RandomQuizContext);
 
   const questionsPerPlayer = questionsPerPlayerState[0];
-  const selectedCategoryId = categoryInput[0];
-  const type = typeInput[0];
   const [names, setNames] = nameInputsState;
 
   //Custom quiz

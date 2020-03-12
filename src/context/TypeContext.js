@@ -9,19 +9,26 @@ export const TypeProvider = props => {
   const [allTypes, setAllTypes] = useState([]);
   const [selectedType, setSelectedType] = useState("");
 
-  const fetchAllTypes = () => {
+  const fetchTypes = () => {
     axios.get(TYPES_URL).then(res => {
       setAllTypes([...res.data]);
     });
+  };
+
+  const typesMap = {
+    "Any Type": "Any Type",
+    MULTIPLE: "Multiple Choice",
+    BOOLEAN: "True / False"
   };
 
   return (
     <TypeContext.Provider
       value={{
         selectedTypeInput: [selectedType, setSelectedType],
-        fetchAllTypes,
+        fetchAllTypes: fetchTypes,
         ANY_TYPE,
-        allTypes
+        allTypes,
+        typesMap
       }}
     >
       {props.children}
