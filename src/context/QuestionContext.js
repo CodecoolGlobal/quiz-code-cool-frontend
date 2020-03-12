@@ -26,7 +26,7 @@ export const QuestionProvider = props => {
     nameInputsState
   } = useContext(RandomQuizContext);
 
-  const questionsPerPlayer = questionsPerPlayerState[0];
+  const [questionsPerPlayer, setQuestionsPerPlayer] = questionsPerPlayerState;
   const [names, setNames] = nameInputsState;
 
   //Custom quiz
@@ -45,6 +45,7 @@ export const QuestionProvider = props => {
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
 
   const initBeforeSubmit = () => {
+    setQuestionsPerPlayer(0)
     setNames([]);
     setPlayers([]);
     setQuestions([]);
@@ -54,7 +55,7 @@ export const QuestionProvider = props => {
   const validateInputs = quizMode => {
     switch (quizMode) {
       case "Random":
-        if (names.includes(undefined) || names.includes("")) {
+        if (names.includes(undefined) || names.includes("") || names === []) {
           alert("Please fill out all the fields!");
           return false;
         }
@@ -90,6 +91,7 @@ export const QuestionProvider = props => {
         alert(
           "There are not enough questions matching the entered parameters :("
         );
+        setPlayers([]);
         return false;
       }
       resp.data.map(questionData =>
@@ -134,14 +136,13 @@ export const QuestionProvider = props => {
   };
 
   const submitStarterForm = (formProps, quizMode) => {
-    initBeforeSubmit();
     const url = createUrl(quizMode);
     if (validateInputs(quizMode)) {
       if (fetchQuestions(url, formProps) === true) {
         setUpPlayers(quizMode);
         setCurrentQuestionNumber(1);
         setQuizMode(quizMode);
-      }
+      } 
     }
   };
 
@@ -167,7 +168,8 @@ export const QuestionProvider = props => {
     <QuestionContext.Provider
       value={{
         getAnswersZip,
-        submitStarterForm: submitStarterForm,
+        submitStarterForm,
+        initBeforeSubmit,
         questionNumberState: [currentQuestionNumber, setCurrentQuestionNumber],
         quizModeState: [quizMode, setQuizMode],
         currentQuestionIndexState: [

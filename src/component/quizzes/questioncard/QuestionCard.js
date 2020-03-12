@@ -90,6 +90,7 @@ export default function QuestionCard(props) {
     }, 1000);
   };
 
+  console.log(players)
   return (
     <QuestionCardContainer>
       <PlayerData currentPlayerIndex={currentPlayerIndex} />

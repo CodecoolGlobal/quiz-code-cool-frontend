@@ -12,10 +12,12 @@ import { RestoreFiltersContext } from "context/RestoreFiltersContext";
 import { ContentContainer, H3, Button } from "style/MyStyle";
 
 export default function QuizStarterForm(props) {
-  const submitStarterForm = useContext(QuestionContext).submitStarterForm;
+  const {submitStarterForm, initBeforeSubmit} = useContext(QuestionContext);
   const { clearFilters } = useContext(RestoreFiltersContext);
 
   useEffect(() => {
+    console.log("initbeforsubmit")
+    initBeforeSubmit();
     clearFilters();
   }, []);
 
