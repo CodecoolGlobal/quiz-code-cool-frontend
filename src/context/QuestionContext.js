@@ -117,11 +117,14 @@ export const QuestionProvider = props => {
         let categoryUrlPart =
           selectedCategoryId === "0" ? "" : `&category=${selectedCategoryId}`;
         let typeUrlPart = type === "" ? "" : `&type=${type}`;
+        let validatedPart = "&validated=true";
         let finalUrl =
           RANDOM_QUIZ_BASE_URL +
           questionNumberUrlPart +
           categoryUrlPart +
-          typeUrlPart;
+          typeUrlPart +
+          validatedPart;
+        console.log(finalUrl);
         return finalUrl;
       case "Custom":
         return CUSTOM_QUIZ_BASE_URL + `/${selectedCustomQuizId}`;
