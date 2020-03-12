@@ -16,7 +16,6 @@ export default function CustomQuizSelect(props) {
   };
 
   const goToNext = () => {
-    console.log(selected);
     props.history.push(selected);
   };
 
