@@ -369,7 +369,11 @@ export const QuestionsTd = styled.td`
 `;
 
 export const Help = styled.p`
-  text-align: left;
   padding: 2px;
   font-size: ${applicationTheme.fontSize2};
+`;
+
+
+export const InputHelperContainer = styled.div`
+  text-align: left;
 `;

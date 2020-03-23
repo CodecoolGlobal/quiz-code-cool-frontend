@@ -1,5 +1,5 @@
 import React from "react";
-import { InputItem, InputLabel, TextInput, Help } from "style/MyStyle";
+import { InputItem, InputLabel, TextInput, Help, InputHelperContainer } from "style/MyStyle";
 
 export default function SingUpInputs() {
   return (
@@ -12,7 +12,9 @@ export default function SingUpInputs() {
           type='text'
           placeholder={`codecooler`}
         />
+        <InputHelperContainer>
         <Help>Between 5 and 20 characters. </Help>
+        </InputHelperContainer>
       </InputItem>
       <InputItem>
         <InputLabel htmlFor='email'>Email</InputLabel>
@@ -24,11 +26,13 @@ export default function SingUpInputs() {
         />
       </InputItem>
       <InputItem>
-        <InputLabel htmlFor='password1'>Password</InputLabel>
-        <TextInput name='password1' id='password1' type='text' />
+        <InputLabel htmlFor='password'>Password</InputLabel>
+        <TextInput name='password' id='password' type='text' />
+        <InputHelperContainer>
         <Help>
           At least 8 characters including a number and a lowercase letter.{" "}
         </Help>
+        </InputHelperContainer>
       </InputItem>
     </div>
   );

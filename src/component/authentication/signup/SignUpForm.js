@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ProgressContext } from "context/ProgressContext";
-import SingUpInputs from "component/authentication/SingUpInputs";
+import SingUpInputs from "component/authentication/signup/SingUpInputs";
 
 import { ContentContainer, H3, Button } from "style/MyStyle";
 
