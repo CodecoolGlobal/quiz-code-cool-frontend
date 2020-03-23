@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 export const applicationTheme = {
   mainLightOpaque: "rgba(255, 255, 255, 0.8)",
   fontSize1: "12px",
+  fontSize2: "10px",
   inputPadding: "8px 10px",
   color1: "#009688",
   color2: "#35a79c",
@@ -365,4 +366,10 @@ export const QuestionListElement = styled(NavLink)`
 export const QuestionsTd = styled.td`
   border-radius: ${applicationTheme.borderRadius1};
   padding: 5px 10px;
+`;
+
+export const Help = styled.p`
+  text-align: left;
+  padding: 2px;
+  font-size: ${applicationTheme.fontSize2};
 `;

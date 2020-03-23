@@ -45,7 +45,7 @@ export const QuestionProvider = props => {
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
 
   const initBeforeSubmit = () => {
-    setQuestionsPerPlayer(0)
+    setQuestionsPerPlayer(0);
     setNames([]);
     setPlayers([]);
     setQuestions([]);
@@ -55,7 +55,10 @@ export const QuestionProvider = props => {
   const validateInputs = quizMode => {
     switch (quizMode) {
       case "Random":
-        if (names.includes(undefined) || names.includes("") || names === []) {
+        console.log(questionsPerPlayer);
+        console.log(MIN_QUESTIONS);
+        console.log(names);
+        if (names.includes(undefined) || names.includes("") || names.length === 0) {
           alert("Please fill out all the fields!");
           return false;
         }
@@ -142,7 +145,7 @@ export const QuestionProvider = props => {
         setUpPlayers(quizMode);
         setCurrentQuestionNumber(1);
         setQuizMode(quizMode);
-      } 
+      }
     }
   };
 

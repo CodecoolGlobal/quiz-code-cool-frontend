@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import SignUpForm from "component/authentication/SignUpForm";
 import RandomQuizStarterForm from "component/quizzes/random/randomquizstarterform/RandomQuizStarterForm";
 import CustomQuizStarterForm from "component/quizzes/custom/customquizstarterform/CustomQuizStarterForm";
 import AddNewQuestionForm from "component/newquestion/NewQuestionForm";
@@ -42,6 +43,7 @@ function App() {
                       <ProgressProvider>
                         <Router>
                           <Header />
+                          <Route exact path='/sign-up' component={SignUpForm}/>
                           <Route
                             exact
                             path='/random-quiz'
