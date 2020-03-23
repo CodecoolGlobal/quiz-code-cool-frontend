@@ -19,7 +19,7 @@ export default function SignUpForm() {
       <SingInInputs />
       <Help>New to Codecool quiz? Create an <NavLink to="/sign-up">account.</NavLink></Help>
       <Button disabled={!isReadyToProceed} onClick={submit}>
-        Sign up
+        Sign in
       </Button>
     </ContentContainer>
   );
