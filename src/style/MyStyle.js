@@ -36,7 +36,7 @@ export const TitleContainer = styled.div`
   justify-content: center;
   display: flex;
   background: ${applicationTheme.mainLightOpaque};
-  padding: 8px 30px;
+  padding: 10px 30px;
 `;
 
 export const QuestionsImage = styled.img`
@@ -67,6 +67,13 @@ export const NavigLink = styled(NavLink)`
     display: block;
   }
 `;
+
+export const LoginNavLink = styled(NavLink)`
+  &.active>button {
+    color: #fff;
+    background: ${applicationTheme.color3};
+  }
+`
 
 export const NavItem = styled.li`
   margin: 0;
@@ -152,7 +159,7 @@ export const H2 = styled.h2`
 
 export const Title = styled.h2`
   font-family: "Capriola", sans-serif;
-  padding: 20px 10px;
+  padding: 10px 10px 0 10px;
   text-align: center;
   color: ${applicationTheme.color1};
 `;
@@ -241,6 +248,35 @@ export const Button = styled.button`
     cursor: default;
   }
 `;
+
+export const LoginButton = styled.button`
+  clear: both;
+  font-size: ${applicationTheme.fontSize1};
+  font-weight: bold;
+  color: ${applicationTheme.color2};
+  background-color: #fff;
+  border-radius: ${ props => props.left ?
+  applicationTheme.borderRadius4 + " " + applicationTheme.borderRadius1 + " " + applicationTheme.borderRadius1 + " " + applicationTheme.borderRadius4 :
+  applicationTheme.borderRadius1 + " " + applicationTheme.borderRadius4 + " " + applicationTheme.borderRadius4  + " " + applicationTheme.borderRadius1};
+  border: 2px solid ${applicationTheme.color3};
+  padding: 5px 10px;
+  margin: 2px 1px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  &:hover {
+    color: ${applicationTheme.color4};
+    border-color: ${applicationTheme.color4};
+  }
+  &:disabled {
+    color: ${applicationTheme.gray};
+    border-color: ${applicationTheme.gray};
+    cursor: default;
+  }
+`;
+
+
 
 export const PlayerHeader = styled.div`
   justify-content: space-between;
