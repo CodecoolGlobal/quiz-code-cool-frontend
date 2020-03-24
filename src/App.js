@@ -17,6 +17,7 @@ import Footer from "component/layout/Footer";
 import CustomQuizSelect from "component/quizzes/custom/CustomQuizSelect";
 import NewCustomQuiz from "component/quizzes/custom/newcustomquiz/NewCustomQuiz";
 
+import { AuthProvider } from "context/AuthContext";
 import { QuestionProvider } from "context/QuestionContext";
 import { PlayerProvider } from "context/PlayerContext";
 import { RandomQuizProvider } from "context/RandomQuizContext";
@@ -43,56 +44,66 @@ function App() {
                   <PlayerProvider>
                     <QuestionProvider>
                       <ProgressProvider>
-                        <Router>
-                          <Header />
-                          <Route exact path='/sign-in' component={SignInForm}/>
-                          <Route exact path='/sign-up' component={SignUpForm}/>
-                          <Route
-                            exact
-                            path='/random-quiz'
-                            component={RandomQuizStarterForm}
-                          />
-                          <Route
-                            exact
-                            path='/custom-quiz/new'
-                            component={NewCustomQuiz}
-                          />
-                          <Route
-                            exact
-                            path='/custom-quiz/start'
-                            component={CustomQuizStarterForm}
-                          />
-                          <Route
-                            exact
-                            path='/custom-quiz'
-                            component={CustomQuizSelect}
-                          />
-                          <AnswerCorrectnessProvider>
+                        <AuthProvider>
+                          <Router>
+                            <Header />
                             <Route
                               exact
-                              path='/quiz'
-                              component={QuestionCard}
+                              path='/sign-in'
+                              component={SignInForm}
                             />
-                          </AnswerCorrectnessProvider>
-                          <Route exact path='/results' component={Result} />
-                          <NewQuestionFormProvider>
                             <Route
                               exact
-                              path='/add-question'
-                              component={AddNewQuestionForm}
+                              path='/sign-up'
+                              component={SignUpForm}
                             />
-                          </NewQuestionFormProvider>
-                          <Route
-                            exact
-                            path='/questions'
-                            component={QuestionsList}
-                          />
-                          <Route
-                            exact
-                            path='/questions/:id'
-                            component={QuestionDetails}
-                          />
-                        </Router>
+                            <Route
+                              exact
+                              path='/random-quiz'
+                              component={RandomQuizStarterForm}
+                            />
+                            <Route
+                              exact
+                              path='/custom-quiz/new'
+                              component={NewCustomQuiz}
+                            />
+                            <Route
+                              exact
+                              path='/custom-quiz/start'
+                              component={CustomQuizStarterForm}
+                            />
+                            <Route
+                              exact
+                              path='/custom-quiz'
+                              component={CustomQuizSelect}
+                            />
+                            <AnswerCorrectnessProvider>
+                              <Route
+                                exact
+                                path='/quiz'
+                                component={QuestionCard}
+                              />
+                            </AnswerCorrectnessProvider>
+                            <Route exact path='/results' component={Result} />
+                            <NewQuestionFormProvider>
+                              <Route
+                                exact
+                                path='/add-question'
+                                component={AddNewQuestionForm}
+                              />
+                            </NewQuestionFormProvider>
+                            <Route
+                              exact
+                              path='/questions'
+                              component={QuestionsList}
+                            />
+                            <Route
+                              exact
+                              path='/questions/:id'
+                              component={QuestionDetails}
+                            />
+                          </Router>
+                        </AuthProvider>
                       </ProgressProvider>
                     </QuestionProvider>
                   </PlayerProvider>
