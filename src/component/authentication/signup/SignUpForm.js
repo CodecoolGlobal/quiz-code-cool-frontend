@@ -11,7 +11,6 @@ export default function SignUpForm() {
   const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
   const {signUp} = useContext(AuthContext);
 
-
   const submit = () => {
     signUp();
   };

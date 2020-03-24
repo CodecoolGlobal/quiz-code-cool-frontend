@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import {
   InputItem,
   InputLabel,
@@ -9,6 +10,7 @@ import {
 import { AuthContext } from "context/AuthContext";
 
 export default function PasswordInput() {
+  const history = useHistory();
   const { passwordState, recalculateIsReadyToProceed } = useContext(
     AuthContext
   );
@@ -22,6 +24,21 @@ export default function PasswordInput() {
     setPassword(event.target.value);
   };
 
+  const getHelperContainer = () => {
+    switch (history.location.pathname) {
+      case "/sign-up":
+        return (
+          <InputHelperContainer>
+          <Help>
+            At least 8 characters including a number and a lowercase letter.{" "}
+          </Help>
+        </InputHelperContainer>
+        );
+      default:
+        return "";
+    }
+  };
+
   return (
     <InputItem>
       <InputLabel htmlFor='password'>Password</InputLabel>
@@ -29,14 +46,11 @@ export default function PasswordInput() {
         name='password'
         id='password'
         type='password'
+        placeholder='**********'
         value={password}
         onChange={handleChange}
       />
-      <InputHelperContainer>
-        <Help>
-          At least 8 characters including a number and a lowercase letter.{" "}
-        </Help>
-      </InputHelperContainer>
+      {getHelperContainer()}
     </InputItem>
   );
 }
