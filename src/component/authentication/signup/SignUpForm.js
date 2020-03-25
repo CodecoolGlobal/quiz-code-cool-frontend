@@ -8,7 +8,7 @@ import { AuthContext } from "context/AuthContext";
 import { ContentContainer, H3, Button } from "style/MyStyle";
 
 export default function SignUpForm() {
-  const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
+  const isReadyToProceed = useContext(ProgressContext)[0];
   const {signUp} = useContext(AuthContext);
 
   const submit = () => {

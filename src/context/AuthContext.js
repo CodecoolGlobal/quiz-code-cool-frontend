@@ -12,7 +12,6 @@ export const AuthProvider = props => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-  const [response, setResponse] = useState({});
 
   const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
 
@@ -30,8 +29,7 @@ export const AuthProvider = props => {
       url: SIGN_UP_URL,
       data: { username, email, password }
     }).then(res => {
-      setResponse(res.data);
-      console.log(res.data);
+      alert(res.data.responseMessage);
     });
   };
 
@@ -42,8 +40,7 @@ export const AuthProvider = props => {
         usernameState: [username, setUsername],
         passwordState: [password, setPassword],
         emailState: [email, setEmail],
-        signUp,
-        responseState: [response, setResponse]
+        signUp
       }}
     >
       {props.children}
