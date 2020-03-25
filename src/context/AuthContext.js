@@ -12,8 +12,7 @@ export const AuthProvider = props => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-
-  const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
+  const setIsReadyToProceed = useContext(ProgressContext)[1];
 
   const recalculateIsReadyToProceed = () => {
     if (username.length > 0 && password.length > 0 && email.length > 0) {
@@ -23,6 +22,12 @@ export const AuthProvider = props => {
     }
   };
 
+  const clearCredentials = () => {
+    setEmail("");
+    setPassword("");
+    setUsername("");
+  } 
+
   const signUp = () => {
     axios({
       method: "post",
@@ -30,6 +35,11 @@ export const AuthProvider = props => {
       data: { username, email, password }
     }).then(res => {
       alert(res.data.responseMessage);
+      if (res.data.successful === true) {
+        clearCredentials()
+      } else {
+        setIsReadyToProceed(false);
+      }
     });
   };
 
