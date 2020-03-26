@@ -16,7 +16,12 @@ export const AuthProvider = props => {
   const setIsReadyToProceed = useContext(ProgressContext)[1];
 
   const recalculateIsReadyToProceed = path => {
-    if (usernameInput.length > 0 && passwordInput.length > 0) {
+    if (
+      usernameInput.length >= 5 &&
+      usernameInput.length <= 20 &&
+      passwordInput.length >= 8 &&
+      passwordInput.match("^[A-Za-z0-9]+$")
+    ) {
       if (
         (path === "/sign-up" && emailInput.length > 0) ||
         (path === "/sign-in" && emailInput === "")
@@ -38,30 +43,39 @@ export const AuthProvider = props => {
     axios({
       method: "post",
       url: SIGN_UP_URL,
-      data: { username: usernameInput, email: emailInput, password: passwordInput }
-    }).then(res => {
-      alert(`Successful registration for username "${res.data}".`);
-        clearCredentials()
-    }).catch(error => {
-      alert(`Registration cannot be finished. ${error.response.data} is already taken.`)
-      setIsReadyToProceed(false);
-    });
+      data: {
+        username: usernameInput,
+        email: emailInput,
+        password: passwordInput
+      }
+    })
+      .then(res => {
+        alert(`Successful registration for username "${res.data}".`);
+        clearCredentials();
+      })
+      .catch(error => {
+        alert(
+          `Registration cannot be finished. ${error.response.data} is already taken.`
+        );
+        setIsReadyToProceed(false);
+      });
   };
 
-  const signIn = (history) => {
-    axios.post(
-      SIGN_IN_URL,
-      { username: usernameInput, password: passwordInput },
-      { withCredentials: true}
-      
-    ).then((res) => {
-      console.log(res)
-      setUsername(res.data.username);
-      history.push("/")
-      }).catch(() => {
-        alert("Incorrect username or password.")
-      }
-      );
+  const signIn = history => {
+    axios
+      .post(
+        SIGN_IN_URL,
+        { username: usernameInput, password: passwordInput },
+        { withCredentials: true }
+      )
+      .then(res => {
+        console.log(res);
+        setUsername(res.data.username);
+        history.push("/");
+      })
+      .catch(() => {
+        alert("Incorrect username or password.");
+      });
   };
 
   return (
