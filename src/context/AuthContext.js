@@ -34,7 +34,6 @@ export const AuthProvider = props => {
       url: SIGN_UP_URL,
       data: { username, email, password }
     }).then(res => {
-      console.log(res)
       alert(`Successful registration for username "${res.data}".`);
         clearCredentials()
     }).catch(error => {
