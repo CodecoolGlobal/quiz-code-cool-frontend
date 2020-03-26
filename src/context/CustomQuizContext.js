@@ -12,7 +12,7 @@ export const CustomQuizProvider = props => {
   const [customQuizzes, setCustomQuizzes] = useState([]);
 
   const getAllCustomQuizzes = () => {
-    axios.get(CUSTOM_QUIZ_BASE_URL).then(res => {
+    axios.get(CUSTOM_QUIZ_BASE_URL, { withCredentials: true}).then(res => {
       setCustomQuizzes(res.data);
     });
   };

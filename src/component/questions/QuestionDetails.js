@@ -24,7 +24,7 @@ export default function QuestionDetails(props) {
 
   useEffect(() => {
     axios
-      .get(url)
+      .get(url, { withCredentials: true})
       .then(resp =>
         setQuestion(
           new Question(

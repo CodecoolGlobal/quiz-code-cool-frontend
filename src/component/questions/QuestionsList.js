@@ -18,7 +18,7 @@ export default function QuestionsList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/questions")
+      .get("http://localhost:8080/questions", { withCredentials: true})
       .then(resp => setQuestions(resp.data));
   }, []);
 

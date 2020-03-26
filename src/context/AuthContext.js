@@ -49,16 +49,18 @@ export const AuthProvider = props => {
   };
 
   const signIn = (history) => {
-    axios({
-      method: "post",
-      url: SIGN_IN_URL,
-      data: { username: usernameInput, password: passwordInput }
-    }).then(() => {
+    axios.post(
+      SIGN_IN_URL,
+      { username: usernameInput, password: passwordInput },
+      { withCredentials: true}
+      
+    ).then((res) => {
+      console.log(res)
+      setUsername(res.data.username);
       history.push("/")
       }).catch(() => {
         alert("Incorrect username or password.")
       }
-
       );
   };
 

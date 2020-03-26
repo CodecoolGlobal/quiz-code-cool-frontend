@@ -89,7 +89,7 @@ export const QuestionProvider = props => {
   };
 
   function fetchQuestions(url, formProps) {
-    axios.get(url).then(resp => {
+    axios.get(url, { withCredentials: true}).then(resp => {
       if (resp.data === "") {
         alert(
           "There are not enough questions matching the entered parameters :("
