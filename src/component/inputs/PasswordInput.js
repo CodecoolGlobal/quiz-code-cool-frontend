@@ -17,7 +17,7 @@ export default function PasswordInput() {
   const [password, setPassword] = passwordState;
 
   useEffect(() => {
-    recalculateIsReadyToProceed();
+    recalculateIsReadyToProceed(history.location.pathname);
   }, [password]);
 
   const handleChange = event => {

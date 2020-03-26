@@ -18,11 +18,11 @@ export default function UsernameInput() {
 
   const handleChange = event => {
     setUsername(event.target.value);
-    recalculateIsReadyToProceed();
+    recalculateIsReadyToProceed(history.location.pathname);
   };
 
   useEffect(() => {
-    recalculateIsReadyToProceed();
+    recalculateIsReadyToProceed(history.location.pathname);
   }, [username]);
 
   const getHelperContainer = () => {

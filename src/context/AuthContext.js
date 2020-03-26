@@ -14,9 +14,14 @@ export const AuthProvider = props => {
 
   const setIsReadyToProceed = useContext(ProgressContext)[1];
 
-  const recalculateIsReadyToProceed = () => {
-    if (username.length > 0 && password.length > 0 && email.length > 0) {
-      setIsReadyToProceed(true);
+  const recalculateIsReadyToProceed = path => {
+    if (username.length > 0 && password.length > 0) {
+      if (
+        (path === "/sign-up" && email.length > 0) ||
+        (path === "/sign-in" && email === "")
+      ) {
+        setIsReadyToProceed(true);
+      }
     } else {
       setIsReadyToProceed(false);
     }
@@ -26,7 +31,7 @@ export const AuthProvider = props => {
     setEmail("");
     setPassword("");
     setUsername("");
-  } 
+  };
 
   const signUp = () => {
     axios({
@@ -42,6 +47,20 @@ export const AuthProvider = props => {
     });
   };
 
+  const signIn = (history) => {
+    axios({
+      method: "post",
+      url: SIGN_IN_URL,
+      data: { username, password }
+    }).then(() => {
+      history.push("/")
+      }).catch(() => {
+        alert("Incorrect username or password.")
+      }
+
+      );
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -50,6 +69,7 @@ export const AuthProvider = props => {
         passwordState: [password, setPassword],
         emailState: [email, setEmail],
         signUp,
+        signIn,
         clearCredentials
       }}
     >
