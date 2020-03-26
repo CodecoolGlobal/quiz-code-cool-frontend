@@ -8,7 +8,6 @@ export const AuthProvider = props => {
   const SIGN_UP_URL = process.env.REACT_APP_AUTH_URL + "sign-up";
   const SIGN_IN_URL = process.env.REACT_APP_AUTH_URL + "sign-in";
 
-  const [username, setUsername] = useState("");
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
@@ -77,7 +76,9 @@ export const AuthProvider = props => {
       )
       .then(res => {
         console.log(res);
-        setUsername(res.data.username);
+        localStorage.setItem("username", res.data.username);
+        localStorage.setItem("roles", res.data.roles);
+
         history.push("/");
       })
       .catch(() => {
@@ -92,7 +93,6 @@ export const AuthProvider = props => {
         usernameInputState: [usernameInput, setUsernameInput],
         passwordInputState: [passwordInput, setPasswordInput],
         emailInputState: [emailInput, setEmailInput],
-        usernameState: [username, setUsername],
         signUp,
         signIn,
         clearCredentials
