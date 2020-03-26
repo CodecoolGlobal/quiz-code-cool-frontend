@@ -11,7 +11,7 @@ import EmailInput from "component/inputs/EmailInput";
 
 export default function AuthForm() {
   const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
-  const { clearCredentials } = useContext(AuthContext);
+  const { clearCredentials, signUp, signIn } = useContext(AuthContext);
   const history = useHistory();
 
   useEffect(() => {
@@ -20,6 +20,14 @@ export default function AuthForm() {
 
   const submit = () => {
     setIsReadyToProceed(false);
+    switch (history.location.pathname) {
+      case "/sign-up":
+        signUp();
+        break;
+      default:
+        signIn();
+        break;
+    }
   };
 
   const pasteEmail = () => {
