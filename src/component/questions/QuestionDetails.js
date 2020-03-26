@@ -48,7 +48,8 @@ export default function QuestionDetails(props) {
       axios({
         method: "put",
         url: url,
-        data: question.id
+        data: question.id,
+        withCredentials: true
       }).then(
         response => {
           if (response.status === 200) {
