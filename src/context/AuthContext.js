@@ -75,7 +75,6 @@ export const AuthProvider = props => {
         { withCredentials: true }
       )
       .then(res => {
-        console.log(res);
         localStorage.setItem("username", res.data.username);
         localStorage.setItem("roles", res.data.roles);
 
