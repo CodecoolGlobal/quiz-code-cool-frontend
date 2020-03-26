@@ -9,16 +9,17 @@ export const AuthProvider = props => {
   const SIGN_IN_URL = process.env.REACT_APP_AUTH_URL + "sign-in";
 
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [usernameInput, setUsernameInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
 
   const setIsReadyToProceed = useContext(ProgressContext)[1];
 
   const recalculateIsReadyToProceed = path => {
-    if (username.length > 0 && password.length > 0) {
+    if (usernameInput.length > 0 && passwordInput.length > 0) {
       if (
-        (path === "/sign-up" && email.length > 0) ||
-        (path === "/sign-in" && email === "")
+        (path === "/sign-up" && emailInput.length > 0) ||
+        (path === "/sign-in" && emailInput === "")
       ) {
         setIsReadyToProceed(true);
       }
@@ -28,16 +29,16 @@ export const AuthProvider = props => {
   };
 
   const clearCredentials = () => {
-    setEmail("");
-    setPassword("");
-    setUsername("");
+    setEmailInput("");
+    setPasswordInput("");
+    setUsernameInput("");
   };
 
   const signUp = () => {
     axios({
       method: "post",
       url: SIGN_UP_URL,
-      data: { username, email, password }
+      data: { username: usernameInput, email: emailInput, password: passwordInput }
     }).then(res => {
       alert(`Successful registration for username "${res.data}".`);
         clearCredentials()
@@ -51,7 +52,7 @@ export const AuthProvider = props => {
     axios({
       method: "post",
       url: SIGN_IN_URL,
-      data: { username, password }
+      data: { username: usernameInput, password: passwordInput }
     }).then(() => {
       history.push("/")
       }).catch(() => {
@@ -65,9 +66,10 @@ export const AuthProvider = props => {
     <AuthContext.Provider
       value={{
         recalculateIsReadyToProceed,
+        usernameInputState: [usernameInput, setUsernameInput],
+        passwordInputState: [passwordInput, setPasswordInput],
+        emailInputState: [emailInput, setEmailInput],
         usernameState: [username, setUsername],
-        passwordState: [password, setPassword],
-        emailState: [email, setEmail],
         signUp,
         signIn,
         clearCredentials

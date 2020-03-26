@@ -11,19 +11,19 @@ import { AuthContext } from "context/AuthContext";
 
 export default function UsernameInput() {
   const history = useHistory();
-  const { usernameState, recalculateIsReadyToProceed } = useContext(
+  const { usernameInputState, recalculateIsReadyToProceed } = useContext(
     AuthContext
   );
-  const [username, setUsername] = usernameState;
+  const [usernameInput, setUsernameInput] = usernameInputState;
 
   const handleChange = event => {
-    setUsername(event.target.value);
+    setUsernameInput(event.target.value);
     recalculateIsReadyToProceed(history.location.pathname);
   };
 
   useEffect(() => {
     recalculateIsReadyToProceed(history.location.pathname);
-  }, [username]);
+  }, [usernameInput]);
 
   const getHelperContainer = () => {
     switch (history.location.pathname) {
@@ -46,7 +46,7 @@ export default function UsernameInput() {
         id="username"
         type="text"
         placeholder={`codecooler`}
-        value={username}
+        value={usernameInput}
         onChange={handleChange}
       />
       {getHelperContainer()}
