@@ -2,8 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import SignUpForm from "component/authentication/signup/SignUpForm";
-import SignInForm from "component/authentication/signin/SignInForm";
+import AuthForm from "component/authentication/AuthForm";
 
 import RandomQuizStarterForm from "component/quizzes/random/randomquizstarterform/RandomQuizStarterForm";
 import CustomQuizStarterForm from "component/quizzes/custom/customquizstarterform/CustomQuizStarterForm";
@@ -50,12 +49,12 @@ function App() {
                             <Route
                               exact
                               path='/sign-in'
-                              component={SignInForm}
+                              component={AuthForm}
                             />
                             <Route
                               exact
                               path='/sign-up'
-                              component={SignUpForm}
+                              component={AuthForm}
                             />
                             <Route
                               exact

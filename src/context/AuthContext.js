@@ -50,7 +50,8 @@ export const AuthProvider = props => {
         usernameState: [username, setUsername],
         passwordState: [password, setPassword],
         emailState: [email, setEmail],
-        signUp
+        signUp,
+        clearCredentials
       }}
     >
       {props.children}
