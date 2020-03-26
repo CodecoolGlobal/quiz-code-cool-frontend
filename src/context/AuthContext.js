@@ -23,7 +23,7 @@ export const AuthProvider = props => {
       passwordInput.match("^[A-Za-z0-9]+$")
     ) {
       if (
-        (path === "/sign-up" && emailInput.length > 0) ||
+        (path === "/sign-up" && emailInput.length > 0 && isEmailValid(emailInput)) ||
         (path === "/sign-in" && emailInput === "")
       ) {
         setIsReadyToProceed(true);
@@ -32,6 +32,13 @@ export const AuthProvider = props => {
       setIsReadyToProceed(false);
     }
   };
+
+  const isEmailValid = (mail) => {
+    if (mail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+      return true;
+    }
+    return false;
+  }
 
   const clearCredentials = () => {
     setEmailInput("");
