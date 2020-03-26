@@ -34,12 +34,12 @@ export const AuthProvider = props => {
       url: SIGN_UP_URL,
       data: { username, email, password }
     }).then(res => {
-      alert(res.data.responseMessage);
-      if (res.data.successful === true) {
+      console.log(res)
+      alert(`Successful registration for username "${res.data}."`);
         clearCredentials()
-      } else {
-        setIsReadyToProceed(false);
-      }
+    }).catch(error => {
+      alert(`Registration cannot be finished. ${error.response.data} is already taken.`)
+      setIsReadyToProceed(false);
     });
   };
 
