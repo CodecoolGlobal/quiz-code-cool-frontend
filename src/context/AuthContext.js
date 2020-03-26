@@ -35,7 +35,7 @@ export const AuthProvider = props => {
       data: { username, email, password }
     }).then(res => {
       console.log(res)
-      alert(`Successful registration for username "${res.data}."`);
+      alert(`Successful registration for username "${res.data}".`);
         clearCredentials()
     }).catch(error => {
       alert(`Registration cannot be finished. ${error.response.data} is already taken.`)
