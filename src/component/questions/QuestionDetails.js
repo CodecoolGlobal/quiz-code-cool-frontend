@@ -16,6 +16,7 @@ import {
 } from "../../style/MyStyle";
 
 export default function QuestionDetails(props) {
+  console.log(props);
   const [question, setQuestion] = useState(new Question("", "", "", "", []));
   const [validateButton, setValidateButton] = useState(<div></div>);
 
