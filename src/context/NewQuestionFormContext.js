@@ -66,7 +66,8 @@ export const NewQuestionFormProvider = props => {
     axios({
       method: "post",
       url: questionUrl,
-      data: newQuestion
+      data: newQuestion,
+      withCredentials: true
     }).then(
       response => {
         if (response.status === 200) {

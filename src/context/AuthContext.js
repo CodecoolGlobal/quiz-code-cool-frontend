@@ -8,17 +8,22 @@ export const AuthProvider = props => {
   const SIGN_UP_URL = process.env.REACT_APP_AUTH_URL + "sign-up";
   const SIGN_IN_URL = process.env.REACT_APP_AUTH_URL + "sign-in";
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [usernameInput, setUsernameInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
 
   const setIsReadyToProceed = useContext(ProgressContext)[1];
 
   const recalculateIsReadyToProceed = path => {
-    if (username.length > 0 && password.length > 0) {
+    if (
+      usernameInput.length >= 5 &&
+      usernameInput.length <= 20 &&
+      passwordInput.length >= 8 &&
+      passwordInput.match("^[A-Za-z0-9]+$")
+    ) {
       if (
-        (path === "/sign-up" && email.length > 0) ||
-        (path === "/sign-in" && email === "")
+        (path === "/sign-up" && emailInput.length > 0 && isEmailValid(emailInput)) ||
+        (path === "/sign-in" && emailInput === "")
       ) {
         setIsReadyToProceed(true);
       }
@@ -27,49 +32,66 @@ export const AuthProvider = props => {
     }
   };
 
+  const isEmailValid = (mail) => {
+    if (mail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+      return true;
+    }
+    return false;
+  }
+
   const clearCredentials = () => {
-    setEmail("");
-    setPassword("");
-    setUsername("");
+    setEmailInput("");
+    setPasswordInput("");
+    setUsernameInput("");
   };
 
   const signUp = () => {
     axios({
       method: "post",
       url: SIGN_UP_URL,
-      data: { username, email, password }
-    }).then(res => {
-      alert(res.data.responseMessage);
-      if (res.data.successful === true) {
-        clearCredentials();
-      } else {
-        setIsReadyToProceed(false);
+      data: {
+        username: usernameInput,
+        email: emailInput,
+        password: passwordInput
       }
-    });
+    })
+      .then(res => {
+        alert(`Successful registration for username "${res.data}".`);
+        clearCredentials();
+      })
+      .catch(error => {
+        alert(
+          `Registration cannot be finished. ${error.response.data} is already taken.`
+        );
+        setIsReadyToProceed(false);
+      });
   };
 
-  const signIn = () => {
-    axios({
-      method: "post",
-      url: SIGN_IN_URL,
-      data: { username, password }
-    }).then(res => {
-      alert(res.data.responseMessage);
-      if (res.data.successful === true) {
-        clearCredentials();
-      } else {
-        setIsReadyToProceed(false);
-      }
-    });
+  const signIn = history => {
+    axios
+      .post(
+        SIGN_IN_URL,
+        { username: usernameInput, password: passwordInput },
+        { withCredentials: true }
+      )
+      .then(res => {
+        localStorage.setItem("username", res.data.username);
+        localStorage.setItem("roles", res.data.roles);
+
+        history.push("/");
+      })
+      .catch(() => {
+        alert("Incorrect username or password.");
+      });
   };
 
   return (
     <AuthContext.Provider
       value={{
         recalculateIsReadyToProceed,
-        usernameState: [username, setUsername],
-        passwordState: [password, setPassword],
-        emailState: [email, setEmail],
+        usernameInputState: [usernameInput, setUsernameInput],
+        passwordInputState: [passwordInput, setPasswordInput],
+        emailInputState: [emailInput, setEmailInput],
         signUp,
         signIn,
         clearCredentials

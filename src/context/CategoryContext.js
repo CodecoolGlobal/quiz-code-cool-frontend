@@ -17,7 +17,7 @@ export const CategoryProvider = props => {
   console.log("CategoryProvider INITIALIZED");
 
   const fetchAllCategories = () => {
-    axios.get(CATEGORY_URL).then(res => {
+    axios.get(CATEGORY_URL, { withCredentials: true}).then(res => {
       setAllCategories([...res.data]);
     });
   }

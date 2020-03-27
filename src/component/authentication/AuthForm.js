@@ -25,7 +25,7 @@ export default function AuthForm() {
         signUp();
         break;
       default:
-        signIn();
+        signIn(history);
         break;
     }
   };

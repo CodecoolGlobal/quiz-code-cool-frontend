@@ -5,17 +5,17 @@ import { AuthContext } from "context/AuthContext";
 
 export default function EmailInput() {
   const history = useHistory();
-  const { emailState, recalculateIsReadyToProceed } = useContext(AuthContext);
-  const [email, setEmail] = emailState;
+  const { emailInputState, recalculateIsReadyToProceed } = useContext(AuthContext);
+  const [emailInput, setEmailInput] = emailInputState;
 
   const handleChange = event => {
-    setEmail(event.target.value)
+    setEmailInput(event.target.value)
     recalculateIsReadyToProceed(history.location.pathname);
   };
 
   useEffect(() => {
     recalculateIsReadyToProceed(history.location.pathname);
-  }, [email]);
+  }, [emailInput]);
 
   return (
     <InputItem>
@@ -25,7 +25,7 @@ export default function EmailInput() {
         id='email'
         type='text'
         placeholder={`example@codecool.com`}
-        value={email}
+        value={emailInput}
         onChange={handleChange}
       />
     </InputItem>

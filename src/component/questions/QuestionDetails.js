@@ -24,7 +24,7 @@ export default function QuestionDetails(props) {
 
   useEffect(() => {
     axios
-      .get(url)
+      .get(url, { withCredentials: true})
       .then(resp =>
         setQuestion(
           new Question(
@@ -47,7 +47,7 @@ export default function QuestionDetails(props) {
       axios({
         method: "put",
         url: url,
-        data: question.id
+        withCredentials: true
       }).then(
         response => {
           if (response.status === 200) {
@@ -63,10 +63,13 @@ export default function QuestionDetails(props) {
 
     switch (question.validated) {
       case false:
-        setValidateButton(<Button onClick={validate}>Validate</Button>);
-        break;
-      case true:
-        setValidateButton(<div></div>);
+        setValidateButton(
+          localStorage.getItem("roles").includes("ROLE_ADMIN") ? (
+            <Button onClick={validate}>Validate</Button>
+          ) : (
+            <div></div>
+          )
+        );
         break;
       default:
         setValidateButton(<div></div>);

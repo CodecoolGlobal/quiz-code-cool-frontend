@@ -11,17 +11,17 @@ import { AuthContext } from "context/AuthContext";
 
 export default function PasswordInput() {
   const history = useHistory();
-  const { passwordState, recalculateIsReadyToProceed } = useContext(
+  const { passwordInputState, recalculateIsReadyToProceed } = useContext(
     AuthContext
   );
-  const [password, setPassword] = passwordState;
+  const [passwordInput, setPasswordInput] = passwordInputState;
 
   useEffect(() => {
     recalculateIsReadyToProceed(history.location.pathname);
-  }, [password]);
+  }, [passwordInput]);
 
   const handleChange = event => {
-    setPassword(event.target.value);
+    setPasswordInput(event.target.value);
   };
 
   const getHelperContainer = () => {
@@ -47,7 +47,7 @@ export default function PasswordInput() {
         id='password'
         type='password'
         placeholder='**********'
-        value={password}
+        value={passwordInput}
         onChange={handleChange}
       />
       {getHelperContainer()}
