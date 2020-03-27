@@ -18,6 +18,8 @@ import CustomQuizSelect from "component/quizzes/custom/CustomQuizSelect";
 import NewCustomQuiz from "component/quizzes/custom/newcustomquiz/NewCustomQuiz";
 
 import { AuthProvider } from "context/AuthContext";
+import { UserProvider } from "context/UserContext";
+
 import { QuestionProvider } from "context/QuestionContext";
 import { PlayerProvider } from "context/PlayerContext";
 import { RandomQuizProvider } from "context/RandomQuizContext";
@@ -45,6 +47,7 @@ function App() {
                     <QuestionProvider>
                       <ProgressProvider>
                         <AuthProvider>
+                          <UserProvider>
                           <Router>
                             <Header />
                             <Route
@@ -103,6 +106,7 @@ function App() {
                               component={QuestionDetails}
                             />
                           </Router>
+                          </UserProvider>
                         </AuthProvider>
                       </ProgressProvider>
                     </QuestionProvider>

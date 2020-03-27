@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 
 import Question from "context/Question";
+import { UserContext } from "context/UserContext";
 import Answers from "component/questions/Answers";
 import { Button } from "style/MyStyle";
 
@@ -18,6 +19,8 @@ import {
 export default function QuestionDetails(props) {
   const [question, setQuestion] = useState(new Question("", "", "", "", []));
   const [validateButton, setValidateButton] = useState(<div></div>);
+  const { rolesState } = useContext(UserContext);
+  const roles = rolesState[0];
 
   const { id } = props.match.params;
   const url = `http://localhost:8080/questions/${id}`;
@@ -41,30 +44,30 @@ export default function QuestionDetails(props) {
       );
   }, [props.history, question.id, question.validated, url]);
 
-  useEffect(() => {
-    const validate = e => {
-      e.preventDefault();
-      axios({
-        method: "put",
-        url: url,
-        withCredentials: true
-      }).then(
-        response => {
-          if (response.status === 200) {
-            alert("Question validated successfully! :)");
-            props.history.push("/questions");
-          }
-        },
-        error => {
-          console.log(error);
+  const validate = e => {
+    e.preventDefault();
+    axios({
+      method: "put",
+      url: url,
+      withCredentials: true
+    }).then(
+      response => {
+        if (response.status === 200) {
+          alert("Question validated successfully! :)");
+          props.history.push("/questions");
         }
-      );
-    };
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  };
 
+  useEffect(() => {
     switch (question.validated) {
       case false:
         setValidateButton(
-          localStorage.getItem("roles").includes("ROLE_ADMIN") ? (
+          roles.includes("ROLE_ADMIN") ? (
             <Button onClick={validate}>Validate</Button>
           ) : (
             <div></div>
@@ -74,7 +77,7 @@ export default function QuestionDetails(props) {
       default:
         setValidateButton(<div></div>);
     }
-  }, [props.history, question, url]);
+  }, [question]);
 
   return (
     <ContentContainer>
