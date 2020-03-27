@@ -4,6 +4,7 @@ import {
   NavigBar,
   NavigLink,
   NavItem,
+  UserNavLink,
   UserNavItem,
   UserImage
 } from "style/MyStyle";
@@ -22,9 +23,9 @@ export default function Navbar() {
       username ? (
         <React.Fragment>
           <UserImage src={user}></UserImage>
-          <NavigLink float='right' to='/user'>
+          <UserNavLink float='right' to='/user'>
             <UserNavItem>{username}</UserNavItem>
-          </NavigLink>
+          </UserNavLink>
         </React.Fragment>
       ) : (
         <React.Fragment></React.Fragment>

@@ -62,8 +62,7 @@ export const NavigLink = styled(NavLink)`
   color: ${applicationTheme.color1};
   font-size: ${applicationTheme.fontSize1};
   text-decoration: none;
-  float: ${props =>
-    props.float === "right" ? "right" : "left"};
+  float: left;
   &.active {
     color: #fff;
     background: ${applicationTheme.color1};
@@ -92,6 +91,20 @@ export const NavItem = styled.li`
     color: #fff;
   }
 `;
+
+export const UserNavLink = styled(NavLink)`
+  color: ${applicationTheme.color1};
+  font-size: ${applicationTheme.fontSize1};
+  text-decoration: none;
+  float: right;
+  &.active {
+    font-weight: bolder;
+  }
+  @media screen and (max-width: 600px) {
+    float: none;
+    display: block;
+  }
+`
 
 export const UserNavItem = styled.li`
   margin: 0;
