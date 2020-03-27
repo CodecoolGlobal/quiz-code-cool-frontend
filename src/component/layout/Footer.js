@@ -1,7 +1,19 @@
 import React from "react";
 
-import { FooterContainer } from "style/MyStyle";
+import {
+  FooterContainer,
+  FooterLink,
+  NavItem,
+  FooterLine
+} from "style/MyStyle";
 
 export default function Footer() {
-  return <FooterContainer>Copyright &copy; 2020 Codecool quiz</FooterContainer>;
+  return (
+    <FooterContainer>
+      <FooterLine>Copyright &copy; 2020 Codecool quiz</FooterLine>
+      <FooterLink href='https://reacty.netlify.com/' target='_blank'>
+        Reacty
+      </FooterLink>
+    </FooterContainer>
+  );
 }

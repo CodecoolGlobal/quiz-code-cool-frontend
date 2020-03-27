@@ -23,8 +23,6 @@ export const applicationTheme = {
 
 export const Container = styled.div`
   text-align: center;
-  @media screen and (max-width: 600px) {
-  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -69,11 +67,11 @@ export const NavigLink = styled(NavLink)`
 `;
 
 export const LoginNavLink = styled(NavLink)`
-  &.active>button {
+  &.active > button {
     color: #fff;
     background: ${applicationTheme.color3};
   }
-`
+`;
 
 export const NavItem = styled.li`
   margin: 0;
@@ -87,14 +85,14 @@ export const NavItem = styled.li`
   }
 `;
 
-export const CoPage = styled.a`
+export const FooterLink = styled.a`
+  float: right;
+  padding: 10px 15px;
+  text-decoration: none;
   color: ${applicationTheme.color1};
   font-size: ${applicationTheme.fontSize1};
-  text-decoration: none;
-  float: right;
-  @media screen and (max-width: 600px) {
-    float: none;
-    display: block;
+  &:hover {
+    text-decoration: underline;
   }
 `;
 
@@ -255,9 +253,22 @@ export const LoginButton = styled.button`
   font-weight: bold;
   color: ${applicationTheme.color2};
   background-color: #fff;
-  border-radius: ${ props => props.left ?
-  applicationTheme.borderRadius4 + " " + applicationTheme.borderRadius1 + " " + applicationTheme.borderRadius1 + " " + applicationTheme.borderRadius4 :
-  applicationTheme.borderRadius1 + " " + applicationTheme.borderRadius4 + " " + applicationTheme.borderRadius4  + " " + applicationTheme.borderRadius1};
+  border-radius: ${props =>
+    props.left
+      ? applicationTheme.borderRadius4 +
+        " " +
+        applicationTheme.borderRadius1 +
+        " " +
+        applicationTheme.borderRadius1 +
+        " " +
+        applicationTheme.borderRadius4
+      : applicationTheme.borderRadius1 +
+        " " +
+        applicationTheme.borderRadius4 +
+        " " +
+        applicationTheme.borderRadius4 +
+        " " +
+        applicationTheme.borderRadius1};
   border: 2px solid ${applicationTheme.color3};
   padding: 5px 10px;
   margin: 2px 1px;
@@ -275,8 +286,6 @@ export const LoginButton = styled.button`
     cursor: default;
   }
 `;
-
-
 
 export const PlayerHeader = styled.div`
   justify-content: space-between;
@@ -351,13 +360,16 @@ export const FooterContainer = styled.div`
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 10px;
-  text-align: center;
   font-size: ${applicationTheme.fontSize1};
   color: ${applicationTheme.color1};
-  font-family: "Capriola", sans-serif;
   background: #fff;
   text-align: center;
+`;
+
+export const FooterLine = styled.div`
+  font-family: "Capriola", sans-serif;
+  float: left;
+  padding: 10px 15px;
 `;
 
 export const QuestionListContainer = styled.div`
@@ -408,7 +420,6 @@ export const Help = styled.p`
   padding: 2px;
   font-size: ${applicationTheme.fontSize2};
 `;
-
 
 export const InputHelperContainer = styled.div`
   text-align: left;
