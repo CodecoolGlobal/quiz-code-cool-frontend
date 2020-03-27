@@ -1,6 +1,8 @@
 import React, { useState, createContext, useContext } from "react";
 import axios from "axios";
 import { ProgressContext } from "context/ProgressContext";
+import { UserContext } from "context/UserContext";
+
 
 export const AuthContext = createContext();
 
@@ -13,6 +15,10 @@ export const AuthProvider = props => {
   const [emailInput, setEmailInput] = useState("");
 
   const setIsReadyToProceed = useContext(ProgressContext)[1];
+
+  const {usernameState, rolesState} = useContext(UserContext);
+  const setUsername = usernameState[1];
+  const setRoles = rolesState[1];
 
   const recalculateIsReadyToProceed = path => {
     if (
@@ -45,6 +51,14 @@ export const AuthProvider = props => {
     setUsernameInput("");
   };
 
+  const setUpUserData = (username, roles) => {
+    localStorage.setItem("username", username);
+    localStorage.setItem("roles", roles);
+    setUsername(username);
+    setRoles(roles)
+
+  }
+
   const signUp = () => {
     axios({
       method: "post",
@@ -75,9 +89,7 @@ export const AuthProvider = props => {
         { withCredentials: true }
       )
       .then(res => {
-        localStorage.setItem("username", res.data.username);
-        localStorage.setItem("roles", res.data.roles);
-
+        setUpUserData(res.data.username, res.data.roles)
         history.push("/");
       })
       .catch(() => {

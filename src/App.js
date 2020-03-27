@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import AuthForm from "component/authentication/AuthForm";
 
 import PrivateRoute from "component/PrivateRoute";
+import UserDetails from "component/user/UserDetails";
 import RandomQuizStarterForm from "component/quizzes/random/randomquizstarterform/RandomQuizStarterForm";
 import CustomQuizStarterForm from "component/quizzes/custom/customquizstarterform/CustomQuizStarterForm";
 import AddNewQuestionForm from "component/newquestion/NewQuestionForm";
@@ -46,8 +47,8 @@ function App() {
                   <PlayerProvider>
                     <QuestionProvider>
                       <ProgressProvider>
+                      <UserProvider>
                         <AuthProvider>
-                          <UserProvider>
                             <Router>
                               <Header />
                               <Route
@@ -59,6 +60,11 @@ function App() {
                                 exact
                                 path='/sign-up'
                                 component={AuthForm}
+                              />
+                              <PrivateRoute
+                                exact
+                                path='/'
+                                component={UserDetails}
                               />
                               <PrivateRoute
                                 exact
@@ -110,8 +116,8 @@ function App() {
                                 component={QuestionDetails}
                               />
                             </Router>
-                          </UserProvider>
                         </AuthProvider>
+                        </UserProvider>
                       </ProgressProvider>
                     </QuestionProvider>
                   </PlayerProvider>
