@@ -8,7 +8,7 @@ import {
     ResultTableHead,
     ContentContainer,
     TableContainer
-  } from "../../style/MyStyle";
+  } from "style/MyStyle";
 
 export default function UserDetails() {
   const { usernameState } = useContext(UserContext);

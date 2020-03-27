@@ -117,7 +117,7 @@ export const FooterLink = styled.a`
 `;
 
 export const ContentContainer = styled.div`
-  padding: 25px 5% 15px 5%;
+  padding: 25px 5% 20px 5%;
   background: ${applicationTheme.mainLightOpaque};
   border-radius: ${applicationTheme.borderRadius3};
   margin: 20px 30% 60px 30%;
@@ -187,6 +187,12 @@ export const H3 = styled.h3`
   margin: 10px;
   color: ${applicationTheme.color1};
 `;
+
+export const Message = styled.p`
+  color: ${applicationTheme.color2};
+  font-size: ${applicationTheme.fontSize1};
+  padding: 5px;
+`
 
 export const CategoryTitle = styled.h4`
   text-align: center;

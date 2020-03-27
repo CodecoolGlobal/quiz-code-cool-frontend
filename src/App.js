@@ -6,6 +6,7 @@ import AuthForm from "component/authentication/AuthForm";
 
 import PrivateRoute from "component/PrivateRoute";
 import UserDetails from "component/user/UserDetails";
+import Home from "component/Home";
 import RandomQuizStarterForm from "component/quizzes/random/randomquizstarterform/RandomQuizStarterForm";
 import CustomQuizStarterForm from "component/quizzes/custom/customquizstarterform/CustomQuizStarterForm";
 import AddNewQuestionForm from "component/newquestion/NewQuestionForm";
@@ -47,8 +48,8 @@ function App() {
                   <PlayerProvider>
                     <QuestionProvider>
                       <ProgressProvider>
-                      <UserProvider>
-                        <AuthProvider>
+                        <UserProvider>
+                          <AuthProvider>
                             <Router>
                               <Header />
                               <Route
@@ -63,8 +64,13 @@ function App() {
                               />
                               <PrivateRoute
                                 exact
-                                path='/'
+                                path='/user'
                                 component={UserDetails}
+                              />
+                              <PrivateRoute
+                                exact
+                                path='/'
+                                component={Home}
                               />
                               <PrivateRoute
                                 exact
@@ -116,7 +122,7 @@ function App() {
                                 component={QuestionDetails}
                               />
                             </Router>
-                        </AuthProvider>
+                          </AuthProvider>
                         </UserProvider>
                       </ProgressProvider>
                     </QuestionProvider>
