@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import AuthForm from "component/authentication/AuthForm";
 
-import PrivateRoute from "component/PrivateRoute";
+import PrivateRoute from "component/RouteModifiers/PrivateRoute";
+import DisableRouteWhenAuthenticated from "component/RouteModifiers/DisableRouteWhenAuthenticated";
 import UserDetails from "component/user/UserDetails";
 import Home from "component/Home";
 import RandomQuizStarterForm from "component/quizzes/random/randomquizstarterform/RandomQuizStarterForm";
@@ -52,12 +53,12 @@ function App() {
                           <AuthProvider>
                             <Router>
                               <Header />
-                              <Route
+                              <DisableRouteWhenAuthenticated
                                 exact
                                 path='/sign-in'
                                 component={AuthForm}
                               />
-                              <Route
+                              <DisableRouteWhenAuthenticated
                                 exact
                                 path='/sign-up'
                                 component={AuthForm}

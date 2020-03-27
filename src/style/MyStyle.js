@@ -73,7 +73,7 @@ export const NavigLink = styled(NavLink)`
   }
 `;
 
-export const LoginNavLink = styled(NavLink)`
+export const HeaderNavLink = styled(NavLink)`
   &.active > button {
     color: #fff;
     background: ${applicationTheme.color3};
@@ -286,7 +286,7 @@ export const Button = styled.button`
   }
 `;
 
-export const LoginButton = styled.button`
+export const HeaderButton = styled.button`
   clear: both;
   font-size: ${applicationTheme.fontSize1};
   font-weight: bold;
