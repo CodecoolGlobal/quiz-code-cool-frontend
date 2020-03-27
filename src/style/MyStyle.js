@@ -42,6 +42,13 @@ export const QuestionsImage = styled.img`
   height: 60px;
 `;
 
+export const UserImage = styled.img`
+float: right;
+  padding: 5px 15px 0 0;
+  height: 20px;
+`;
+
+
 export const NavigBar = styled.ul`
   position: sticky;
   list-style-type: none;
@@ -55,7 +62,8 @@ export const NavigLink = styled(NavLink)`
   color: ${applicationTheme.color1};
   font-size: ${applicationTheme.fontSize1};
   text-decoration: none;
-  float: left;
+  float: ${props =>
+    props.float === "right" ? "right" : "left"};
   &.active {
     color: #fff;
     background: ${applicationTheme.color1};
@@ -82,6 +90,18 @@ export const NavItem = styled.li`
     cursor: pointer;
     background: ${applicationTheme.color4};
     color: #fff;
+  }
+`;
+
+export const UserNavItem = styled.li`
+  margin: 0;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+    color: ${applicationTheme.color2};
+    font-weight: bolder;
   }
 `;
 
