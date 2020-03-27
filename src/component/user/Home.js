@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <ContentContainer>
       <H3>Hello {username}!</H3>
-      <Message>Let's play some quizzes!</Message>
+      <Message>Let's play with some quizzes!</Message>
     </ContentContainer>
   );
 }

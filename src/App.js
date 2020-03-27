@@ -7,7 +7,7 @@ import AuthForm from "component/authentication/AuthForm";
 import PrivateRoute from "component/RouteModifiers/PrivateRoute";
 import DisableRouteWhenAuthenticated from "component/RouteModifiers/DisableRouteWhenAuthenticated";
 import UserDetails from "component/user/UserDetails";
-import Home from "component/Home";
+import Home from "component/user/Home";
 import RandomQuizStarterForm from "component/quizzes/random/randomquizstarterform/RandomQuizStarterForm";
 import CustomQuizStarterForm from "component/quizzes/custom/customquizstarterform/CustomQuizStarterForm";
 import AddNewQuestionForm from "component/newquestion/NewQuestionForm";
