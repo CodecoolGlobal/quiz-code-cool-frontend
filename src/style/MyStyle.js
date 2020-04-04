@@ -18,7 +18,7 @@ export const applicationTheme = {
   borderRadius3: "8px",
   borderRadius4: "20px",
   shadow1: "0 1px 4px 0 rgba(0, 0, 0, 0.2)",
-  shadow2: "0 1px 2px 0 rgba(0, 0, 0, 0.2)"
+  shadow2: "0 1px 2px 0 rgba(0, 0, 0, 0.2)",
 };
 
 export const Container = styled.div`
@@ -43,11 +43,10 @@ export const QuestionsImage = styled.img`
 `;
 
 export const UserImage = styled.img`
-float: right;
+  float: right;
   padding: 5px 15px 0 0;
   height: 20px;
 `;
-
 
 export const NavigBar = styled.ul`
   position: sticky;
@@ -104,7 +103,7 @@ export const UserNavLink = styled(NavLink)`
     float: none;
     display: block;
   }
-`
+`;
 
 export const UserNavItem = styled.li`
   margin: 0;
@@ -150,7 +149,7 @@ export const QuestionCardContainer = styled.div`
   margin: 20px 30% 60px 30%;
   box-shadow: ${applicationTheme.shadow1};
   @media screen and (max-width: 992px) {
-    margin: 20px 25% 60px 25%;
+    margin: 20px 20% 60px 20%;
   }
   @media screen and (max-width: 600px) {
     margin: 20px 10% 60px 10%;
@@ -158,14 +157,14 @@ export const QuestionCardContainer = styled.div`
 `;
 
 export const QuestionContainer = styled.div`
-  padding: 15px 0 10px 0;
+  padding: 20px 3% 10px 3%;
   background: ${applicationTheme.mainLightOpaque};
-  border: ${props =>
+  border: ${(props) =>
     props.borderColor ? "2px solid " + props.borderColor : "none"};
   border-radius: ${applicationTheme.borderRadius3};
   box-shadow: ${applicationTheme.shadow1};
   border-top: 2px solid #fff;
-  background: ${props =>
+  background: ${(props) =>
     props.questionColor
       ? props.questionColor
       : applicationTheme.mainLightOpaque};
@@ -174,7 +173,7 @@ export const QuestionContainer = styled.div`
 `;
 
 export const AnswerContainer = styled.div`
-  padding: 0 50px 5px 50px;
+  padding: 0 15% 5px 15%;
 `;
 
 export const PlayerName = styled.h2`
@@ -205,7 +204,7 @@ export const Message = styled.p`
   color: ${applicationTheme.color2};
   font-size: ${applicationTheme.fontSize1};
   padding: 5px;
-`
+`;
 
 export const CategoryTitle = styled.h4`
   text-align: center;
@@ -292,7 +291,7 @@ export const HeaderButton = styled.button`
   font-weight: bold;
   color: ${applicationTheme.color2};
   background-color: #fff;
-  border-radius: ${props =>
+  border-radius: ${(props) =>
     props.left
       ? applicationTheme.borderRadius4 +
         " " +
@@ -335,7 +334,7 @@ export const PlayerHeader = styled.div`
   color: #fff;
   margin-top: 10px;
   padding: 10px 30px;
-  background: ${props => props.playerTheme.backgroundColor};
+  background: ${(props) => props.playerTheme.backgroundColor};
 `;
 
 export const RadioButtonLabel = styled.label`
@@ -374,11 +373,11 @@ export const TableContainer = styled.div`
 `;
 
 export const ResultTableRow = styled.tr`
-  background: ${props =>
+  background: ${(props) =>
     props.playerTheme
       ? props.playerTheme.backgroundColor
       : applicationTheme.color3};
-  color: ${props => (props.playerTheme ? applicationTheme.color1 : "#fff")};
+  color: ${(props) => (props.playerTheme ? applicationTheme.color1 : "#fff")};
 `;
 
 export const ResultTableData = styled.td`
