@@ -22,18 +22,18 @@ import NewCustomQuiz from "component/quizzes/custom/newcustomquiz/NewCustomQuiz"
 
 import { AuthProvider } from "context/AuthContext";
 import { UserProvider } from "context/UserContext";
-
 import { QuestionProvider } from "context/QuestionContext";
 import { PlayerProvider } from "context/PlayerContext";
 import { RandomQuizProvider } from "context/RandomQuizContext";
 import { CustomQuizProvider } from "context/CustomQuizContext";
 import { ProgressProvider } from "context/ProgressContext";
 import { AnswerCorrectnessProvider } from "context/AnswerCorrectnessContext";
-
 import { NewQuestionFormProvider } from "context/NewQuestionFormContext";
 import { CategoryProvider } from "context/CategoryContext";
 import { TypeProvider } from "context/TypeContext";
 import { RestoreFiltersProvider } from "context/RestoreFiltersContext";
+import { MenuProvider } from "context/MenuContext";
+
 
 import { Container } from "style/MyStyle";
 
@@ -52,7 +52,9 @@ function App() {
                         <UserProvider>
                           <AuthProvider>
                             <Router>
+                            <MenuProvider>
                               <Header />
+                              </MenuProvider>
                               <DisableRouteWhenAuthenticated
                                 exact
                                 path='/sign-in'
@@ -68,11 +70,7 @@ function App() {
                                 path='/user'
                                 component={UserDetails}
                               />
-                              <PrivateRoute
-                                exact
-                                path='/'
-                                component={Home}
-                              />
+                              <PrivateRoute exact path='/' component={Home} />
                               <PrivateRoute
                                 exact
                                 path='/random-quiz'

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Navbar from "component/layout/Navbar";
+import ToolBar from "component/layout/ToolBar";
 import HeaderButtons from "component/layout/HeaderButtons";
 
 import {
@@ -23,7 +23,7 @@ export default function Header() {
           <HeaderButtons />
         </div>
       </TitleContainer>
-      <Navbar />
+      <ToolBar />
     </HeaderContainer>
   );
 }

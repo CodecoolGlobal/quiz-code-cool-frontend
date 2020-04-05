@@ -43,32 +43,41 @@ export const QuestionsImage = styled.img`
 `;
 
 export const UserImage = styled.img`
-  float: right;
-  padding: 5px 15px 0 0;
+  height: 13px;
+  margin-right: 5px;
+`;
+
+export const MenuItemImage = styled.img`
   height: 20px;
 `;
 
 export const NavigBar = styled.ul`
-  position: sticky;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   background: #fff;
 `;
 
-export const NavigLink = styled(NavLink)`
+export const MenuNavLink = styled(NavLink)`
   color: ${applicationTheme.color1};
   font-size: ${applicationTheme.fontSize1};
   text-decoration: none;
-  float: left;
+  display: block;
   &.active {
     color: #fff;
     background: ${applicationTheme.color1};
   }
-  @media screen and (max-width: 600px) {
-    float: none;
-    display: block;
+`;
+
+export const MenuNavItem = styled.li`
+  margin: 0;
+  display: block;
+  padding: 5px 20px;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+    background: ${applicationTheme.color4};
+    color: #fff;
   }
 `;
 
@@ -79,15 +88,63 @@ export const HeaderNavLink = styled(NavLink)`
   }
 `;
 
-export const NavItem = styled.li`
+export const Toolbar = styled.header`
+  position: sticky;
+  height: 40px;
+  width: 100%;
+  background: #fff;
+`;
+
+export const ToolbarNavigation = styled.nav`
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 1rem;
+`;
+
+export const ToolbarNavigationItems = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const ToolbarNavigationUl = styled.ul`
+  list-style: none;
   margin: 0;
-  display: block;
-  padding: 10px 20px;
-  text-align: center;
+  padding: 0;
+  display: flex;
+  & li {
+    font-size: ${applicationTheme.fontSize1};
+    padding: 0 0.5rem;
+  }
+`;
+
+export const Spacer = styled.div`
+  flex: 1;
+`;
+
+export const FormattedNavLink = styled(NavLink)`
+  color: ${applicationTheme.color1};
+  text-decoration: none;
   &:hover {
-    cursor: pointer;
-    background: ${applicationTheme.color4};
-    color: #fff;
+    color: ${applicationTheme.color4};
+  }
+  &.active {
+    font-weight: bold;
+    color: #b300b3;
+  }
+`;
+
+export const ToggleButton = styled.button`
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  @media (min-width: 769px) {
+    display: none;
   }
 `;
 
@@ -132,13 +189,13 @@ export const ContentContainer = styled.div`
   padding: 25px 5% 20px 5%;
   background: ${applicationTheme.mainLightOpaque};
   border-radius: ${applicationTheme.borderRadius3};
-  margin: 20px 30% 60px 30%;
+  margin: 25px 30% 60px 30%;
   box-shadow: ${applicationTheme.shadow1};
   @media screen and (max-width: 992px) {
-    margin: 20px 25% 60px 25%;
+    margin: 25px 25% 60px 25%;
   }
   @media screen and (max-width: 600px) {
-    margin: 20px 10% 60px 10%;
+    margin: 25px 10% 60px 10%;
     padding: 15px 10%;
   }
 `;
@@ -146,13 +203,13 @@ export const ContentContainer = styled.div`
 export const QuestionCardContainer = styled.div`
   background: ${applicationTheme.mainLightOpaque};
   border-radius: ${applicationTheme.borderRadius3};
-  margin: 20px 30% 60px 30%;
+  margin: 25px 30% 60px 30%;
   box-shadow: ${applicationTheme.shadow1};
   @media screen and (max-width: 992px) {
-    margin: 20px 20% 60px 20%;
+    margin: 25px 20% 60px 20%;
   }
   @media screen and (max-width: 600px) {
-    margin: 20px 10% 60px 10%;
+    margin: 25px 10% 60px 10%;
   }
 `;
 
@@ -414,13 +471,13 @@ export const QuestionListContainer = styled.div`
   padding: 25px 5%;
   background: ${applicationTheme.mainLightOpaque};
   border-radius: ${applicationTheme.borderRadius3};
-  margin: 20px 20% 60px 20%;
+  margin: 25px 20% 60px 20%;
   box-shadow: ${applicationTheme.shadow1};
   @media screen and (max-width: 992px) {
-    margin: 20px 15% 60px 15%;
+    margin: 25px 15% 60px 15%;
   }
   @media screen and (max-width: 600px) {
-    margin: 20px 10% 60px 10%;
+    margin: 25px 10% 60px 10%;
     padding: 15px 10%;
   }
 `;
