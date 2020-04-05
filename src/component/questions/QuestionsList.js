@@ -10,7 +10,7 @@ import {
   TableContainer,
   QuestionsTr,
   H3,
-  QuestionListElement
+  QuestionListElement,
 } from "style/MyStyle";
 
 export default function QuestionsList() {
@@ -18,8 +18,8 @@ export default function QuestionsList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/questions", { withCredentials: true})
-      .then(resp => setQuestions(resp.data));
+      .get("http://localhost:8080/questions", { withCredentials: true })
+      .then((resp) => setQuestions(resp.data));
   }, []);
 
   return (
@@ -40,11 +40,9 @@ export default function QuestionsList() {
             {questions.map((question, index) => (
               <QuestionsTr key={index}>
                 <QuestionsTd>{question.id}</QuestionsTd>
-                <QuestionsTd>
-                  <QuestionListElement to={`/questions/${question.id}`}>
-                    {question.question}
-                  </QuestionListElement>
-                </QuestionsTd>
+                <QuestionListElement to={`/questions/${question.id}`}>
+                  <QuestionsTd>{question.question}</QuestionsTd>
+                </QuestionListElement>
                 <QuestionsTd>{question.category.name}</QuestionsTd>
                 <QuestionsTd>{question.type}</QuestionsTd>
                 <QuestionsTd>

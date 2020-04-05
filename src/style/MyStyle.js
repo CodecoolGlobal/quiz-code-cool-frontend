@@ -491,6 +491,7 @@ export const QuestionsTr = styled.tr`
 `;
 
 export const QuestionListElement = styled(NavLink)`
+  display: block;
   text-align: left;
   text-decoration: none;
   color: ${applicationTheme.color1};
