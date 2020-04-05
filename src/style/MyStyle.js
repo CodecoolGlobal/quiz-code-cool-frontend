@@ -12,6 +12,7 @@ export const applicationTheme = {
   color3: "#54b2a9",
   color4: "#65c3ba",
   color5: "#83d0c9",
+  purple: "#b300b3",
   gray: "gray",
   borderRadius1: "2px",
   borderRadius2: "5px",
@@ -131,7 +132,7 @@ export const FormattedNavLink = styled(NavLink)`
   }
   &.active {
     font-weight: bold;
-    color: #b300b3;
+    color: ${applicationTheme.purple};
   }
 `;
 
