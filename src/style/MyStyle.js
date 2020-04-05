@@ -490,7 +490,7 @@ export const QuestionsTr = styled.tr`
   }
 `;
 
-export const QuestionListElement = styled(NavLink)`
+export const QuestionListTdNavLink = styled(NavLink)`
   display: block;
   text-align: left;
   text-decoration: none;

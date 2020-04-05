@@ -10,7 +10,7 @@ import {
   TableContainer,
   QuestionsTr,
   H3,
-  QuestionListElement,
+  QuestionListTdNavLink,
 } from "style/MyStyle";
 
 export default function QuestionsList() {
@@ -40,9 +40,9 @@ export default function QuestionsList() {
             {questions.map((question, index) => (
               <QuestionsTr key={index}>
                 <QuestionsTd>{question.id}</QuestionsTd>
-                <QuestionListElement to={`/questions/${question.id}`}>
+                <QuestionListTdNavLink to={`/questions/${question.id}`}>
                   <QuestionsTd>{question.question}</QuestionsTd>
-                </QuestionListElement>
+                </QuestionListTdNavLink>
                 <QuestionsTd>{question.category.name}</QuestionsTd>
                 <QuestionsTd>{question.type}</QuestionsTd>
                 <QuestionsTd>
