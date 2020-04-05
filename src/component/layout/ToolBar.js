@@ -1,12 +1,11 @@
-import React, { useContext, useState, useEffect } from "react";
-import { UserContext } from "context/UserContext";
-import user from "style/user.png";
+import React from "react";
 import MenuToggleButton from "component/layout/MenuToggleButton";
 import DropDownMenu from "component/layout/DropDownMenu";
+import UserInfo from "component/layout/UserInfo";
+
 
 import {
   FormattedNavLink,
-  UserImage,
   Toolbar,
   ToolbarNavigation,
   ToolbarNavigationItems,
@@ -15,30 +14,6 @@ import {
 } from "style/MyStyle";
 
 export default function ToolBar() {
-
-  const { usernameState } = useContext(UserContext);
-  const username = usernameState[0];
-
-  const [loggedInUserComponent, setLoggedInUserComponent] = useState(
-    <React.Fragment></React.Fragment>
-  );
-
-  useEffect(() => {
-    setLoggedInUserComponent(
-      username ? (
-        <div>
-          <ToolbarNavigationUl>
-            <li>
-              <UserImage src={user}></UserImage>
-              <FormattedNavLink to='/user'>{username}</FormattedNavLink>
-            </li>
-          </ToolbarNavigationUl>
-        </div>
-      ) : (
-        <React.Fragment></React.Fragment>
-      )
-    );
-  }, [username]);
 
   return (
     <Toolbar>
@@ -65,7 +40,7 @@ export default function ToolBar() {
           </ToolbarNavigationUl>
         </ToolbarNavigationItems>
         <Spacer />
-        {loggedInUserComponent}
+        <UserInfo />
       </ToolbarNavigation>
       <DropDownMenu />
     </Toolbar>
