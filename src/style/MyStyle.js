@@ -332,6 +332,9 @@ export const Button = styled.button`
 `;
 
 export const HeaderButton = styled.button`
+  &:focus {
+    outline: none;
+  }
   clear: both;
   font-size: ${applicationTheme.fontSize1};
   font-weight: bold;
