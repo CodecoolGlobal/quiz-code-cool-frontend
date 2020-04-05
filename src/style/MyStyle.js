@@ -413,12 +413,11 @@ export const Table = styled.table`
 
 export const TableContainer = styled.div`
   font-size: ${applicationTheme.fontSize1};
-  padding: 10px;
   display: flex;
   justify-content: center;
 `;
 
-export const ResultTableRow = styled.tr`
+export const TableRow = styled.tr`
   background: ${(props) =>
     props.playerTheme
       ? props.playerTheme.backgroundColor
@@ -432,11 +431,17 @@ export const ResultTableData = styled.td`
   padding: 10px 15px;
 `;
 
-export const ResultTableHead = styled.th`
+export const TableHead = styled.th`
   border-radius: ${applicationTheme.borderRadius1};
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
   margin-bottom: 5px;
+`;
+
+export const QuestionTableHead = styled.th`
+  border-radius: ${applicationTheme.borderRadius1};
+  font-size: ${applicationTheme.fontSize1};
+  padding: 10px 5px;
 `;
 
 export const FooterContainer = styled.div`
@@ -463,11 +468,10 @@ export const QuestionListContainer = styled.div`
   margin: 25px 20% 60px 20%;
   box-shadow: ${applicationTheme.shadow1};
   @media screen and (max-width: 992px) {
-    margin: 25px 15% 60px 15%;
+    margin: 25px 10% 60px 10%;
   }
   @media screen and (max-width: 600px) {
-    margin: 25px 10% 60px 10%;
-    padding: 15px 10%;
+    margin: 25px 5% 60px 5%;
   }
 `;
 
@@ -497,7 +501,7 @@ export const QuestionListElement = styled(NavLink)`
 
 export const QuestionsTd = styled.td`
   border-radius: ${applicationTheme.borderRadius1};
-  padding: 5px 10px;
+  padding: 8px 10px;
 `;
 
 export const Help = styled.p`

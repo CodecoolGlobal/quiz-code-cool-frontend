@@ -3,8 +3,8 @@ import axios from "axios";
 
 import {
   Table,
-  ResultTableRow,
-  ResultTableHead,
+  TableRow,
+  QuestionTableHead,
   QuestionListContainer,
   QuestionsTd,
   TableContainer,
@@ -28,13 +28,13 @@ export default function QuestionsList() {
       <TableContainer>
         <Table>
           <thead>
-            <ResultTableRow>
-              <ResultTableHead>Id</ResultTableHead>
-              <ResultTableHead>Question</ResultTableHead>
-              <ResultTableHead>Category</ResultTableHead>
-              <ResultTableHead>Type</ResultTableHead>
-              <ResultTableHead>Status</ResultTableHead>
-            </ResultTableRow>
+            <TableRow>
+              <QuestionTableHead>Id</QuestionTableHead>
+              <QuestionTableHead>Question</QuestionTableHead>
+              <QuestionTableHead>Category</QuestionTableHead>
+              <QuestionTableHead>Type</QuestionTableHead>
+              <QuestionTableHead>Status</QuestionTableHead>
+            </TableRow>
           </thead>
           <tbody>
             {questions.map((question, index) => (

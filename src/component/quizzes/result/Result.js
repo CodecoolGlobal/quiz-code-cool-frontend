@@ -9,9 +9,9 @@ import {
   Button,
   Table,
   TableContainer,
-  ResultTableRow,
+  TableRow,
   ResultTableData,
-  ResultTableHead
+  TableHead
 } from "style/MyStyle";
 import ColorsForPlayers from "style/PlayerColors";
 
@@ -42,17 +42,17 @@ export default function Result(props) {
       <TableContainer>
         <Table>
           <thead>
-            <ResultTableRow>
-              <ResultTableHead>Name</ResultTableHead>
-              <ResultTableHead>Score</ResultTableHead>
-            </ResultTableRow>
+            <TableRow>
+              <TableHead>Name</TableHead>
+              <TableHead>Score</TableHead>
+            </TableRow>
           </thead>
           <tbody>
             {players.map((player, index) => (
-              <ResultTableRow playerTheme={ColorsForPlayers[index]} key={index}>
+              <TableRow playerTheme={ColorsForPlayers[index]} key={index}>
                 <ResultTableData>{player.name}</ResultTableData>
                 <ResultTableData>{player.score}</ResultTableData>
-              </ResultTableRow>
+              </TableRow>
             ))}
           </tbody>
         </Table>

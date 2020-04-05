@@ -10,8 +10,8 @@ import {
   H3,
   Table,
   ResultTableData,
-  ResultTableRow,
-  ResultTableHead,
+  TableRow,
+  TableHead,
   ContentContainer,
   TableContainer
 } from "../../style/MyStyle";
@@ -85,36 +85,36 @@ export default function QuestionDetails(props) {
       <TableContainer>
         <Table>
           <thead>
-            <ResultTableRow>
-              <ResultTableHead>Question</ResultTableHead>
-              <ResultTableHead>{question.question}</ResultTableHead>
-            </ResultTableRow>
+            <TableRow>
+              <TableHead>Question</TableHead>
+              <TableHead>{question.question}</TableHead>
+            </TableRow>
           </thead>
           <tbody>
-            <ResultTableRow>
-              <ResultTableHead>Creation date</ResultTableHead>
+            <TableRow>
+              <TableHead>Creation date</TableHead>
               <ResultTableData>{question.creationDate}</ResultTableData>
-            </ResultTableRow>
-            <ResultTableRow>
-              <ResultTableHead>Validation date</ResultTableHead>
+            </TableRow>
+            <TableRow>
+              <TableHead>Validation date</TableHead>
               <ResultTableData>
                 {question.validationDate === null
                   ? "Not validated yet"
                   : question.validationDate}
               </ResultTableData>
-            </ResultTableRow>
-            <ResultTableRow>
-              <ResultTableHead>Created By</ResultTableHead>
+            </TableRow>
+            <TableRow>
+              <TableHead>Created By</TableHead>
               <ResultTableData>Zokni kutya</ResultTableData>
-            </ResultTableRow>
-            <ResultTableRow>
-              <ResultTableHead>Category</ResultTableHead>
+            </TableRow>
+            <TableRow>
+              <TableHead>Category</TableHead>
               <ResultTableData>{question.category}</ResultTableData>
-            </ResultTableRow>
-            <ResultTableRow>
-              <ResultTableHead>Possible answers</ResultTableHead>
+            </TableRow>
+            <TableRow>
+              <TableHead>Possible answers</TableHead>
               <Answers question={question} />
-            </ResultTableRow>
+            </TableRow>
           </tbody>
         </Table>
       </TableContainer>

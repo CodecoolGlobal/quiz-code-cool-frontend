@@ -4,8 +4,8 @@ import {
     H3,
     Table,
     ResultTableData,
-    ResultTableRow,
-    ResultTableHead,
+    TableRow,
+    TableHead,
     ContentContainer,
     TableContainer
   } from "style/MyStyle";
@@ -20,16 +20,16 @@ export default function UserDetails() {
     <TableContainer>
       <Table>
         <thead>
-          <ResultTableRow>
-            <ResultTableHead>Username</ResultTableHead>
-            <ResultTableHead>{username}</ResultTableHead>
-          </ResultTableRow>
+          <TableRow>
+            <TableHead>Username</TableHead>
+            <TableHead>{username}</TableHead>
+          </TableRow>
         </thead>
         <tbody>
-          <ResultTableRow>
-            <ResultTableHead>Registration Date</ResultTableHead>
+          <TableRow>
+            <TableHead>Registration Date</TableHead>
             <ResultTableData>2020.01.01</ResultTableData>
-          </ResultTableRow>
+          </TableRow>
         
         </tbody>
       </Table>
