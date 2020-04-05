@@ -162,18 +162,6 @@ export const UserNavLink = styled(NavLink)`
   }
 `;
 
-export const UserNavItem = styled.li`
-  margin: 0;
-  display: block;
-  padding: 10px;
-  text-align: center;
-  &:hover {
-    cursor: pointer;
-    color: ${applicationTheme.color2};
-    font-weight: bolder;
-  }
-`;
-
 export const FooterLink = styled.a`
   float: right;
   padding: 10px 15px;
