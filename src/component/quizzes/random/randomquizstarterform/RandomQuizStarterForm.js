@@ -16,7 +16,6 @@ export default function QuizStarterForm(props) {
   const { clearFilters } = useContext(RestoreFiltersContext);
 
   useEffect(() => {
-    console.log("initbeforsubmit")
     initBeforeSubmit();
     clearFilters();
   }, []);
