@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import Answers from "component/quizzes/questioncard/Answers";
 import PlayerData from "component/quizzes/questioncard/PlayerData";
 
-import { QuestionContext } from "context/QuestionContext";
+import { QuestionContext } from "context/QuizContext";
 import { PlayerContext } from "context/PlayerContext";
 import { ProgressContext } from "context/ProgressContext";
 import { AnswerCorrectnessContext } from "context/AnswerCorrectnessContext";

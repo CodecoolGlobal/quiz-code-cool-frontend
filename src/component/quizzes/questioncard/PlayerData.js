@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import { PlayerContext } from "context/PlayerContext";
-import { QuestionContext } from "context/QuestionContext";
+import { QuestionContext } from "context/QuizContext";
 
 import { PlayerName, H2, PlayerHeader, QuestionsImage } from "style/MyStyle";
 import ColorsForPlayers from "style/PlayerColors";

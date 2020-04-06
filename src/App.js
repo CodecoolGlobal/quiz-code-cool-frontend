@@ -22,7 +22,7 @@ import NewCustomQuiz from "component/quizzes/custom/newcustomquiz/NewCustomQuiz"
 
 import { AuthProvider } from "context/AuthContext";
 import { UserProvider } from "context/UserContext";
-import { QuestionProvider } from "context/QuestionContext";
+import { QuestionProvider } from "context/QuizContext";
 import { PlayerProvider } from "context/PlayerContext";
 import { RandomQuizProvider } from "context/RandomQuizContext";
 import { CustomQuizProvider } from "context/CustomQuizContext";

@@ -6,6 +6,7 @@ import { CustomQuizContext } from "context/CustomQuizContext";
 import { RandomQuizContext } from "context/RandomQuizContext";
 import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
+import { QuestionsContext } from "context/QuestionsContext";
 
 import Question from "context/Question";
 import Player from "context/Player";
@@ -40,7 +41,7 @@ export const QuestionProvider = props => {
 
   //Questions
   const [quizMode, setQuizMode] = useState("");
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useContext(QuestionsContext)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
 
@@ -55,9 +56,6 @@ export const QuestionProvider = props => {
   const validateInputs = quizMode => {
     switch (quizMode) {
       case "Random":
-        console.log(questionsPerPlayer);
-        console.log(MIN_QUESTIONS);
-        console.log(names);
         if (names.includes(undefined) || names.includes("") || names.length === 0) {
           alert("Please fill out all the fields!");
           return false;

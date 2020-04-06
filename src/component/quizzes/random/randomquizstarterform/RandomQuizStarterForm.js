@@ -6,7 +6,7 @@ import TypeInput from "component/inputs/TypeInput";
 import QuestionNumberInput from "component/quizzes/random/randomquizstarterform/QuestionNumberInput";
 import StepSlider from "component/quizzes/random/randomquizstarterform/StepSlider";
 
-import { QuestionContext } from "context/QuestionContext";
+import { QuestionContext } from "context/QuizContext";
 import { RestoreFiltersContext } from "context/RestoreFiltersContext";
 
 import { ContentContainer, H3, Button } from "style/MyStyle";

@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from "react";
 import CustomQuizInput from "component/quizzes/custom/customquizstarterform/CustomQuizInput";
 import { ProgressContext } from "context/ProgressContext";
 
-import { QuestionContext } from "context/QuestionContext";
+import { QuestionContext } from "context/QuizContext";
 
 import { ContentContainer, H3, Button } from "style/MyStyle";
 

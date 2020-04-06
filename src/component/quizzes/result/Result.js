@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { PlayerContext } from "context/PlayerContext";
-import { QuestionContext } from "context/QuestionContext";
+import { QuestionContext } from "context/QuizContext";
 
 import {
   ContentContainer,
