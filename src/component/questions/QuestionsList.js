@@ -42,6 +42,9 @@ export default function QuestionsList() {
 							<QuestionTableHead>Category</QuestionTableHead>
 							<QuestionTableHead>Type</QuestionTableHead>
 							<QuestionTableHead>Status</QuestionTableHead>
+							{roles.includes('ROLE_ADMIN') === true && (
+								<QuestionTableHead>Delete</QuestionTableHead>
+							)}
 						</TableRow>
 					</thead>
 					<tbody>
