@@ -431,10 +431,10 @@ export const QuestionListContainer = styled.div`
   padding: 25px 5%;
   background: ${applicationTheme.mainLightOpaque};
   border-radius: ${applicationTheme.borderRadius3};
-  margin: 25px 20% 60px 20%;
+  margin: 25px 15% 60px 15%;
   box-shadow: ${applicationTheme.shadow1};
   @media screen and (max-width: 992px) {
-    margin: 25px 10% 60px 10%;
+    margin: 25px 8% 60px 8%;
   }
   @media screen and (max-width: 600px) {
     margin: 25px 5% 60px 5%;
@@ -457,6 +457,10 @@ export const FlexContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const OverflowContainer = styled.div`
+  overflow-x:auto;
+`
 
 export const TableHead = styled.th`
   border-radius: ${applicationTheme.borderRadius1};
@@ -513,7 +517,6 @@ export const QuestionListTdNavLink = styled(NavLink)`
 
 export const QuestionsTd = styled.td`
   padding: 8px 10px;
-  font-size: ${applicationTheme.fontSize2}
 `;
 
 export const Help = styled.p`

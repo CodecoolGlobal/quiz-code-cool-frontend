@@ -8,7 +8,7 @@ import { StatusContext } from "context/StatusContext";
 import {
   Help,
   QuestionTable,
-  FlexContainer,
+  OverflowContainer,
   QuestionTableHead,
   QuestionsTd,
   QuestionsTr,
@@ -41,8 +41,7 @@ export default function QuestionList() {
       questions.length === 0 ?
       (<Help>There is no question with the selected parameters.</Help>) :
       (
-    <FlexContainer>
-
+    <OverflowContainer>
       <QuestionTable>
         <thead>
           <tr>
@@ -69,6 +68,6 @@ export default function QuestionList() {
           ))}
         </tbody>
       </QuestionTable>
-      </FlexContainer>)
+      </OverflowContainer>)
   );
 }
