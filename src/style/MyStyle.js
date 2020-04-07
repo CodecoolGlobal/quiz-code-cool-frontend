@@ -447,7 +447,8 @@ export const Table = styled.table`
 
 export const QuestionTable = styled.table`
   box-shadow: ${applicationTheme.shadow1};
-  padding: 10px;
+  border-collapse:collapse;
+  margin: 10px;
 `;
 
 export const FlexContainer = styled.div`

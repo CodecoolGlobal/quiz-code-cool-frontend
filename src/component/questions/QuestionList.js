@@ -7,7 +7,7 @@ import { StatusContext } from "context/StatusContext";
 
 import {
   Help,
-  Table,
+  QuestionTable,
   TableRow,
   QuestionTableHead,
   QuestionsTd,
