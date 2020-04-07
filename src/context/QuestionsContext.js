@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { createContext } from "react";
 import Question from "context/Question";
 import axios from "axios";
 
