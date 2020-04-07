@@ -11,7 +11,7 @@ import Home from "component/user/Home";
 import RandomQuizStarterForm from "component/quizzes/random/randomquizstarterform/RandomQuizStarterForm";
 import CustomQuizStarterForm from "component/quizzes/custom/customquizstarterform/CustomQuizStarterForm";
 import AddNewQuestionForm from "component/newquestion/NewQuestionForm";
-import QuestionsList from "component/questions/QuestionsList";
+import QuestionsList from "component/questions/AllQuestionsList";
 import QuestionDetails from "component/questions/QuestionDetails";
 import QuestionCard from "component/quizzes/questioncard/QuestionCard";
 import Result from "component/quizzes/result/Result";

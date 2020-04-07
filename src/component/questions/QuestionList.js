@@ -1,31 +1,20 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, {useState} from 'react'
 
 import {
-  Table,
-  TableRow,
-  QuestionTableHead,
-  QuestionListContainer,
-  QuestionsTd,
-  TableContainer,
-  QuestionsTr,
-  H3,
-  QuestionListTdNavLink,
-} from "style/MyStyle";
+    Table,
+    TableRow,
+    QuestionTableHead,
+    QuestionsTd,
+    QuestionsTr,
+    H3,
+    QuestionListTdNavLink,
+  } from "style/MyStyle";
 
-export default function QuestionsList() {
-  const [questions, setQuestions] = useState([]);
+export default function QuestionList() {
+    const [questions, setQuestions] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/questions", { withCredentials: true })
-      .then((resp) => setQuestions(resp.data));
-  }, []);
 
-  return (
-    <QuestionListContainer>
-      <H3>All questions</H3>
-      <TableContainer>
+    return (
         <Table>
           <thead>
             <TableRow>
@@ -52,7 +41,5 @@ export default function QuestionsList() {
             ))}
           </tbody>
         </Table>
-      </TableContainer>
-    </QuestionListContainer>
-  );
+    )
 }
