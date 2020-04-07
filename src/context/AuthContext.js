@@ -71,6 +71,7 @@ export const AuthProvider = props => {
       }
     })
       .then(res => {
+        alert(`Successful registration for username "${res.data}".`);
         clearCredentials();
       })
       .catch(error => {
