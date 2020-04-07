@@ -459,6 +459,8 @@ export const FlexContainer = styled.div`
 `;
 
 export const OverflowContainer = styled.div`
+  display: flex;
+  justify-content: center;
   overflow-x:auto;
 `
 
