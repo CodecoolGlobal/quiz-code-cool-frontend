@@ -30,7 +30,7 @@ export default function UserDetails() {
             <TableHead>Registration Date</TableHead>
             <ResultTableData>2020.01.01</ResultTableData>
           </TableRow>
-        
+  
         </tbody>
       </Table>
     </TableContainer>

@@ -414,6 +414,11 @@ export const Table = styled.table`
   border-radius: ${applicationTheme.borderRadius1};
 `;
 
+export const QuestionTable = styled.table`
+  box-shadow: ${applicationTheme.shadow1};
+  padding: 10px;
+`;
+
 export const TableContainer = styled.div`
   font-size: ${applicationTheme.fontSize1};
   display: flex;
