@@ -13,7 +13,7 @@ import {
   TableRow,
   TableHead,
   ContentContainer,
-  TableContainer
+  FlexContainer
 } from "../../style/MyStyle";
 
 export default function QuestionDetails(props) {
@@ -82,7 +82,7 @@ export default function QuestionDetails(props) {
   return (
     <ContentContainer>
       <H3>Details</H3>
-      <TableContainer>
+      <FlexContainer>
         <Table>
           <thead>
             <TableRow>
@@ -117,7 +117,7 @@ export default function QuestionDetails(props) {
             </TableRow>
           </tbody>
         </Table>
-      </TableContainer>
+      </FlexContainer>
       {validateButton}
     </ContentContainer>
   );

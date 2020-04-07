@@ -5,9 +5,6 @@ import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
 import { StatusContext } from "context/StatusContext";
 
-import CategoryInput from "component/inputs/CategoryInput";
-import StatusInput from "component/inputs/StatusInput";
-import TypeInput from "component/inputs/TypeInput";
 
 import {
   Table,
@@ -22,45 +19,50 @@ export default function QuestionList() {
   const selectedCategoryId = useContext(CategoryContext).categoryInput[0];
   const selectedStatus = useContext(StatusContext)[0];
 
-  const {typesMap, selectedTypeInput } = useContext(TypeContext);
+  const { typesMap, selectedTypeInput } = useContext(TypeContext);
   const selectedType = selectedTypeInput[0];
-
 
   const history = useHistory();
 
-  const { getFilteredQuestions, filteredQuestionsState } = useContext(QuestionFilterContext);
+  const { getFilteredQuestions, filteredQuestionsState } = useContext(
+    QuestionFilterContext
+  );
   const questions = filteredQuestionsState[0];
 
   useEffect(() => {
     getFilteredQuestions(history.location.pathname);
-  }, [selectedCategoryId, selectedType, selectedStatus]);
+  }, [
+    selectedCategoryId,
+    selectedType,
+    selectedStatus,
+  ]);
 
   return (
-    <Table>
-      <thead>
-        <TableRow>
-          <QuestionTableHead>Id</QuestionTableHead>
-          <QuestionTableHead>Question</QuestionTableHead>
-          <QuestionTableHead><CategoryInput/></QuestionTableHead>
-          <QuestionTableHead><TypeInput/></QuestionTableHead>
-          <QuestionTableHead><StatusInput/></QuestionTableHead>
-        </TableRow>
-      </thead>
-      <tbody>
-        {questions.map((question, index) => (
-          <QuestionsTr key={index}>
-            <QuestionsTd>{question.id}</QuestionsTd>
-            <QuestionListTdNavLink to={`/questions/${question.id}`}>
-              <QuestionsTd>{question.question}</QuestionsTd>
-            </QuestionListTdNavLink>
-            <QuestionsTd>{question.category.name}</QuestionsTd>
-            <QuestionsTd>{typesMap[question.type]}</QuestionsTd>
-            <QuestionsTd>
-              {question.validated === true ? "Validated" : "Not validated"}
-            </QuestionsTd>
-          </QuestionsTr>
-        ))}
-      </tbody>
-    </Table>
+      <Table>
+        <thead>
+          <TableRow>
+            <QuestionTableHead>Id</QuestionTableHead>
+            <QuestionTableHead>Question</QuestionTableHead>
+            <QuestionTableHead>Category</QuestionTableHead>
+            <QuestionTableHead>Type</QuestionTableHead>
+            <QuestionTableHead>Status</QuestionTableHead>
+          </TableRow>
+        </thead>
+        <tbody>
+          {questions.map((question, index) => (
+            <QuestionsTr key={index}>
+              <QuestionsTd>{question.id}</QuestionsTd>
+              <QuestionListTdNavLink to={`/questions/${question.id}`}>
+                <QuestionsTd>{question.question}</QuestionsTd>
+              </QuestionListTdNavLink>
+              <QuestionsTd>{question.category.name}</QuestionsTd>
+              <QuestionsTd>{typesMap[question.type]}</QuestionsTd>
+              <QuestionsTd>
+                {question.validated === true ? "Validated" : "Not validated"}
+              </QuestionsTd>
+            </QuestionsTr>
+          ))}
+        </tbody>
+      </Table>
   );
 }

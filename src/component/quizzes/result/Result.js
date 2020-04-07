@@ -8,7 +8,7 @@ import {
   H3,
   Button,
   Table,
-  TableContainer,
+  FlexContainer,
   TableRow,
   ResultTableData,
   TableHead
@@ -28,7 +28,7 @@ export default function Result(props) {
     <ContentContainer>
       <H3>Game over!</H3>
       <H2>Results</H2>
-      <TableContainer>
+      <FlexContainer>
         <Table>
           <thead>
             <TableRow>
@@ -45,7 +45,7 @@ export default function Result(props) {
             ))}
           </tbody>
         </Table>
-      </TableContainer>
+      </FlexContainer>
       <Button type='button' id='restart' onClick={handleRestart}>
         New Game
       </Button>

@@ -445,7 +445,7 @@ export const Table = styled.table`
   border-radius: ${applicationTheme.borderRadius1};
 `;
 
-export const TableContainer = styled.div`
+export const FlexContainer = styled.div`
   font-size: ${applicationTheme.fontSize1};
   display: flex;
   justify-content: center;
