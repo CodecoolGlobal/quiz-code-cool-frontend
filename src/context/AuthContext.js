@@ -75,9 +75,15 @@ export const AuthProvider = props => {
         clearCredentials();
       })
       .catch(error => {
-        alert(
-          `Registration cannot be finished. ${error.response.data} is already taken.`
-        );
+        if (!error.response) {
+          alert(
+            `Connection refused. Please, try again later.`
+          );
+        } else {
+          alert(
+            `Registration cannot be finished. ${error.response.data} is already taken.`
+          );
+        }
         setIsReadyToProceed(false);
       });
   };
