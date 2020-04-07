@@ -1,10 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "context/UserContext";
+import { AuthContext } from "context/AuthContext";
 
 import { HeaderButton, HeaderNavLink } from "style/MyStyle";
 
 export default function HeaderButtons() {
   const { usernameState } = useContext(UserContext);
+  const { signOut } = useContext(AuthContext);
   const username = usernameState[0];
   const [leftButton, setLeftButton] = useState();
   const [rightButton, setRightButton] = useState();
@@ -12,7 +14,7 @@ export default function HeaderButtons() {
   useEffect(() => {
     setLeftButton(
       username ? (
-        <HeaderButton left>Sign out</HeaderButton>
+        <HeaderButton left onClick={signOut}>Sign out</HeaderButton>
       ) : (
         <HeaderNavLink to='/sign-up'>
           <HeaderButton left>Sign up</HeaderButton>
