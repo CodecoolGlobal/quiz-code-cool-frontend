@@ -5,7 +5,8 @@ import { NavLink } from "react-router-dom";
 export const applicationTheme = {
   mainLightOpaque: "rgba(255, 255, 255, 0.8)",
   fontSize1: "12px",
-  fontSize2: "10px",
+  fontSize2: "11px",
+  fontSize3: "10px",
   inputPadding: "8px 10px",
   color1: "#009688",
   color2: "#35a79c",
@@ -465,9 +466,10 @@ export const TableHead = styled.th`
 `;
 
 export const QuestionTableHead = styled.th`
-  border-radius: ${applicationTheme.borderRadius1};
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 5px;
+  background: ${applicationTheme.gray};
+  color: #fff;
 `;
 
 export const TableRow = styled.tr`
@@ -483,7 +485,7 @@ export const QuestionsTr = styled.tr`
   color: ${applicationTheme.color1};
   font-size: ${applicationTheme.fontSize1};
   &:nth-child(even) {
-    background-color: ${applicationTheme.color5};
+    background-color: #fff;
   }
   &:nth-child(odd) {
     background-color: lightgray;
@@ -510,13 +512,13 @@ export const QuestionListTdNavLink = styled(NavLink)`
 `;
 
 export const QuestionsTd = styled.td`
-  border-radius: ${applicationTheme.borderRadius1};
   padding: 8px 10px;
+  font-size: ${applicationTheme.fontSize2}
 `;
 
 export const Help = styled.p`
   padding: 2px;
-  font-size: ${applicationTheme.fontSize2};
+  font-size: ${applicationTheme.fontSize3};
 `;
 
 export const InputHelperContainer = styled.div`

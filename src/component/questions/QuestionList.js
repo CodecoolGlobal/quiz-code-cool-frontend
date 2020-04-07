@@ -8,7 +8,7 @@ import { StatusContext } from "context/StatusContext";
 import {
   Help,
   QuestionTable,
-  TableRow,
+  FlexContainer,
   QuestionTableHead,
   QuestionsTd,
   QuestionsTr,
@@ -41,15 +41,17 @@ export default function QuestionList() {
       questions.length === 0 ?
       (<Help>There is no question with the selected parameters.</Help>) :
       (
+    <FlexContainer>
+
       <QuestionTable>
         <thead>
-          <TableRow>
+          <tr>
             <QuestionTableHead>Id</QuestionTableHead>
             <QuestionTableHead>Question</QuestionTableHead>
             <QuestionTableHead>Category</QuestionTableHead>
             <QuestionTableHead>Type</QuestionTableHead>
             <QuestionTableHead>Status</QuestionTableHead>
-          </TableRow>
+          </tr>
         </thead>
         <tbody>
           {questions.map((question, index) => (
@@ -66,6 +68,7 @@ export default function QuestionList() {
             </QuestionsTr>
           ))}
         </tbody>
-      </QuestionTable>)
+      </QuestionTable>
+      </FlexContainer>)
   );
 }
