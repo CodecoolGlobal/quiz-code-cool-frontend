@@ -1,5 +1,4 @@
 import React, { useState, createContext, useContext } from "react";
-import axios from "axios";
 
 import { PlayerContext } from "context/PlayerContext";
 import { CustomQuizContext } from "context/CustomQuizContext";
@@ -7,30 +6,31 @@ import { RandomQuizContext } from "context/RandomQuizContext";
 import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
 import { QuestionsContext } from "context/QuestionsContext";
-
-import Question from "context/Question";
 import Player from "context/Player";
 
 import { shuffle } from "Util";
 
-export const QuestionContext = createContext();
+export const QuizContext = createContext();
 
-export const QuestionProvider = props => {
+export const QuizProvider = (props) => {
   const selectedCategoryId = useContext(CategoryContext).categoryInput[0];
   const type = useContext(TypeContext).selectedTypeInput[0];
 
   //RandomQuiz
+  const RANDOM_PATH = "/random-quiz";
+  const { QUESTIONS_BASE_URL, getQuestions } = useContext(QuestionsContext);
+
   const {
     questionsPerPlayerState,
-    RANDOM_QUIZ_BASE_URL,
     MIN_QUESTIONS,
-    nameInputsState
+    nameInputsState,
   } = useContext(RandomQuizContext);
 
   const [questionsPerPlayer, setQuestionsPerPlayer] = questionsPerPlayerState;
   const [names, setNames] = nameInputsState;
 
   //Custom quiz
+  const CUSTOM_PATH = "/custom-quiz/start";
   const { selectedCustomQuiz, CUSTOM_QUIZ_BASE_URL } = useContext(
     CustomQuizContext
   );
@@ -40,8 +40,8 @@ export const QuestionProvider = props => {
   const setPlayers = useContext(PlayerContext)[1];
 
   //Questions
-  const [quizMode, setQuizMode] = useState("");
-  const [questions, setQuestions] = useContext(QuestionsContext)
+  const [currentQuizUrl, setCurrentQuizUrl] = useState("");
+  const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
 
@@ -53,10 +53,14 @@ export const QuestionProvider = props => {
     setCurrentQuestionIndex(0);
   };
 
-  const validateInputs = quizMode => {
-    switch (quizMode) {
-      case "Random":
-        if (names.includes(undefined) || names.includes("") || names.length === 0) {
+  const validateInputs = (location) => {
+    switch (location) {
+      case RANDOM_PATH:
+        if (
+          names.includes(undefined) ||
+          names.includes("") ||
+          names.length === 0
+        ) {
           alert("Please fill out all the fields!");
           return false;
         }
@@ -71,14 +75,14 @@ export const QuestionProvider = props => {
     return true;
   };
 
-  const setUpPlayers = quizMode => {
-    switch (quizMode) {
-      case "Custom":
+  const setUpPlayers = (history) => {
+    switch (history) {
+      case CUSTOM_PATH:
         setPlayers([new Player("User")]);
         break;
-      case "Random":
-        names.map(name =>
-          setPlayers(players => [...players, new Player(name)])
+      case RANDOM_PATH:
+        names.map((name) =>
+          setPlayers((players) => [...players, new Player(name)])
         );
         break;
       default:
@@ -86,64 +90,55 @@ export const QuestionProvider = props => {
     }
   };
 
-  function fetchQuestions(url, formProps) {
-    axios.get(url, { withCredentials: true}).then(resp => {
-      if (resp.data === "") {
+  function tryToStartQuiz(url, history) {
+    getQuestions(url).then((questions) => {
+      if (questions.length === 0) {
         alert(
           "There are not enough questions matching the entered parameters :("
         );
         setPlayers([]);
-        return false;
+      } else {
+        const location = history.location.pathname;
+        setQuestions(questions);
+        setUpPlayers(location);
+        setCurrentQuestionNumber(1);
+        setCurrentQuizUrl(location);
+        history.push("/quiz");
       }
-      resp.data.map(questionData =>
-        setQuestions(questions => [
-          ...questions,
-          new Question(
-            questionData.category.name,
-            questionData.type,
-            questionData.question,
-            questionData.correctAnswer,
-            questionData.incorrectAnswers
-          )
-        ])
-      );
-      formProps.history.push("/quiz");
     });
-    return true;
   }
 
-  const createUrl = quizMode => {
-    switch (quizMode) {
-      case "Random":
-        let questionNumberUrlPart = `amount=${questionsPerPlayer *
-          names.length}`;
+  const createUrl = (location) => {
+    switch (location) {
+      case RANDOM_PATH:
+        let questionNumberUrlPart = `amount=${
+          questionsPerPlayer * names.length
+        }`;
         let categoryUrlPart =
           selectedCategoryId === "0" ? "" : `&category=${selectedCategoryId}`;
         let typeUrlPart = type === "" ? "" : `&type=${type}`;
         let validatedPart = "&validated=true";
         let finalUrl =
-          RANDOM_QUIZ_BASE_URL +
+          QUESTIONS_BASE_URL +
+          "?" +
           questionNumberUrlPart +
           categoryUrlPart +
           typeUrlPart +
           validatedPart;
-        console.log(finalUrl);
         return finalUrl;
-      case "Custom":
+      case CUSTOM_PATH:
         return CUSTOM_QUIZ_BASE_URL + `/${selectedCustomQuizId}`;
       default:
         break;
     }
   };
 
-  const submitStarterForm = (formProps, quizMode) => {
-    const url = createUrl(quizMode);
-    if (validateInputs(quizMode)) {
-      if (fetchQuestions(url, formProps) === true) {
-        setUpPlayers(quizMode);
-        setCurrentQuestionNumber(1);
-        setQuizMode(quizMode);
-      }
+  const submitStarterForm = (history) => {
+    const location = history.location.pathname;
+    const url = createUrl(location);
+    console.log(url)
+    if (validateInputs(location)) {
+      tryToStartQuiz(url, history);
     }
   };
 
@@ -166,21 +161,21 @@ export const QuestionProvider = props => {
   };
 
   return (
-    <QuestionContext.Provider
+    <QuizContext.Provider
       value={{
         getAnswersZip,
         submitStarterForm,
         initBeforeSubmit,
         questionNumberState: [currentQuestionNumber, setCurrentQuestionNumber],
-        quizModeState: [quizMode, setQuizMode],
+        currentQuizUrlState: [currentQuizUrl, setCurrentQuizUrl],
         currentQuestionIndexState: [
           currentQuestionIndex,
-          setCurrentQuestionIndex
+          setCurrentQuestionIndex,
         ],
-        allQuestionsState: [questions, setQuestions]
+        allQuestionsState: [questions, setQuestions],
       }}
     >
       {props.children}
-    </QuestionContext.Provider>
+    </QuizContext.Provider>
   );
 };

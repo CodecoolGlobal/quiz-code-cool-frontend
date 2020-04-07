@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { PlayerContext } from "context/PlayerContext";
-import { QuestionContext } from "context/QuizContext";
+import { QuizContext } from "context/QuizContext";
 
 import {
   ContentContainer,
@@ -17,21 +17,10 @@ import ColorsForPlayers from "style/PlayerColors";
 
 export default function Result(props) {
   const players = useContext(PlayerContext)[0];
-  const quizMode = useContext(QuestionContext).quizModeState[0];
-
-  const getRestartGameRout = () => {
-    switch (quizMode) {
-      case "Random":
-        return "/random-quiz";
-      case "Custom":
-        return "/custom-quiz/start";
-      default:
-        break;
-    }
-  };
+  const currentQuizUrl = useContext(QuizContext).currentQuizUrlState[0];
 
   const handleRestart = () => {
-    const route = getRestartGameRout();
+    const route = currentQuizUrl;
     props.history.push(route);
   };
 

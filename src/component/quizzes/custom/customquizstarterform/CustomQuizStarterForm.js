@@ -1,14 +1,14 @@
 import React, { useContext, useEffect } from "react";
-
+import { useHistory } from "react-router-dom";
 import CustomQuizInput from "component/quizzes/custom/customquizstarterform/CustomQuizInput";
 import { ProgressContext } from "context/ProgressContext";
-
-import { QuestionContext } from "context/QuizContext";
+import { QuizContext } from "context/QuizContext";
 
 import { ContentContainer, H3, Button } from "style/MyStyle";
 
-export default function CustomQuizStarterForm(props) {
-  const {submitStarterForm, initBeforeSubmit} = useContext(QuestionContext);
+export default function CustomQuizStarterForm() {
+  const history = useHistory();
+  const {submitStarterForm, initBeforeSubmit} = useContext(QuizContext);
   const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function CustomQuizStarterForm(props) {
 
   const submit = () => {
     setIsReadyToProceed(false);
-    submitStarterForm(props, "Custom");
+    submitStarterForm(history);
   };
 
   return (

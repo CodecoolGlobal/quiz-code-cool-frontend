@@ -3,7 +3,6 @@ import React, { useState, createContext } from "react";
 export const RandomQuizContext = createContext();
 
 export const RandomQuizProvider = props => {
-  const RANDOM_QUIZ_BASE_URL = process.env.REACT_APP_RANDOM_QUIZ_BASE_URL;
   const MIN_QUESTIONS = 1;
 
   // States
@@ -23,7 +22,6 @@ export const RandomQuizProvider = props => {
   return (
     <RandomQuizContext.Provider
       value={{
-        RANDOM_QUIZ_BASE_URL,
         MIN_QUESTIONS,
         nameInputsState: [names, setNames],
         modifyName,

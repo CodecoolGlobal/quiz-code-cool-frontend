@@ -1,19 +1,20 @@
 import React, { useContext, useEffect } from "react";
-
+import { useHistory } from "react-router-dom";
 import PlayerNameInput from "component/quizzes/random/randomquizstarterform/PlayerNameInput";
 import CategoryInput from "component/inputs/CategoryInput";
 import TypeInput from "component/inputs/TypeInput";
 import QuestionNumberInput from "component/quizzes/random/randomquizstarterform/QuestionNumberInput";
 import StepSlider from "component/quizzes/random/randomquizstarterform/StepSlider";
 
-import { QuestionContext } from "context/QuizContext";
+import { QuizContext } from "context/QuizContext";
 import { RestoreFiltersContext } from "context/RestoreFiltersContext";
 
 import { ContentContainer, H3, Button } from "style/MyStyle";
 
-export default function QuizStarterForm(props) {
-  const {submitStarterForm, initBeforeSubmit} = useContext(QuestionContext);
+export default function QuizStarterForm() {
+  const {submitStarterForm, initBeforeSubmit} = useContext(QuizContext);
   const { clearFilters } = useContext(RestoreFiltersContext);
+  const history = useHistory();
 
   useEffect(() => {
     initBeforeSubmit();
@@ -21,7 +22,7 @@ export default function QuizStarterForm(props) {
   }, []);
 
   const submit = () => {
-    submitStarterForm(props, "Random");
+    submitStarterForm(history);
   };
 
   return (

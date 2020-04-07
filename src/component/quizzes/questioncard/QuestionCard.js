@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import Answers from "component/quizzes/questioncard/Answers";
 import PlayerData from "component/quizzes/questioncard/PlayerData";
 
-import { QuestionContext } from "context/QuizContext";
+import { QuizContext } from "context/QuizContext";
 import { PlayerContext } from "context/PlayerContext";
 import { ProgressContext } from "context/ProgressContext";
 import { AnswerCorrectnessContext } from "context/AnswerCorrectnessContext";
@@ -28,7 +28,7 @@ export default function QuestionCard(props) {
     allQuestionsState,
     currentQuestionIndexState,
     questionNumberState
-  } = useContext(QuestionContext);
+  } = useContext(QuizContext);
 
   const questions = allQuestionsState[0];
   const [
@@ -90,14 +90,14 @@ export default function QuestionCard(props) {
     }, 1000);
   };
 
-  console.log(players)
   return (
+    questions.length === 0 ? <div></div> : (
     <QuestionCardContainer>
       <PlayerData currentPlayerIndex={currentPlayerIndex} />
       <QuestionContainer questionColor={questionColor}>
         {/* <H3>{decodeStringToHtml(questions[0].question)}</H3> */}
         <CategoryTitle>
-          {questions[currentQuestionIndex].category}
+          {questions[currentQuestionIndex].category.name}
         </CategoryTitle>
         <H3>{questions[currentQuestionIndex].question}</H3>
         <Answers />
@@ -112,6 +112,6 @@ export default function QuestionCard(props) {
             : "Next"}
         </Button>
       </QuestionContainer>
-    </QuestionCardContainer>
+    </QuestionCardContainer> )
   );
 }
