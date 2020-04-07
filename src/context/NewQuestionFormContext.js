@@ -55,11 +55,11 @@ export const NewQuestionFormProvider = props => {
     }
 
     const newQuestion = new Question(
-      getSelectedCategory(),
-      selectedType,
+      {category: getSelectedCategory(),
+      type: selectedType,
       question,
       correctAnswer,
-      incorrectAnswers
+      incorrectAnswers}
     );
 
     const questionUrl = ADD_NEW_QUESTION_BASE_URL;

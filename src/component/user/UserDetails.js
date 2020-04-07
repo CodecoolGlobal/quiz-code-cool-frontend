@@ -7,7 +7,7 @@ import {
     TableRow,
     TableHead,
     ContentContainer,
-    TableContainer
+    FlexContainer
   } from "style/MyStyle";
 
 export default function UserDetails() {
@@ -17,7 +17,7 @@ export default function UserDetails() {
   return (
     <ContentContainer>
     <H3>User Details</H3>
-    <TableContainer>
+    <FlexContainer>
       <Table>
         <thead>
           <TableRow>
@@ -33,7 +33,7 @@ export default function UserDetails() {
   
         </tbody>
       </Table>
-    </TableContainer>
+    </FlexContainer>
   </ContentContainer>
   );
 }

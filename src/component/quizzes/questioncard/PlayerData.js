@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import { PlayerContext } from "context/PlayerContext";
-import { QuestionContext } from "context/QuestionContext";
+import { QuizContext } from "context/QuizContext";
 
 import { PlayerName, H2, PlayerHeader, QuestionsImage } from "style/MyStyle";
 import ColorsForPlayers from "style/PlayerColors";
@@ -12,13 +12,13 @@ export default function PlayerData(props) {
   const currentPlayer = players[props.currentPlayerIndex];
 
   const { allQuestionsState, questionNumberState } = useContext(
-    QuestionContext
+    QuizContext
   );
 
   const questionNumber = questionNumberState[0];
   const questions = allQuestionsState[0];
 
-  return (
+  return ( currentPlayer ? (
     <PlayerHeader playerTheme={ColorsForPlayers[props.currentPlayerIndex]}>
       <div>
         <QuestionsImage src={questionMark} alt='question_mark'></QuestionsImage>
@@ -26,8 +26,8 @@ export default function PlayerData(props) {
           {questionNumber} / {questions.length / players.length}
         </h4>
       </div>
-      <PlayerName>{currentPlayer ? currentPlayer.name : "test"}</PlayerName>
+      <PlayerName>{ currentPlayer.name }</PlayerName>
       <H2>{currentPlayer.score}</H2>
-    </PlayerHeader>
+    </PlayerHeader> ) : (<React.Fragment></React.Fragment>)
   );
 }

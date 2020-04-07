@@ -3,12 +3,12 @@ import axios from "axios";
 import { ProgressContext } from "context/ProgressContext";
 import { UserContext } from "context/UserContext";
 
-
 export const AuthContext = createContext();
 
 export const AuthProvider = props => {
   const SIGN_UP_URL = process.env.REACT_APP_AUTH_URL + "sign-up";
   const SIGN_IN_URL = process.env.REACT_APP_AUTH_URL + "sign-in";
+  const SIGN_OUT_URL = process.env.REACT_APP_AUTH_URL + "sign-out";
 
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
@@ -16,7 +16,7 @@ export const AuthProvider = props => {
 
   const setIsReadyToProceed = useContext(ProgressContext)[1];
 
-  const {usernameState, rolesState} = useContext(UserContext);
+  const { usernameState, rolesState } = useContext(UserContext);
   const setUsername = usernameState[1];
   const setRoles = rolesState[1];
 
@@ -28,7 +28,9 @@ export const AuthProvider = props => {
       passwordInput.match("^[A-Za-z0-9]+$")
     ) {
       if (
-        (path === "/sign-up" && emailInput.length > 0 && isEmailValid(emailInput)) ||
+        (path === "/sign-up" &&
+          emailInput.length > 0 &&
+          isEmailValid(emailInput)) ||
         (path === "/sign-in" && emailInput === "")
       ) {
         setIsReadyToProceed(true);
@@ -38,12 +40,12 @@ export const AuthProvider = props => {
     }
   };
 
-  const isEmailValid = (mail) => {
+  const isEmailValid = mail => {
     if (mail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
       return true;
     }
     return false;
-  }
+  };
 
   const clearCredentials = () => {
     setEmailInput("");
@@ -55,11 +57,10 @@ export const AuthProvider = props => {
     localStorage.setItem("username", username);
     localStorage.setItem("roles", roles);
     setUsername(username);
-    setRoles(roles)
+    setRoles(roles);
+  };
 
-  }
-
-  const signUp = () => {
+  const signUp = history => {
     axios({
       method: "post",
       url: SIGN_UP_URL,
@@ -74,9 +75,15 @@ export const AuthProvider = props => {
         clearCredentials();
       })
       .catch(error => {
-        alert(
-          `Registration cannot be finished. ${error.response.data} is already taken.`
-        );
+        if (!error.response) {
+          alert(
+            `Connection refused. Please, try again later.`
+          );
+        } else {
+          alert(
+            `Registration cannot be finished. ${error.response.data} is already taken.`
+          );
+        }
         setIsReadyToProceed(false);
       });
   };
@@ -89,11 +96,27 @@ export const AuthProvider = props => {
         { withCredentials: true }
       )
       .then(res => {
-        setUpUserData(res.data.username, res.data.roles)
+        setUpUserData(res.data.username, res.data.roles);
         history.push("/");
       })
       .catch(() => {
         alert("Incorrect username or password.");
+      });
+  };
+
+  const signOut = () => {
+    localStorage.clear();
+    axios({
+      method: "post",
+      url: SIGN_OUT_URL,
+      withCredentials: true
+    })
+      .then(res => {
+        setUsername(null);
+        setRoles(null);
+      })
+      .catch(error => {
+        alert(`Logout failed. ${error}`);
       });
   };
 
@@ -106,6 +129,7 @@ export const AuthProvider = props => {
         emailInputState: [emailInput, setEmailInput],
         signUp,
         signIn,
+        signOut,
         clearCredentials
       }}
     >

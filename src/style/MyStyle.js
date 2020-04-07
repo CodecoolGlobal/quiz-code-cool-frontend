@@ -163,6 +163,23 @@ export const UserNavLink = styled(NavLink)`
   }
 `;
 
+export const FooterContainer = styled.div`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: ${applicationTheme.fontSize1};
+  color: ${applicationTheme.color1};
+  background: #fff;
+  text-align: center;
+`;
+
+export const FooterLine = styled.div`
+  font-family: "Capriola", sans-serif;
+  float: left;
+  padding: 10px 15px;
+`;
+
 export const FooterLink = styled.a`
   float: right;
   padding: 10px 15px;
@@ -409,6 +426,20 @@ export const RadioButton = styled.input`
   }
 `;
 
+export const QuestionListContainer = styled.div`
+  padding: 25px 5%;
+  background: ${applicationTheme.mainLightOpaque};
+  border-radius: ${applicationTheme.borderRadius3};
+  margin: 25px 20% 60px 20%;
+  box-shadow: ${applicationTheme.shadow1};
+  @media screen and (max-width: 992px) {
+    margin: 25px 10% 60px 10%;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 25px 5% 60px 5%;
+  }
+`;
+
 export const Table = styled.table`
   box-shadow: ${applicationTheme.shadow1};
   border-radius: ${applicationTheme.borderRadius1};
@@ -419,24 +450,10 @@ export const QuestionTable = styled.table`
   padding: 10px;
 `;
 
-export const TableContainer = styled.div`
+export const FlexContainer = styled.div`
   font-size: ${applicationTheme.fontSize1};
   display: flex;
   justify-content: center;
-`;
-
-export const TableRow = styled.tr`
-  background: ${(props) =>
-    props.playerTheme
-      ? props.playerTheme.backgroundColor
-      : applicationTheme.color3};
-  color: ${(props) => (props.playerTheme ? applicationTheme.color1 : "#fff")};
-`;
-
-export const ResultTableData = styled.td`
-  border-radius: ${applicationTheme.borderRadius1};
-  font-size: ${applicationTheme.fontSize1};
-  padding: 10px 15px;
 `;
 
 export const TableHead = styled.th`
@@ -452,35 +469,12 @@ export const QuestionTableHead = styled.th`
   padding: 10px 5px;
 `;
 
-export const FooterContainer = styled.div`
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  font-size: ${applicationTheme.fontSize1};
-  color: ${applicationTheme.color1};
-  background: #fff;
-  text-align: center;
-`;
-
-export const FooterLine = styled.div`
-  font-family: "Capriola", sans-serif;
-  float: left;
-  padding: 10px 15px;
-`;
-
-export const QuestionListContainer = styled.div`
-  padding: 25px 5%;
-  background: ${applicationTheme.mainLightOpaque};
-  border-radius: ${applicationTheme.borderRadius3};
-  margin: 25px 20% 60px 20%;
-  box-shadow: ${applicationTheme.shadow1};
-  @media screen and (max-width: 992px) {
-    margin: 25px 10% 60px 10%;
-  }
-  @media screen and (max-width: 600px) {
-    margin: 25px 5% 60px 5%;
-  }
+export const TableRow = styled.tr`
+  background: ${(props) =>
+    props.playerTheme
+      ? props.playerTheme.backgroundColor
+      : applicationTheme.color3};
+  color: ${(props) => (props.playerTheme ? applicationTheme.color1 : "#fff")};
 `;
 
 export const QuestionsTr = styled.tr`
@@ -496,6 +490,12 @@ export const QuestionsTr = styled.tr`
   &:hover {
     background: ${applicationTheme.color4};
   }
+`;
+
+export const ResultTableData = styled.td`
+  border-radius: ${applicationTheme.borderRadius1};
+  font-size: ${applicationTheme.fontSize1};
+  padding: 10px 15px;
 `;
 
 export const QuestionListTdNavLink = styled(NavLink)`
