@@ -1,12 +1,16 @@
 export default class Question {
-  constructor({category,
+  constructor({
+    id,
+    category,
     type,
     question,
     correctAnswer,
     incorrectAnswers,
     creationDate,
     validationDate,
-    validated}) {
+    validated,
+  }) {
+    this.id = id;
     this.category = category;
     this.type = type;
     this.question = question;

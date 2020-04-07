@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import QuestionList from "component/questions/QuestionList"
 
 import {
   QuestionListContainer,
@@ -8,13 +8,6 @@ import {
 } from "style/MyStyle";
 
 export default function QuestionsList() {
-  const [questions, setQuestions] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/questions", { withCredentials: true })
-      .then((resp) => setQuestions(resp.data));
-  }, []);
 
   return (
     <QuestionListContainer>
