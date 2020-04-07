@@ -27,6 +27,10 @@ export default function QuestionsList() {
 	}, []);
 
 	const delete_question = (id) => {
+		axios.delete('http://localhost:8080/questions/' + id, {
+			withCredentials: true,
+		});
+
 		setQuestions([...questions.filter((question) => question.id !== id)]);
 	};
 
