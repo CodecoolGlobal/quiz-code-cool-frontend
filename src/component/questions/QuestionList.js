@@ -5,8 +5,8 @@ import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
 import { StatusContext } from "context/StatusContext";
 
-
 import {
+  Help,
   Table,
   TableRow,
   QuestionTableHead,
@@ -38,7 +38,9 @@ export default function QuestionList() {
   ]);
 
   return (
-      <Table>
+      questions.length === 0 ?
+      (<Help>There is no question with the selected parameters.</Help>) :
+      (<Table>
         <thead>
           <TableRow>
             <QuestionTableHead>Id</QuestionTableHead>
@@ -63,6 +65,6 @@ export default function QuestionList() {
             </QuestionsTr>
           ))}
         </tbody>
-      </Table>
+      </Table>)
   );
 }
