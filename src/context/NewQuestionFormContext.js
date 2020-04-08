@@ -77,6 +77,7 @@ export const NewQuestionFormProvider = props => {
         }
       },
       error => {
+        
         console.log(error);
       }
     );

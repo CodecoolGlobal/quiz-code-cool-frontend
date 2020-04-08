@@ -1,31 +1,32 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext } from 'react';
 
-import { QuestionDetailsContext } from "context/QuestionDetailsContext";
+import { QuestionDetailsContext } from 'context/QuestionDetailsContext';
 
-import Answers from "component/questions/Answers";
-import ValidateButton from "component/questions/ValidateButton";
+import Answers from 'component/questions/Answers';
+import ValidateButton from 'component/questions/ValidateButton';
+import DeleteButton from './DeleteButton';
 
 import {
-  H3,
-  Table,
-  ResultTableData,
-  TableRow,
-  TableHead,
-  ContentContainer,
-  FlexContainer,
-} from "../../style/MyStyle";
+	H3,
+	Table,
+	ResultTableData,
+	TableRow,
+	TableHead,
+	ContentContainer,
+	FlexContainer,
+} from '../../style/MyStyle';
 
 export default function QuestionDetails(props) {
-  const { selectedQuestionState, getQuestion } = useContext(
-    QuestionDetailsContext
-  );
-  const question = selectedQuestionState[0];
+	const { selectedQuestionState, getQuestion } = useContext(
+		QuestionDetailsContext
+	);
+	const question = selectedQuestionState[0];
 
-  const { id } = props.match.params;
+	const { id } = props.match.params;
 
-  useEffect(() => {
-    getQuestion(id);
-  }, [id]);
+	useEffect(() => {
+		getQuestion(id);
+	}, [id]);
 
   return (
     <ContentContainer>
@@ -72,6 +73,7 @@ export default function QuestionDetails(props) {
         )}
       </FlexContainer>
       <ValidateButton />
+      <DeleteButton />
     </ContentContainer>
   );
 }
