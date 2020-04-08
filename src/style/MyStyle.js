@@ -347,6 +347,9 @@ export const Button = styled.button`
     border-color: ${applicationTheme.gray};
     cursor: default;
   }
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const HeaderButton = styled.button`
