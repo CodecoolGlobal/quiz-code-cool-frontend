@@ -27,7 +27,7 @@ export const QuestionFilterProvider = props => {
   const getValidatedPart = (pathname) => {
     if (pathname === NEW_CUSTOM_QUIZ_PATH)
         return "&validated=true";
-    return selectedStatus === "" ? selectedStatus : `validated=${selectedStatus}`;
+    return selectedStatus === "" ? selectedStatus : `&validated=${selectedStatus}`;
   }
 
     const getUrl = (pathname) => {
