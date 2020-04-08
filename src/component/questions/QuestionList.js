@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { QuestionFilterContext } from "context/QuestionFilterContext";
-import { CategoryContext } from "context/CategoryContext";
-import { TypeContext } from "context/TypeContext";
-import { StatusContext } from "context/StatusContext";
+import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { QuestionFilterContext } from 'context/QuestionFilterContext';
+import { CategoryContext } from 'context/CategoryContext';
+import { TypeContext } from 'context/TypeContext';
+import { StatusContext } from 'context/StatusContext';
+import { NewQuizContext } from 'context/NewQuizContext';
 
 import {
   Help,
@@ -13,9 +14,10 @@ import {
   QuestionsTd,
   QuestionsTr,
   QuestionListTdNavLink,
-} from "style/MyStyle";
+} from 'style/MyStyle';
 
 export default function QuestionList() {
+  const {toggleQuestionId} = useContext(NewQuizContext);
   const selectedCategoryId = useContext(CategoryContext).categoryInput[0];
   const selectedStatus = useContext(StatusContext)[0];
 
@@ -29,18 +31,21 @@ export default function QuestionList() {
   );
   const questions = filteredQuestionsState[0];
 
+  const handleClick = (id) => {
+    if (history.location.pathname === '/custom-quiz/new') toggleQuestionId(id);
+  };
+
   useEffect(() => {
     getFilteredQuestions(history.location.pathname);
   }, [
     selectedCategoryId,
     selectedType,
-    selectedStatus,
+    selectedStatus
   ]);
 
-  return (
-      questions.length === 0 ?
-      (<Help>There is no question with the selected parameters.</Help>) :
-      (
+  return questions.length === 0 ? (
+    <Help>There is no question with the selected parameters.</Help>
+  ) : (
     <OverflowContainer>
       <QuestionTable>
         <thead>
@@ -54,20 +59,24 @@ export default function QuestionList() {
         </thead>
         <tbody>
           {questions.map((question, index) => (
-            <QuestionsTr key={index}>
+            <QuestionsTr key={index} onClick={() => handleClick(question.id)}>
               <QuestionsTd>{question.id}</QuestionsTd>
-              <QuestionListTdNavLink to={`/questions/${question.id}`}>
+              {history.location.pathname === '/questions' ? (
+                <QuestionListTdNavLink to={`/questions/${question.id}`}>
+                  <QuestionsTd>{question.question}</QuestionsTd>
+                </QuestionListTdNavLink>
+              ) : (
                 <QuestionsTd>{question.question}</QuestionsTd>
-              </QuestionListTdNavLink>
+              )}
               <QuestionsTd>{question.category.name}</QuestionsTd>
               <QuestionsTd>{typesMap[question.type]}</QuestionsTd>
               <QuestionsTd>
-                {question.validated === true ? "Validated" : "Not validated"}
+                {question.validated === true ? 'Validated' : 'Not validated'}
               </QuestionsTd>
             </QuestionsTr>
           ))}
         </tbody>
       </QuestionTable>
-      </OverflowContainer>)
+    </OverflowContainer>
   );
 }

@@ -13,11 +13,19 @@ export const NewQuizProvider = (props) => {
   const [quizNameInput, setQuizNameInput] = useState("");
   const [selectedQuestionIds, setSelectedQuestionIds] = useState([]);
 
+  const toggleQuestionId = id => {
+    if (selectedQuestionIds.includes(id)) {
+      setSelectedQuestionIds(selectedQuestionIds.filter(qId => qId !== id));
+    } else {
+      setSelectedQuestionIds([...selectedQuestionIds, id]);
+    }
+  }
+
   const recalculateIsReadyToProceed = () => {
     if (
       quizNameInput.length > 0 &&
       quizNameInput.trim() !== "" &&
-      selectedQuestionIds !== []
+      selectedQuestionIds.length !== 0
     ) {
       setIsReadyToProceed(true);
     } else {
@@ -54,6 +62,7 @@ export const NewQuizProvider = (props) => {
   return (
     <NewQuizContext.Provider
       value={{
+        toggleQuestionId,
         submit,
         recalculateIsReadyToProceed,
         quizNameInputState: [quizNameInput, setQuizNameInput],

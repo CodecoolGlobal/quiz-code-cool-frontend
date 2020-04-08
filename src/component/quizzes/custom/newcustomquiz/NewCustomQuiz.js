@@ -7,9 +7,9 @@ import { NewQuizContext } from 'context/NewQuizContext';
 
 import { QuestionListContainer, H3, Button } from 'style/MyStyle';
 
-export default function NewCustomQuiz() {
-  const submit = useContext(NewQuizContext);
-  const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
+export default function NewCustomQuiz(props) {
+  const {submit} = useContext(NewQuizContext);
+  const isReadyToProceed = useContext(ProgressContext)[0];
 
   return (
     <div>
@@ -18,7 +18,7 @@ export default function NewCustomQuiz() {
         <NewQuizNameInput />
         <QuestionFilter />
         <QuestionList />
-        <Button disabled={!isReadyToProceed} onClick={submit}>
+        <Button disabled={!isReadyToProceed} onClick={() => submit(props)}>
           Save quiz
         </Button>
       </QuestionListContainer>
