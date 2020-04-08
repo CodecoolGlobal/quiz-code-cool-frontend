@@ -1,62 +1,62 @@
-import React from "react";
-import "./App.css";
-import { BrowserRouter as Router } from "react-router-dom";
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import AuthForm from "component/authentication/AuthForm";
+import AuthForm from 'component/authentication/AuthForm';
 
-import PrivateRoute from "component/RouteModifiers/PrivateRoute";
-import DisableRouteWhenAuthenticated from "component/RouteModifiers/DisableRouteWhenAuthenticated";
-import UserDetails from "component/user/UserDetails";
-import Home from "component/user/Home";
-import RandomQuizStarterForm from "component/quizzes/random/randomquizstarterform/RandomQuizStarterForm";
-import CustomQuizStarterForm from "component/quizzes/custom/customquizstarterform/CustomQuizStarterForm";
-import AddNewQuestionForm from "component/newquestion/NewQuestionForm";
-import QuestionsList from "component/questions/AllQuestionsList";
-import QuestionDetails from "component/questions/QuestionDetails";
-import QuestionCard from "component/quizzes/questioncard/QuestionCard";
-import Result from "component/quizzes/result/Result";
-import Header from "component/layout/Header";
-import Footer from "component/layout/Footer";
-import CustomQuizSelect from "component/quizzes/custom/CustomQuizSelect";
-import NewCustomQuiz from "component/quizzes/custom/newcustomquiz/NewCustomQuiz";
-import { AuthProvider } from "context/AuthContext";
+import PrivateRoute from 'component/RouteModifiers/PrivateRoute';
+import DisableRouteWhenAuthenticated from 'component/RouteModifiers/DisableRouteWhenAuthenticated';
+import UserDetails from 'component/user/UserDetails';
+import Home from 'component/user/Home';
+import RandomQuizStarterForm from 'component/quizzes/random/randomquizstarterform/RandomQuizStarterForm';
+import CustomQuizStarterForm from 'component/quizzes/custom/customquizstarterform/CustomQuizStarterForm';
+import AddNewQuestionForm from 'component/newquestion/NewQuestionForm';
+import QuestionsList from 'component/questions/AllQuestionsList';
+import QuestionDetails from 'component/questions/QuestionDetails';
+import QuestionCard from 'component/quizzes/questioncard/QuestionCard';
+import Result from 'component/quizzes/result/Result';
+import Header from 'component/layout/Header';
+import Footer from 'component/layout/Footer';
+import CustomQuizSelect from 'component/quizzes/custom/CustomQuizSelect';
+import NewCustomQuiz from 'component/quizzes/custom/newcustomquiz/NewCustomQuiz';
+import { AuthProvider } from 'context/AuthContext';
 
-import { UserProvider } from "context/UserContext";
-import { QuizProvider } from "context/QuizContext";
-import { PlayerProvider } from "context/PlayerContext";
-import { RandomQuizProvider } from "context/RandomQuizContext";
-import { CustomQuizProvider } from "context/CustomQuizContext";
-import { ProgressProvider } from "context/ProgressContext";
-import { AnswerCorrectnessProvider } from "context/AnswerCorrectnessContext";
-import { NewQuestionFormProvider } from "context/NewQuestionFormContext";
-import { CategoryProvider } from "context/CategoryContext";
-import { TypeProvider } from "context/TypeContext";
-import { StatusProvider } from "context/StatusContext";
-import { RestoreFiltersProvider } from "context/RestoreFiltersContext";
-import { MenuProvider } from "context/MenuContext";
-import { QuestionsProvider } from "context/QuestionsContext";
-import { QuestionFilterProvider } from "context/QuestionFilterContext";
-import { NewQuizProvider } from "context/NewQuizContext";
-import { QuestionDetailsProvider } from "context/QuestionDetailsContext";
+import { UserProvider } from 'context/UserContext';
+import { QuizProvider } from 'context/QuizContext';
+import { PlayerProvider } from 'context/PlayerContext';
+import { RandomQuizProvider } from 'context/RandomQuizContext';
+import { CustomQuizProvider } from 'context/CustomQuizContext';
+import { ProgressProvider } from 'context/ProgressContext';
+import { AnswerCorrectnessProvider } from 'context/AnswerCorrectnessContext';
+import { NewQuestionFormProvider } from 'context/NewQuestionFormContext';
+import { CategoryProvider } from 'context/CategoryContext';
+import { TypeProvider } from 'context/TypeContext';
+import { StatusProvider } from 'context/StatusContext';
+import { RestoreFiltersProvider } from 'context/RestoreFiltersContext';
+import { MenuProvider } from 'context/MenuContext';
+import { QuestionsProvider } from 'context/QuestionsContext';
+import { QuestionFilterProvider } from 'context/QuestionFilterContext';
+import { NewQuizProvider } from 'context/NewQuizContext';
+import { QuestionDetailsProvider } from 'context/QuestionDetailsContext';
 
-import { Container } from "style/MyStyle";
+import { Container } from 'style/MyStyle';
 
 function App() {
   return (
     <div className="App">
       <Container>
         <QuestionsProvider>
-          <NewQuizProvider>
-            <CategoryProvider>
-              <StatusProvider>
-                <TypeProvider>
-                  <RestoreFiltersProvider>
-                    <QuestionFilterProvider>
-                      <CustomQuizProvider>
-                        <RandomQuizProvider>
-                          <PlayerProvider>
-                            <QuizProvider>
-                              <ProgressProvider>
+          <CategoryProvider>
+            <StatusProvider>
+              <TypeProvider>
+                <RestoreFiltersProvider>
+                  <QuestionFilterProvider>
+                    <CustomQuizProvider>
+                      <RandomQuizProvider>
+                        <PlayerProvider>
+                          <QuizProvider>
+                            <ProgressProvider>
+                              <NewQuizProvider>
                                 <UserProvider>
                                   <AuthProvider>
                                     <QuestionDetailsProvider>
@@ -137,17 +137,17 @@ function App() {
                                     </QuestionDetailsProvider>
                                   </AuthProvider>
                                 </UserProvider>
-                              </ProgressProvider>
-                            </QuizProvider>
-                          </PlayerProvider>
-                        </RandomQuizProvider>
-                      </CustomQuizProvider>
-                    </QuestionFilterProvider>
-                  </RestoreFiltersProvider>
-                </TypeProvider>
-              </StatusProvider>
-            </CategoryProvider>
-          </NewQuizProvider>
+                              </NewQuizProvider>
+                            </ProgressProvider>
+                          </QuizProvider>
+                        </PlayerProvider>
+                      </RandomQuizProvider>
+                    </CustomQuizProvider>
+                  </QuestionFilterProvider>
+                </RestoreFiltersProvider>
+              </TypeProvider>
+            </StatusProvider>
+          </CategoryProvider>
         </QuestionsProvider>
       </Container>
       <Footer />
