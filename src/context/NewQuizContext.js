@@ -19,6 +19,7 @@ export const NewQuizProvider = (props) => {
     } else {
       setSelectedQuestionIds([...selectedQuestionIds, id]);
     }
+    recalculateIsReadyToProceed();
   }
 
   const recalculateIsReadyToProceed = () => {
@@ -31,6 +32,7 @@ export const NewQuizProvider = (props) => {
     } else {
       setIsReadyToProceed(false);
     }
+    console.log(selectedQuestionIds);
   };
 
   const submit = (props) => {
