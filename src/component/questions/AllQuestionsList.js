@@ -5,7 +5,6 @@ import QuestionFilter from "component/questions/QuestionFilter"
 
 import {
   QuestionListContainer,
-  FlexContainer,
   H3,
 } from "style/MyStyle";
 
