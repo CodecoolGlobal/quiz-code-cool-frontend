@@ -36,112 +36,115 @@ import { RestoreFiltersProvider } from "context/RestoreFiltersContext";
 import { MenuProvider } from "context/MenuContext";
 import { QuestionsProvider } from "context/QuestionsContext";
 import { QuestionFilterProvider } from "context/QuestionFilterContext";
+import { NewQuizProvider } from "context/NewQuizContext";
 
 import { Container } from "style/MyStyle";
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <Container>
         <QuestionsProvider>
-          <CategoryProvider>
-            <StatusProvider>
-              <TypeProvider>
-                <RestoreFiltersProvider>
-                  <QuestionFilterProvider>
-                    <CustomQuizProvider>
-                      <RandomQuizProvider>
-                        <PlayerProvider>
-                          <QuizProvider>
-                            <ProgressProvider>
-                              <UserProvider>
-                                <AuthProvider>
-                                  <Router>
-                                    <MenuProvider>
-                                      <Header />
-                                    </MenuProvider>
-                                    <DisableRouteWhenAuthenticated
-                                      exact
-                                      path='/sign-in'
-                                      component={AuthForm}
-                                    />
-                                    <DisableRouteWhenAuthenticated
-                                      exact
-                                      path='/sign-up'
-                                      component={AuthForm}
-                                    />
-                                    <PrivateRoute
-                                      exact
-                                      path='/user'
-                                      component={UserDetails}
-                                    />
-                                    <PrivateRoute
-                                      exact
-                                      path='/'
-                                      component={Home}
-                                    />
-                                    <PrivateRoute
-                                      exact
-                                      path='/random-quiz'
-                                      component={RandomQuizStarterForm}
-                                    />
-                                    <PrivateRoute
-                                      exact
-                                      path='/custom-quiz/new'
-                                      component={NewCustomQuiz}
-                                    />
-                                    <PrivateRoute
-                                      exact
-                                      path='/custom-quiz/start'
-                                      component={CustomQuizStarterForm}
-                                    />
-                                    <PrivateRoute
-                                      exact
-                                      path='/custom-quiz'
-                                      component={CustomQuizSelect}
-                                    />
-                                    <AnswerCorrectnessProvider>
+          <NewQuizProvider>
+            <CategoryProvider>
+              <StatusProvider>
+                <TypeProvider>
+                  <RestoreFiltersProvider>
+                    <QuestionFilterProvider>
+                      <CustomQuizProvider>
+                        <RandomQuizProvider>
+                          <PlayerProvider>
+                            <QuizProvider>
+                              <ProgressProvider>
+                                <UserProvider>
+                                  <AuthProvider>
+                                    <Router>
+                                      <MenuProvider>
+                                        <Header />
+                                      </MenuProvider>
+                                      <DisableRouteWhenAuthenticated
+                                        exact
+                                        path="/sign-in"
+                                        component={AuthForm}
+                                      />
+                                      <DisableRouteWhenAuthenticated
+                                        exact
+                                        path="/sign-up"
+                                        component={AuthForm}
+                                      />
                                       <PrivateRoute
                                         exact
-                                        path='/quiz'
-                                        component={QuestionCard}
+                                        path="/user"
+                                        component={UserDetails}
                                       />
-                                    </AnswerCorrectnessProvider>
-                                    <PrivateRoute
-                                      exact
-                                      path='/results'
-                                      component={Result}
-                                    />
-                                    <NewQuestionFormProvider>
                                       <PrivateRoute
                                         exact
-                                        path='/add-question'
-                                        component={AddNewQuestionForm}
+                                        path="/"
+                                        component={Home}
                                       />
-                                    </NewQuestionFormProvider>
-                                    <PrivateRoute
-                                      exact
-                                      path='/questions'
-                                      component={QuestionsList}
-                                    />
-                                    <PrivateRoute
-                                      exact
-                                      path='/questions/:id'
-                                      component={QuestionDetails}
-                                    />
-                                  </Router>
-                                </AuthProvider>
-                              </UserProvider>
-                            </ProgressProvider>
-                          </QuizProvider>
-                        </PlayerProvider>
-                      </RandomQuizProvider>
-                    </CustomQuizProvider>
-                  </QuestionFilterProvider>
-                </RestoreFiltersProvider>
-              </TypeProvider>
-            </StatusProvider>
-          </CategoryProvider>
+                                      <PrivateRoute
+                                        exact
+                                        path="/random-quiz"
+                                        component={RandomQuizStarterForm}
+                                      />
+                                      <PrivateRoute
+                                        exact
+                                        path="/custom-quiz/new"
+                                        component={NewCustomQuiz}
+                                      />
+                                      <PrivateRoute
+                                        exact
+                                        path="/custom-quiz/start"
+                                        component={CustomQuizStarterForm}
+                                      />
+                                      <PrivateRoute
+                                        exact
+                                        path="/custom-quiz"
+                                        component={CustomQuizSelect}
+                                      />
+                                      <AnswerCorrectnessProvider>
+                                        <PrivateRoute
+                                          exact
+                                          path="/quiz"
+                                          component={QuestionCard}
+                                        />
+                                      </AnswerCorrectnessProvider>
+                                      <PrivateRoute
+                                        exact
+                                        path="/results"
+                                        component={Result}
+                                      />
+                                      <NewQuestionFormProvider>
+                                        <PrivateRoute
+                                          exact
+                                          path="/add-question"
+                                          component={AddNewQuestionForm}
+                                        />
+                                      </NewQuestionFormProvider>
+                                      <PrivateRoute
+                                        exact
+                                        path="/questions"
+                                        component={QuestionsList}
+                                      />
+                                      <PrivateRoute
+                                        exact
+                                        path="/questions/:id"
+                                        component={QuestionDetails}
+                                      />
+                                    </Router>
+                                  </AuthProvider>
+                                </UserProvider>
+                              </ProgressProvider>
+                            </QuizProvider>
+                          </PlayerProvider>
+                        </RandomQuizProvider>
+                      </CustomQuizProvider>
+                    </QuestionFilterProvider>
+                  </RestoreFiltersProvider>
+                </TypeProvider>
+              </StatusProvider>
+            </CategoryProvider>
+          </NewQuizProvider>
         </QuestionsProvider>
       </Container>
       <Footer />
