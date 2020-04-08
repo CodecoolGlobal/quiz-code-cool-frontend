@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { PlayerContext } from "context/PlayerContext";
-import { QuestionContext } from "context/QuestionContext";
+import { QuizContext } from "context/QuizContext";
 
 import {
   ContentContainer,
@@ -8,7 +8,7 @@ import {
   H3,
   Button,
   Table,
-  TableContainer,
+  FlexContainer,
   TableRow,
   ResultTableData,
   TableHead
@@ -17,21 +17,10 @@ import ColorsForPlayers from "style/PlayerColors";
 
 export default function Result(props) {
   const players = useContext(PlayerContext)[0];
-  const quizMode = useContext(QuestionContext).quizModeState[0];
-
-  const getRestartGameRout = () => {
-    switch (quizMode) {
-      case "Random":
-        return "/random-quiz";
-      case "Custom":
-        return "/custom-quiz/start";
-      default:
-        break;
-    }
-  };
+  const currentQuizUrl = useContext(QuizContext).currentQuizUrlState[0];
 
   const handleRestart = () => {
-    const route = getRestartGameRout();
+    const route = currentQuizUrl;
     props.history.push(route);
   };
 
@@ -39,7 +28,7 @@ export default function Result(props) {
     <ContentContainer>
       <H3>Game over!</H3>
       <H2>Results</H2>
-      <TableContainer>
+      <FlexContainer>
         <Table>
           <thead>
             <TableRow>
@@ -56,7 +45,7 @@ export default function Result(props) {
             ))}
           </tbody>
         </Table>
-      </TableContainer>
+      </FlexContainer>
       <Button type='button' id='restart' onClick={handleRestart}>
         New Game
       </Button>

@@ -71,12 +71,19 @@ export const AuthProvider = props => {
       }
     })
       .then(res => {
+        alert(`Successful registration for username "${res.data}".`);
         clearCredentials();
       })
       .catch(error => {
-        alert(
-          `Registration cannot be finished. ${error.response.data} is already taken.`
-        );
+        if (!error.response) {
+          alert(
+            `Connection refused. Please, try again later.`
+          );
+        } else {
+          alert(
+            `Registration cannot be finished. ${error.response.data} is already taken.`
+          );
+        }
         setIsReadyToProceed(false);
       });
   };

@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 
-import { QuestionContext } from "context/QuestionContext";
+import { QuizContext } from "context/QuizContext";
 import { ProgressContext } from "context/ProgressContext";
 import { AnswerCorrectnessContext } from "context/AnswerCorrectnessContext";
 
 import { RadioButton, RadioButtonLabel, AnswerContainer } from "style/MyStyle";
 
 export default function Answers() {
-  const { getAnswersZip } = useContext(QuestionContext);
+  const { getAnswersZip } = useContext(QuizContext);
   const [answersZip, setAnswersZip] = useState([]);
 
   useEffect(() => {

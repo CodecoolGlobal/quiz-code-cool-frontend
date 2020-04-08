@@ -5,7 +5,8 @@ import { NavLink } from "react-router-dom";
 export const applicationTheme = {
   mainLightOpaque: "rgba(255, 255, 255, 0.8)",
   fontSize1: "12px",
-  fontSize2: "10px",
+  fontSize2: "11px",
+  fontSize3: "10px",
   inputPadding: "8px 10px",
   color1: "#009688",
   color2: "#35a79c",
@@ -161,6 +162,23 @@ export const UserNavLink = styled(NavLink)`
     float: none;
     display: block;
   }
+`;
+
+export const FooterContainer = styled.div`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: ${applicationTheme.fontSize1};
+  color: ${applicationTheme.color1};
+  background: #fff;
+  text-align: center;
+`;
+
+export const FooterLine = styled.div`
+  font-family: "Capriola", sans-serif;
+  float: left;
+  padding: 10px 15px;
 `;
 
 export const FooterLink = styled.a`
@@ -409,15 +427,55 @@ export const RadioButton = styled.input`
   }
 `;
 
+export const QuestionListContainer = styled.div`
+  padding: 25px 5%;
+  background: ${applicationTheme.mainLightOpaque};
+  border-radius: ${applicationTheme.borderRadius3};
+  margin: 25px 15% 60px 15%;
+  box-shadow: ${applicationTheme.shadow1};
+  @media screen and (max-width: 992px) {
+    margin: 25px 8% 60px 8%;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 25px 5% 60px 5%;
+  }
+`;
+
 export const Table = styled.table`
   box-shadow: ${applicationTheme.shadow1};
   border-radius: ${applicationTheme.borderRadius1};
 `;
 
-export const TableContainer = styled.div`
+export const QuestionTable = styled.table`
+  box-shadow: ${applicationTheme.shadow1};
+  border-collapse:collapse;
+  margin: 10px;
+`;
+
+export const FlexContainer = styled.div`
   font-size: ${applicationTheme.fontSize1};
   display: flex;
   justify-content: center;
+`;
+
+export const OverflowContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  overflow-x:auto;
+`
+
+export const TableHead = styled.th`
+  border-radius: ${applicationTheme.borderRadius1};
+  font-size: ${applicationTheme.fontSize1};
+  padding: 10px 15px;
+  margin-bottom: 5px;
+`;
+
+export const QuestionTableHead = styled.th`
+  font-size: ${applicationTheme.fontSize1};
+  padding: 10px 5px;
+  background: ${applicationTheme.gray};
+  color: #fff;
 `;
 
 export const TableRow = styled.tr`
@@ -428,62 +486,12 @@ export const TableRow = styled.tr`
   color: ${(props) => (props.playerTheme ? applicationTheme.color1 : "#fff")};
 `;
 
-export const ResultTableData = styled.td`
-  border-radius: ${applicationTheme.borderRadius1};
-  font-size: ${applicationTheme.fontSize1};
-  padding: 10px 15px;
-`;
-
-export const TableHead = styled.th`
-  border-radius: ${applicationTheme.borderRadius1};
-  font-size: ${applicationTheme.fontSize1};
-  padding: 10px 15px;
-  margin-bottom: 5px;
-`;
-
-export const QuestionTableHead = styled.th`
-  border-radius: ${applicationTheme.borderRadius1};
-  font-size: ${applicationTheme.fontSize1};
-  padding: 10px 5px;
-`;
-
-export const FooterContainer = styled.div`
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  font-size: ${applicationTheme.fontSize1};
-  color: ${applicationTheme.color1};
-  background: #fff;
-  text-align: center;
-`;
-
-export const FooterLine = styled.div`
-  font-family: "Capriola", sans-serif;
-  float: left;
-  padding: 10px 15px;
-`;
-
-export const QuestionListContainer = styled.div`
-  padding: 25px 5%;
-  background: ${applicationTheme.mainLightOpaque};
-  border-radius: ${applicationTheme.borderRadius3};
-  margin: 25px 20% 60px 20%;
-  box-shadow: ${applicationTheme.shadow1};
-  @media screen and (max-width: 992px) {
-    margin: 25px 10% 60px 10%;
-  }
-  @media screen and (max-width: 600px) {
-    margin: 25px 5% 60px 5%;
-  }
-`;
-
 export const QuestionsTr = styled.tr`
   text-align: left;
   color: ${applicationTheme.color1};
   font-size: ${applicationTheme.fontSize1};
   &:nth-child(even) {
-    background-color: ${applicationTheme.color5};
+    background-color: #fff;
   }
   &:nth-child(odd) {
     background-color: lightgray;
@@ -491,6 +499,12 @@ export const QuestionsTr = styled.tr`
   &:hover {
     background: ${applicationTheme.color4};
   }
+`;
+
+export const ResultTableData = styled.td`
+  border-radius: ${applicationTheme.borderRadius1};
+  font-size: ${applicationTheme.fontSize1};
+  padding: 10px 15px;
 `;
 
 export const QuestionListTdNavLink = styled(NavLink)`
@@ -504,13 +518,12 @@ export const QuestionListTdNavLink = styled(NavLink)`
 `;
 
 export const QuestionsTd = styled.td`
-  border-radius: ${applicationTheme.borderRadius1};
   padding: 8px 10px;
 `;
 
 export const Help = styled.p`
   padding: 2px;
-  font-size: ${applicationTheme.fontSize2};
+  font-size: ${applicationTheme.fontSize3};
 `;
 
 export const InputHelperContainer = styled.div`
