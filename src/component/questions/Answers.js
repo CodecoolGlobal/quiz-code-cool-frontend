@@ -1,29 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
+import AnswersForAdmin from "component/questions/AnswerForAdmin"
+import AnswersForUser from "component/questions/AnswersForUser"
 
-import { shuffle } from "Util";
-import { ResultTableData } from "style/MyStyle";
+import { UserContext } from "context/UserContext";
 
-export default function Answers(props) {
-  const [answers, setAnswers] = useState([]);
 
-  useEffect(() => {
-    let shuffledAnswers = [
-      props.question.correctAnswer,
-      ...props.question.incorrectAnswers
-    ];
-    shuffle(shuffledAnswers);
-    setAnswers(shuffledAnswers);
-  }, [
-    props.question,
-    props.question.correctAnswer,
-    props.question.incorrectAnswers
-  ]);
+export default function Answers() {
+  const { rolesState } = useContext(UserContext);
+  const roles = rolesState[0];
 
   return (
-    <ResultTableData>
-      {answers.map((answer, index) => (
-        <div key={index}>{answer}</div>
-      ))}
-    </ResultTableData>
+      roles.includes("ROLE_ADMIN") ? <AnswersForAdmin /> : <AnswersForUser/> 
   );
 }
