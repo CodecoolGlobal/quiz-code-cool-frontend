@@ -66,10 +66,7 @@ export default function QuestionDetails(props) {
                 <TableHead>Category</TableHead>
                 <ResultTableData>{question.category.name}</ResultTableData>
               </TableRow>
-              <TableRow>
-                <TableHead>Possible answers</TableHead>
-                <Answers question={question} />
-              </TableRow>
+                <Answers />
             </tbody>
           </Table>
         )}

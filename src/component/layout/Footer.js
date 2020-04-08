@@ -3,7 +3,6 @@ import React from "react";
 import {
   FooterContainer,
   FooterLink,
-  NavItem,
   FooterLine
 } from "style/MyStyle";
 
