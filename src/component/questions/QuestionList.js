@@ -46,7 +46,7 @@ export default function QuestionList() {
 
   useEffect(() => {
     getFilteredQuestions(history.location.pathname);
-  }, [selectedCategoryId, selectedType, selectedStatus, getFilteredQuestions, history.location.pathname]);
+  }, [selectedCategoryId, selectedType, selectedStatus]);
 
   return questions.length === 0 ? (
     <Help>There is no question with the selected parameters.</Help>
