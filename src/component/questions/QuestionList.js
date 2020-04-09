@@ -34,24 +34,19 @@ export default function QuestionList() {
   const [selectedRow, setSelectedRow] = useState([]);
 
   const handleClick = (id, index) => {
-    if (index !== undefined && !selectedRow.includes(index) ) setSelectedRow([...selectedRow, index]);
-    else {
-      let newArray = selectedRow;
-      newArray.splice(newArray.indexOf(index), 1)
-    }
-  
     if (history.location.pathname === '/custom-quiz/new') {
+      if (index !== undefined && !selectedRow.includes(index) ) setSelectedRow([...selectedRow, index]);
+      else {
+        let newArray = selectedRow;
+        newArray.splice(newArray.indexOf(index), 1)
+      }
       toggleQuestionId(id);
     }
   };
 
   useEffect(() => {
     getFilteredQuestions(history.location.pathname);
-  }, [
-    selectedCategoryId,
-    selectedType,
-    selectedStatus
-  ]);
+  }, [selectedCategoryId, selectedType, selectedStatus, getFilteredQuestions, history.location.pathname]);
 
   return questions.length === 0 ? (
     <Help>There is no question with the selected parameters.</Help>
