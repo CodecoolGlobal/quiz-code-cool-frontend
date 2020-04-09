@@ -6,6 +6,7 @@ import { RandomQuizContext } from "context/RandomQuizContext";
 import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
 import { QuestionsContext } from "context/QuestionsContext";
+import { UserContext } from 'context/UserContext'
 import Player from "context/Player";
 
 import { shuffle } from "Util";
@@ -35,6 +36,9 @@ export const QuizProvider = (props) => {
     CustomQuizContext
   );
   const selectedCustomQuizId = selectedCustomQuiz[0];
+
+  const {usernameState} = useContext(UserContext);
+  const username = usernameState[0];
 
   // Players
   const setPlayers = useContext(PlayerContext)[1];
@@ -78,7 +82,7 @@ export const QuizProvider = (props) => {
   const setUpPlayers = (history) => {
     switch (history) {
       case CUSTOM_PATH:
-        setPlayers([new Player("User")]);
+        setPlayers([new Player(username)]);
         break;
       case RANDOM_PATH:
         names.map((name) =>

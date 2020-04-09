@@ -45,6 +45,7 @@ function App() {
   return (
     <div className="App">
       <Container>
+      <UserProvider>
         <QuestionsProvider>
           <CategoryProvider>
             <StatusProvider>
@@ -57,7 +58,6 @@ function App() {
                           <QuizProvider>
                             <ProgressProvider>
                               <NewQuizProvider>
-                                <UserProvider>
                                   <AuthProvider>
                                     <QuestionDetailsProvider>
                                       <Router>
@@ -136,7 +136,6 @@ function App() {
                                       </Router>
                                     </QuestionDetailsProvider>
                                   </AuthProvider>
-                                </UserProvider>
                               </NewQuizProvider>
                             </ProgressProvider>
                           </QuizProvider>
@@ -149,6 +148,7 @@ function App() {
             </StatusProvider>
           </CategoryProvider>
         </QuestionsProvider>
+        </UserProvider>
       </Container>
       <Footer />
     </div>
