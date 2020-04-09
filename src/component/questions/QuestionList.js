@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { QuestionFilterContext } from 'context/QuestionFilterContext';
 import { CategoryContext } from 'context/CategoryContext';
@@ -31,8 +31,18 @@ export default function QuestionList() {
   );
   const questions = filteredQuestionsState[0];
 
-  const handleClick = (id) => {
-    if (history.location.pathname === '/custom-quiz/new') toggleQuestionId(id);
+  const [selectedRow, setSelectedRow] = useState([]);
+
+  const handleClick = (id, index) => {
+    if (index !== undefined && !selectedRow.includes(index) ) setSelectedRow([...selectedRow, index]);
+    else {
+      let newArray = selectedRow;
+      newArray.splice(newArray.indexOf(index), 1)
+    }
+  
+    if (history.location.pathname === '/custom-quiz/new') {
+      toggleQuestionId(id);
+    }
   };
 
   useEffect(() => {
@@ -59,7 +69,7 @@ export default function QuestionList() {
         </thead>
         <tbody>
           {questions.map((question, index) => (
-            <QuestionsTr key={index} onClick={() => handleClick(question.id)}>
+            <QuestionsTr key={index} onClick={() => handleClick(question.id, index)} className={selectedRow.includes(index) ? "selected" : ""}>
               <QuestionsTd>{question.id}</QuestionsTd>
               {history.location.pathname === '/questions' ? (
                 <QuestionListTdNavLink to={`/questions/${question.id}`}>

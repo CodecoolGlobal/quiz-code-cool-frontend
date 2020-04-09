@@ -502,6 +502,9 @@ export const QuestionsTr = styled.tr`
   &:hover {
     background: ${applicationTheme.color4};
   }
+  &.selected {
+    background: ${applicationTheme.color4};
+  }
 `;
 
 export const ResultTableData = styled.td`
