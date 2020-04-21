@@ -12,7 +12,7 @@ let main = (
 
 return components.reduce((prev, curr) => curr(prev), main);
 
-// const arr = [1, 2, 3];
+// const arr = [1, 2, 3,545 434, 434];
 // console.log(arr.reduce((prevs, curr) => prevs + curr, 0));
 
 {
