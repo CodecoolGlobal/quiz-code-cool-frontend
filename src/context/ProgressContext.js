@@ -3,18 +3,10 @@ import React, { useState, createContext } from "react";
 export const ProgressContext = createContext();
 
 export const ProgressProvider = props => {
-  const [selectedAnswerCorrectness, setSelectedAnswerCorrectness] = useState(
-    null
-  );
   const [isReadyToProceed, setIsReadyToProceed] = useState(false);
 
   return (
-    <ProgressContext.Provider
-      value={{
-        readyToProceed: [isReadyToProceed, setIsReadyToProceed],
-        correctness: [selectedAnswerCorrectness, setSelectedAnswerCorrectness]
-      }}
-    >
+    <ProgressContext.Provider value={[isReadyToProceed, setIsReadyToProceed]}>
       {props.children}
     </ProgressContext.Provider>
   );

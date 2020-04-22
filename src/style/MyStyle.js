@@ -1,22 +1,26 @@
 import styled from "styled-components";
-import "./ideas.png";
+import "style/ideas.png";
+import { NavLink } from "react-router-dom";
 
 export const applicationTheme = {
   mainLightOpaque: "rgba(255, 255, 255, 0.8)",
   fontSize1: "12px",
+  fontSize2: "11px",
+  fontSize3: "10px",
   inputPadding: "8px 10px",
   color1: "#009688",
   color2: "#35a79c",
   color3: "#54b2a9",
   color4: "#65c3ba",
   color5: "#83d0c9",
-  disabled: "gray",
+  purple: "#b300b3",
+  gray: "gray",
   borderRadius1: "2px",
   borderRadius2: "5px",
   borderRadius3: "8px",
   borderRadius4: "20px",
   shadow1: "0 1px 4px 0 rgba(0, 0, 0, 0.2)",
-  shadow2: "0 1px 2px 0 rgba(0, 0, 0, 0.2)"
+  shadow2: "0 1px 2px 0 rgba(0, 0, 0, 0.2)",
 };
 
 export const Container = styled.div`
@@ -24,43 +28,207 @@ export const Container = styled.div`
 `;
 
 export const HeaderContainer = styled.div`
+  width: 100%;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+`;
+
+export const TitleContainer = styled.div`
   justify-content: center;
   display: flex;
   background: ${applicationTheme.mainLightOpaque};
-  border-radius: ${applicationTheme.borderRadius2};
-  margin: 15px 20px;
-  padding: 8px 30px;
-  box-shadow: ${applicationTheme.shadow1};
+  padding: 10px 30px;
 `;
 
 export const QuestionsImage = styled.img`
   display: block;
-  height: 70px;
+  height: 60px;
+`;
+
+export const UserImage = styled.img`
+  height: 13px;
+  margin-right: 5px;
+`;
+
+export const MenuItemImage = styled.img`
+  height: 20px;
+`;
+
+export const NavigBar = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+`;
+
+export const MenuNavLink = styled(NavLink)`
+  color: ${applicationTheme.color1};
+  font-size: ${applicationTheme.fontSize1};
+  text-decoration: none;
+  display: block;
+  &.active {
+    color: #fff;
+    background: ${applicationTheme.color1};
+  }
+`;
+
+export const MenuNavItem = styled.li`
+  margin: 0;
+  display: block;
+  padding: 5px 20px;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+    background: ${applicationTheme.color4};
+    color: #fff;
+  }
+`;
+
+export const HeaderNavLink = styled(NavLink)`
+  &.active > button {
+    color: #fff;
+    background: ${applicationTheme.color3};
+  }
+`;
+
+export const Toolbar = styled.header`
+  position: sticky;
+  height: 40px;
+  width: 100%;
+  background: #fff;
+`;
+
+export const ToolbarNavigation = styled.nav`
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 1rem;
+`;
+
+export const ToolbarNavigationItems = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const ToolbarNavigationUl = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  & li {
+    font-size: ${applicationTheme.fontSize1};
+    padding: 0 0.5rem;
+  }
+`;
+
+export const Spacer = styled.div`
+  flex: 1;
+`;
+
+export const FormattedNavLink = styled(NavLink)`
+  color: ${applicationTheme.color1};
+  text-decoration: none;
+  &:hover {
+    color: ${applicationTheme.color4};
+  }
+  &.active {
+    font-weight: bold;
+    color: ${applicationTheme.purple};
+  }
+`;
+
+export const ToggleButton = styled.button`
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
+export const UserNavLink = styled(NavLink)`
+  color: ${applicationTheme.color1};
+  font-size: ${applicationTheme.fontSize1};
+  text-decoration: none;
+  float: right;
+  &.active {
+    font-weight: bolder;
+  }
+  @media screen and (max-width: 600px) {
+    float: none;
+    display: block;
+  }
+`;
+
+export const FooterContainer = styled.div`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: ${applicationTheme.fontSize1};
+  color: ${applicationTheme.color1};
+  background: #fff;
+  text-align: center;
+`;
+
+export const FooterLine = styled.div`
+  font-family: "Capriola", sans-serif;
+  float: left;
+  padding: 10px 15px;
+`;
+
+export const FooterLink = styled.a`
+  float: right;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: ${applicationTheme.color1};
+  font-size: ${applicationTheme.fontSize1};
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const ContentContainer = styled.div`
+  padding: 25px 5% 20px 5%;
   background: ${applicationTheme.mainLightOpaque};
-  border: ${props =>
-    props.borderColor ? "2px solid " + props.borderColor : "none"};
   border-radius: ${applicationTheme.borderRadius3};
-  margin: 20px 25% 60px 25%;
+  margin: 25px 30% 60px 30%;
   box-shadow: ${applicationTheme.shadow1};
   @media screen and (max-width: 992px) {
-    margin: 20px 15% 60px 15%;
+    margin: 25px 25% 60px 25%;
   }
   @media screen and (max-width: 600px) {
-    margin: 20px 5% 60px 5%;
+    margin: 25px 10% 60px 10%;
+    padding: 15px 10%;
   }
 `;
 
-export const ContainerMorePadding = styled.div`
-  padding: 15px 40px;
+export const QuestionCardContainer = styled.div`
+  background: ${applicationTheme.mainLightOpaque};
+  border-radius: ${applicationTheme.borderRadius3};
+  margin: 25px 30% 60px 30%;
+  box-shadow: ${applicationTheme.shadow1};
+  @media screen and (max-width: 992px) {
+    margin: 25px 20% 60px 20%;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 25px 10% 60px 10%;
+  }
 `;
 
 export const QuestionContainer = styled.div`
+  padding: 20px 3% 10px 3%;
+  background: ${applicationTheme.mainLightOpaque};
+  border: ${(props) =>
+    props.borderColor ? "2px solid " + props.borderColor : "none"};
+  border-radius: ${applicationTheme.borderRadius3};
+  box-shadow: ${applicationTheme.shadow1};
   border-top: 2px solid #fff;
-  padding: 10px 30px;
-  background: ${props =>
+  background: ${(props) =>
     props.questionColor
       ? props.questionColor
       : applicationTheme.mainLightOpaque};
@@ -69,7 +237,7 @@ export const QuestionContainer = styled.div`
 `;
 
 export const AnswerContainer = styled.div`
-  padding: 0 50px 5px 50px;
+  padding: 0 15% 5px 15%;
 `;
 
 export const PlayerName = styled.h2`
@@ -85,7 +253,7 @@ export const H2 = styled.h2`
 
 export const Title = styled.h2`
   font-family: "Capriola", sans-serif;
-  padding: 20px 10px;
+  padding: 10px 10px 0 10px;
   text-align: center;
   color: ${applicationTheme.color1};
 `;
@@ -93,19 +261,27 @@ export const Title = styled.h2`
 export const H3 = styled.h3`
   text-align: center;
   margin: 10px;
-  padding-top: 10px;
   color: ${applicationTheme.color1};
 `;
 
-export const InputRow = styled.div`
-  width: 100%;
+export const Message = styled.p`
+  color: ${applicationTheme.color2};
+  font-size: ${applicationTheme.fontSize1};
+  padding: 5px;
+`;
+
+export const CategoryTitle = styled.h4`
+  text-align: center;
+  color: ${applicationTheme.gray};
 `;
 
 export const InputItem = styled.div`
+  width: 100%;
+  clear: both;
+  display: block;
+  position: relative;
   box-sizing: border-box;
-  float: left;
   padding: 10px;
-  width: ${props => props.width}%;
   @media screen and (max-width: 600px) {
     width: 100%;
     display: block;
@@ -149,6 +325,7 @@ export const TextInput = styled.input`
 `;
 
 export const Button = styled.button`
+  clear: both;
   font-size: 16;
   font-weight: bolder;
   color: ${applicationTheme.color1};
@@ -166,8 +343,54 @@ export const Button = styled.button`
     border-color: ${applicationTheme.color4};
   }
   &:disabled {
-    color: ${applicationTheme.disabled};
-    border-color: ${applicationTheme.disabled};
+    color: ${applicationTheme.gray};
+    border-color: ${applicationTheme.gray};
+    cursor: default;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const HeaderButton = styled.button`
+  &:focus {
+    outline: none;
+  }
+  clear: both;
+  font-size: ${applicationTheme.fontSize1};
+  font-weight: bold;
+  color: ${applicationTheme.color2};
+  background-color: #fff;
+  border-radius: ${(props) =>
+    props.left
+      ? applicationTheme.borderRadius4 +
+        " " +
+        applicationTheme.borderRadius1 +
+        " " +
+        applicationTheme.borderRadius1 +
+        " " +
+        applicationTheme.borderRadius4
+      : applicationTheme.borderRadius1 +
+        " " +
+        applicationTheme.borderRadius4 +
+        " " +
+        applicationTheme.borderRadius4 +
+        " " +
+        applicationTheme.borderRadius1};
+  border: 2px solid ${applicationTheme.color3};
+  padding: 5px 10px;
+  margin: 2px 1px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  &:hover {
+    color: ${applicationTheme.color4};
+    border-color: ${applicationTheme.color4};
+  }
+  &:disabled {
+    color: ${applicationTheme.gray};
+    border-color: ${applicationTheme.gray};
     cursor: default;
   }
 `;
@@ -181,7 +404,7 @@ export const PlayerHeader = styled.div`
   color: #fff;
   margin-top: 10px;
   padding: 10px 30px;
-  background: ${props => props.playerTheme.backgroundColor};
+  background: ${(props) => props.playerTheme.backgroundColor};
 `;
 
 export const RadioButtonLabel = styled.label`
@@ -207,50 +430,105 @@ export const RadioButton = styled.input`
   }
 `;
 
-export const TableContainer = styled.div`
-  padding: 10px;
+export const QuestionListContainer = styled.div`
+  padding: 25px 5%;
+  background: ${applicationTheme.mainLightOpaque};
+  border-radius: ${applicationTheme.borderRadius3};
+  margin: 25px 15% 60px 15%;
+  box-shadow: ${applicationTheme.shadow1};
+  @media screen and (max-width: 992px) {
+    margin: 25px 8% 60px 8%;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 25px 5% 60px 5%;
+  }
+`;
+
+export const Table = styled.table`
+  box-shadow: ${applicationTheme.shadow1};
+  border-radius: ${applicationTheme.borderRadius1};
+`;
+
+export const QuestionTable = styled.table`
+  box-shadow: ${applicationTheme.shadow1};
+  border-collapse:collapse;
+  margin: 10px;
+`;
+
+export const FlexContainer = styled.div`
+  font-size: ${applicationTheme.fontSize1};
   display: flex;
   justify-content: center;
 `;
 
-export const ResultTable = styled.table`
-  border: 2px solid #fff;
-  border-collapse: collapse;
-  box-shadow: ${applicationTheme.shadow1};
-  padding: 5px;
-  margin: 0 auto;
+export const OverflowContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  overflow-x:auto;
+`
+
+export const TableHead = styled.th`
+  border-radius: ${applicationTheme.borderRadius1};
+  font-size: ${applicationTheme.fontSize1};
+  padding: 10px 15px;
+  margin-bottom: 5px;
 `;
 
-export const ResultTableRow = styled.tr`
-  background: ${props =>
+export const QuestionTableHead = styled.th`
+  font-size: ${applicationTheme.fontSize1};
+  padding: 10px 5px;
+  background: ${applicationTheme.gray};
+  color: #fff;
+`;
+
+export const TableRow = styled.tr`
+  background: ${(props) =>
     props.playerTheme
       ? props.playerTheme.backgroundColor
       : applicationTheme.color3};
-  color: ${props => (props.playerTheme ? applicationTheme.color1 : "#fff")};
+  color: ${(props) => (props.playerTheme ? applicationTheme.color1 : "#fff")};
+`;
+
+export const QuestionsTr = styled.tr`
+  text-align: left;
+  color: ${applicationTheme.color1};
+  font-size: ${applicationTheme.fontSize1};
+  &:nth-child(even) {
+    background-color: #fff;
+  }
+  &:nth-child(odd) {
+    background-color: lightgray;
+  }
+  &:hover {
+    background: ${applicationTheme.color4};
+  }
 `;
 
 export const ResultTableData = styled.td`
-  border: 1px solid #fff;
+  border-radius: ${applicationTheme.borderRadius1};
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
 `;
 
-export const ResultTableHead = styled.th`
-  border: 1px solid #fff;
-  padding: 10px 25px;
-  margin-bottom: 5px;
+export const QuestionListTdNavLink = styled(NavLink)`
+  display: block;
+  text-align: left;
+  text-decoration: none;
+  color: ${applicationTheme.color1};
+  &:hover {
+    color: #fff;
+  }
 `;
 
-export const FooterContainer = styled.div`
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  font-size: ${applicationTheme.fontSize1};
-  color: ${applicationTheme.color1};
-  font-family: "Capriola", sans-serif;
-  background: #fff;
-  text-align: center;
+export const QuestionsTd = styled.td`
+  padding: 8px 10px;
+`;
+
+export const Help = styled.p`
+  padding: 2px;
+  font-size: ${applicationTheme.fontSize3};
+`;
+
+export const InputHelperContainer = styled.div`
+  text-align: left;
 `;
