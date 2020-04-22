@@ -1,29 +1,27 @@
-import React, { useContext } from "react";
-import { UserContext } from "context/UserContext";
-import user from "style/user.png";
+import React, { useContext } from 'react';
+import { UserContext } from 'context/UserContext';
+import user from 'style/user.png';
 
 import {
-    FormattedNavLink,
-    ToolbarNavigationUl,
-    UserImage,
-  } from "style/MyStyle";
+  FormattedNavLink,
+  ToolbarNavigationUl,
+  UserImage,
+} from 'style/MyStyle';
 
 export default function UserInfo() {
-    const { usernameState } = useContext(UserContext);
-    const username = usernameState[0];
+  const { getFromLocalStorage } = useContext(UserContext);
+  const username = getFromLocalStorage('username');
 
-    return (
-        username ? (
-            <div>
-              <ToolbarNavigationUl>
-                <li>
-                  <UserImage src={user}></UserImage>
-                  <FormattedNavLink to='/user'>{username}</FormattedNavLink>
-                </li>
-              </ToolbarNavigationUl>
-            </div>
-          ) : (
-            <React.Fragment></React.Fragment>
-          )
-    )
+  return username ? (
+    <div>
+      <ToolbarNavigationUl>
+        <li>
+          <UserImage src={user}></UserImage>
+          <FormattedNavLink to="/user">{username}</FormattedNavLink>
+        </li>
+      </ToolbarNavigationUl>
+    </div>
+  ) : (
+    <React.Fragment></React.Fragment>
+  );
 }

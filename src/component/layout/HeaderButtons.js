@@ -5,9 +5,9 @@ import { AuthContext } from "context/AuthContext";
 import { HeaderButton, HeaderNavLink } from "style/MyStyle";
 
 export default function HeaderButtons() {
-  const { usernameState } = useContext(UserContext);
+  const {getFromLocalStorage} = useContext(UserContext);
+  const username = getFromLocalStorage("username");
   const { signOut } = useContext(AuthContext);
-  const username = usernameState[0];
   const [leftButton, setLeftButton] = useState();
   const [rightButton, setRightButton] = useState();
 

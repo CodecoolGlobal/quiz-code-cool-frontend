@@ -11,8 +11,8 @@ import {
   } from "style/MyStyle";
 
 export default function UserDetails() {
-  const { usernameState } = useContext(UserContext);
-  const username = usernameState[0];
+  const {getFromLocalStorage} = useContext(UserContext);
+  const username = getFromLocalStorage("username");
 
   return (
     <ContentContainer>

@@ -6,8 +6,8 @@ import { UserContext } from "context/UserContext";
 
 
 export default function Answers() {
-  const { rolesState } = useContext(UserContext);
-  const roles = rolesState[0];
+  const {getFromLocalStorage} = useContext(UserContext);
+  const roles = getFromLocalStorage("roles");
 
   return (
       roles.includes("ROLE_ADMIN") ? <AnswersForAdmin /> : <AnswersForUser/> 

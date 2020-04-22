@@ -16,6 +16,7 @@ export const AuthProvider = props => {
 
   const setIsReadyToProceed = useContext(ProgressContext)[1];
 
+  // probably not needed (?)
   const { usernameState, rolesState } = useContext(UserContext);
   const setUsername = usernameState[1];
   const setRoles = rolesState[1];
@@ -54,11 +55,20 @@ export const AuthProvider = props => {
   };
 
   const setUpUserData = (username, roles) => {
-    localStorage.setItem("username", username);
-    localStorage.setItem("roles", roles);
+    setWithExpiry("username", username, 10000) // 10 seconds for testing
+    setWithExpiry("roles", roles, 10000) // 10 seconds for testing
     setUsername(username);
     setRoles(roles);
   };
+
+  const setWithExpiry = (key, value, ttl) => {
+    const now = new Date()
+    const item = {
+      value: value,
+      expiry: now.getTime() + ttl
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  }
 
   const signUp = history => {
     axios({

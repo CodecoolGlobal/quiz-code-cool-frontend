@@ -3,8 +3,8 @@ import { Route, Redirect } from "react-router-dom";
 import { UserContext } from 'context/UserContext'
 
 export default function DisableRoute({ component: Component, ...rest }) {
-  const {usernameState} = useContext(UserContext);
-  const username = usernameState[0];
+  const {getFromLocalStorage} = useContext(UserContext);
+  const username = getFromLocalStorage("username");
 
   return (
     <Route

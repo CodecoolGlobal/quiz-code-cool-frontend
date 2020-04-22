@@ -4,8 +4,8 @@ import { UserContext } from "context/UserContext";
 import { H3, ContentContainer, Message } from "style/MyStyle";
 
 export default function Home() {
-  const { usernameState } = useContext(UserContext);
-  const username = usernameState[0];
+  const {getFromLocalStorage} = useContext(UserContext);
+  const username = getFromLocalStorage("username");
 
   return (
     <ContentContainer>

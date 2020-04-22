@@ -6,8 +6,8 @@ import { Button } from 'style/MyStyle';
 
 export default function DeleteButton() {
 	const history = useHistory();
-	const { rolesState } = useContext(UserContext);
-	const roles = rolesState[0];
+	const {getFromLocalStorage} = useContext(UserContext);
+  const roles = getFromLocalStorage("roles");
 
 	const { deleteQuestion } = useContext(QuestionDetailsContext);
 
