@@ -93,7 +93,7 @@ export const AuthProvider = props => {
       .post(
         SIGN_IN_URL,
         { username: usernameInput, password: passwordInput },
-        { withCredentials: true }
+        // { withCredentials: true }
       )
       .then(res => {
         setUpUserData(res.data.username, res.data.roles);
