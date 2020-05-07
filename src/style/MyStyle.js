@@ -501,6 +501,11 @@ export const QuestionsTr = styled.tr`
   }
   &:hover {
     background: ${applicationTheme.color4};
+    cursor: pointer;
+  }
+  &.selected {
+    background: ${applicationTheme.color4};
+    color: #fff;
   }
 `;
 
