@@ -5,7 +5,7 @@ import QuestionFilter from "component/questions/QuestionFilter";
 
 import { QuestionListContainer, H3 } from "style/MyStyle";
 
-export default function QuestionsList() {
+export default function AllQuestionsList() {
 
   return (
     <QuestionListContainer>

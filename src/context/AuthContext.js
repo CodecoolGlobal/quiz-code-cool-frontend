@@ -6,7 +6,7 @@ import { UserContext } from "context/UserContext";
 export const AuthContext = createContext();
 
 export const AuthProvider = props => {
-  const SIGN_UP_URL = process.env.REACT_APP_AUTH_URL + "sign-up";
+  const SIGN_UP_URL = process.REACT_APP_AUTH_URL + "sign-up";
   const SIGN_IN_URL = process.env.REACT_APP_AUTH_URL + "sign-in";
   const SIGN_OUT_URL = process.env.REACT_APP_AUTH_URL + "sign-out";
 

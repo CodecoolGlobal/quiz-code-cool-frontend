@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import AnswersForAdmin from "component/questions/AnswerForAdmin"
 import AnswersForUser from "component/questions/AnswersForUser"
 

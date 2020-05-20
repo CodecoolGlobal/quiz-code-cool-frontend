@@ -4,12 +4,13 @@ import {TypeContext} from "context/TypeContext"
 import { StatusContext } from "context/StatusContext";
 
 import {QuestionsContext} from "context/QuestionsContext"
+import { api_getQuestions } from "api/apiConnection";
 
 
 export const QuestionFilterContext = createContext();
 
 export const QuestionFilterProvider = props => {
-    const NEW_CUSTOM_QUIZ_PATH = "/custom-quiz/new";
+  const NEW_CUSTOM_QUIZ_PATH = "/custom-quiz/new";
 
   const [questions, setQuestions] = useState([]);
 
@@ -30,26 +31,27 @@ export const QuestionFilterProvider = props => {
     return selectedStatus === "" ? selectedStatus : `&validated=${selectedStatus}`;
   }
 
-    const getUrl = (pathname) => {
+    const getQueryString = (pathname) => {
           let categoryUrlPart = selectedCategoryId === "0" ? "" : `&category=${selectedCategoryId}`;
           let typeUrlPart = selectedType === "" ? "" : `&type=${selectedType}`;
           let validatedPart = getValidatedPart(pathname);
-          let finalUrl =
-            QUESTIONS_BASE_URL +
+          let queryString =
             "?" +
             categoryUrlPart +
             typeUrlPart +
             validatedPart;
-          return finalUrl;
+          return queryString;
     }
 
-  const getFilteredQuestions = (pathname) => {
-    const url = getUrl(pathname);
-    console.log(url);
-    getQuestions(url).then(questions =>
-        setQuestions(questions))
+  const getFilteredQuestions = async (pathname) => {
+    try {
+      const queryString = getQueryString(pathname);
+      const questions = await api_getQuestions(queryString);
+      setQuestions(questions);
+    } catch(error) {
+      alert("Error. Failed to load question list.")
+    }
   }
-
 
   return (
     <QuestionFilterContext.Provider value={{

@@ -35,29 +35,13 @@ export const QuestionDetailsProvider = (props) => {
 		);
 	};
 
-	const deleteQuestion = (history) => {
-		axios
-			.delete(QUESTIONS_BASE_URL + `/${question.id}`, { withCredentials: true })
-			.then(
-				(response) => {
-					if (response.status === 200) {
-						alert('Question deleted successfully! :)');
-						history.push('/questions');
-					}
-				},
-				(error) => {
-					console.log(error);
-					alert('Something went wrong. Please try again later.');
-				}
-			);
-	};
+
 
 	return (
 		<QuestionDetailsContext.Provider
 			value={{
 				validate,
 				getQuestion,
-				deleteQuestion,
 				selectedQuestionState: [question, setQuestion],
 			}}
 		>
