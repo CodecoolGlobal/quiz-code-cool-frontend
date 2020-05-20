@@ -34,7 +34,6 @@ import { TypeProvider } from 'context/TypeContext';
 import { StatusProvider } from 'context/StatusContext';
 import { RestoreFiltersProvider } from 'context/RestoreFiltersContext';
 import { MenuProvider } from 'context/MenuContext';
-import { QuestionsProvider } from 'context/QuestionsContext';
 import { QuestionFilterProvider } from 'context/QuestionFilterContext';
 import { NewQuizProvider } from 'context/NewQuizContext';
 import { QuestionDetailsProvider } from 'context/QuestionDetailsContext';
@@ -46,7 +45,6 @@ function App() {
     <div className="App">
       <Container>
       <UserProvider>
-        <QuestionsProvider>
           <CategoryProvider>
             <StatusProvider>
               <TypeProvider>
@@ -147,7 +145,6 @@ function App() {
               </TypeProvider>
             </StatusProvider>
           </CategoryProvider>
-        </QuestionsProvider>
         </UserProvider>
       </Container>
       <Footer />

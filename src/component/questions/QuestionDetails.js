@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 
 import { QuestionDetailsContext } from 'context/QuestionDetailsContext';
+import Question from 'context/Question';
 
 import Answers from 'component/questions/Answers';
 import ValidateButton from 'component/questions/ValidateButton';
@@ -15,18 +16,28 @@ import {
 	ContentContainer,
 	FlexContainer,
 } from '../../style/MyStyle';
+import { api_getQuestion } from 'api/apiConnection';
 
 export default function QuestionDetails(props) {
-	const { selectedQuestionState, getQuestion } = useContext(
+	const { selectedQuestionState } = useContext(
 		QuestionDetailsContext
 	);
-	const question = selectedQuestionState[0];
+	const [question, setQuestion] = selectedQuestionState;
 
-	const { id } = props.match.params;
+  const { id } = props.match.params;
+  
+  const getQuestion = async () => {
+    try {
+      const respQuestion = await api_getQuestion(id);
+      setQuestion(new Question(respQuestion));
+    } catch(error) {
+      alert("Question failed to load.")
+    }
+  }
 
 	useEffect(() => {
-		getQuestion(id);
-	}, [id]);
+		getQuestion();
+	}, [question]);
 
   return (
     <ContentContainer>

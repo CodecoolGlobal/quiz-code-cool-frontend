@@ -5,11 +5,11 @@ import { CustomQuizContext } from "context/CustomQuizContext";
 import { RandomQuizContext } from "context/RandomQuizContext";
 import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
-import { QuestionsContext } from "context/QuestionsContext";
 import { UserContext } from 'context/UserContext'
 import Player from "context/Player";
 
 import { shuffle } from "Util";
+import { api_getQuestions, api_getCustomQuizQuestions } from "api/apiConnection";
 
 export const QuizContext = createContext();
 
@@ -19,7 +19,6 @@ export const QuizProvider = (props) => {
 
   //RandomQuiz
   const RANDOM_PATH = "/random-quiz";
-  const { QUESTIONS_BASE_URL, getQuestions } = useContext(QuestionsContext);
 
   const {
     questionsPerPlayerState,
@@ -32,9 +31,7 @@ export const QuizProvider = (props) => {
 
   //Custom quiz
   const CUSTOM_PATH = "/custom-quiz/start";
-  const { selectedCustomQuiz, CUSTOM_QUIZ_BASE_URL } = useContext(
-    CustomQuizContext
-  );
+  const { selectedCustomQuiz } = useContext(CustomQuizContext);
   const selectedCustomQuizId = selectedCustomQuiz[0];
 
   const {usernameState} = useContext(UserContext);
@@ -79,8 +76,8 @@ export const QuizProvider = (props) => {
     return true;
   };
 
-  const setUpPlayers = (history) => {
-    switch (history) {
+  const setUpPlayers = (location) => {
+    switch (location) {
       case CUSTOM_PATH:
         setPlayers([new Player(username)]);
         break;
@@ -94,27 +91,29 @@ export const QuizProvider = (props) => {
     }
   };
 
-  function tryToStartQuiz(url, history) {
-    getQuestions(url).then((questions) => {
+  const tryToStartQuiz = async (history) => {
+    try {
+    const location = history.location.pathname;
+    const questions = location === RANDOM_PATH ? await api_getQuestions(getRandomQuizQueryString()) : await api_getCustomQuizQuestions(selectedCustomQuizId);
       if (questions.length === 0) {
         alert(
           "There are not enough questions matching the entered parameters :("
         );
         setPlayers([]);
       } else {
-        const location = history.location.pathname;
         setQuestions(questions);
         setUpPlayers(location);
         setCurrentQuestionNumber(1);
         setCurrentQuizUrl(location);
         history.push("/quiz");
       }
-    });
+    } catch(error) {
+      console.log(error)
+      alert("Questions failed to load.")
+    }
   }
 
-  const createUrl = (location) => {
-    switch (location) {
-      case RANDOM_PATH:
+  const getRandomQuizQueryString = () => {
         let questionNumberUrlPart = `amount=${
           questionsPerPlayer * names.length
         }`;
@@ -122,27 +121,19 @@ export const QuizProvider = (props) => {
           selectedCategoryId === "0" ? "" : `&category=${selectedCategoryId}`;
         let typeUrlPart = type === "" ? "" : `&type=${type}`;
         let validatedPart = "&validated=true";
-        let finalUrl =
-          QUESTIONS_BASE_URL +
+        let queryString =
           "?" +
           questionNumberUrlPart +
           categoryUrlPart +
           typeUrlPart +
           validatedPart;
-        return finalUrl;
-      case CUSTOM_PATH:
-        return CUSTOM_QUIZ_BASE_URL + `/${selectedCustomQuizId}`;
-      default:
-        break;
-    }
+        return queryString;
   };
 
   const submitStarterForm = (history) => {
     const location = history.location.pathname;
-    const url = createUrl(location);
-    console.log(url)
     if (validateInputs(location)) {
-      tryToStartQuiz(url, history);
+      tryToStartQuiz(history);
     }
   };
 

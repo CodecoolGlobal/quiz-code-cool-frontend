@@ -3,7 +3,6 @@ import {CategoryContext} from "context/CategoryContext"
 import {TypeContext} from "context/TypeContext"
 import { StatusContext } from "context/StatusContext";
 
-import {QuestionsContext} from "context/QuestionsContext"
 import { api_getQuestions } from "api/apiConnection";
 
 
@@ -13,9 +12,6 @@ export const QuestionFilterProvider = props => {
   const NEW_CUSTOM_QUIZ_PATH = "/custom-quiz/new";
 
   const [questions, setQuestions] = useState([]);
-
-  const {getQuestions, QUESTIONS_BASE_URL} = useContext(QuestionsContext);
-
 
   const {categoryInput} = useContext(CategoryContext);
   const selectedCategoryId = categoryInput[0];

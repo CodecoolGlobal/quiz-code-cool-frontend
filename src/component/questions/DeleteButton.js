@@ -14,7 +14,6 @@ export default function DeleteButton() {
 
   const deleteQuestion = async () => {
     try {
-		console.log(question);
       await api_deleteQuestion(question.id);
       alert("Question deleted successfully.");
       history.push("/questions");
