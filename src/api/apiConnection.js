@@ -29,3 +29,10 @@ export const api_getQuestion = async (id) => {
   return response.data;
 }
 
+export const api_validateQuestion = async (id) => {
+  await axios({
+    method: 'put',
+    url: `${QUESTIONS_BASE_URL}/${id}`, 
+    withCredentials: true
+  });
+}
