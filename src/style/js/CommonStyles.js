@@ -199,8 +199,8 @@ export const TableRow = styled.tr`
   background: ${(props) =>
     props.playerTheme
       ? props.playerTheme.backgroundColor
-      : "rgba(20, 148, 114, 0.40)"};
-  color: ${(props) => (props.playerTheme ? applicationTheme.color1 : "#fff")};
+      : "rgba(75, 170, 151, 0.1)"};
+  color: ${ applicationTheme.color1};
 `;
 
 export const TableData = styled.td`
