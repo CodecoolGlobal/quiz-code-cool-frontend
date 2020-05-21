@@ -35,7 +35,7 @@ export default function QuestionDetails(props) {
 
 	useEffect(() => {
 		getQuestion();
-	}, [question]);
+	}, []);
 
   return (
     <ThinnerContentContainer>
