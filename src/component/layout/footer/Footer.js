@@ -4,7 +4,7 @@ import {
   FooterContainer,
   FooterLink,
   FooterLine
-} from "style/js/MyStyle";
+} from "component/layout/footer/styles";
 
 export default function Footer() {
   return (

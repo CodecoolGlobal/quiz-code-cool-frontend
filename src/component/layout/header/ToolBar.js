@@ -1,7 +1,7 @@
 import React from "react";
-import MenuToggleButton from "component/layout/MenuToggleButton";
-import DropDownMenu from "component/layout/DropDownMenu";
-import UserInfo from "component/layout/UserInfo";
+import MenuToggleButton from "component/layout/header/MenuToggleButton";
+import DropDownMenu from "component/layout/header/DropDownMenu";
+import UserInfo from "component/layout/header/UserInfo";
 
 
 import {
@@ -11,7 +11,7 @@ import {
   ToolbarNavigationItems,
   ToolbarNavigationUl,
   Spacer,
-} from "style/js/MyStyle";
+} from "component/layout/header/styles";
 
 export default function ToolBar() {
 

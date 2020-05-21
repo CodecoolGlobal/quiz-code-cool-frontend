@@ -1,14 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import ToolBar from "component/layout/ToolBar";
-import HeaderButtons from "component/layout/HeaderButtons";
+import ToolBar from "component/layout/header/ToolBar";
+import HeaderButtons from "component/layout/header/HeaderButtons";
 
 import {
   HeaderContainer,
   TitleContainer,
   Title,
   QuestionsImage,
-} from "style/js/MyStyle";
+} from "component/layout/header/styles";
 import mainLogo from "style/img/ideas.png";
 
 export default function Header() {

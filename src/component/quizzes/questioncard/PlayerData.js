@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { PlayerContext } from "context/PlayerContext";
 import { QuizContext } from "context/QuizContext";
 
-import { PlayerName, H2, PlayerHeader, QuestionsImage } from "style/js/MyStyle";
+import { PlayerName, H2, PlayerHeader, QuestionMarkImage } from "style/js/MyStyle";
 import ColorsForPlayers from "style/js/PlayerColors";
 import questionMark from "style/img/question-mark.png";
 
@@ -21,7 +21,7 @@ export default function PlayerData(props) {
   return ( currentPlayer ? (
     <PlayerHeader playerTheme={ColorsForPlayers[props.currentPlayerIndex]}>
       <div>
-        <QuestionsImage src={questionMark} alt='question_mark'></QuestionsImage>
+        <QuestionMarkImage src={questionMark} alt='question_mark'></QuestionMarkImage>
         <h4>
           {questionNumber} / {questions.length / players.length}
         </h4>

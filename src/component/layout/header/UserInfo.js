@@ -6,7 +6,7 @@ import {
     FormattedNavLink,
     ToolbarNavigationUl,
     UserImage,
-  } from "style/js/MyStyle";
+  } from "component/layout/header/styles";
 
 export default function UserInfo() {
     const { usernameState } = useContext(UserContext);
