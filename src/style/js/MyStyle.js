@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import "style/img/ideas.png";
 import { NavLink } from "react-router-dom";
 
 export const applicationTheme = {
@@ -22,10 +21,6 @@ export const applicationTheme = {
   shadow1: "0 1px 4px 0 rgba(0, 0, 0, 0.2)",
   shadow2: "0 1px 2px 0 rgba(0, 0, 0, 0.2)",
 };
-
-export const Container = styled.div`
-  text-align: center;
-`;
 
 export const HeaderContainer = styled.div`
   width: 100%;

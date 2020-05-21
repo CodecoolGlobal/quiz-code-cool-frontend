@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import AuthForm from 'component/authentication/AuthForm';
@@ -38,12 +37,9 @@ import { QuestionFilterProvider } from 'context/QuestionFilterContext';
 import { NewQuizProvider } from 'context/NewQuizContext';
 import { QuestionDetailsProvider } from 'context/QuestionDetailsContext';
 
-import { Container } from 'style/js/MyStyle';
-
 function App() {
   return (
     <div className="App">
-      <Container>
       <Router>
         <UserProvider>
             <CategoryProvider>
@@ -146,7 +142,6 @@ function App() {
             </CategoryProvider>
           </UserProvider>
         </Router>
-      </Container>
       <Footer />
     </div>
   );
