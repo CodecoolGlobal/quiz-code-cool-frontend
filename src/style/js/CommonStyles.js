@@ -178,10 +178,9 @@ export const RadioButton = styled.input`
 `;
 
 export const Table = styled.table`
-  box-shadow: ${applicationTheme.shadow1};
-  border-collapse: collapse;
-  border-radius: ${applicationTheme.borderRadius1};
+  box-shadow: ${applicationTheme.shadow2};
   margin: 10px;
+  border-collapse: collapse;
 `;
 
 export const OverflowFlexContainer = styled.div`
@@ -191,7 +190,6 @@ export const OverflowFlexContainer = styled.div`
 `;
 
 export const TableHead = styled.th`
-  border-radius: ${applicationTheme.borderRadius1};
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
   margin-bottom: 5px;
@@ -201,12 +199,12 @@ export const TableRow = styled.tr`
   background: ${(props) =>
     props.playerTheme
       ? props.playerTheme.backgroundColor
-      : applicationTheme.color3};
+      : "rgba(20, 148, 114, 0.40)"};
   color: ${(props) => (props.playerTheme ? applicationTheme.color1 : "#fff")};
 `;
 
+
 export const TableData = styled.td`
-  border-radius: ${applicationTheme.borderRadius1};
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
 `;
