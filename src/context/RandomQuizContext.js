@@ -4,13 +4,10 @@ export const RandomQuizContext = createContext();
 
 export const RandomQuizProvider = props => {
   const MIN_QUESTIONS = 1;
-
-  // States
+  
   const [questionsPerPlayer, setQuestionsPerPlayer] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(MIN_QUESTIONS);
   const [playerNumber, setPlayerNumber] = useState(2);
-
-  //Name
   const [names, setNames] = useState([]);
 
   const modifyName = (index, value) => {
