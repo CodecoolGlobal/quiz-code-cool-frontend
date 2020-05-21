@@ -4,6 +4,7 @@ import Question from "context/Question";
 const QUESTIONS_BASE_URL = process.env.REACT_APP_QUESTIONS_BASE_URL;
 const CUSTOM_QUIZ_BASE_URL = process.env.REACT_APP_CUSTOM_QUIZ_BASE_URL;
 const AUTH_URL = process.env.REACT_APP_AUTH_URL;
+const CATEGORY_URL = process.env.REACT_APP_CATEGORY_URL;
 
 export const api_getQuestions = async (queryString) => {
   let response = await axios.get(QUESTIONS_BASE_URL + queryString, {
@@ -58,6 +59,11 @@ export const api_signOut = async () => {
 };
 
 export const api_signIn = async (data) => {
-  const response = axios.post(`${AUTH_URL}/sign-in`, data, {withCredentials: true});
-  return await response.data;
+  const response = await axios.post(`${AUTH_URL}/sign-in`, data, {withCredentials: true});
+  return response.data;
+}
+
+export const api_getCategories = async () => {
+  const response = await axios.get(CATEGORY_URL, {withCredentials: true});
+  return response.data;
 }

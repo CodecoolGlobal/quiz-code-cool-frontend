@@ -1,22 +1,30 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CategoryContext } from "context/CategoryContext";
-
+import { api_getCategories } from "api/apiConnection";
 import { Select, InputItem, InputLabel } from "style/MyStyle";
 
 export default function CategoryInput(props) {
+  const [allCategories, setAllCategories] = useState([]);
+
   const {
     DEFAULT_CATEGORY,
-    allCategories,
     categoryInput,
-    fetchAllCategories
   } = useContext(CategoryContext);
 
   const setSelectedCategoryId = categoryInput[1];
 
   useEffect(() => {
-    fetchAllCategories();
-    console.log("fetchCategories");
+    getCategories();
   }, []);
+
+  const getCategories = async () => {
+    try {
+      const categories = await api_getCategories();
+      setAllCategories(categories);
+    } catch(error) {
+      alert(`Categories failed to load.\n${error}`)
+    }
+  }
 
   const handleCategory = e => {
     setSelectedCategoryId(e.target.value);

@@ -45,7 +45,7 @@ export const QuestionFilterProvider = props => {
       const questions = await api_getQuestions(queryString);
       setQuestions(questions);
     } catch(error) {
-      alert("Error. Failed to load question list.")
+      alert(`Failed to load question list.\n${error}`)
     }
   }
 

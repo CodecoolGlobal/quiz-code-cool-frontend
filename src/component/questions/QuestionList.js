@@ -65,7 +65,7 @@ export default function QuestionList() {
   };
 
   return questions.length === 0 ? (
-    <Help>There is no question with the selected parameters.</Help>
+    <Help>No questions to display.</Help>
   ) : (
     <OverflowContainer>
       <QuestionTable>
