@@ -203,7 +203,6 @@ export const TableRow = styled.tr`
   color: ${(props) => (props.playerTheme ? applicationTheme.color1 : "#fff")};
 `;
 
-
 export const TableData = styled.td`
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
