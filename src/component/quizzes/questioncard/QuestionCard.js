@@ -11,7 +11,7 @@ import { AnswerCorrectnessContext } from "context/AnswerCorrectnessContext";
 import {
   H3,
   Button
-} from "../../../style/js/MyStyle";
+} from "../../../style/js/CommonStyles";
 
 import { QuestionCardContainer, QuestionContainer, CategoryTitle,} from "component/quizzes/questioncard/styles";
 

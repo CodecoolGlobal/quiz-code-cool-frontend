@@ -12,7 +12,7 @@ import {
   TableRow,
   TableData,
   TableHead
-} from "style/js/MyStyle";
+} from "style/js/CommonStyles";
 import ColorsForPlayers from "style/js/PlayerColors";
 
 export default function Result(props) {

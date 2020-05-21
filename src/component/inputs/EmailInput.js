@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { InputItem, InputLabel, TextInput } from "style/js/MyStyle";
+import { InputItem, InputLabel, TextInput } from "style/js/CommonStyles";
 import { AuthContext } from "context/AuthContext";
 
 export default function EmailInput() {

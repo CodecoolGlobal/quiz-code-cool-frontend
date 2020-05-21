@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 
-import { TableRow, TableHead, TableData } from "style/js/MyStyle";
+import { TableRow, TableHead, TableData } from "style/js/CommonStyles";
 
 export default function AnswerForAdmin() {
   const { selectedQuestionState } = useContext(QuestionDetailsContext);

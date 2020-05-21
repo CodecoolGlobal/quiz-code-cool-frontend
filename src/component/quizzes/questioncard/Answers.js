@@ -5,7 +5,7 @@ import { ProgressContext } from "context/ProgressContext";
 import { AnswerCorrectnessContext } from "context/AnswerCorrectnessContext";
 
 import {  AnswerContainer } from "component/quizzes/questioncard/styles";
-import { RadioButton, RadioButtonLabel } from "../../../style/js/MyStyle";
+import { RadioButton, RadioButtonLabel } from "../../../style/js/CommonStyles";
 
 export default function Answers() {
   const { getAnswersZip } = useContext(QuizContext);

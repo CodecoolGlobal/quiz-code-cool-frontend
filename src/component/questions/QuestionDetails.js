@@ -12,7 +12,7 @@ import {
 	TableHead,
 	ThinnerContentContainer,
 	OverflowFlexContainer,
-} from '../../style/js/MyStyle';
+} from '../../style/js/CommonStyles';
 import { api_getQuestion } from 'api/questionConnection';
 import { handleError } from 'util/errorUtil';
 

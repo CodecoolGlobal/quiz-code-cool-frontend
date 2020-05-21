@@ -6,7 +6,7 @@ import {
   TextInput,
   Help,
   LeftTextAlignContainer
-} from "style/js/MyStyle";
+} from "style/js/CommonStyles";
 import { AuthContext } from "context/AuthContext";
 
 export default function PasswordInput() {

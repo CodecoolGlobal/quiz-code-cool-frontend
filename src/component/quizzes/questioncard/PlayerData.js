@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { PlayerContext } from "context/PlayerContext";
 import { QuizContext } from "context/QuizContext";
 
-import { H2 } from "style/js/MyStyle";
+import { H2 } from "style/js/CommonStyles";
 import { PlayerName, PlayerHeader, QuestionMarkImage } from "component/quizzes/questioncard/styles";
 import ColorsForPlayers from "style/js/PlayerColors";
 import questionMark from "style/img/question-mark.png";

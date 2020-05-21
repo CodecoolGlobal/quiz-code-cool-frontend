@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { applicationTheme } from "style/js/MyStyle";
+import { applicationTheme } from "style/js/CommonStyles";
 import { NavLink } from "react-router-dom";
 
 export const QuestionsTh = styled.th`

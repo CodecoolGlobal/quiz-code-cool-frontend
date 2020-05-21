@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { NewQuestionFormContext } from "context/NewQuestionFormContext";
 
-import { InputLabel, TextInput, InputItem } from "style/js/MyStyle";
+import { InputLabel, TextInput, InputItem } from "style/js/CommonStyles";
 
 export default function MultipleAnswers() {
   const setCorrectAnswer = useContext(NewQuestionFormContext)

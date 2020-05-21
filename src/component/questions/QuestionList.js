@@ -10,7 +10,7 @@ import {
   Help,
   Table,
   OverflowFlexContainer,
-} from 'style/js/MyStyle';
+} from 'style/js/CommonStyles';
 import {  
   QuestionsTh,
   QuestionsTd,

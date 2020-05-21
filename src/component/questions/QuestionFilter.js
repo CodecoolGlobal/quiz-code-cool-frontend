@@ -5,7 +5,7 @@ import CategoryInput from "component/inputs/CategoryInput";
 import StatusInput from "component/inputs/StatusInput";
 import TypeInput from "component/inputs/TypeInput";
 
-import { OverflowFlexContainer } from "style/js/MyStyle";
+import { OverflowFlexContainer } from "style/js/CommonStyles";
 
 export default function QuestionFilter() {
   const history = useHistory();

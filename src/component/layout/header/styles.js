@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { applicationTheme } from "style/js/MyStyle";
+import { applicationTheme } from "style/js/CommonStyles";
 
 export const HeaderContainer = styled.div`
   width: 100%;

@@ -8,7 +8,7 @@ import {
     TableHead,
     ThinnerContentContainer,
     OverflowFlexContainer
-  } from "style/js/MyStyle";
+  } from "style/js/CommonStyles";
 
 export default function UserDetails() {
   const { usernameState } = useContext(UserContext);
