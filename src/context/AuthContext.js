@@ -2,6 +2,7 @@ import React, { useState, createContext, useContext } from "react";
 import { ProgressContext } from "context/ProgressContext";
 import { UserContext } from "context/UserContext";
 import { api_signUp, api_signOut, api_signIn } from "api/authConnection";
+import { handleError } from "util/errorUtil";
 
 export const AuthContext = createContext();
 
@@ -67,11 +68,9 @@ export const AuthProvider = (props) => {
       clearCredentials();
     } catch (error) {
       if (!error.response) {
-        alert(`Connection refused. Please, try again later.`);
+        handleError(error, "Connection refused.");
       } else {
-        alert(
-          `Registration cannot be finished. ${error.response.data} is already taken.`
-        );
+        handleError(error, `Registration cannot be finished. ${error.response.data} is already taken.`);
       }
       setIsReadyToProceed(false);
     }
@@ -87,9 +86,9 @@ export const AuthProvider = (props) => {
       history.push("/");
     } catch (error) {
       if (error.response && error.response.status === 403) {
-        alert("Incorrect username or password.");
+        handleError(error, "Incorrect username or password.");
       } else {
-        alert(`Something went wrong. Please try it later.\n${error}`);
+        handleError(error, "Connection refused.");
       }
     }
   };
@@ -101,7 +100,7 @@ export const AuthProvider = (props) => {
       setUsername(null);
       setRoles(null);
     } catch (error) {
-      alert(`Logout failed.\n${error}`);
+      handleError(error, "Failed to log out.");
     }
   };
 

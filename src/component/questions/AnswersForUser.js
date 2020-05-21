@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 
-import { shuffle } from "Util";
+import { shuffle } from "util/arrayUtil";
 import { TableRow, TableHead, ResultTableData } from "style/MyStyle";
 
 export default function AnswersForUser() {

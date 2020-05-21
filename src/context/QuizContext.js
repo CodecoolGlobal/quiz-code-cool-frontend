@@ -8,9 +8,10 @@ import { TypeContext } from "context/TypeContext";
 import { UserContext } from 'context/UserContext'
 import Player from "context/Player";
 
-import { shuffle } from "Util";
+import { shuffle } from "util/arrayUtil";
 import { api_getQuestions } from "api/questionConnection";
 import { api_getCustomQuizQuestions } from "api/customQuizConnection";
+import { handleError } from "util/errorUtil";
 
 export const QuizContext = createContext();
 
@@ -109,8 +110,7 @@ export const QuizProvider = (props) => {
         history.push("/quiz");
       }
     } catch(error) {
-      console.log(error)
-      alert("Questions failed to load.")
+      handleError(error, "Failed to load questions.")
     }
   }
 

@@ -16,6 +16,7 @@ import {
   QuestionListTdNavLink,
 } from 'style/MyStyle';
 import { api_deleteQuestion } from 'api/questionConnection';
+import { handleError } from 'util/errorUtil';
 
 export default function QuestionList() {
 
@@ -59,7 +60,7 @@ export default function QuestionList() {
       setQuestions([...questions.filter((question) => question.id !== id)]);
       alert("Question deleted successfully.");
     } catch (error) {
-      alert(`Error. Deletion of question ${id} was unsuccessful.`);
+      handleError(error, `Deletion of question ${id} was unsuccessful.`);
     }
   };
 

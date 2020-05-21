@@ -14,6 +14,7 @@ import {
 	FlexContainer,
 } from '../../style/MyStyle';
 import { api_getQuestion } from 'api/questionConnection';
+import { handleError } from 'util/errorUtil';
 
 export default function QuestionDetails(props) {
 	const { selectedQuestionState } = useContext(
@@ -28,9 +29,9 @@ export default function QuestionDetails(props) {
       const respQuestion = await api_getQuestion(id);
       setQuestion(new Question(respQuestion));
     } catch(error) {
-      alert("Question failed to load.")
-    }
-  }
+      handleError(error, "Failed to load question details.");
+    } 
+  };
 
 	useEffect(() => {
 		getQuestion();

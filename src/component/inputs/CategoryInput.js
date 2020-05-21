@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { CategoryContext } from "context/CategoryContext";
 import { Select, InputItem, InputLabel } from "style/MyStyle";
 import { api_getCategories } from "api/categoryConnection";
+import { handleError } from "util/errorUtil";
 
 export default function CategoryInput(props) {
 
@@ -23,7 +24,7 @@ export default function CategoryInput(props) {
       const categories = await api_getCategories();
       setAllCategories(categories);
     } catch(error) {
-      alert(`Categories failed to load.\n${error}`)
+      handleError(error, "Failed to load categories.");
     }
   }
 

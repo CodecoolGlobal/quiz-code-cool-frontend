@@ -4,6 +4,7 @@ import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 import { UserContext } from "context/UserContext";
 import { Button } from "style/MyStyle";
 import { api_deleteQuestion } from "api/questionConnection";
+import { handleError } from "util/errorUtil";
 
 export default function DeleteButton() {
   const history = useHistory();
@@ -18,7 +19,7 @@ export default function DeleteButton() {
       alert("Question deleted successfully.");
       history.push("/questions");
     } catch (error) {
-      alert(`Error. Deletion of question ${question.id} was unsuccessful.`);
+      handleError(error, `Deletion of question ${question.id} was unsuccessful.`);
     }
   };
 

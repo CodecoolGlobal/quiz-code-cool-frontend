@@ -6,6 +6,7 @@ import { RestoreFiltersContext } from "context/RestoreFiltersContext";
 
 import Question from "context/Question";
 import { api_postNewQuestion } from "api/questionConnection";
+import { handleError } from "util/errorUtil";
 
 export const NewQuestionFormContext = createContext();
 
@@ -75,7 +76,7 @@ export const NewQuestionFormProvider = props => {
       clearAddNewQuestionContext();
       history.push("/questions");
     } catch(error) {
-      alert(`Failed to post new question.\n${error}`)
+      handleError(error, "Failed to post new question.");
     }
   };
 

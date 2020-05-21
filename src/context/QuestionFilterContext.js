@@ -4,6 +4,7 @@ import {TypeContext} from "context/TypeContext"
 import { StatusContext } from "context/StatusContext";
 
 import { api_getQuestions } from "api/questionConnection";
+import { handleError } from "util/errorUtil";
 
 
 export const QuestionFilterContext = createContext();
@@ -45,8 +46,7 @@ export const QuestionFilterProvider = props => {
       const questions = await api_getQuestions(queryString);
       setQuestions(questions);
     } catch(error) {
-      console.log(error)
-      alert(`Failed to load question list.\n${error}`)
+      handleError(error, "Failed to load questions.");
     }
   }
 

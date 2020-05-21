@@ -4,6 +4,7 @@ import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 import { UserContext } from "context/UserContext";
 import { Button } from "style/MyStyle";
 import { api_validateQuestion } from "api/questionConnection";
+import { handleError } from "util/errorUtil";
 
 export default function ValidateButton() {
   const history = useHistory();
@@ -23,7 +24,8 @@ export default function ValidateButton() {
       alert(`Question ${question.id} validated successfully.`);
       history.push('/questions');
     } catch(error) {
-      alert('The validation was unsuccessful. Please try again later.');
+      handleError(error, 'The validation was unsuccessful.');
+
     }
   }
 

@@ -2,6 +2,7 @@ import React, { useState, createContext, useContext } from "react";
 import { ProgressContext } from "context/ProgressContext";
 import { RestoreFiltersContext } from "context/RestoreFiltersContext";
 import { api_postNewQuiz } from "api/customQuizConnection";
+import { handleError } from "util/errorUtil";
 
 export const NewQuizContext = createContext();
 
@@ -49,7 +50,7 @@ export const NewQuizProvider = (props) => {
       clearStates();
       props.history.push("/custom-quiz/start");
     } catch(error) {
-      alert(`Failed to post new quiz.\n${error}`)
+      handleError(error, "Failed to post new quiz.");
     }
   };
 

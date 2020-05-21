@@ -4,6 +4,7 @@ import { ProgressContext } from "context/ProgressContext";
 
 import { Select, InputItem, InputLabel } from "style/MyStyle";
 import { api_getCustomQuizzes } from "api/customQuizConnection";
+import { handleError } from "util/errorUtil";
 
 export default function CustomQuizInput() {
   const [customQuizzes, setCustomQuizzes] = useState([]);
@@ -16,7 +17,7 @@ export default function CustomQuizInput() {
       const quizzes = await api_getCustomQuizzes();
       setCustomQuizzes(quizzes);
     } catch(error) {
-      alert(`Quizzes failed to load.\n${error}`)
+      handleError(error, "Failed to load quizzes.");
     }
   };
 
