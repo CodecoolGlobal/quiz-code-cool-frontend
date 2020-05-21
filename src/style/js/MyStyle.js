@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 
 export const applicationTheme = {
   mainLightOpaque: "rgba(255, 255, 255, 0.8)",
@@ -198,13 +197,6 @@ export const TableHead = styled.th`
   margin-bottom: 5px;
 `;
 
-export const QuestionTableHead = styled.th`
-  font-size: ${applicationTheme.fontSize1};
-  padding: 10px 5px;
-  background: ${applicationTheme.gray};
-  color: #fff;
-`;
-
 export const TableRow = styled.tr`
   background: ${(props) =>
     props.playerTheme
@@ -213,42 +205,8 @@ export const TableRow = styled.tr`
   color: ${(props) => (props.playerTheme ? applicationTheme.color1 : "#fff")};
 `;
 
-export const QuestionsTr = styled.tr`
-  text-align: left;
-  color: ${applicationTheme.color1};
-  font-size: ${applicationTheme.fontSize1};
-  &:nth-child(even) {
-    background-color: #fff;
-  }
-  &:nth-child(odd) {
-    background-color: lightgray;
-  }
-  &:hover {
-    background: ${applicationTheme.color4};
-    cursor: pointer;
-  }
-  &.selected {
-    background: ${applicationTheme.color4};
-    color: #fff;
-  }
-`;
-
 export const TableData = styled.td`
   border-radius: ${applicationTheme.borderRadius1};
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
-`;
-
-export const QuestionListTdNavLink = styled(NavLink)`
-  display: block;
-  text-align: left;
-  text-decoration: none;
-  color: ${applicationTheme.color1};
-  &:hover {
-    color: #fff;
-  }
-`;
-
-export const QuestionsTd = styled.td`
-  padding: 8px 10px;
 `;

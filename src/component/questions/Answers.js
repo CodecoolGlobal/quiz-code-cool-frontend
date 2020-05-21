@@ -4,7 +4,6 @@ import AnswersForUser from "component/questions/AnswersForUser"
 
 import { UserContext } from "context/UserContext";
 
-
 export default function Answers() {
   const { rolesState } = useContext(UserContext);
   const roles = rolesState[0];

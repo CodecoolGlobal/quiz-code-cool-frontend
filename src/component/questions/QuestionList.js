@@ -10,11 +10,13 @@ import {
   Help,
   Table,
   OverflowFlexContainer,
-  QuestionTableHead,
+} from 'style/js/MyStyle';
+import {  
+  QuestionsTh,
   QuestionsTd,
   QuestionsTr,
-  QuestionListTdNavLink,
-} from 'style/js/MyStyle';
+  QuestionListTdNavLink
+} from 'component/questions/style'
 import { api_deleteQuestion } from 'api/questionConnection';
 import { handleError } from 'util/errorUtil';
 
@@ -71,13 +73,13 @@ export default function QuestionList() {
       <Table>
         <thead>
           <tr>
-            <QuestionTableHead>Id</QuestionTableHead>
-            <QuestionTableHead>Question</QuestionTableHead>
-            <QuestionTableHead>Category</QuestionTableHead>
-            <QuestionTableHead>Type</QuestionTableHead>
-            <QuestionTableHead>Status</QuestionTableHead>
+            <QuestionsTh>Id</QuestionsTh>
+            <QuestionsTh>Question</QuestionsTh>
+            <QuestionsTh>Category</QuestionsTh>
+            <QuestionsTh>Type</QuestionsTh>
+            <QuestionsTh>Status</QuestionsTh>
             {roles.includes("ROLE_ADMIN") && (
-                <QuestionTableHead></QuestionTableHead>
+                <QuestionsTh></QuestionsTh>
               )}
           </tr>
         </thead>
