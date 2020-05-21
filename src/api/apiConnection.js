@@ -59,11 +59,20 @@ export const api_signOut = async () => {
 };
 
 export const api_signIn = async (data) => {
-  const response = await axios.post(`${AUTH_URL}/sign-in`, data, {withCredentials: true});
+  const response = await axios.post(`${AUTH_URL}/sign-in`, data, {
+    withCredentials: true,
+  });
   return response.data;
-}
+};
 
 export const api_getCategories = async () => {
-  const response = await axios.get(CATEGORY_URL, {withCredentials: true});
+  const response = await axios.get(CATEGORY_URL, { withCredentials: true });
   return response.data;
-}
+};
+
+export const api_getCustomQuizzes = async () => {
+  const response = await axios.get(CUSTOM_QUIZ_BASE_URL, {
+    withCredentials: true,
+  });
+  return response.data;
+};

@@ -1,21 +1,28 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CustomQuizContext } from "context/CustomQuizContext";
 import { ProgressContext } from "context/ProgressContext";
+import { api_getCustomQuizzes } from "api/apiConnection";
 
 import { Select, InputItem, InputLabel } from "style/MyStyle";
 
 export default function CustomQuizInput() {
-  const { getAllCustomQuizzes, selectedCustomQuiz, customQuizzes } = useContext(
-    CustomQuizContext
-  );
-
+  const [customQuizzes, setCustomQuizzes] = useState([]);
+  const { selectedCustomQuiz } = useContext(CustomQuizContext);
+  const setSelectedCustomQuizId = selectedCustomQuiz[1];
   const setIsReadyToProceed = useContext(ProgressContext)[1];
 
-  const setSelectedCustomQuizId = selectedCustomQuiz[1];
+  const getCustomQuizzes = async () => {
+    try {
+      const quizzes = await api_getCustomQuizzes();
+      setCustomQuizzes(quizzes);
+    } catch(error) {
+      alert(`Quizzes failed to load.\n${error}`)
+    }
+  };
 
   useEffect(() => {
-    getAllCustomQuizzes();
-  }, [getAllCustomQuizzes]);
+    getCustomQuizzes();
+  }, []);
 
   const handleCustomQuiz = e => {
     setIsReadyToProceed(true);
