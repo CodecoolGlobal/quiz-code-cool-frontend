@@ -7,6 +7,7 @@ export const CategoryProvider = props => {
     id: "0",
     name: "Any Category"
   };
+  const [allCategories, setAllCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(
     DEFAULT_CATEGORY.id
   );
@@ -20,7 +21,8 @@ export const CategoryProvider = props => {
       value={{
         clearSelectedCategory,
         DEFAULT_CATEGORY,
-        categoryInput: [selectedCategoryId, setSelectedCategoryId]
+        categoryInput: [selectedCategoryId, setSelectedCategoryId],
+        allCategoriesState: [allCategories, setAllCategories]
       }}
     >
       {props.children}

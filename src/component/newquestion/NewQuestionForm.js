@@ -10,7 +10,7 @@ import { RestoreFiltersContext } from "context/RestoreFiltersContext";
 
 import { ContentContainer, H3, Button } from "style/MyStyle";
 
-export default function NewQuestionForm(props) {
+export default function NewQuestionForm() {
   const { submitForm } = useContext(NewQuestionFormContext);
   const { clearFilters } = useContext(RestoreFiltersContext);
 
@@ -19,7 +19,7 @@ export default function NewQuestionForm(props) {
   }, []);
 
   const submit = () => {
-    submitForm(props);
+    submitForm();
   };
 
   return (

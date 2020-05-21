@@ -1,17 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { CategoryContext } from "context/CategoryContext";
 import { api_getCategories } from "api/apiConnection";
 import { Select, InputItem, InputLabel } from "style/MyStyle";
 
 export default function CategoryInput(props) {
-  const [allCategories, setAllCategories] = useState([]);
 
   const {
     DEFAULT_CATEGORY,
     categoryInput,
+    allCategoriesState,
   } = useContext(CategoryContext);
 
   const setSelectedCategoryId = categoryInput[1];
+  const [allCategories, setAllCategories] = allCategoriesState;
 
   useEffect(() => {
     getCategories();

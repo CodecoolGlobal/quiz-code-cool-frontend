@@ -9,7 +9,6 @@ export const RestoreFiltersProvider = props => {
   const { clearSelectedType } = useContext(TypeContext);
 
   const clearFilters = useCallback(() => {
-    console.log("clearfiters");
     clearSelectedCategory();
     clearSelectedType();
   }, [clearSelectedCategory, clearSelectedType]);
