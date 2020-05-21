@@ -1,15 +1,11 @@
 import React, { useState, createContext, useContext } from "react";
-import axios from "axios";
 import { ProgressContext } from "context/ProgressContext";
 import { UserContext } from "context/UserContext";
+import { api_signUp, api_signOut, api_signIn } from "api/apiConnection";
 
 export const AuthContext = createContext();
 
-export const AuthProvider = props => {
-  const SIGN_UP_URL = process.REACT_APP_AUTH_URL + "sign-up";
-  const SIGN_IN_URL = process.env.REACT_APP_AUTH_URL + "sign-in";
-  const SIGN_OUT_URL = process.env.REACT_APP_AUTH_URL + "sign-out";
-
+export const AuthProvider = (props) => {
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
@@ -20,7 +16,7 @@ export const AuthProvider = props => {
   const setUsername = usernameState[1];
   const setRoles = rolesState[1];
 
-  const recalculateIsReadyToProceed = path => {
+  const recalculateIsReadyToProceed = (path) => {
     if (
       usernameInput.length >= 5 &&
       usernameInput.length <= 20 &&
@@ -40,8 +36,8 @@ export const AuthProvider = props => {
     }
   };
 
-  const isEmailValid = mail => {
-    if (mail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+  const isEmailValid = (mail) => {
+    if (mail.match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)) {
       return true;
     }
     return false;
@@ -60,64 +56,53 @@ export const AuthProvider = props => {
     setRoles(roles);
   };
 
-  const signUp = history => {
-    axios({
-      method: "post",
-      url: SIGN_UP_URL,
-      data: {
+  const signUp = async () => {
+    try {
+      const responseData = await api_signUp({
         username: usernameInput,
         email: emailInput,
-        password: passwordInput
+        password: passwordInput,
+      });
+      alert(`Successful registration for username "${responseData}".`);
+      clearCredentials();
+    } catch (error) {
+      if (!error.response) {
+        alert(`Connection refused. Please, try again later.`);
+      } else {
+        alert(
+          `Registration cannot be finished. ${error.response.data} is already taken.`
+        );
       }
-    })
-      .then(res => {
-        alert(`Successful registration for username "${res.data}".`);
-        clearCredentials();
-      })
-      .catch(error => {
-        if (!error.response) {
-          alert(
-            `Connection refused. Please, try again later.`
-          );
-        } else {
-          alert(
-            `Registration cannot be finished. ${error.response.data} is already taken.`
-          );
-        }
-        setIsReadyToProceed(false);
-      });
+      setIsReadyToProceed(false);
+    }
   };
 
-  const signIn = history => {
-    axios
-      .post(
-        SIGN_IN_URL,
-        { username: usernameInput, password: passwordInput },
-        { withCredentials: true }
-      )
-      .then(res => {
-        setUpUserData(res.data.username, res.data.roles);
-        history.push("/");
-      })
-      .catch(() => {
+  const signIn = async (history) => {
+    try {
+      const responseData = await api_signIn({
+        username: usernameInput,
+        password: passwordInput,
+      });
+      setUpUserData(responseData.username, responseData.roles);
+      history.push("/");
+    } catch (error) {
+      if (error.response && error.response.status === 403) {
         alert("Incorrect username or password.");
-      });
+      } else {
+        alert(`Something went wrong. Please try it later.\n${error}`);
+      }
+    }
   };
 
-  const signOut = () => {
+  const signOut = async () => {
     localStorage.clear();
-    axios({
-      method: "post",
-      url: SIGN_OUT_URL,
-      withCredentials: true
-    })
-      .then(res => {
-        setUsername(null);
-        setRoles(null);
-      })
-      .catch(error => {
-        alert(`Logout failed. ${error}`);
-      });
+    try {
+      await api_signOut();
+      setUsername(null);
+      setRoles(null);
+    } catch (error) {
+      alert(`Logout failed.\n${error}`);
+    }
   };
 
   return (
@@ -130,7 +115,7 @@ export const AuthProvider = props => {
         signUp,
         signIn,
         signOut,
-        clearCredentials
+        clearCredentials,
       }}
     >
       {props.children}
