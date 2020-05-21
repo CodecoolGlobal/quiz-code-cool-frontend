@@ -3,9 +3,9 @@ import React, { useContext } from "react";
 import { PlayerContext } from "context/PlayerContext";
 import { QuizContext } from "context/QuizContext";
 
-import { PlayerName, H2, PlayerHeader, QuestionsImage } from "style/MyStyle";
-import ColorsForPlayers from "style/PlayerColors";
-import questionMark from "style/question-mark.png";
+import { PlayerName, H2, PlayerHeader, QuestionsImage } from "style/js/MyStyle";
+import ColorsForPlayers from "style/js/PlayerColors";
+import questionMark from "style/img/question-mark.png";
 
 export default function PlayerData(props) {
   const players = useContext(PlayerContext)[0];

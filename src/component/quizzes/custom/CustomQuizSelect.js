@@ -6,7 +6,7 @@ import {
   InputItem,
   RadioButton,
   RadioButtonLabel
-} from "style/MyStyle";
+} from "style/js/MyStyle";
 
 export default function CustomQuizSelect(props) {
   const [selected, setSelected] = useState("");

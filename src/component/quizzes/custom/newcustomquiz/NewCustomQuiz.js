@@ -5,7 +5,7 @@ import NewQuizNameInput from 'component/inputs/NewQuizNameInput';
 import { ProgressContext } from 'context/ProgressContext';
 import { NewQuizContext } from 'context/NewQuizContext';
 
-import { QuestionListContainer, H3, Button } from 'style/MyStyle';
+import { QuestionListContainer, H3, Button } from 'style/js/MyStyle';
 
 export default function NewCustomQuiz(props) {
   const {submit} = useContext(NewQuizContext);

@@ -12,7 +12,7 @@ import {
 	TableHead,
 	ContentContainer,
 	FlexContainer,
-} from '../../style/MyStyle';
+} from '../../style/js/MyStyle';
 import { api_getQuestion } from 'api/questionConnection';
 import { handleError } from 'util/errorUtil';
 

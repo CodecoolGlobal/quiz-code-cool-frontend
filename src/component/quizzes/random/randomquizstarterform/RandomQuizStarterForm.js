@@ -9,7 +9,7 @@ import StepSlider from "component/quizzes/random/randomquizstarterform/StepSlide
 import { QuizContext } from "context/QuizContext";
 import { RestoreFiltersContext } from "context/RestoreFiltersContext";
 
-import { ContentContainer, H3, Button } from "style/MyStyle";
+import { ContentContainer, H3, Button } from "style/js/MyStyle";
 
 export default function QuizStarterForm() {
   const {submitStarterForm, initBeforeSubmit} = useContext(QuizContext);

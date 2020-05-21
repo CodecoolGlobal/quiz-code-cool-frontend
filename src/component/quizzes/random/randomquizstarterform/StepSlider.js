@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 
 import { RandomQuizContext } from "context/RandomQuizContext";
 
-import { InputItem, InputLabel } from "style/MyStyle";
+import { InputItem, InputLabel } from "style/js/MyStyle";
 
 import { Slider } from "@material-ui/core";
 import PropTypes from "prop-types";

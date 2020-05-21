@@ -14,7 +14,7 @@ import {
   H3,
   CategoryTitle,
   Button
-} from "../../../style/MyStyle";
+} from "../../../style/js/MyStyle";
 
 export default function QuestionCard(props) {
   const questionColors = {

@@ -8,8 +8,8 @@ import {
   TitleContainer,
   Title,
   QuestionsImage,
-} from "style/MyStyle";
-import mainLogo from "style/ideas.png";
+} from "style/js/MyStyle";
+import mainLogo from "style/img/ideas.png";
 
 export default function Header() {
   return (

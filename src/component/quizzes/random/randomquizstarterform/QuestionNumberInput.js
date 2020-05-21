@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { RandomQuizContext } from "context/RandomQuizContext";
 
-import { TextInput, InputItem, InputLabel } from "style/MyStyle";
+import { TextInput, InputItem, InputLabel } from "style/js/MyStyle";
 
 export default function QuestionNumberInput() {
   const { questionsPerPlayerState } = useContext(RandomQuizContext);

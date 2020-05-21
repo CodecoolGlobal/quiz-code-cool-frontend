@@ -12,8 +12,8 @@ import {
   TableRow,
   ResultTableData,
   TableHead
-} from "style/MyStyle";
-import ColorsForPlayers from "style/PlayerColors";
+} from "style/js/MyStyle";
+import ColorsForPlayers from "style/js/PlayerColors";
 
 export default function Result(props) {
   const players = useContext(PlayerContext)[0];

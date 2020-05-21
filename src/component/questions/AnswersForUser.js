@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 
 import { shuffle } from "util/arrayUtil";
-import { TableRow, TableHead, ResultTableData } from "style/MyStyle";
+import { TableRow, TableHead, ResultTableData } from "style/js/MyStyle";
 
 export default function AnswersForUser() {
   const { selectedQuestionState } = useContext(QuestionDetailsContext);

@@ -6,7 +6,7 @@ import {
   TextInput,
   Help,
   InputHelperContainer
-} from "style/MyStyle";
+} from "style/js/MyStyle";
 import { AuthContext } from "context/AuthContext";
 
 export default function PasswordInput() {

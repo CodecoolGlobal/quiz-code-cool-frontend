@@ -7,7 +7,7 @@ import {
   RadioButtonLabel,
   InputItem,
   InputLabel
-} from "style/MyStyle";
+} from "style/js/MyStyle";
 
 export default function TrueFalseAnswers() {
   const { possibleAnswersInput } = useContext(NewQuestionFormContext);

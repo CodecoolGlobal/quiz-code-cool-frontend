@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { TypeContext } from "context/TypeContext";
-import { Select, InputItem, InputLabel } from "style/MyStyle";
+import { Select, InputItem, InputLabel } from "style/js/MyStyle";
 
 export default function TypeInput(props) {
   const { selectedTypeInput, ANY_TYPE, ALL_TYPES, typesMap } = useContext(

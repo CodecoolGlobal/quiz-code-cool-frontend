@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { CustomQuizContext } from "context/CustomQuizContext";
 import { ProgressContext } from "context/ProgressContext";
 
-import { Select, InputItem, InputLabel } from "style/MyStyle";
+import { Select, InputItem, InputLabel } from "style/js/MyStyle";
 import { api_getCustomQuizzes } from "api/customQuizConnection";
 import { handleError } from "util/errorUtil";
 

@@ -3,7 +3,7 @@ import React from "react";
 import QuestionList from "component/questions/QuestionList";
 import QuestionFilter from "component/questions/QuestionFilter";
 
-import { QuestionListContainer, H3 } from "style/MyStyle";
+import { QuestionListContainer, H3 } from "style/js/MyStyle";
 
 export default function AllQuestionsList() {
 

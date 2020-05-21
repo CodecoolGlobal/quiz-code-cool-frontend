@@ -5,7 +5,7 @@ import {
     NavigBar,
     MenuNavLink,
     MenuNavItem 
-  } from "style/MyStyle";
+  } from "style/js/MyStyle";
 
 export default function DropDownMenu() {
     const [isMenuActive, setIsMenuActive] = useContext(MenuContext);

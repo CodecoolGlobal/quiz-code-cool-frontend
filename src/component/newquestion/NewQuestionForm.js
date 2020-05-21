@@ -8,7 +8,7 @@ import NewAnswerForm from "component/newquestion/NewAnswerForm";
 import { NewQuestionFormContext } from "context/NewQuestionFormContext";
 import { RestoreFiltersContext } from "context/RestoreFiltersContext";
 
-import { ContentContainer, H3, Button } from "style/MyStyle";
+import { ContentContainer, H3, Button } from "style/js/MyStyle";
 
 export default function NewQuestionForm() {
   const { submitForm } = useContext(NewQuestionFormContext);

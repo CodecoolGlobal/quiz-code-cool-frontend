@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import menuButton from "style/menu-button.png";
+import menuButton from "style/img/menu-button.png";
 import { MenuContext } from "context/MenuContext";
 
-import { ToggleButton, MenuItemImage } from "style/MyStyle";
+import { ToggleButton, MenuItemImage } from "style/js/MyStyle";
 
 export default function MenuToggleButton() {
   const [isMenuActive, setIsMenuActive] = useContext(MenuContext);

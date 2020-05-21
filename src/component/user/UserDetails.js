@@ -8,7 +8,7 @@ import {
     TableHead,
     ContentContainer,
     FlexContainer
-  } from "style/MyStyle";
+  } from "style/js/MyStyle";
 
 export default function UserDetails() {
   const { usernameState } = useContext(UserContext);

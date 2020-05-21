@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import { StatusContext } from "context/StatusContext";
 
-import { Select, InputItem, InputLabel } from "style/MyStyle";
+import { Select, InputItem, InputLabel } from "style/js/MyStyle";
 
 export default function StatusInput() {
     const setSelectedStatus = useContext(StatusContext)[1];

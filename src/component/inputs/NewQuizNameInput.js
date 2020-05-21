@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { InputItem, InputLabel, TextInput } from "style/MyStyle";
+import { InputItem, InputLabel, TextInput } from "style/js/MyStyle";
 import { NewQuizContext } from "context/NewQuizContext";
 
 export default function NewQuizNameInput() {

@@ -38,7 +38,7 @@ import { QuestionFilterProvider } from 'context/QuestionFilterContext';
 import { NewQuizProvider } from 'context/NewQuizContext';
 import { QuestionDetailsProvider } from 'context/QuestionDetailsContext';
 
-import { Container } from 'style/MyStyle';
+import { Container } from 'style/js/MyStyle';
 
 function App() {
   return (

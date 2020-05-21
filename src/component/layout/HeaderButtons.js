@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "context/UserContext";
 import { AuthContext } from "context/AuthContext";
 
-import { HeaderButton, HeaderNavLink } from "style/MyStyle";
+import { HeaderButton, HeaderNavLink } from "style/js/MyStyle";
 
 export default function HeaderButtons() {
   const { usernameState } = useContext(UserContext);

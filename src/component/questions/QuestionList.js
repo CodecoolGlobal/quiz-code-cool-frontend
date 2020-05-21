@@ -14,7 +14,7 @@ import {
   QuestionsTd,
   QuestionsTr,
   QuestionListTdNavLink,
-} from 'style/MyStyle';
+} from 'style/js/MyStyle';
 import { api_deleteQuestion } from 'api/questionConnection';
 import { handleError } from 'util/errorUtil';
 

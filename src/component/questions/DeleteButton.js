@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 import { UserContext } from "context/UserContext";
-import { Button } from "style/MyStyle";
+import { Button } from "style/js/MyStyle";
 import { api_deleteQuestion } from "api/questionConnection";
 import { handleError } from "util/errorUtil";
 

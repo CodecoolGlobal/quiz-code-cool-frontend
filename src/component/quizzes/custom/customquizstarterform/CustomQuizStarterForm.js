@@ -4,7 +4,7 @@ import CustomQuizInput from "component/quizzes/custom/customquizstarterform/Cust
 import { ProgressContext } from "context/ProgressContext";
 import { QuizContext } from "context/QuizContext";
 
-import { ContentContainer, H3, Button } from "style/MyStyle";
+import { ContentContainer, H3, Button } from "style/js/MyStyle";
 
 export default function CustomQuizStarterForm() {
   const history = useHistory();
