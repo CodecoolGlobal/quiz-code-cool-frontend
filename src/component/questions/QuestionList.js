@@ -8,8 +8,8 @@ import { NewQuizContext } from 'context/NewQuizContext';
 import { UserContext } from "context/UserContext";
 import {
   Help,
-  QuestionTable,
-  OverflowContainer,
+  Table,
+  OverflowFlexContainer,
   QuestionTableHead,
   QuestionsTd,
   QuestionsTr,
@@ -67,8 +67,8 @@ export default function QuestionList() {
   return questions.length === 0 ? (
     <Help>No questions to display.</Help>
   ) : (
-    <OverflowContainer>
-      <QuestionTable>
+    <OverflowFlexContainer>
+      <Table>
         <thead>
           <tr>
             <QuestionTableHead>Id</QuestionTableHead>
@@ -105,7 +105,7 @@ export default function QuestionList() {
             </QuestionsTr>
           ))}
         </tbody>
-      </QuestionTable>
-    </OverflowContainer>
+      </Table>
+    </OverflowFlexContainer>
   );
 }

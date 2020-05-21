@@ -22,8 +22,7 @@ export const applicationTheme = {
   shadow2: "0 1px 2px 0 rgba(0, 0, 0, 0.2)",
 };
 
-
-export const ContentContainer = styled.div`
+export const ThinnerContentContainer = styled.div`
   padding: 25px 5% 20px 5%;
   background: ${applicationTheme.mainLightOpaque};
   border-radius: ${applicationTheme.borderRadius3};
@@ -36,6 +35,24 @@ export const ContentContainer = styled.div`
     margin: 25px 10% 60px 10%;
     padding: 15px 10%;
   }
+`;
+
+export const WiderContentContainer = styled.div`
+  padding: 25px 5%;
+  background: ${applicationTheme.mainLightOpaque};
+  border-radius: ${applicationTheme.borderRadius3};
+  margin: 25px 15% 60px 15%;
+  box-shadow: ${applicationTheme.shadow1};
+  @media screen and (max-width: 992px) {
+    margin: 25px 8% 60px 8%;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 25px 5% 60px 5%;
+  }
+`;
+
+export const LeftTextAlignContainer = styled.div`
+  text-align: left;
 `;
 
 export const H2 = styled.h2`
@@ -54,6 +71,11 @@ export const Message = styled.p`
   color: ${applicationTheme.color2};
   font-size: ${applicationTheme.fontSize1};
   padding: 5px;
+`;
+
+export const Help = styled.p`
+  padding: 2px;
+  font-size: ${applicationTheme.fontSize3};
 `;
 
 export const InputItem = styled.div`
@@ -156,42 +178,18 @@ export const RadioButton = styled.input`
   }
 `;
 
-export const QuestionListContainer = styled.div`
-  padding: 25px 5%;
-  background: ${applicationTheme.mainLightOpaque};
-  border-radius: ${applicationTheme.borderRadius3};
-  margin: 25px 15% 60px 15%;
-  box-shadow: ${applicationTheme.shadow1};
-  @media screen and (max-width: 992px) {
-    margin: 25px 8% 60px 8%;
-  }
-  @media screen and (max-width: 600px) {
-    margin: 25px 5% 60px 5%;
-  }
-`;
-
 export const Table = styled.table`
   box-shadow: ${applicationTheme.shadow1};
+  border-collapse: collapse;
   border-radius: ${applicationTheme.borderRadius1};
-`;
-
-export const QuestionTable = styled.table`
-  box-shadow: ${applicationTheme.shadow1};
-  border-collapse:collapse;
   margin: 10px;
 `;
 
-export const FlexContainer = styled.div`
-  font-size: ${applicationTheme.fontSize1};
+export const OverflowFlexContainer = styled.div`
   display: flex;
   justify-content: center;
+  overflow-x: auto;
 `;
-
-export const OverflowContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  overflow-x:auto;
-`
 
 export const TableHead = styled.th`
   border-radius: ${applicationTheme.borderRadius1};
@@ -235,7 +233,7 @@ export const QuestionsTr = styled.tr`
   }
 `;
 
-export const ResultTableData = styled.td`
+export const TableData = styled.td`
   border-radius: ${applicationTheme.borderRadius1};
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
@@ -253,13 +251,4 @@ export const QuestionListTdNavLink = styled(NavLink)`
 
 export const QuestionsTd = styled.td`
   padding: 8px 10px;
-`;
-
-export const Help = styled.p`
-  padding: 2px;
-  font-size: ${applicationTheme.fontSize3};
-`;
-
-export const InputHelperContainer = styled.div`
-  text-align: left;
 `;

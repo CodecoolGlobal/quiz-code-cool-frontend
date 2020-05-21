@@ -5,7 +5,7 @@ import {
   InputLabel,
   TextInput,
   Help,
-  InputHelperContainer
+  LeftTextAlignContainer
 } from "style/js/MyStyle";
 import { AuthContext } from "context/AuthContext";
 
@@ -29,9 +29,9 @@ export default function UsernameInput() {
     switch (history.location.pathname) {
       case "/sign-up":
         return (
-          <InputHelperContainer>
+          <LeftTextAlignContainer>
             <Help>Between 5 and 20 characters. </Help>
-          </InputHelperContainer>
+          </LeftTextAlignContainer>
         );
       default:
         return "";

@@ -3,14 +3,14 @@ import { PlayerContext } from "context/PlayerContext";
 import { QuizContext } from "context/QuizContext";
 
 import {
-  ContentContainer,
+  ThinnerContentContainer,
   H2,
   H3,
   Button,
   Table,
-  FlexContainer,
+  OverflowFlexContainer,
   TableRow,
-  ResultTableData,
+  TableData,
   TableHead
 } from "style/js/MyStyle";
 import ColorsForPlayers from "style/js/PlayerColors";
@@ -25,10 +25,10 @@ export default function Result(props) {
   };
 
   return (
-    <ContentContainer>
+    <ThinnerContentContainer>
       <H3>Game over!</H3>
       <H2>Results</H2>
-      <FlexContainer>
+      <OverflowFlexContainer>
         <Table>
           <thead>
             <TableRow>
@@ -39,16 +39,16 @@ export default function Result(props) {
           <tbody>
             {players.map((player, index) => (
               <TableRow playerTheme={ColorsForPlayers[index]} key={index}>
-                <ResultTableData>{player.name}</ResultTableData>
-                <ResultTableData>{player.score}</ResultTableData>
+                <TableData>{player.name}</TableData>
+                <TableData>{player.score}</TableData>
               </TableRow>
             ))}
           </tbody>
         </Table>
-      </FlexContainer>
+      </OverflowFlexContainer>
       <Button type='button' id='restart' onClick={handleRestart}>
         New Game
       </Button>
-    </ContentContainer>
+    </ThinnerContentContainer>
   );
 }

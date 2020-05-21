@@ -4,7 +4,7 @@ import { ProgressContext } from "context/ProgressContext";
 import { AuthContext } from "context/AuthContext";
 import { NavLink } from "react-router-dom";
 
-import { ContentContainer, H3, Button, Help } from "style/js/MyStyle";
+import { ThinnerContentContainer, H3, Button, Help } from "style/js/MyStyle";
 import UsernameInput from "component/inputs/UsernameInput";
 import PasswordInput from "component/inputs/PasswordInput";
 import EmailInput from "component/inputs/EmailInput";
@@ -50,7 +50,7 @@ export default function AuthForm() {
   }
 
   return (
-    <ContentContainer>
+    <ThinnerContentContainer>
       <H3>{getTitle()}</H3>
       <div>
         <UsernameInput />
@@ -61,6 +61,6 @@ export default function AuthForm() {
       <Button disabled={!isReadyToProceed} onClick={submit}>
       {getTitle()}
       </Button>
-    </ContentContainer>
+    </ThinnerContentContainer>
   );
 }

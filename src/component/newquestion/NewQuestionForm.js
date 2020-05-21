@@ -8,7 +8,7 @@ import NewAnswerForm from "component/newquestion/NewAnswerForm";
 import { NewQuestionFormContext } from "context/NewQuestionFormContext";
 import { RestoreFiltersContext } from "context/RestoreFiltersContext";
 
-import { ContentContainer, H3, Button } from "style/js/MyStyle";
+import { ThinnerContentContainer, H3, Button } from "style/js/MyStyle";
 
 export default function NewQuestionForm() {
   const { submitForm } = useContext(NewQuestionFormContext);
@@ -23,13 +23,13 @@ export default function NewQuestionForm() {
   };
 
   return (
-    <ContentContainer>
+    <ThinnerContentContainer>
       <H3>Add new question</H3>
       <CategoryInput mode='WithoutAnyCategory' />
       <TypeInput mode='WithoutAnyType' />
       <QuestionInput />
       <NewAnswerForm />
       <Button onClick={submit}>Save question</Button>
-    </ContentContainer>
+    </ThinnerContentContainer>
   );
 }

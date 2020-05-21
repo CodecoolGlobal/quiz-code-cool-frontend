@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 
 import { shuffle } from "util/arrayUtil";
-import { TableRow, TableHead, ResultTableData } from "style/js/MyStyle";
+import { TableRow, TableHead, TableData } from "style/js/MyStyle";
 
 export default function AnswersForUser() {
   const { selectedQuestionState } = useContext(QuestionDetailsContext);
@@ -20,11 +20,11 @@ export default function AnswersForUser() {
   return (
     <TableRow>
       <TableHead>Possible answers</TableHead>
-      <ResultTableData>
+      <TableData>
         {getShuffledAnswers().map((answer, index) => (
           <p key={index}>{answer}</p>
         ))}
-      </ResultTableData>
+      </TableData>
     </TableRow>
   );
 }

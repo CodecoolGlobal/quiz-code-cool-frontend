@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  ContentContainer,
+  ThinnerContentContainer,
   H3,
   Button,
   InputItem,
@@ -20,7 +20,7 @@ export default function CustomQuizSelect(props) {
   };
 
   return (
-    <ContentContainer>
+    <ThinnerContentContainer>
       <H3>Custom quiz</H3>
 
       <InputItem>
@@ -45,6 +45,6 @@ export default function CustomQuizSelect(props) {
         <RadioButtonLabel htmlFor='start'>Start a quiz</RadioButtonLabel>
       </InputItem>
       <Button onClick={goToNext}>Next</Button>
-    </ContentContainer>
+    </ThinnerContentContainer>
   );
 }

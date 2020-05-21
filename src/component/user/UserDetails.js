@@ -3,11 +3,11 @@ import { UserContext } from "context/UserContext";
 import {
     H3,
     Table,
-    ResultTableData,
+    TableData,
     TableRow,
     TableHead,
-    ContentContainer,
-    FlexContainer
+    ThinnerContentContainer,
+    OverflowFlexContainer
   } from "style/js/MyStyle";
 
 export default function UserDetails() {
@@ -15,9 +15,9 @@ export default function UserDetails() {
   const username = usernameState[0];
 
   return (
-    <ContentContainer>
+    <ThinnerContentContainer>
     <H3>User Details</H3>
-    <FlexContainer>
+    <OverflowFlexContainer>
       <Table>
         <thead>
           <TableRow>
@@ -28,12 +28,12 @@ export default function UserDetails() {
         <tbody>
           <TableRow>
             <TableHead>Registration Date</TableHead>
-            <ResultTableData>2020.01.01</ResultTableData>
+            <TableData>2020.01.01</TableData>
           </TableRow>
   
         </tbody>
       </Table>
-    </FlexContainer>
-  </ContentContainer>
+    </OverflowFlexContainer>
+  </ThinnerContentContainer>
   );
 }

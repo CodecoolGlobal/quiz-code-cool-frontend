@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import { UserContext } from "context/UserContext";
 
-import { H3, ContentContainer, Message } from "style/js/MyStyle";
+import { H3, ThinnerContentContainer, Message } from "style/js/MyStyle";
 
 export default function Home() {
   const { usernameState } = useContext(UserContext);
   const username = usernameState[0];
 
   return (
-    <ContentContainer>
+    <ThinnerContentContainer>
       <H3>Hello {username}!</H3>
       <Message>Let's play with some quizzes!</Message>
-    </ContentContainer>
+    </ThinnerContentContainer>
   );
 }

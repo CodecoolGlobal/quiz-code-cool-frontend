@@ -7,11 +7,11 @@ import DeleteButton from './DeleteButton';
 import {
 	H3,
 	Table,
-	ResultTableData,
+	TableData,
 	TableRow,
 	TableHead,
-	ContentContainer,
-	FlexContainer,
+	ThinnerContentContainer,
+	OverflowFlexContainer,
 } from '../../style/js/MyStyle';
 import { api_getQuestion } from 'api/questionConnection';
 import { handleError } from 'util/errorUtil';
@@ -38,12 +38,10 @@ export default function QuestionDetails(props) {
 	}, [question]);
 
   return (
-    <ContentContainer>
+    <ThinnerContentContainer>
       <H3>Details</H3>
-      <FlexContainer>
-        {question == null ? (
-          <React.Fragment></React.Fragment>
-        ) : (
+      <OverflowFlexContainer>
+        {question != null &&
           <Table>
             <thead>
               <TableRow>
@@ -54,35 +52,35 @@ export default function QuestionDetails(props) {
             <tbody>
             <TableRow>
                 <TableHead>Id</TableHead>
-                <ResultTableData>{question.id}</ResultTableData>
+                <TableData>{question.id}</TableData>
               </TableRow>
               <TableRow>
                 <TableHead>Creation date</TableHead>
-                <ResultTableData>{question.creationDate}</ResultTableData>
+                <TableData>{question.creationDate}</TableData>
               </TableRow>
               <TableRow>
                 <TableHead>Validation date</TableHead>
-                <ResultTableData>
+                <TableData>
                   {question.validationDate === null
                     ? "Not validated yet"
                     : question.validationDate}
-                </ResultTableData>
+                </TableData>
               </TableRow>
               <TableRow>
                 <TableHead>Created By</TableHead>
-                <ResultTableData>Zokni kutya</ResultTableData>
+                <TableData>Zokni kutya</TableData>
               </TableRow>
               <TableRow>
                 <TableHead>Category</TableHead>
-                <ResultTableData>{question.category.name}</ResultTableData>
+                <TableData>{question.category.name}</TableData>
               </TableRow>
                 <Answers />
             </tbody>
           </Table>
-        )}
-      </FlexContainer>
+        }
+      </OverflowFlexContainer>
       <ValidateButton />
       <DeleteButton />
-    </ContentContainer>
+    </ThinnerContentContainer>
   );
 }
