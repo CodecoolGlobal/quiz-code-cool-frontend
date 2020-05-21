@@ -9,12 +9,11 @@ import { ProgressContext } from "context/ProgressContext";
 import { AnswerCorrectnessContext } from "context/AnswerCorrectnessContext";
 
 import {
-  QuestionCardContainer,
-  QuestionContainer,
   H3,
-  CategoryTitle,
   Button
 } from "../../../style/js/MyStyle";
+
+import { QuestionCardContainer, QuestionContainer, CategoryTitle,} from "component/quizzes/questioncard/styles";
 
 export default function QuestionCard(props) {
   const questionColors = {
