@@ -1,12 +1,11 @@
 import React, { useState, createContext, useContext } from "react";
-import axios from "axios";
 import { ProgressContext } from "context/ProgressContext";
 import { RestoreFiltersContext } from "context/RestoreFiltersContext";
+import { api_postNewQuiz } from "api/apiConnection";
 
 export const NewQuizContext = createContext();
 
 export const NewQuizProvider = (props) => {
-  const CUSTOM_QUIZ_BASE_URL = process.env.REACT_APP_CUSTOM_QUIZ_BASE_URL;
   const setIsReadyToProceed = useContext(ProgressContext)[1];
   const { clearFilters } = useContext(RestoreFiltersContext);
 
@@ -35,30 +34,23 @@ export const NewQuizProvider = (props) => {
     console.log(selectedQuestionIds);
   };
 
-  const submit = (props) => {
-    const newQuiz = { name: quizNameInput, questionIds: selectedQuestionIds };
+  const clearStates = () => {
+    alert("Quiz saved successfully.");
+    setQuizNameInput("");
+    setSelectedQuestionIds([]);
+    clearFilters();
+    setIsReadyToProceed(false);
+  }
 
-    const questionUrl = CUSTOM_QUIZ_BASE_URL;
-    axios({
-      method: "post",
-      url: questionUrl,
-      data: newQuiz,
-      withCredentials: true,
-    }).then(
-      (response) => {
-        if (response.status === 200) {
-          alert("Quiz saved successfully! :)");
-          setQuizNameInput("");
-          setSelectedQuestionIds([]);
-          clearFilters();
-          setIsReadyToProceed(false);
-          props.history.push("/custom-quiz/start");
-        }
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  const submit = async (props) => {
+    const newQuiz = { name: quizNameInput, questionIds: selectedQuestionIds };
+    try {
+      await api_postNewQuiz(newQuiz);
+      clearStates();
+      props.history.push("/custom-quiz/start");
+    } catch(error) {
+      alert(`Failed to post new quiz.\n${error}`)
+    }
   };
 
   return (
