@@ -8,7 +8,6 @@ export default function NewQuizNameInput() {
 
   const handleChange = event => {
     setQuizNameInput(event.target.value)
-    recalculateIsReadyToProceed();
   };
 
   useEffect(() => {

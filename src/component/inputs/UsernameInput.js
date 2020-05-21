@@ -18,7 +18,6 @@ export default function UsernameInput() {
 
   const handleChange = event => {
     setUsernameInput(event.target.value);
-    recalculateIsReadyToProceed(history.location.pathname);
   };
 
   useEffect(() => {

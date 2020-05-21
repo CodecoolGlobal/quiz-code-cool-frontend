@@ -31,10 +31,10 @@ export const AuthProvider = (props) => {
         (path === "/sign-in" && emailInput === "")
       ) {
         setIsReadyToProceed(true);
+        return;
       }
-    } else {
-      setIsReadyToProceed(false);
-    }
+    } 
+    setIsReadyToProceed(false);
   };
 
   const isEmailValid = (mail) => {

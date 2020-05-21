@@ -10,7 +10,6 @@ export default function EmailInput() {
 
   const handleChange = event => {
     setEmailInput(event.target.value)
-    recalculateIsReadyToProceed(history.location.pathname);
   };
 
   useEffect(() => {

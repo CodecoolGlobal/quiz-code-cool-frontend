@@ -16,13 +16,14 @@ export default function PasswordInput() {
   );
   const [passwordInput, setPasswordInput] = passwordInputState;
 
+  const handleChange = event => {
+    setPasswordInput(event.target.value);
+  };
+
   useEffect(() => {
     recalculateIsReadyToProceed(history.location.pathname);
   }, [passwordInput]);
 
-  const handleChange = event => {
-    setPasswordInput(event.target.value);
-  };
 
   const getHelperContainer = () => {
     switch (history.location.pathname) {
