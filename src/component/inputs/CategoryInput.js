@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { CategoryContext } from "context/CategoryContext";
-import { api_getCategories } from "api/apiConnection";
 import { Select, InputItem, InputLabel } from "style/MyStyle";
+import { api_getCategories } from "api/categoryConnection";
 
 export default function CategoryInput(props) {
 

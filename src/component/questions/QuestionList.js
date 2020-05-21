@@ -6,8 +6,6 @@ import { TypeContext } from 'context/TypeContext';
 import { StatusContext } from 'context/StatusContext';
 import { NewQuizContext } from 'context/NewQuizContext';
 import { UserContext } from "context/UserContext";
-import { api_deleteQuestion } from "api/apiConnection";
-
 import {
   Help,
   QuestionTable,
@@ -17,6 +15,7 @@ import {
   QuestionsTr,
   QuestionListTdNavLink,
 } from 'style/MyStyle';
+import { api_deleteQuestion } from 'api/questionConnection';
 
 export default function QuestionList() {
 

@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext } from "react";
 import { ProgressContext } from "context/ProgressContext";
 import { UserContext } from "context/UserContext";
-import { api_signUp, api_signOut, api_signIn } from "api/apiConnection";
+import { api_signUp, api_signOut, api_signIn } from "api/authConnection";
 
 export const AuthContext = createContext();
 

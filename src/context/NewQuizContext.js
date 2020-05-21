@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext } from "react";
 import { ProgressContext } from "context/ProgressContext";
 import { RestoreFiltersContext } from "context/RestoreFiltersContext";
-import { api_postNewQuiz } from "api/apiConnection";
+import { api_postNewQuiz } from "api/customQuizConnection";
 
 export const NewQuizContext = createContext();
 

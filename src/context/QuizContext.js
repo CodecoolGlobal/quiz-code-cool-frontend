@@ -9,7 +9,8 @@ import { UserContext } from 'context/UserContext'
 import Player from "context/Player";
 
 import { shuffle } from "Util";
-import { api_getQuestions, api_getCustomQuizQuestions } from "api/apiConnection";
+import { api_getQuestions } from "api/questionConnection";
+import { api_getCustomQuizQuestions } from "api/customQuizConnection";
 
 export const QuizContext = createContext();
 

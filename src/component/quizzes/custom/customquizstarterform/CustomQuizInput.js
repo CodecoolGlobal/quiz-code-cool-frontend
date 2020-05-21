@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CustomQuizContext } from "context/CustomQuizContext";
 import { ProgressContext } from "context/ProgressContext";
-import { api_getCustomQuizzes } from "api/apiConnection";
 
 import { Select, InputItem, InputLabel } from "style/MyStyle";
+import { api_getCustomQuizzes } from "api/customQuizConnection";
 
 export default function CustomQuizInput() {
   const [customQuizzes, setCustomQuizzes] = useState([]);

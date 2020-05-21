@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 import { UserContext } from "context/UserContext";
-import { api_deleteQuestion } from "api/apiConnection";
 import { Button } from "style/MyStyle";
+import { api_deleteQuestion } from "api/questionConnection";
 
 export default function DeleteButton() {
   const history = useHistory();

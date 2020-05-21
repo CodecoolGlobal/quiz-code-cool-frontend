@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 import { UserContext } from "context/UserContext";
 import { Button } from "style/MyStyle";
-import { api_validateQuestion } from "api/apiConnection";
+import { api_validateQuestion } from "api/questionConnection";
 
 export default function ValidateButton() {
   const history = useHistory();

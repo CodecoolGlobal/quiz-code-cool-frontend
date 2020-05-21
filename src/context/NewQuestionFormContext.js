@@ -5,7 +5,7 @@ import { TypeContext } from "context/TypeContext";
 import { RestoreFiltersContext } from "context/RestoreFiltersContext";
 
 import Question from "context/Question";
-import { api_postNewQuestion } from "api/apiConnection";
+import { api_postNewQuestion } from "api/questionConnection";
 
 export const NewQuestionFormContext = createContext();
 

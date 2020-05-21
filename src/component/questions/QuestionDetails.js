@@ -1,12 +1,9 @@
 import React, { useEffect, useContext } from 'react';
-
 import { QuestionDetailsContext } from 'context/QuestionDetailsContext';
 import Question from 'context/Question';
-
 import Answers from 'component/questions/Answers';
 import ValidateButton from 'component/questions/ValidateButton';
 import DeleteButton from './DeleteButton';
-
 import {
 	H3,
 	Table,
@@ -16,7 +13,7 @@ import {
 	ContentContainer,
 	FlexContainer,
 } from '../../style/MyStyle';
-import { api_getQuestion } from 'api/apiConnection';
+import { api_getQuestion } from 'api/questionConnection';
 
 export default function QuestionDetails(props) {
 	const { selectedQuestionState } = useContext(

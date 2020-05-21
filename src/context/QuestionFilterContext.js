@@ -3,7 +3,7 @@ import {CategoryContext} from "context/CategoryContext"
 import {TypeContext} from "context/TypeContext"
 import { StatusContext } from "context/StatusContext";
 
-import { api_getQuestions } from "api/apiConnection";
+import { api_getQuestions } from "api/questionConnection";
 
 
 export const QuestionFilterContext = createContext();
