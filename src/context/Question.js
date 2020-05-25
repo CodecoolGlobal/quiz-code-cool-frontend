@@ -9,6 +9,7 @@ export default class Question {
     creationDate,
     validationDate,
     validated,
+    appUser
   }) {
     this.id = id;
     this.category = category;
@@ -19,5 +20,6 @@ export default class Question {
     this.creationDate = creationDate;
     this.validationDate = validationDate;
     this.validated = validated;
+    this.appUser = appUser
   }
 }
