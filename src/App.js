@@ -70,7 +70,7 @@ function App() {
                                     />
                                     <PrivateRoute
                                       exact
-                                      path='/user'
+                                      path='/users/:id'
                                       component={UserDetails}
                                     />
                                     <PrivateRoute
