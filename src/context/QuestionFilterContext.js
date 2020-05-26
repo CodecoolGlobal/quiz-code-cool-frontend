@@ -33,8 +33,6 @@ export const QuestionFilterProvider = props => {
   }
 
     const getQueryString = (pathname) => {
-      console.log(selectedUserId)
-      console.log(DEFAULT_USER.id)
         let userIdPart = selectedUserId === DEFAULT_USER.id ? "" : `&user=${selectedUserId}` 
         let categoryUrlPart = selectedCategoryId === DEFAULT_CATEGORY.id ? "" : `&category=${selectedCategoryId}`;
         let typeUrlPart = selectedType === ANY_TYPE ? "" : `&type=${selectedType}`;

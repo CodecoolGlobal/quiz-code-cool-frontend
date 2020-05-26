@@ -21,8 +21,13 @@ export const UsersProvider = props => {
         }
     }
 
+    const clearSelectedUser = () => {
+        setSelectedUserId(DEFAULT_USER.id);
+      };
+
     return (
       <UsersContext.Provider value={{
+          clearSelectedUser,
           DEFAULT_USER,
           getUsers,
           usersState: [users, setUsers],

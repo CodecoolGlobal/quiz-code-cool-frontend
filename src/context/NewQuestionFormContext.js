@@ -2,7 +2,7 @@ import React, { useState, createContext, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
-import { RestoreFiltersContext } from "context/RestoreFiltersContext";
+import { RestoreInputsContext } from "context/RestoreFiltersContext";
 
 import Question from "context/Question";
 import { api_postNewQuestion } from "api/questionConnection";
@@ -21,7 +21,7 @@ export const NewQuestionFormProvider = props => {
   const { selectedTypeInput } = useContext(TypeContext);
   const selectedType = selectedTypeInput[0];
 
-  const { clearFilters } = useContext(RestoreFiltersContext);
+  const { clearTypeCategoryInputs } = useContext(RestoreInputsContext);
 
   const [question, setQuestion] = useState("");
   const [possibleAnswers, setPossibleAnswers] = useState(["True", "False"]);
@@ -29,7 +29,7 @@ export const NewQuestionFormProvider = props => {
   const [incorrectAnswers, setIncorrectAnswers] = useState([]);
 
   const clearAddNewQuestionContext = () => {
-    clearFilters();
+    clearTypeCategoryInputs();
     setQuestion("");
     setCorrectAnswer("");
     setIncorrectAnswers([]);

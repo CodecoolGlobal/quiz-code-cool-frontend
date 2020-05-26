@@ -1,21 +1,29 @@
 import React, { useContext, createContext, useCallback } from "react";
 import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
+import { UsersContext } from "./UsersContext";
 
-export const RestoreFiltersContext = createContext();
+export const RestoreInputsContext = createContext();
 
-export const RestoreFiltersProvider = props => {
+export const RestoreInputsProvider = props => {
   const { clearSelectedCategory } = useContext(CategoryContext);
   const { clearSelectedType } = useContext(TypeContext);
+  const { clearSelectedUser } = useContext(UsersContext);
 
-  const clearFilters = useCallback(() => {
+  const clearTypeCategoryInputs = useCallback(() => {
     clearSelectedCategory();
     clearSelectedType();
-  }, [clearSelectedCategory, clearSelectedType]);
+  }, []);
+
+  const clearQuestionsFilterInputs = useCallback(() => {
+    clearSelectedCategory();
+    clearSelectedType();
+    clearSelectedUser();
+  }, [])
 
   return (
-    <RestoreFiltersContext.Provider value={{ clearFilters }}>
+    <RestoreInputsContext.Provider value={{ clearTypeCategoryInputs, clearQuestionsFilterInputs }}>
       {props.children}
-    </RestoreFiltersContext.Provider>
+    </RestoreInputsContext.Provider>
   );
 };

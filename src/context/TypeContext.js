@@ -5,7 +5,7 @@ export const TypeContext = createContext();
 export const TypeProvider = props => {
   const ANY_TYPE = "";
   const ALL_TYPES = ["MULTIPLE", "BOOLEAN"];
-  const [selectedType, setSelectedType] = useState("");
+  const [selectedType, setSelectedType] = useState(ANY_TYPE);
 
   const typesMap = {
     "": "Any Type",
@@ -14,7 +14,7 @@ export const TypeProvider = props => {
   };
 
   const clearSelectedType = () => {
-    setSelectedType("");
+    setSelectedType(ANY_TYPE);
   };
 
   return (

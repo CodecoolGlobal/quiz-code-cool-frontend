@@ -31,7 +31,7 @@ import { NewQuestionFormProvider } from "context/NewQuestionFormContext";
 import { CategoryProvider } from "context/CategoryContext";
 import { TypeProvider } from "context/TypeContext";
 import { StatusProvider } from "context/StatusContext";
-import { RestoreFiltersProvider } from "context/RestoreFiltersContext";
+import { RestoreInputsProvider } from "context/RestoreFiltersContext";
 import { MenuProvider } from "context/MenuContext";
 import { QuestionFilterProvider } from "context/QuestionFilterContext";
 import { NewQuizProvider } from "context/NewQuizContext";
@@ -48,7 +48,7 @@ function App() {
             <StatusProvider>
               <TypeProvider>
                 <UsersProvider>
-                  <RestoreFiltersProvider>
+                  <RestoreInputsProvider>
                     <QuestionFilterProvider>
                       <CustomQuizProvider>
                         <RandomQuizProvider>
@@ -144,7 +144,7 @@ function App() {
                         </RandomQuizProvider>
                       </CustomQuizProvider>
                     </QuestionFilterProvider>
-                  </RestoreFiltersProvider>
+                  </RestoreInputsProvider>
                 </UsersProvider>
               </TypeProvider>
             </StatusProvider>

@@ -7,18 +7,18 @@ import QuestionNumberInput from "component/quizzes/random/randomquizstarterform/
 import StepSlider from "component/quizzes/random/randomquizstarterform/StepSlider";
 
 import { QuizContext } from "context/QuizContext";
-import { RestoreFiltersContext } from "context/RestoreFiltersContext";
+import { RestoreInputsContext } from "context/RestoreFiltersContext";
 
 import { ThinnerContentContainer, H3, Button } from "style/js/CommonStyles";
 
 export default function QuizStarterForm() {
   const {submitStarterForm, initBeforeSubmit} = useContext(QuizContext);
-  const { clearFilters } = useContext(RestoreFiltersContext);
+  const { clearTypeCategoryInputs } = useContext(RestoreInputsContext);
   const history = useHistory();
 
   useEffect(() => {
     initBeforeSubmit();
-    clearFilters();
+    clearTypeCategoryInputs();
   }, []);
 
   const submit = () => {

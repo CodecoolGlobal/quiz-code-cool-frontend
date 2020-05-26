@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from "react";
 import { ProgressContext } from "context/ProgressContext";
-import { RestoreFiltersContext } from "context/RestoreFiltersContext";
+import { RestoreInputsContext } from "context/RestoreFiltersContext";
 import { api_postNewQuiz } from "api/customQuizConnection";
 import { handleError } from "util/errorUtil";
 
@@ -8,7 +8,7 @@ export const NewQuizContext = createContext();
 
 export const NewQuizProvider = (props) => {
   const setIsReadyToProceed = useContext(ProgressContext)[1];
-  const { clearFilters } = useContext(RestoreFiltersContext);
+  const { clearTypeCategoryInputs } = useContext(RestoreInputsContext);
 
   const [quizNameInput, setQuizNameInput] = useState("");
   const [selectedQuestionIds, setSelectedQuestionIds] = useState([]);
@@ -38,7 +38,7 @@ export const NewQuizProvider = (props) => {
     alert("Quiz saved successfully.");
     setQuizNameInput("");
     setSelectedQuestionIds([]);
-    clearFilters();
+    clearTypeCategoryInputs();
     setIsReadyToProceed(false);
   }
 

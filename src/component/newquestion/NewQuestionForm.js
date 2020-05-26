@@ -6,16 +6,16 @@ import QuestionInput from "component/newquestion/QuestionInput";
 import NewAnswerForm from "component/newquestion/NewAnswerForm";
 
 import { NewQuestionFormContext } from "context/NewQuestionFormContext";
-import { RestoreFiltersContext } from "context/RestoreFiltersContext";
+import { RestoreInputsContext } from "context/RestoreFiltersContext";
 
 import { ThinnerContentContainer, H3, Button } from "style/js/CommonStyles";
 
 export default function NewQuestionForm() {
   const { submitForm } = useContext(NewQuestionFormContext);
-  const { clearFilters } = useContext(RestoreFiltersContext);
+  const { clearTypeCategoryInputs } = useContext(RestoreInputsContext);
 
   useEffect(() => {
-    clearFilters();
+    clearTypeCategoryInputs();
   }, []);
 
   const submit = () => {
