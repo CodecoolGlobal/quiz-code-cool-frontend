@@ -19,6 +19,7 @@ import {
 } from 'component/questions/style'
 import { api_deleteQuestion } from 'api/questionConnection';
 import { handleError } from 'util/errorUtil';
+import { UsersContext } from 'context/UsersContext';
 
 export default function QuestionList() {
 
@@ -28,6 +29,7 @@ export default function QuestionList() {
   const {toggleQuestionId} = useContext(NewQuizContext);
   const selectedCategoryId = useContext(CategoryContext).categoryInput[0];
   const selectedStatus = useContext(StatusContext)[0];
+  const selectedUserId = useContext(UsersContext).selectedUserIdState[0];
 
   const { typesMap, selectedTypeInput } = useContext(TypeContext);
   const selectedType = selectedTypeInput[0];
@@ -54,7 +56,7 @@ export default function QuestionList() {
 
   useEffect(() => {
     getFilteredQuestions(history.location.pathname);
-  }, [selectedCategoryId, selectedType, selectedStatus]);
+  }, [selectedCategoryId, selectedType, selectedStatus, selectedUserId]);
 
   const deleteQuestion = async (id) => {
     try {

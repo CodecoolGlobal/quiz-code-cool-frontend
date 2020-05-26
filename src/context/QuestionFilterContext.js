@@ -5,6 +5,7 @@ import { StatusContext } from "context/StatusContext";
 
 import { api_getQuestions } from "api/questionConnection";
 import { handleError } from "util/errorUtil";
+import { UsersContext } from "./UsersContext";
 
 
 export const QuestionFilterContext = createContext();
@@ -14,13 +15,16 @@ export const QuestionFilterProvider = props => {
 
   const [questions, setQuestions] = useState([]);
 
-  const {categoryInput} = useContext(CategoryContext);
+  const {categoryInput, DEFAULT_CATEGORY} = useContext(CategoryContext);
   const selectedCategoryId = categoryInput[0];
 
-  const {selectedTypeInput} = useContext(TypeContext);
+  const {selectedTypeInput, ANY_TYPE} = useContext(TypeContext);
   const selectedType = selectedTypeInput[0];
 
   const selectedStatus = useContext(StatusContext)[0];
+
+  const {selectedUserIdState, DEFAULT_USER} = useContext(UsersContext);
+  const selectedUserId = selectedUserIdState[0];
 
   const getValidatedPart = (pathname) => {
     if (pathname === NEW_CUSTOM_QUIZ_PATH)
@@ -29,15 +33,19 @@ export const QuestionFilterProvider = props => {
   }
 
     const getQueryString = (pathname) => {
-          let categoryUrlPart = selectedCategoryId === "0" ? "" : `&category=${selectedCategoryId}`;
-          let typeUrlPart = selectedType === "" ? "" : `&type=${selectedType}`;
-          let validatedPart = getValidatedPart(pathname);
-          let queryString =
-            "?" +
-            categoryUrlPart +
-            typeUrlPart +
-            validatedPart;
-          return queryString;
+      console.log(selectedUserId)
+      console.log(DEFAULT_USER.id)
+        let userIdPart = selectedUserId === DEFAULT_USER.id ? "" : `&user=${selectedUserId}` 
+        let categoryUrlPart = selectedCategoryId === DEFAULT_CATEGORY.id ? "" : `&category=${selectedCategoryId}`;
+        let typeUrlPart = selectedType === ANY_TYPE ? "" : `&type=${selectedType}`;
+        let validatedPart = getValidatedPart(pathname);
+        let queryString =
+          "?" +
+          userIdPart +
+          categoryUrlPart +
+          typeUrlPart +
+          validatedPart;
+        return queryString;
     }
 
   const getFilteredQuestions = async (pathname) => {

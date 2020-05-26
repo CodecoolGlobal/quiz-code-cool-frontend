@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import CategoryInput from "component/inputs/CategoryInput";
 import StatusInput from "component/inputs/StatusInput";
 import TypeInput from "component/inputs/TypeInput";
+import UserInput from "component/inputs/UserInput";
 
 import { OverflowFlexContainer } from "style/js/CommonStyles";
 
@@ -14,7 +15,8 @@ export default function QuestionFilter() {
     <OverflowFlexContainer>
       <CategoryInput />
       <TypeInput />
-      {history.location.pathname === '/questions' ? <StatusInput /> : <div></div>}
+      {history.location.pathname === '/questions' && <StatusInput />}
+      <UserInput/>
     </OverflowFlexContainer>
   );
 }

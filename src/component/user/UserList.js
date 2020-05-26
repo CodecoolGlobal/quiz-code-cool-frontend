@@ -20,7 +20,6 @@ export default function UserList() {
       }
     };
 
-
     return (
         <ThinnerContentContainer>
       <H3>User list</H3>

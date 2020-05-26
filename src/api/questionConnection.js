@@ -4,6 +4,7 @@ import Question from "context/Question";
 const QUESTIONS_URL = process.env.REACT_APP_QUESTIONS_URL;
 
 export const api_getQuestions = async (queryString) => {
+    console.log(queryString);
     let response = await axios.get(QUESTIONS_URL + queryString, {
       withCredentials: true,
     });

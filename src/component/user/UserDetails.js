@@ -11,6 +11,7 @@ import {
 } from "style/js/CommonStyles";
 import { api_getUser } from "api/UserConnection";
 import { handleError } from "util/errorUtil";
+import { FormattedNavLink } from "./styles";
 
 export default function UserDetails(props) {
   const { id } = props.match.params;
@@ -48,7 +49,7 @@ export default function UserDetails(props) {
             </TableRow>
             {user.questions != null &&
             <TableRow>
-              <TableHead>Posted Questions</TableHead>
+              <TableHead><FormattedNavLink to={`/users/${user.id}/questions`}>Posted Questions</FormattedNavLink></TableHead>
               <TableData>{user.questions.length}</TableData>
             </TableRow>
             }
