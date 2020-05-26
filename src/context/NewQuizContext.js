@@ -32,7 +32,6 @@ export const NewQuizProvider = (props) => {
     } else {
       setIsReadyToProceed(false);
     }
-    console.log(selectedQuestionIds);
   };
 
   const clearStates = () => {

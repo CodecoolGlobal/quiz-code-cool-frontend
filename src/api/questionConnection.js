@@ -8,7 +8,6 @@ export const api_getQuestions = async (queryString) => {
       withCredentials: true,
     });
     if (response.data !== "") {
-      console.log(response.data)
       return response.data.map((q) => new Question(q));
     }
     return [];
@@ -18,7 +17,6 @@ export const api_getQuestions = async (queryString) => {
     const response = await axios.get(`${QUESTIONS_URL}/${id}`, {
       withCredentials: true,
     });
-    console.log(response.data)
     return response.data;
   };
   

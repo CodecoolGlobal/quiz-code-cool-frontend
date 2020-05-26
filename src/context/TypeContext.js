@@ -17,8 +17,6 @@ export const TypeProvider = props => {
     setSelectedType("");
   };
 
-  console.log("TypeProvider INITIALIZED");
-
   return (
     <TypeContext.Provider
       value={{
