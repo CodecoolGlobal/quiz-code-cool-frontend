@@ -56,7 +56,7 @@ export default function QuestionDetails(props) {
                 <TableHead>Created By</TableHead>
                 <TableData>
                   {question.appUser
-                    ? question.appUser.username
+                    ? question.appUser.name
                     : "No author found"}
                 </TableData>
               </TableRow>
