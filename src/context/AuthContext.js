@@ -13,9 +13,10 @@ export const AuthProvider = (props) => {
 
   const setIsReadyToProceed = useContext(ProgressContext)[1];
 
-  const { usernameState, rolesState } = useContext(UserContext);
+  const { usernameState, rolesState, userIdState } = useContext(UserContext);
   const setUsername = usernameState[1];
   const setRoles = rolesState[1];
+  const setUserId = userIdState[1];
 
   const recalculateIsReadyToProceed = (path) => {
     if (
@@ -57,6 +58,7 @@ export const AuthProvider = (props) => {
     localStorage.setItem("userId", responseData.userId)
     setUsername( responseData.username);
     setRoles(responseData.roles);
+    setUserId(responseData.userId)
   };
 
   const signUp = async () => {
@@ -101,6 +103,7 @@ export const AuthProvider = (props) => {
       await api_signOut();
       setUsername(null);
       setRoles(null);
+      setUserId(null)
     } catch (error) {
       handleError(error, "Failed to log out.");
     }
