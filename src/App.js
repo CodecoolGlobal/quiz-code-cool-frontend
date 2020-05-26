@@ -36,6 +36,7 @@ import { MenuProvider } from "context/MenuContext";
 import { QuestionFilterProvider } from "context/QuestionFilterContext";
 import { NewQuizProvider } from "context/NewQuizContext";
 import { QuestionDetailsProvider } from "context/QuestionDetailsContext";
+import UserList from "component/user/UserList";
 
 function App() {
   return (
@@ -126,6 +127,11 @@ function App() {
                                       exact
                                       path='/questions/:id'
                                       component={QuestionDetails}
+                                    />
+                                    <PrivateRoute
+                                      exact
+                                      path='/users'
+                                      component={UserList}
                                     />
                                   </QuestionDetailsProvider>
                                 </AuthProvider>

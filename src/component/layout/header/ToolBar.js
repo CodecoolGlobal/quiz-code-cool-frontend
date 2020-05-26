@@ -37,6 +37,9 @@ export default function ToolBar() {
             <li>
               <FormattedNavLink to='/questions'>All questions</FormattedNavLink>
             </li>
+            <li>
+              <FormattedNavLink to='/users'>Users</FormattedNavLink>
+            </li>
           </ToolbarNavigationUl>
         </ToolbarNavigationItems>
         <Spacer />
