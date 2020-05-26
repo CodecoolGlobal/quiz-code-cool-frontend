@@ -34,7 +34,7 @@ export default function UserList() {
           </thead>
           <tbody>{
             users.map(user => (
-            <TableRow>
+            <TableRow key={user.id}>
               <TableData><FormattedNavLink to={`/users/${user.id}`}>{user.username}</FormattedNavLink></TableData>
             </TableRow>
             ))}
