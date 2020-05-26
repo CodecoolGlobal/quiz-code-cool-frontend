@@ -43,7 +43,7 @@ export default function UserDetails(props) {
           </thead>
           <tbody>
             <TableRow>
-              <TableHead>Registration Date</TableHead>
+              <TableHead>Id</TableHead>
               <TableData>{user.id}</TableData>
             </TableRow>
             <TableRow>
