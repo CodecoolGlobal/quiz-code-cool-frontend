@@ -50,11 +50,13 @@ export const AuthProvider = (props) => {
     setUsernameInput("");
   };
 
-  const setUpUserData = (username, roles) => {
-    localStorage.setItem("username", username);
-    localStorage.setItem("roles", roles);
-    setUsername(username);
-    setRoles(roles);
+  const setUpUserData = (responseData) => {
+    localStorage.setItem("username", responseData.username);
+    localStorage.setItem("roles", responseData.roles);
+    localStorage.setItem("exp", responseData.exp)
+    localStorage.setItem("userId", responseData.userId)
+    setUsername( responseData.username);
+    setRoles(responseData.roles);
   };
 
   const signUp = async () => {
@@ -82,7 +84,7 @@ export const AuthProvider = (props) => {
         username: usernameInput,
         password: passwordInput,
       });
-      setUpUserData(responseData.username, responseData.roles);
+      setUpUserData(responseData);
       history.push("/");
     } catch (error) {
       if (error.response && error.response.status === 403) {
