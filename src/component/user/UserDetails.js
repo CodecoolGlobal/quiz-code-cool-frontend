@@ -18,7 +18,7 @@ export default function UserDetails(props) {
 
   useEffect(() => {
     getUserDetails();
-  }, []);
+  }, [id]);
 
   const getUserDetails = async () => {
     try {

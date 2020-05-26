@@ -9,8 +9,10 @@ import {
   } from "component/layout/header/styles";
 
 export default function UserInfo() {
-    const { usernameState } = useContext(UserContext);
+    const { usernameState, userIdState } = useContext(UserContext);
     const username = usernameState[0];
+    const userId = userIdState[0]
+
 
     return (
         username ? (
@@ -18,7 +20,7 @@ export default function UserInfo() {
               <ToolbarNavigationUl>
                 <li>
                   <UserImage src={user}></UserImage>
-                  <FormattedNavLink to='/user'>{username}</FormattedNavLink>
+                  <FormattedNavLink to={`/users/${userId}`}>{username}</FormattedNavLink>
                 </li>
               </ToolbarNavigationUl>
             </div>
