@@ -40,7 +40,7 @@ export default function CustomQuizInput() {
           </option>
           {customQuizzes.map(quiz => (
             <option value={quiz.id} key={quiz.id}>
-              {quiz.name}
+              {quiz.name} - {quiz.appUser.name}
             </option>
           ))}
         </Select>
