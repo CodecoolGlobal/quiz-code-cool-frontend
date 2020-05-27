@@ -15,8 +15,10 @@ import {
   QuestionsTh,
   QuestionsTd,
   QuestionsTr,
-  QuestionListTdNavLink
+  QuestionListTdNavLink,
+  TrashImage
 } from 'component/questions/style'
+import deleteIcon from "style/img/delete-icon.png";
 import { api_deleteQuestion } from 'api/questionConnection';
 import { handleError } from 'util/errorUtil';
 import { UsersContext } from 'context/UsersContext';
@@ -103,7 +105,7 @@ export default function QuestionList() {
               </QuestionsTd>
               {roles.includes("ROLE_ADMIN") && (
                 <QuestionsTd onClick={() => deleteQuestion(question.id)}>
-                X  
+                <TrashImage title="Delete question" src={deleteIcon} alt='delete icon'></TrashImage> 
               </QuestionsTd>
               )}
             </QuestionsTr>

@@ -42,3 +42,7 @@ color: ${applicationTheme.color1};
 export const QuestionsTd = styled.td`
 padding: 8px 10px;
 `;
+
+export const TrashImage = styled.img`
+  height: 15px;
+`;
