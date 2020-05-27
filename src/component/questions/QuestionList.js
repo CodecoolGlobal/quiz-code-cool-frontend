@@ -10,6 +10,9 @@ import {
   Help,
   Table,
   OverflowFlexContainer,
+  Thead,
+  TableRow,
+  TBody,
 } from 'style/js/CommonStyles';
 import {  
   QuestionsTh,
@@ -73,8 +76,8 @@ export default function QuestionList() {
   ) : (
     <OverflowFlexContainer>
       <Table>
-        <thead>
-          <tr>
+        <Thead>
+          <TableRow>
             <QuestionsTh>Id</QuestionsTh>
             <QuestionsTh>Question</QuestionsTh>
             <QuestionsTh>Category</QuestionsTh>
@@ -83,18 +86,20 @@ export default function QuestionList() {
             {roles.includes("ROLE_ADMIN") && history.location.pathname ==="/questions" && (
                 <QuestionsTh></QuestionsTh>
               )}
-          </tr>
-        </thead>
-        <tbody>
+          </TableRow>
+        </Thead>
+        <TBody>
           {questions.map(question => (
             <QuestionsTr key={question.id} onClick={() => handleClick(question.id)} className={selectedQuestionIds.includes(question.id) ? "selected" : ""}>
               <QuestionsTd>{question.id}</QuestionsTd>
               {history.location.pathname === '/questions' ? (
+                <QuestionListTdNavLink to={`/questions/${question.id}`}>
+                  <div>
                   <QuestionsTd>
-                    <QuestionListTdNavLink to={`/questions/${question.id}`}>
                       {question.question}
-                    </QuestionListTdNavLink>
                   </QuestionsTd>
+                  </div>
+                </QuestionListTdNavLink>
               ) : (
                 <QuestionsTd>{question.question}</QuestionsTd>
               )}
@@ -110,7 +115,7 @@ export default function QuestionList() {
               )}
             </QuestionsTr>
           ))}
-        </tbody>
+        </TBody>
       </Table>
     </OverflowFlexContainer>
   );

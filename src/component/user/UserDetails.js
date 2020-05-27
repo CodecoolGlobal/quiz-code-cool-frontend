@@ -4,10 +4,12 @@ import {
   Table,
   TableData,
   TableRow,
-  TableHead,
+  Th,
   ThinnerContentContainer,
   OverflowFlexContainer,
   Help,
+  Thead,
+  TBody,
 } from "style/js/CommonStyles";
 import { api_getUser } from "api/UserConnection";
 import { handleError } from "util/errorUtil";
@@ -36,30 +38,30 @@ export default function UserDetails(props) {
       <OverflowFlexContainer>
         {user != null ? (
         <Table>
-          <thead>
+          <Thead>
             <TableRow>
-              <TableHead>Username</TableHead>
-              <TableHead>{user.username}</TableHead>
+              <Th>Username</Th>
+              <Th>{user.username}</Th>
             </TableRow>
-          </thead>
-          <tbody>
+          </Thead>
+          <TBody>
             <TableRow>
-              <TableHead>Registration Date</TableHead>
+              <Th>Registration Date</Th>
               <TableData>{user.registrationDate}</TableData>
             </TableRow>
             {user.questions != null &&
             <TableRow>
-              <TableHead><FormattedNavLink to={`/users/${user.id}/questions`}>Posted Questions</FormattedNavLink></TableHead>
+              <Th><FormattedNavLink to={`/users/${user.id}/questions`}>Posted Questions</FormattedNavLink></Th>
               <TableData>{user.questions.length}</TableData>
             </TableRow>
             }
             {user.customQuizzes != null &&
             <TableRow>
-              <TableHead>Created custom quizzes</TableHead>
+              <Th>Created custom quizzes</Th>
               <TableData>{user.customQuizzes.length}</TableData>
             </TableRow>
             }
-          </tbody>
+          </TBody>
         </Table>) : <Help>No user to display.</Help>}
       </OverflowFlexContainer>
     </ThinnerContentContainer>

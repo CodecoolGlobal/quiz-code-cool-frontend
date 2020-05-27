@@ -9,9 +9,11 @@ import {
   Table,
   TableData,
   TableRow,
-  TableHead,
+  Th,
   ThinnerContentContainer,
   OverflowFlexContainer,
+  Thead,
+  TBody,
 } from "../../style/js/CommonStyles";
 import { api_getQuestion } from "api/questionConnection";
 import { handleError } from "util/errorUtil";
@@ -41,19 +43,19 @@ export default function QuestionDetails(props) {
       <OverflowFlexContainer>
         {question != null && (
           <Table>
-            <thead>
+            <Thead>
               <TableRow>
-                <TableHead>Question</TableHead>
-                <TableHead>{question.question}</TableHead>
+                <Th>Question</Th>
+                <Th>{question.question}</Th>
               </TableRow>
-            </thead>
-            <tbody>
+            </Thead>
+            <TBody>
               <TableRow>
-                <TableHead>Id</TableHead>
+                <Th>Id</Th>
                 <TableData>{question.id}</TableData>
               </TableRow>
               <TableRow>
-                <TableHead>Created By</TableHead>
+                <Th>Created By</Th>
                 <TableData>
                   {question.appUser
                     ? question.appUser.name
@@ -61,11 +63,11 @@ export default function QuestionDetails(props) {
                 </TableData>
               </TableRow>
               <TableRow>
-                <TableHead>Creation date</TableHead>
+                <Th>Creation date</Th>
                 <TableData>{question.creationDate}</TableData>
               </TableRow>
               <TableRow>
-                <TableHead>Validation date</TableHead>
+                <Th>Validation date</Th>
                 <TableData>
                   {question.validationDate === null
                     ? "Not validated yet"
@@ -73,11 +75,11 @@ export default function QuestionDetails(props) {
                 </TableData>
               </TableRow>
               <TableRow>
-                <TableHead>Category</TableHead>
+                <Th>Category</Th>
                 <TableData>{question.category.name}</TableData>
               </TableRow>
               <Answers />
-            </tbody>
+            </TBody>
           </Table>
         )}
       </OverflowFlexContainer>

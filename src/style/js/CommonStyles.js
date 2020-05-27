@@ -177,10 +177,11 @@ export const RadioButton = styled.input`
   }
 `;
 
-export const Table = styled.table`
+export const Table = styled.div`
+  width: 100%;
+  display: table;
   box-shadow: ${applicationTheme.shadow2};
   margin: 10px;
-  border-collapse: collapse;
 `;
 
 export const OverflowFlexContainer = styled.div`
@@ -189,13 +190,25 @@ export const OverflowFlexContainer = styled.div`
   overflow-x: auto;
 `;
 
-export const TableHead = styled.th`
+export const Thead = styled.div`
+  display: table-header-group;
+`
+
+
+export const TBody = styled.div`
+  display: table-row-group;
+`
+
+export const Th = styled.div`
+  font-weight: 600;
+  display: table-cell;
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
   margin-bottom: 5px;
 `;
 
-export const TableRow = styled.tr`
+export const TableRow = styled.div`
+  display: table-row;
   background: ${(props) =>
     props.playerTheme
       ? props.playerTheme.backgroundColor
@@ -203,7 +216,8 @@ export const TableRow = styled.tr`
   color: ${ applicationTheme.color1};
 `;
 
-export const TableData = styled.td`
+export const TableData = styled.div`
+  display: table-cell;
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
 `;

@@ -11,7 +11,9 @@ import {
   OverflowFlexContainer,
   TableRow,
   TableData,
-  TableHead
+  Th,
+  Thead,
+  TBody
 } from "style/js/CommonStyles";
 import ColorsForPlayers from "style/js/PlayerColors";
 
@@ -30,20 +32,20 @@ export default function Result(props) {
       <H2>Results</H2>
       <OverflowFlexContainer>
         <Table>
-          <thead>
+          <Thead>
             <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Score</TableHead>
+              <Th>Name</Th>
+              <Th>Score</Th>
             </TableRow>
-          </thead>
-          <tbody>
+          </Thead>
+          <TBody>
             {players.map((player, index) => (
               <TableRow playerTheme={ColorsForPlayers[index]} key={index}>
                 <TableData>{player.name}</TableData>
                 <TableData>{player.score}</TableData>
               </TableRow>
             ))}
-          </tbody>
+          </TBody>
         </Table>
       </OverflowFlexContainer>
       <Button type='button' id='restart' onClick={handleRestart}>
