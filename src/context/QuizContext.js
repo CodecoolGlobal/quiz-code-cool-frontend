@@ -36,7 +36,7 @@ export const QuizProvider = (props) => {
   const { selectedCustomQuiz } = useContext(CustomQuizContext);
   const selectedCustomQuizId = selectedCustomQuiz[0];
 
-  const {usernameState} = useContext(UserContext);
+  const {usernameState,} = useContext(UserContext);
   const username = usernameState[0];
 
   // Players

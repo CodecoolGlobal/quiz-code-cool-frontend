@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { QuestionFilterContext } from 'context/QuestionFilterContext';
 import { CategoryContext } from 'context/CategoryContext';
@@ -29,7 +29,7 @@ import { UsersContext } from 'context/UsersContext';
 
 export default function QuestionList() {
 
-  const { rolesState } = useContext(UserContext);
+  const { rolesState,  isExpired } = useContext(UserContext);
   const roles = rolesState[0];
 
   const {toggleQuestionId, selectedQuestionsState} = useContext(NewQuizContext);
@@ -59,6 +59,8 @@ export default function QuestionList() {
   }, [selectedCategoryId, selectedType, selectedStatus, selectedUserId]);
 
   useEffect(() => {
+    if (rolesState != null)
+      isExpired();
     setSelectedQuestionIds([]);
   }, [])
 
