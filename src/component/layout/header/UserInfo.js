@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "context/UserContext";
 import user from "style/img/user.png";
 
@@ -9,10 +9,14 @@ import {
 import { FormattedNavLink } from "style/js/CommonStyles";
 
 export default function UserInfo() {
-    const { usernameState, userIdState } = useContext(UserContext);
+    const { usernameState, userIdState, isExpired } = useContext(UserContext);
     const username = usernameState[0];
     const userId = userIdState[0]
 
+    useEffect(() => {
+      if (username != null)
+        isExpired();
+    }, [])
 
     return (
         username ? (

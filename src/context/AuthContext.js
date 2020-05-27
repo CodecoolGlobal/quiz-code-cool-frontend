@@ -13,10 +13,11 @@ export const AuthProvider = (props) => {
 
   const setIsReadyToProceed = useContext(ProgressContext)[1];
 
-  const { usernameState, rolesState, userIdState } = useContext(UserContext);
+  const { usernameState, rolesState, userIdState, expState } = useContext(UserContext);
   const setUsername = usernameState[1];
   const setRoles = rolesState[1];
   const setUserId = userIdState[1];
+  const setExp = expState[1]
 
   const recalculateIsReadyToProceed = (path) => {
     if (
@@ -52,13 +53,15 @@ export const AuthProvider = (props) => {
   };
 
   const setUpUserData = (responseData) => {
-    localStorage.setItem("username", responseData.username);
-    localStorage.setItem("roles", responseData.roles);
-    localStorage.setItem("exp", responseData.exp)
-    localStorage.setItem("userId", responseData.userId)
-    setUsername( responseData.username);
-    setRoles(responseData.roles);
-    setUserId(responseData.userId)
+    const {username, roles, exp, userId} = responseData;
+    localStorage.setItem("username", username);
+    localStorage.setItem("roles", roles);
+    localStorage.setItem("exp", exp);
+    localStorage.setItem("userId", userId);
+    setUsername( username);
+    setRoles(roles);
+    setUserId(userId);
+    setExp(exp);
   };
 
   const signUp = async () => {

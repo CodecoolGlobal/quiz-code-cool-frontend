@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 import { UserContext } from "context/UserContext";
@@ -8,10 +8,15 @@ import { handleError } from "util/errorUtil";
 
 export default function DeleteButton() {
   const history = useHistory();
-  const { rolesState } = useContext(UserContext);
+  const { rolesState, isExpired } = useContext(UserContext);
   const { selectedQuestionState } = useContext(QuestionDetailsContext);
   const question = selectedQuestionState[0];
   const roles = rolesState[0];
+
+  useEffect(() => {
+    if (rolesState != null)
+      isExpired();
+  }, [])
 
   const deleteQuestion = async () => {
     try {
