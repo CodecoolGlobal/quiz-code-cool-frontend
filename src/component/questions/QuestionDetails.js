@@ -60,7 +60,7 @@ export default function QuestionDetails(props) {
                 <Th>Created By</Th>
                 <TableData>
                   {question.appUser
-                    ? <FormattedNavLink to={`users/${question.appUser.id}`}>{question.appUser.name}</FormattedNavLink>
+                    ? <FormattedNavLink to={`/users/${question.appUser.id}`}>{question.appUser.name}</FormattedNavLink>
                     : "No author found"}
                 </TableData>
               </TableRow>
