@@ -67,6 +67,12 @@ export const H3 = styled.h3`
   color: ${applicationTheme.color1};
 `;
 
+export const H4 = styled.h4`
+  text-align: center;
+  margin: 10px 0 2px 0;
+  color: ${applicationTheme.color4};
+`;
+
 export const Message = styled.p`
   color: ${applicationTheme.color2};
   font-size: ${applicationTheme.fontSize1};
@@ -233,4 +239,46 @@ export const FormattedNavLink = styled(NavLink)`
     font-weight: bold;
     color: ${applicationTheme.color1};
   }
+`;
+
+export const LinedTableTh = styled.div`
+  display: table-cell;
+  font-size: ${applicationTheme.fontSize1};
+  padding: 10px 5px;
+  background: ${applicationTheme.gray};
+  color: #fff;
+`;
+
+export const LinedTableTr = styled.div`
+  display: table-row;
+  text-align: left;
+  color: ${applicationTheme.color1};
+  font-size: ${applicationTheme.fontSize1};
+  &:nth-child(even) {
+    background-color: #fff;
+  }
+  &:nth-child(odd) {
+    background-color: lightgray;
+  }
+  &:hover {
+    background: ${applicationTheme.color4};
+    cursor: default;
+  }
+  &.selected {
+    background: ${applicationTheme.color2};
+    color: #fff;
+  }
+`;
+
+export const LongLinedTableTd = styled.div`
+  display: table-cell;
+  max-width: 400px;
+  padding: 8px 10px;
+`;
+
+export const ShortCenteredLinedTableTd = styled.div`
+  text-align: center;
+  display: table-cell;
+  min-width: 90px;
+  padding: 8px 10px;
 `;

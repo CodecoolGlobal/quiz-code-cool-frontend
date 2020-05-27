@@ -1,26 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   H3,
   Table,
   TableData,
   TableRow,
   Th,
-  ThinnerContentContainer,
+  WiderContentContainer,
   OverflowFlexContainer,
   Help,
-  Thead,
   TBody,
-  FormattedNavLink,
+  H4,
 } from "style/js/CommonStyles";
 import { api_getUser } from "api/UserConnection";
 import { handleError } from "util/errorUtil";
+import { UsersContext } from "context/UsersContext";
+import QuestionList from "component/questions/QuestionList";
+import CustomQuizList from "component/quizzes/custom/customQuizList/CustomQuizList";
 
 export default function UserDetails(props) {
   const { id } = props.match.params;
   const [user, setUser] = useState(null);
+  const setSelectedUserId = useContext(UsersContext).selectedUserIdState[1];
 
   useEffect(() => {
     getUserDetails();
+    setSelectedUserId(id)
   }, [id]);
 
   const getUserDetails = async () => {
@@ -33,17 +37,11 @@ export default function UserDetails(props) {
   };
 
   return (
-    <ThinnerContentContainer>
-      <H3>User Details</H3>
+    <WiderContentContainer>
+      <H3>{user != null ? user.username : "..."}'s page</H3>
       <OverflowFlexContainer>
         {user != null ? (
         <Table>
-          <Thead>
-            <TableRow>
-              <Th>Username</Th>
-              <Th>{user.username}</Th>
-            </TableRow>
-          </Thead>
           <TBody>
             <TableRow>
               <Th>Registration Date</Th>
@@ -51,7 +49,7 @@ export default function UserDetails(props) {
             </TableRow>
             {user.questions != null &&
             <TableRow>
-              <Th><FormattedNavLink to={`/users/${user.id}/questions`}>Posted Questions</FormattedNavLink></Th>
+              <Th>Posted Questions</Th>
               <TableData>{user.questions.length}</TableData>
             </TableRow>
             }
@@ -64,6 +62,16 @@ export default function UserDetails(props) {
           </TBody>
         </Table>) : <Help>No user to display.</Help>}
       </OverflowFlexContainer>
-    </ThinnerContentContainer>
+      {user != null && user.customQuizzes.length !== 0 && 
+      <React.Fragment>
+        <H4>Quizzes</H4>
+        <CustomQuizList customQuizzes={user.customQuizzes}/>
+      </React.Fragment>}
+      {user != null && user.questions.length !== 0 &&
+      <React.Fragment>
+        <H4>Questions</H4>
+        <QuestionList/>
+      </React.Fragment>}
+    </WiderContentContainer>
   );
 }

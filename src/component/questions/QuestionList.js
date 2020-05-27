@@ -13,11 +13,12 @@ import {
   Thead,
   TableRow,
   TBody,
+  LinedTableTh,
+  LongLinedTableTd,
+  LinedTableTr,
+  ShortCenteredLinedTableTd
 } from 'style/js/CommonStyles';
 import {  
-  QuestionsTh,
-  QuestionsTd,
-  QuestionsTr,
   QuestionListTdNavLink,
   TrashImage
 } from 'component/questions/style'
@@ -49,7 +50,7 @@ export default function QuestionList() {
 
 
   const handleClick = (id) => {
-      if ( history.location.pathname !== "/questions")
+      if ( history.location.pathname.includes("custom-quiz"))
         toggleQuestionId(id);
   };
 
@@ -78,42 +79,42 @@ export default function QuestionList() {
       <Table>
         <Thead>
           <TableRow>
-            <QuestionsTh>Id</QuestionsTh>
-            <QuestionsTh>Question</QuestionsTh>
-            <QuestionsTh>Category</QuestionsTh>
-            <QuestionsTh>Type</QuestionsTh>
-            <QuestionsTh>Status</QuestionsTh>
-            {roles.includes("ROLE_ADMIN") && history.location.pathname ==="/questions" && (
-                <QuestionsTh></QuestionsTh>
+            <LinedTableTh>Id</LinedTableTh>
+            <LinedTableTh>Question</LinedTableTh>
+            <LinedTableTh>Category</LinedTableTh>
+            <LinedTableTh>Type</LinedTableTh>
+            <LinedTableTh>Status</LinedTableTh>
+            {roles.includes("ROLE_ADMIN") && !history.location.pathname.includes("custom-quiz") && (
+                <LinedTableTh></LinedTableTh>
               )}
           </TableRow>
         </Thead>
         <TBody>
           {questions.map(question => (
-            <QuestionsTr key={question.id} onClick={() => handleClick(question.id)} className={selectedQuestionIds.includes(question.id) ? "selected" : ""}>
-              <QuestionsTd>{question.id}</QuestionsTd>
-              {history.location.pathname === '/questions' ? (
+            <LinedTableTr key={question.id} onClick={() => handleClick(question.id)} className={selectedQuestionIds.includes(question.id) ? "selected" : ""}>
+              <LongLinedTableTd>{question.id}</LongLinedTableTd>
+              {!history.location.pathname.includes("custom-quiz") ? (
                 <QuestionListTdNavLink to={`/questions/${question.id}`}>
                   <div>
-                  <QuestionsTd>
+                  <LongLinedTableTd>
                       {question.question}
-                  </QuestionsTd>
+                  </LongLinedTableTd>
                   </div>
                 </QuestionListTdNavLink>
               ) : (
-                <QuestionsTd>{question.question}</QuestionsTd>
+                <LongLinedTableTd>{question.question}</LongLinedTableTd>
               )}
-              <QuestionsTd>{question.category.name}</QuestionsTd>
-              <QuestionsTd>{typesMap[question.type]}</QuestionsTd>
-              <QuestionsTd>
+              <ShortCenteredLinedTableTd>{question.category.name}</ShortCenteredLinedTableTd>
+              <ShortCenteredLinedTableTd>{typesMap[question.type]}</ShortCenteredLinedTableTd>
+              <ShortCenteredLinedTableTd>
                 {question.validated === true ? 'Validated' : 'Not validated'}
-              </QuestionsTd>
-              {roles.includes("ROLE_ADMIN") && history.location.pathname ==="/questions" && (
-                <QuestionsTd onClick={() => deleteQuestion(question.id)}>
+              </ShortCenteredLinedTableTd>
+              {roles.includes("ROLE_ADMIN") && !history.location.pathname.includes("custom-quiz") && (
+                <LongLinedTableTd onClick={() => deleteQuestion(question.id)}>
                 <TrashImage title="Delete question" src={deleteIcon} alt='delete icon'></TrashImage> 
-              </QuestionsTd>
+              </LongLinedTableTd>
               )}
-            </QuestionsTr>
+            </LinedTableTr>
           ))}
         </TBody>
       </Table>
