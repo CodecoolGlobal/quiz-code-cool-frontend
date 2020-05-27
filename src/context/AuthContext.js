@@ -106,7 +106,8 @@ export const AuthProvider = (props) => {
       await api_signOut();
       setUsername(null);
       setRoles(null);
-      setUserId(null)
+      setUserId(null);
+      setExp(null);
     } catch (error) {
       handleError(error, "Failed to log out.");
     }
