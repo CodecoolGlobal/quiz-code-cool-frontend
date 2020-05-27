@@ -207,7 +207,7 @@ export const TBody = styled.div`
 `
 
 export const Th = styled.div`
-  font-weight: 600;
+  font-weight: bold;
   display: table-cell;
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
@@ -242,6 +242,7 @@ export const FormattedNavLink = styled(NavLink)`
 `;
 
 export const LinedTableTh = styled.div`
+  font-weight: bold;
   display: table-cell;
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 5px;
