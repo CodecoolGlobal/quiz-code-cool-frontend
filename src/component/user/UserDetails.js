@@ -10,10 +10,10 @@ import {
   Help,
   Thead,
   TBody,
+  FormattedNavLink,
 } from "style/js/CommonStyles";
 import { api_getUser } from "api/UserConnection";
 import { handleError } from "util/errorUtil";
-import { FormattedNavLink } from "./styles";
 
 export default function UserDetails(props) {
   const { id } = props.match.params;

@@ -14,9 +14,11 @@ import {
   OverflowFlexContainer,
   Thead,
   TBody,
+  FormattedNavLink,
 } from "../../style/js/CommonStyles";
 import { api_getQuestion } from "api/questionConnection";
 import { handleError } from "util/errorUtil";
+import { QuestionListTdNavLink } from "./style";
 
 export default function QuestionDetails(props) {
   const { selectedQuestionState } = useContext(QuestionDetailsContext);
@@ -58,7 +60,7 @@ export default function QuestionDetails(props) {
                 <Th>Created By</Th>
                 <TableData>
                   {question.appUser
-                    ? question.appUser.name
+                    ? <FormattedNavLink to={`users/${question.appUser.id}`}>{question.appUser.name}</FormattedNavLink>
                     : "No author found"}
                 </TableData>
               </TableRow>

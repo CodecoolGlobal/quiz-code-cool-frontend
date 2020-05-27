@@ -22,6 +22,7 @@ export const Title = styled.h2`
 `;
 
 export const NavigBar = styled.ul`
+  color: ${applicationTheme.color1};
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -29,7 +30,7 @@ export const NavigBar = styled.ul`
 `;
 
 export const MenuNavLink = styled(NavLink)`
-  color: ${applicationTheme.color1};
+  color: inherit;
   font-size: ${applicationTheme.fontSize1};
   text-decoration: none;
   display: block;
@@ -59,6 +60,7 @@ export const HeaderNavLink = styled(NavLink)`
 `;
 
 export const Toolbar = styled.header`
+  color: ${applicationTheme.color1};
   position: sticky;
   height: 40px;
   width: 100%;
@@ -91,18 +93,6 @@ export const ToolbarNavigationUl = styled.ul`
 
 export const Spacer = styled.div`
   flex: 1;
-`;
-
-export const FormattedNavLink = styled(NavLink)`
-  color: ${applicationTheme.color1};
-  text-decoration: none;
-  &:hover {
-    color: ${applicationTheme.color4};
-  }
-  &.active {
-    font-weight: bold;
-    color: ${applicationTheme.purple};
-  }
 `;
 
 export const ToggleButton = styled.button`

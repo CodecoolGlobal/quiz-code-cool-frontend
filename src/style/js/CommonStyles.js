@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const applicationTheme = {
   mainLightOpaque: "rgba(255, 255, 255, 0.8)",
@@ -11,7 +12,7 @@ export const applicationTheme = {
   color3: "#54b2a9",
   color4: "#65c3ba",
   color5: "#83d0c9",
-  purple: "#202057",
+  orange: "orange",
   gray: "gray",
   borderRadius1: "2px",
   borderRadius2: "5px",
@@ -220,4 +221,16 @@ export const TableData = styled.div`
   display: table-cell;
   font-size: ${applicationTheme.fontSize1};
   padding: 10px 15px;
+`;
+
+export const FormattedNavLink = styled(NavLink)`
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    color: ${applicationTheme.orange};
+  }
+  &.active {
+    font-weight: bold;
+    color: ${applicationTheme.color1};
+  }
 `;

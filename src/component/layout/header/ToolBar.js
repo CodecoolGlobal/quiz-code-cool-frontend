@@ -5,13 +5,13 @@ import UserInfo from "component/layout/header/UserInfo";
 
 
 import {
-  FormattedNavLink,
   Toolbar,
   ToolbarNavigation,
   ToolbarNavigationItems,
   ToolbarNavigationUl,
   Spacer,
 } from "component/layout/header/styles";
+import { FormattedNavLink } from "style/js/CommonStyles";
 
 export default function ToolBar() {
 

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { ThinnerContentContainer, H3, OverflowFlexContainer, Table, Th, TableRow, Help, TableData, Thead, TBody } from 'style/js/CommonStyles'
+import { ThinnerContentContainer, H3, OverflowFlexContainer, Table, Th, TableRow, Help, TableData, Thead, TBody, FormattedNavLink } from 'style/js/CommonStyles'
 import { api_getUsers } from 'api/UserConnection';
 import { handleError } from 'util/errorUtil';
-import { FormattedNavLink } from './styles';
 
 export default function UserList() {
     const [users, setUsers] = useState(null);

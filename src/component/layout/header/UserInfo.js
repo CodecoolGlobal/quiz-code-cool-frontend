@@ -3,10 +3,10 @@ import { UserContext } from "context/UserContext";
 import user from "style/img/user.png";
 
 import {
-    FormattedNavLink,
     ToolbarNavigationUl,
     UserImage,
   } from "component/layout/header/styles";
+import { FormattedNavLink } from "style/js/CommonStyles";
 
 export default function UserInfo() {
     const { usernameState, userIdState } = useContext(UserContext);
