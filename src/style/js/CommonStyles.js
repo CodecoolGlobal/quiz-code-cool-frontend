@@ -47,7 +47,7 @@ export const WiderContentContainer = styled.div`
     margin: 25px 8% 60px 8%;
   }
   @media screen and (max-width: 600px) {
-    margin: 25px 5% 60px 5%;
+    margin: 25px 0 60px 0;
   }
 `;
 
