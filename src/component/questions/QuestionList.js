@@ -28,7 +28,8 @@ export default function QuestionList() {
   const { rolesState } = useContext(UserContext);
   const roles = rolesState[0];
 
-  const {toggleQuestionId} = useContext(NewQuizContext);
+  const {toggleQuestionId, selectedQuestionsState} = useContext(NewQuizContext);
+  const [selectedQuestionIds, setSelectedQuestionIds] = selectedQuestionsState;
   const selectedCategoryId = useContext(CategoryContext).categoryInput[0];
   const selectedStatus = useContext(StatusContext)[0];
   const selectedUserId = useContext(UsersContext).selectedUserIdState[0];
@@ -43,22 +44,19 @@ export default function QuestionList() {
   );
   const [questions, setQuestions] = filteredQuestionsState;
 
-  const [selectedRow, setSelectedRow] = useState([]);
 
-  const handleClick = (id, index) => {
-    if (history.location.pathname === '/custom-quiz/new') {
-      if (index !== undefined && !selectedRow.includes(index) ) setSelectedRow([...selectedRow, index]);
-      else {
-        let newArray = selectedRow;
-        newArray.splice(newArray.indexOf(index), 1)
-      }
-      toggleQuestionId(id);
-    }
+  const handleClick = (id) => {
+      if ( history.location.pathname !== "/questions")
+        toggleQuestionId(id);
   };
 
   useEffect(() => {
     getFilteredQuestions(history.location.pathname);
   }, [selectedCategoryId, selectedType, selectedStatus, selectedUserId]);
+
+  useEffect(() => {
+    setSelectedQuestionIds([]);
+  }, [])
 
   const deleteQuestion = async (id) => {
     try {
@@ -82,19 +80,21 @@ export default function QuestionList() {
             <QuestionsTh>Category</QuestionsTh>
             <QuestionsTh>Type</QuestionsTh>
             <QuestionsTh>Status</QuestionsTh>
-            {roles.includes("ROLE_ADMIN") && (
+            {roles.includes("ROLE_ADMIN") && history.location.pathname ==="/questions" && (
                 <QuestionsTh></QuestionsTh>
               )}
           </tr>
         </thead>
         <tbody>
-          {questions.map((question, index) => (
-            <QuestionsTr key={index} onClick={() => handleClick(question.id, index)} className={selectedRow.includes(index) ? "selected" : ""}>
+          {questions.map(question => (
+            <QuestionsTr key={question.id} onClick={() => handleClick(question.id)} className={selectedQuestionIds.includes(question.id) ? "selected" : ""}>
               <QuestionsTd>{question.id}</QuestionsTd>
               {history.location.pathname === '/questions' ? (
-                <QuestionListTdNavLink to={`/questions/${question.id}`}>
-                  <QuestionsTd>{question.question}</QuestionsTd>
-                </QuestionListTdNavLink>
+                  <QuestionsTd>
+                    <QuestionListTdNavLink to={`/questions/${question.id}`}>
+                      {question.question}
+                    </QuestionListTdNavLink>
+                  </QuestionsTd>
               ) : (
                 <QuestionsTd>{question.question}</QuestionsTd>
               )}
@@ -103,7 +103,7 @@ export default function QuestionList() {
               <QuestionsTd>
                 {question.validated === true ? 'Validated' : 'Not validated'}
               </QuestionsTd>
-              {roles.includes("ROLE_ADMIN") && (
+              {roles.includes("ROLE_ADMIN") && history.location.pathname ==="/questions" && (
                 <QuestionsTd onClick={() => deleteQuestion(question.id)}>
                 <TrashImage title="Delete question" src={deleteIcon} alt='delete icon'></TrashImage> 
               </QuestionsTd>

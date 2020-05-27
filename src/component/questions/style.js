@@ -21,19 +21,17 @@ font-size: ${applicationTheme.fontSize1};
 }
 &:hover {
   background: ${applicationTheme.color4};
-  cursor: pointer;
+  cursor: default;
 }
 &.selected {
-  background: ${applicationTheme.color4};
+  background: ${applicationTheme.color2};
   color: #fff;
 }
 `;
 
 export const QuestionListTdNavLink = styled(NavLink)`
-display: block;
-text-align: left;
 text-decoration: none;
-color: ${applicationTheme.color1};
+color: inherit;
 &:hover {
   color: #fff;
 }
@@ -45,4 +43,7 @@ padding: 8px 10px;
 
 export const TrashImage = styled.img`
   height: 15px;
+  &:hover {
+    cursor: pointer;
+  }
 `;

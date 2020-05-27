@@ -5,10 +5,11 @@ import NewQuizNameInput from 'component/inputs/NewQuizNameInput';
 import { ProgressContext } from 'context/ProgressContext';
 import { NewQuizContext } from 'context/NewQuizContext';
 
-import { WiderContentContainer, H3, Button } from 'style/js/CommonStyles';
+import { WiderContentContainer, H3, Button, Help } from 'style/js/CommonStyles';
 
 export default function NewCustomQuiz(props) {
-  const {submit} = useContext(NewQuizContext);
+  const {submit, selectedQuestionsState} = useContext(NewQuizContext);
+  const selectedQuestionIds = selectedQuestionsState[0];
   const isReadyToProceed = useContext(ProgressContext)[0];
 
   return (
@@ -16,6 +17,7 @@ export default function NewCustomQuiz(props) {
       <WiderContentContainer>
         <H3>Create custom quiz</H3>
         <NewQuizNameInput />
+        {selectedQuestionIds.length !== 0 && <Help>Selected questions: {selectedQuestionIds.map(id => <span>{id} </span>)}</Help>}
         <QuestionFilter />
         <QuestionList />
         <Button disabled={!isReadyToProceed} onClick={() => submit(props)}>
