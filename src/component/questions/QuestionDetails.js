@@ -31,7 +31,7 @@ export default function QuestionDetails(props) {
       const respQuestion = await api_getQuestion(id);
       setQuestion(new Question(respQuestion));
     } catch (error) {
-      handleError(error, "Failed to load question details.");
+      handleError(error);
     }
   };
 

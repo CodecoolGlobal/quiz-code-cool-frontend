@@ -17,7 +17,7 @@ export default function CustomQuizInput() {
       const quizzes = await api_getCustomQuizzes();
       setCustomQuizzes(quizzes);
     } catch(error) {
-      handleError(error, "Failed to load quizzes.");
+      handleError(error);
     }
   };
 

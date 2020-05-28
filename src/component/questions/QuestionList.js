@@ -70,7 +70,7 @@ export default function QuestionList() {
       setQuestions([...questions.filter((question) => question.id !== id)]);
       alert("Question deleted successfully.");
     } catch (error) {
-      handleError(error, `Deletion of question ${id} was unsuccessful.`);
+      handleError(error);
     }
   };
 

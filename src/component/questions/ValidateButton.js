@@ -24,7 +24,7 @@ export default function ValidateButton() {
       alert(`Question ${question.id} validated successfully.`);
       history.push('/questions');
     } catch(error) {
-      handleError(error, 'The validation was unsuccessful.');
+      handleError(error);
 
     }
   }

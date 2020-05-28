@@ -23,7 +23,7 @@ export default function DeleteButton() {
       alert("Question deleted successfully.");
       history.push("/questions");
     } catch (error) {
-      handleError(error, `Deletion of question ${question.id} was unsuccessful.`);
+      handleError(error);
     }
   };
 

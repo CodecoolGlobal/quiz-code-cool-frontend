@@ -79,9 +79,9 @@ export const AuthProvider = (props) => {
       clearCredentials();
     } catch (error) {
       if (!error.response) {
-        handleError(error, "Connection refused.");
+        handleError(error);
       } else {
-        handleError(error, `Registration cannot be finished. ${error.response.data} is already taken.`);
+        handleError(error);
       }
       setIsReadyToProceed(false);
     }
@@ -97,9 +97,9 @@ export const AuthProvider = (props) => {
       history.push("/");
     } catch (error) {
       if (error.response && error.response.status === 403) {
-        handleError(error, "Incorrect username or password.");
+        alert("Incorrect username or password.");
       } else {
-        handleError(error, "Connection refused.");
+        handleError(error);
       }
     }
   };
@@ -107,13 +107,13 @@ export const AuthProvider = (props) => {
   const signOut = async () => {
     localStorage.clear();
     try {
-      await api_signOut();
       setUsername(null);
       setRoles(null);
       setUserId(null);
       setExp(null);
+      await api_signOut();
     } catch (error) {
-      handleError(error, "Failed to log out.");
+      handleError(error);
     }
   };
 

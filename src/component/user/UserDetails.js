@@ -32,7 +32,7 @@ export default function UserDetails(props) {
       const responseData = await api_getUser(id);
       setUser(responseData);
     } catch (error) {
-      handleError(error, "Failed to load user data.");
+      handleError(error);
     }
   };
 

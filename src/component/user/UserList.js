@@ -15,7 +15,7 @@ export default function UserList() {
         const responseData = await api_getUsers();
         setUsers(responseData);
       } catch (error) {
-        handleError(error, "Failed to load users.");
+        handleError(error);
       }
     };
 

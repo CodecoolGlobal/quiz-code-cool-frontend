@@ -4,6 +4,7 @@ const AUTH_URL = process.env.REACT_APP_AUTH_URL;
 
 export const api_signUp = async (data) => {
   const response = await axios.post(`${AUTH_URL}/sign-up`, data);
+  console.log(response.data)
   return response.data;
 };
 

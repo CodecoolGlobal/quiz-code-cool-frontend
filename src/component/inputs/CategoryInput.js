@@ -24,7 +24,7 @@ export default function CategoryInput(props) {
       const categories = await api_getCategories();
       setAllCategories(categories);
     } catch(error) {
-      handleError(error, "Failed to load categories.");
+      handleError(error);
     }
   }
 
