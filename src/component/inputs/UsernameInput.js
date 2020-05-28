@@ -21,7 +21,7 @@ export default function UsernameInput() {
   };
 
   useEffect(() => {
-    recalculateIsReadyToProceed(history.location.pathname);
+    recalculateIsReadyToProceed();
   }, [usernameInput]);
 
   const getHelperContainer = () => {

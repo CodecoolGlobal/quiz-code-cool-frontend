@@ -21,7 +21,7 @@ export default function QuestionFilter() {
     <OverflowFlexContainer>
       <CategoryInput />
       <TypeInput />
-      {history.location.pathname === '/questions' && <StatusInput />}
+      { !history.location.pathname.includes('custom-quiz') && <StatusInput />}
       <UserInput/>
     </OverflowFlexContainer>
   );

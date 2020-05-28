@@ -12,7 +12,7 @@ import EmailInput from "component/inputs/EmailInput";
 export default function AuthForm() {
   const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
   const { clearCredentials, signUp, signIn } = useContext(AuthContext);
-  const history = useHistory();
+  const path = useHistory().location.pathname;
 
   useEffect(() => {
     clearCredentials();
@@ -20,24 +20,24 @@ export default function AuthForm() {
 
   const submit = () => {
     setIsReadyToProceed(false);
-    switch (history.location.pathname) {
+    switch (path) {
       case "/sign-up":
         signUp();
         break;
       default:
-        signIn(history);
+        signIn();
         break;
     }
   };
 
   const pasteEmail = () => {
-    if(history.location.pathname === "/sign-up") {
+    if(path === "/sign-up") {
       return <EmailInput />;
     }
   }
 
   const pasteSignUpHelp = () => {
-    if(history.location.pathname === "/sign-in") {
+    if(path === "/sign-in") {
       return <Help>
       New to Codecool Quiz? Create an{" "}
       <NavLink to="/sign-up">account.</NavLink>
@@ -46,7 +46,7 @@ export default function AuthForm() {
   }
 
   const getTitle = () => {
-    return history.location.pathname === "/sign-in" ? "Sign in" : "Sign up";
+    return path === "/sign-in" ? "Sign in" : "Sign up";
   }
 
   return (

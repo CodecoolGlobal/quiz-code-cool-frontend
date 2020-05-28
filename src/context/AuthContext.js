@@ -1,4 +1,5 @@
 import React, { useState, createContext, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { ProgressContext } from "context/ProgressContext";
 import { UserContext } from "context/UserContext";
 import { api_signUp, api_signOut, api_signIn } from "api/authConnection";
@@ -7,6 +8,7 @@ import { handleError } from "util/errorUtil";
 export const AuthContext = createContext();
 
 export const AuthProvider = (props) => {
+  const history = useHistory();
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
@@ -19,7 +21,8 @@ export const AuthProvider = (props) => {
   const setUserId = userIdState[1];
   const setExp = expState[1]
 
-  const recalculateIsReadyToProceed = (path) => {
+  const recalculateIsReadyToProceed = () => {
+    const path = history.location.pathname;
     if (
       usernameInput.length >= 5 &&
       usernameInput.length <= 20 &&
@@ -84,7 +87,7 @@ export const AuthProvider = (props) => {
     }
   };
 
-  const signIn = async (history) => {
+  const signIn = async () => {
     try {
       const responseData = await api_signIn({
         username: usernameInput,

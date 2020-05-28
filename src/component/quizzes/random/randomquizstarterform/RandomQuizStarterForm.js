@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import PlayerNameInput from "component/quizzes/random/randomquizstarterform/PlayerNameInput";
 import CategoryInput from "component/inputs/CategoryInput";
 import TypeInput from "component/inputs/TypeInput";
@@ -14,7 +13,6 @@ import { ThinnerContentContainer, H3, Button } from "style/js/CommonStyles";
 export default function QuizStarterForm() {
   const {submitStarterForm, initBeforeSubmit} = useContext(QuizContext);
   const { clearTypeCategoryInputs } = useContext(RestoreInputsContext);
-  const history = useHistory();
 
   useEffect(() => {
     initBeforeSubmit();
@@ -22,7 +20,7 @@ export default function QuizStarterForm() {
   }, []);
 
   const submit = () => {
-    submitStarterForm(history);
+    submitStarterForm();
   };
 
   return (

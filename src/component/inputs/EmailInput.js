@@ -1,10 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { InputItem, InputLabel, TextInput } from "style/js/CommonStyles";
 import { AuthContext } from "context/AuthContext";
 
 export default function EmailInput() {
-  const history = useHistory();
   const { emailInputState, recalculateIsReadyToProceed } = useContext(AuthContext);
   const [emailInput, setEmailInput] = emailInputState;
 
@@ -13,7 +11,7 @@ export default function EmailInput() {
   };
 
   useEffect(() => {
-    recalculateIsReadyToProceed(history.location.pathname);
+    recalculateIsReadyToProceed();
   }, [emailInput]);
 
   return (

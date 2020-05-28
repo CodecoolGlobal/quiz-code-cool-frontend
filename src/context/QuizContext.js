@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from "react";
-
+import { useHistory } from "react-router-dom";
 import { PlayerContext } from "context/PlayerContext";
 import { CustomQuizContext } from "context/CustomQuizContext";
 import { RandomQuizContext } from "context/RandomQuizContext";
@@ -16,6 +16,7 @@ import { handleError } from "util/errorUtil";
 export const QuizContext = createContext();
 
 export const QuizProvider = (props) => {
+  const history = useHistory();
   const selectedCategoryId = useContext(CategoryContext).categoryInput[0];
   const type = useContext(TypeContext).selectedTypeInput[0];
 
@@ -56,7 +57,8 @@ export const QuizProvider = (props) => {
     setCurrentQuestionIndex(0);
   };
 
-  const validateInputs = (location) => {
+  const validateInputs = () => {
+    const location = history.location.pathname;
     switch (location) {
       case RANDOM_PATH:
         if (
@@ -93,7 +95,7 @@ export const QuizProvider = (props) => {
     }
   };
 
-  const tryToStartQuiz = async (history) => {
+  const tryToStartQuiz = async () => {
     try {
     const location = history.location.pathname;
     const questions = location === RANDOM_PATH ? await api_getQuestions(getRandomQuizQueryString()) : await api_getCustomQuizQuestions(selectedCustomQuizId);
@@ -131,10 +133,9 @@ export const QuizProvider = (props) => {
         return queryString;
   };
 
-  const submitStarterForm = (history) => {
-    const location = history.location.pathname;
-    if (validateInputs(location)) {
-      tryToStartQuiz(history);
+  const submitStarterForm = () => {
+    if (validateInputs()) {
+      tryToStartQuiz();
     }
   };
 

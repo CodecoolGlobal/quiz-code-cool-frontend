@@ -18,11 +18,7 @@ export default function ValidateButton() {
     isExpired();
   }, [])
 
-  const validateQuestion = () => {
-    validate(history);
-  }
-
-  const validate = async (history) => {
+  const validateQuestion = async () => {
     try {
       await api_validateQuestion(question.id);
       alert(`Question ${question.id} validated successfully.`);

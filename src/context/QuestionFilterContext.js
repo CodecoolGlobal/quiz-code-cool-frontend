@@ -2,7 +2,7 @@ import React, { useState, createContext, useContext } from "react";
 import {CategoryContext} from "context/CategoryContext"
 import {TypeContext} from "context/TypeContext"
 import { StatusContext } from "context/StatusContext";
-
+import { useHistory } from 'react-router-dom';
 import { api_getQuestions } from "api/questionConnection";
 import { handleError } from "util/errorUtil";
 import { UsersContext } from "./UsersContext";
@@ -26,17 +26,20 @@ export const QuestionFilterProvider = props => {
   const {selectedUserIdState, DEFAULT_USER} = useContext(UsersContext);
   const selectedUserId = selectedUserIdState[0];
 
-  const getValidatedPart = (pathname) => {
+  const history = useHistory();
+
+  const getValidatedPart = () => {
+    const pathname = history.location.pathname;
     if (pathname === NEW_CUSTOM_QUIZ_PATH)
         return "&validated=true";
     return selectedStatus === "" ? selectedStatus : `&validated=${selectedStatus}`;
   }
 
-    const getQueryString = (pathname) => {
+    const getQueryString = () => {
         let userIdPart = selectedUserId === DEFAULT_USER.id ? "" : `&user=${selectedUserId}` 
         let categoryUrlPart = selectedCategoryId === DEFAULT_CATEGORY.id ? "" : `&category=${selectedCategoryId}`;
         let typeUrlPart = selectedType === ANY_TYPE ? "" : `&type=${selectedType}`;
-        let validatedPart = getValidatedPart(pathname);
+        let validatedPart = getValidatedPart();
         let queryString =
           "?" +
           userIdPart +

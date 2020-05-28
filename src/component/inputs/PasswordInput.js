@@ -21,7 +21,7 @@ export default function PasswordInput() {
   };
 
   useEffect(() => {
-    recalculateIsReadyToProceed(history.location.pathname);
+    recalculateIsReadyToProceed();
   }, [passwordInput]);
 
 
