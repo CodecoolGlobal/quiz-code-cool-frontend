@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
+import { TypeContext } from "context/TypeContext";
 import { NewQuestionFormContext } from "context/NewQuestionFormContext";
 
 import { InputLabel, TextInput, InputItem } from "style/js/CommonStyles";
@@ -10,6 +11,13 @@ export default function MultipleAnswers() {
   const [incorrectAnswers, setIncorrectAnswers] = useContext(
     NewQuestionFormContext
   ).incorrectAnswersInput;
+  const { selectedTypeInput } = useContext(TypeContext);
+  const selectedType = selectedTypeInput[0];
+
+    useEffect(() => {
+      setCorrectAnswer("");
+      setIncorrectAnswers([]);
+    }, [selectedType])
 
   const handleCorrectAnswer = e => {
     setCorrectAnswer(e.target.value);

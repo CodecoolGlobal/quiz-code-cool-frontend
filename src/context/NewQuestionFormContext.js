@@ -44,11 +44,12 @@ export const NewQuestionFormProvider = props => {
   };
 
   const isAnyInvalidInput = () => {
-      selectedCategoryId === "0" ||
+      return selectedCategoryId === "0" ||
       selectedType.length === 0 ||
       question === "" ||
       correctAnswer === "" ||
       incorrectAnswers.length === 0 ||
+      incorrectAnswers.includes("") ||
       incorrectAnswers.includes(undefined)
   }
 
