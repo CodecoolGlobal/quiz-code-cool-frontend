@@ -27,7 +27,7 @@ export const AuthProvider = (props) => {
       usernameInput.length >= 5 &&
       usernameInput.length <= 20 &&
       passwordInput.length >= 8 &&
-      passwordInput.match("^[A-Za-z0-9]+$")
+      /^(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,20}$/.test(passwordInput)
     ) {
       if (
         (path === "/sign-up" &&

@@ -31,7 +31,7 @@ export default function PasswordInput() {
         return (
           <LeftTextAlignContainer>
           <Help>
-            At least 8 characters including a number and a lowercase letter.{" "}
+            Between 8-20 characters including a number and a lowercase letter, without special characters.
           </Help>
         </LeftTextAlignContainer>
         );
