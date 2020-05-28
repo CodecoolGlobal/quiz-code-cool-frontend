@@ -59,8 +59,7 @@ export default function QuestionList() {
   }, [selectedCategoryId, selectedType, selectedStatus, selectedUserId]);
 
   useEffect(() => {
-    if (rolesState != null)
-      isExpired();
+    isExpired();
     setSelectedQuestionIds([]);
   }, [])
 

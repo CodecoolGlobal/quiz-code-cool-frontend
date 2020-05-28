@@ -8,8 +8,7 @@ export default function Home() {
   const username = usernameState[0];
 
   useEffect(() => {
-    if (username != null)
-      isExpired();
+    isExpired();
   }, [])
 
   return (

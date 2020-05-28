@@ -14,8 +14,7 @@ export default function DeleteButton() {
   const roles = rolesState[0];
 
   useEffect(() => {
-    if (rolesState != null)
-      isExpired();
+    isExpired();
   }, [])
 
   const deleteQuestion = async () => {

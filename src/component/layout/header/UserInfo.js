@@ -14,8 +14,7 @@ export default function UserInfo() {
     const userId = userIdState[0]
 
     useEffect(() => {
-      if (username != null)
-        isExpired();
+      isExpired();
     }, [])
 
     return (

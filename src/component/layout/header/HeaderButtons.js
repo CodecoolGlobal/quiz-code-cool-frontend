@@ -35,8 +35,7 @@ export default function HeaderButtons() {
   }, [username]);
 
   useEffect(() => {
-    if (username != null)
-      isExpired();
+    isExpired();
   }, [])
 
   return (

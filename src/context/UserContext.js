@@ -9,7 +9,7 @@ export const UserProvider = props => {
   const [exp, setExp] = useState(parseInt(localStorage.getItem("exp")));
   
   const isExpired = () => {
-    if (exp == null || new Date(exp) < Date.now()) {
+    if (exp != null && new Date(exp) < Date.now()) {
       setUsername(null);
       setRoles(null);
       setUserId(null);

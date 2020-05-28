@@ -15,8 +15,7 @@ export default function ValidateButton() {
   const question = selectedQuestionState[0];
 
   useEffect(() => {
-    if (rolesState != null)
-      isExpired();
+    isExpired();
   }, [])
 
   const validateQuestion = () => {

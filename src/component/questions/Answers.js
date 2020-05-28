@@ -9,8 +9,7 @@ export default function Answers() {
   const roles = rolesState[0];
 
   useEffect(() => {
-    if (rolesState != null)
-      isExpired();
+    isExpired();
   }, [])
 
   return (
