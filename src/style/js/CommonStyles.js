@@ -199,12 +199,11 @@ export const OverflowFlexContainer = styled.div`
 
 export const Thead = styled.div`
   display: table-header-group;
-`
-
+`;
 
 export const TBody = styled.div`
   display: table-row-group;
-`
+`;
 
 export const Th = styled.div`
   font-weight: bold;
@@ -220,7 +219,7 @@ export const TableRow = styled.div`
     props.playerTheme
       ? props.playerTheme.backgroundColor
       : "rgba(75, 170, 151, 0.1)"};
-  color: ${ applicationTheme.color1};
+  color: ${applicationTheme.color1};
 `;
 
 export const TableData = styled.div`
@@ -272,12 +271,14 @@ export const LinedTableTr = styled.div`
 `;
 
 export const LongLinedTableTd = styled.div`
+  vertical-align: middle;
   display: table-cell;
   max-width: 400px;
   padding: 8px 10px;
 `;
 
 export const ShortCenteredLinedTableTd = styled.div`
+  vertical-align: middle;
   text-align: center;
   display: table-cell;
   min-width: 90px;
