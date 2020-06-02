@@ -16,11 +16,11 @@ import {
   LinedTableTh,
   LongLinedTableTd,
   LinedTableTr,
-  ShortCenteredLinedTableTd
+  ShortCenteredLinedTableTd,
 } from 'style/js/CommonStyles';
 import {  
-  QuestionListTdNavLink,
-  TrashImage
+  TrashImage,
+  QuestionListLink
 } from 'component/questions/style'
 import deleteIcon from "style/img/delete-icon.png";
 import { api_deleteQuestion } from 'api/questionConnection';
@@ -42,6 +42,7 @@ export default function QuestionList() {
   const selectedType = selectedTypeInput[0];
 
   const history = useHistory();
+  const path = history.location.pathname;
 
   const { getFilteredQuestions, filteredQuestionsState } = useContext(
     QuestionFilterContext
@@ -50,17 +51,16 @@ export default function QuestionList() {
 
 
   const handleClick = (id) => {
-      if ( history.location.pathname.includes("custom-quiz"))
+      if (path.includes("custom-quiz"))
         toggleQuestionId(id);
   };
 
   useEffect(() => {
-    getFilteredQuestions(history.location.pathname);
+    getFilteredQuestions();
   }, [selectedCategoryId, selectedType, selectedStatus, selectedUserId]);
 
   useEffect(() => {
-    if (rolesState != null)
-      isExpired();
+    isExpired();
     setSelectedQuestionIds([]);
   }, [])
 
@@ -70,7 +70,7 @@ export default function QuestionList() {
       setQuestions([...questions.filter((question) => question.id !== id)]);
       alert("Question deleted successfully.");
     } catch (error) {
-      handleError(error, `Deletion of question ${id} was unsuccessful.`);
+      handleError(error);
     }
   };
 
@@ -86,7 +86,7 @@ export default function QuestionList() {
             <LinedTableTh>Category</LinedTableTh>
             <LinedTableTh>Type</LinedTableTh>
             <LinedTableTh>Status</LinedTableTh>
-            {roles.includes("ROLE_ADMIN") && !history.location.pathname.includes("custom-quiz") && (
+            {roles.includes("ROLE_ADMIN") && !path.includes("custom-quiz") && (
                 <LinedTableTh></LinedTableTh>
               )}
           </TableRow>
@@ -95,14 +95,12 @@ export default function QuestionList() {
           {questions.map(question => (
             <LinedTableTr key={question.id} onClick={() => handleClick(question.id)} className={selectedQuestionIds.includes(question.id) ? "selected" : ""}>
               <LongLinedTableTd>{question.id}</LongLinedTableTd>
-              {!history.location.pathname.includes("custom-quiz") ? (
-                <QuestionListTdNavLink to={`/questions/${question.id}`}>
-                  <div>
-                  <LongLinedTableTd>
-                      {question.question}
-                  </LongLinedTableTd>
-                  </div>
-                </QuestionListTdNavLink>
+              {!path.includes("custom-quiz") ? (
+                <LongLinedTableTd onClick={() =>  window.open(`/questions/${question.id}`, "_blank") }>
+                  <QuestionListLink>
+                    {question.question}
+                  </QuestionListLink>
+                </LongLinedTableTd>
               ) : (
                 <LongLinedTableTd>{question.question}</LongLinedTableTd>
               )}
@@ -111,7 +109,7 @@ export default function QuestionList() {
               <ShortCenteredLinedTableTd>
                 {question.validated === true ? 'Validated' : 'Not validated'}
               </ShortCenteredLinedTableTd>
-              {roles.includes("ROLE_ADMIN") && !history.location.pathname.includes("custom-quiz") && (
+              {roles.includes("ROLE_ADMIN") && !path.includes("custom-quiz") && (
                 <LongLinedTableTd onClick={() => deleteQuestion(question.id)}>
                 <TrashImage title="Delete question" src={deleteIcon} alt='delete icon'></TrashImage> 
               </LongLinedTableTd>
