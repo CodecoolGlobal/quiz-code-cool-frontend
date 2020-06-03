@@ -16,11 +16,11 @@ import {
   LinedTableTh,
   LongLinedTableTd,
   LinedTableTr,
-  ShortCenteredLinedTableTd
+  ShortCenteredLinedTableTd,
 } from 'style/js/CommonStyles';
 import {  
-  QuestionListTdNavLink,
-  TrashImage
+  TrashImage,
+  QuestionListLink
 } from 'component/questions/style'
 import deleteIcon from "style/img/delete-icon.png";
 import { api_deleteQuestion } from 'api/questionConnection';
@@ -96,13 +96,11 @@ export default function QuestionList() {
             <LinedTableTr key={question.id} onClick={() => handleClick(question.id)} className={selectedQuestionIds.includes(question.id) ? "selected" : ""}>
               <LongLinedTableTd>{question.id}</LongLinedTableTd>
               {!path.includes("custom-quiz") ? (
-                <QuestionListTdNavLink to={`/questions/${question.id}`}>
-                  <div>
-                  <LongLinedTableTd>
-                      {question.question}
-                  </LongLinedTableTd>
-                  </div>
-                </QuestionListTdNavLink>
+                <LongLinedTableTd onClick={() =>  window.open(`/questions/${question.id}`, "_blank") }>
+                  <QuestionListLink>
+                    {question.question}
+                  </QuestionListLink>
+                </LongLinedTableTd>
               ) : (
                 <LongLinedTableTd>{question.question}</LongLinedTableTd>
               )}
