@@ -3,10 +3,12 @@ import { ProgressContext } from "context/ProgressContext";
 import { RestoreInputsContext } from "context/RestoreFiltersContext";
 import { api_postNewQuiz } from "api/customQuizConnection";
 import { handleError } from "util/errorUtil";
+import { useHistory } from "react-router-dom";
 
 export const NewQuizContext = createContext();
 
 export const NewQuizProvider = (props) => {
+  const history = useHistory();
   const setIsReadyToProceed = useContext(ProgressContext)[1];
   const { clearTypeCategoryInputs } = useContext(RestoreInputsContext);
 
@@ -42,12 +44,12 @@ export const NewQuizProvider = (props) => {
     setIsReadyToProceed(false);
   }
 
-  const submit = async (props) => {
+  const submit = async () => {
     const newQuiz = { name: quizNameInput, questionIds: selectedQuestionIds };
     try {
       await api_postNewQuiz(newQuiz);
       clearStates();
-      props.history.push("/custom-quiz/start");
+      history.push("/custom-quiz/start");
     } catch(error) {
       handleError(error, "Failed to post new quiz.");
     }

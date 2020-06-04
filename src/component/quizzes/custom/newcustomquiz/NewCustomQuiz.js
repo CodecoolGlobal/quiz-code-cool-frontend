@@ -20,7 +20,7 @@ export default function NewCustomQuiz(props) {
         {selectedQuestionIds.length !== 0 && <Help>Selected questions: {selectedQuestionIds.map(id => <span>{id} </span>)}</Help>}
         <QuestionFilter />
         <QuestionList />
-        <Button disabled={!isReadyToProceed} onClick={() => submit(props)}>
+        <Button disabled={!isReadyToProceed} onClick={() => submit()}>
           Save quiz
         </Button>
       </WiderContentContainer>
