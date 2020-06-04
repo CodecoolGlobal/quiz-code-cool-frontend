@@ -14,6 +14,7 @@ import {
 import { api_getUser } from "api/UserConnection";
 import { handleError } from "util/errorUtil";
 import { UsersContext } from "context/UsersContext";
+import { RestoreInputsContext } from "context/RestoreFiltersContext";
 import QuestionList from "component/questions/QuestionList";
 import CustomQuizList from "component/quizzes/custom/customQuizList/CustomQuizList";
 
@@ -21,6 +22,11 @@ export default function UserDetails(props) {
   const { id } = props.match.params;
   const [user, setUser] = useState(null);
   const setSelectedUserId = useContext(UsersContext).selectedUserIdState[1];
+  const { clearQuestionsFilterInputs } = useContext(RestoreInputsContext);
+
+  useEffect(() => {
+    clearQuestionsFilterInputs();
+  }, [])
 
   useEffect(() => {
     getUserDetails();
