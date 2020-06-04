@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import QuestionListPagination from 'component/questions/QuestionListPagination';
 import { QuestionFilterContext } from 'context/QuestionFilterContext';
 import { CategoryContext } from 'context/CategoryContext';
 import { TypeContext } from 'context/TypeContext';
@@ -44,11 +45,11 @@ export default function QuestionList() {
   const history = useHistory();
   const path = history.location.pathname;
 
-  const { getFilteredQuestions, filteredQuestionsState } = useContext(
+  const { getFilteredQuestions, filteredQuestionsState, pageState, QUESTIONS_PER_PAGE, getPageNumber } = useContext(
     QuestionFilterContext
   );
   const [questions, setQuestions] = filteredQuestionsState;
-
+  const page = pageState[0];
 
   const handleClick = (id) => {
       if (path.includes("custom-quiz"))
@@ -57,7 +58,7 @@ export default function QuestionList() {
 
   useEffect(() => {
     getFilteredQuestions();
-  }, [selectedCategoryId, selectedType, selectedStatus, selectedUserId]);
+  }, [selectedCategoryId, selectedType, selectedStatus, selectedUserId, page]);
 
   useEffect(() => {
     isExpired();
@@ -74,9 +75,19 @@ export default function QuestionList() {
     }
   };
 
+  const getDisplayedQuestionsStartIndex = () => {
+    return QUESTIONS_PER_PAGE * (page - 1);
+  } 
+
+  const getQuestionsToDisplay = () => {
+    return questions.slice(getDisplayedQuestionsStartIndex(), getDisplayedQuestionsStartIndex() + QUESTIONS_PER_PAGE);
+  }
+
   return questions.length === 0 ? (
     <Help>No questions to display.</Help>
   ) : (
+    <React.Fragment>
+    <Help size='small'>Page: {page} / {getPageNumber()}</Help>
     <OverflowFlexContainer>
       <Table>
         <Thead>
@@ -92,7 +103,7 @@ export default function QuestionList() {
           </TableRow>
         </Thead>
         <TBody>
-          {questions.map(question => (
+          {getQuestionsToDisplay().map(question => (
             <LinedTableTr key={question.id} onClick={() => handleClick(question.id)} className={selectedQuestionIds.includes(question.id) ? "selected" : ""}>
               <LongLinedTableTd>{question.id}</LongLinedTableTd>
               {!path.includes("custom-quiz") ? (
@@ -119,5 +130,8 @@ export default function QuestionList() {
         </TBody>
       </Table>
     </OverflowFlexContainer>
+      <QuestionListPagination/>
+    </React.Fragment>
+
   );
 }

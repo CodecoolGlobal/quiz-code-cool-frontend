@@ -12,7 +12,9 @@ export const QuestionFilterContext = createContext();
 
 export const QuestionFilterProvider = props => {
   const NEW_CUSTOM_QUIZ_PATH = "/custom-quiz/new";
+  const QUESTIONS_PER_PAGE = 10;
 
+  const [page, setPage] = useState(1);
   const [questions, setQuestions] = useState([]);
 
   const {categoryInput, DEFAULT_CATEGORY} = useContext(CategoryContext);
@@ -59,9 +61,16 @@ export const QuestionFilterProvider = props => {
     }
   }
 
+  const getPageNumber = () => {
+    return Math.ceil(questions.length / QUESTIONS_PER_PAGE)
+  }
+
   return (
     <QuestionFilterContext.Provider value={{
+        getPageNumber,
+        QUESTIONS_PER_PAGE,
         getFilteredQuestions,
+        pageState: [page, setPage],
         filteredQuestionsState: [questions, setQuestions]}}>
       {props.children}
     </QuestionFilterContext.Provider>

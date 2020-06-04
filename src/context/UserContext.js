@@ -13,7 +13,8 @@ export const UserProvider = props => {
       setUsername(null);
       setRoles(null);
       setUserId(null);
-      setExp(null)
+      setExp(null);
+      localStorage.clear();
     }
   }
 
