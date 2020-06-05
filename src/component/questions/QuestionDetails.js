@@ -18,7 +18,6 @@ import {
 } from "../../style/js/CommonStyles";
 import { api_getQuestion } from "api/questionConnection";
 import { handleError } from "util/errorUtil";
-import { QuestionListTdNavLink } from "./style";
 
 export default function QuestionDetails(props) {
   const { selectedQuestionState } = useContext(QuestionDetailsContext);

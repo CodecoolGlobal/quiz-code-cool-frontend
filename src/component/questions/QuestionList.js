@@ -16,13 +16,13 @@ import {
   TableRow,
   TBody,
   LinedTableTh,
-  LinedTableQuestionTd,
+  LinedTableLongTd,
   LinedTableTr,
   ShortCenteredLinedTableTd,
+  LinedTableLink
 } from 'style/js/CommonStyles';
 import {  
   TrashImage,
-  QuestionListLink
 } from 'component/questions/style'
 import deleteIcon from "style/img/delete-icon.png";
 import { api_deleteQuestion } from 'api/questionConnection';
@@ -98,7 +98,7 @@ export default function QuestionList() {
             <LinedTableTh>Category</LinedTableTh>
             <LinedTableTh>Type</LinedTableTh>
             <LinedTableTh>Status</LinedTableTh>
-            <LinedTableTh>User</LinedTableTh>
+            {!path.includes("users") && <LinedTableTh>User</LinedTableTh>}            
             {roles.includes("ROLE_ADMIN") && !path.includes("custom-quiz") && (
                 <LinedTableTh></LinedTableTh>
               )}
@@ -109,22 +109,22 @@ export default function QuestionList() {
             <LinedTableTr key={question.id} onClick={() => handleClick(question.id)} className={selectedQuestionIds.includes(question.id) ? "selected" : ""}>
               <SquareLinedTableTd>{question.id}</SquareLinedTableTd>
               {!path.includes("custom-quiz") ? (
-                <LinedTableQuestionTd onClick={() =>  window.open(`/questions/${question.id}`, "_blank") }>
-                  <QuestionListLink>
+                <LinedTableLongTd onClick={() =>  window.open(`/questions/${question.id}`, "_blank") }>
+                  <LinedTableLink>
                     {question.question}
-                  </QuestionListLink>
-                </LinedTableQuestionTd>
+                  </LinedTableLink>
+                </LinedTableLongTd>
               ) : (
-                <LinedTableQuestionTd>{question.question}</LinedTableQuestionTd>
+                <LinedTableLongTd>{question.question}</LinedTableLongTd>
               )}
               <ShortCenteredLinedTableTd>{question.category.name}</ShortCenteredLinedTableTd>
               <ShortCenteredLinedTableTd>{typesMap[question.type]}</ShortCenteredLinedTableTd>
               <ShortCenteredLinedTableTd>
                 {question.validated === true ? 'Validated' : 'Not validated'}
               </ShortCenteredLinedTableTd>
-              <ShortCenteredLinedTableTd>
-                {question.appUser.name}
-              </ShortCenteredLinedTableTd>
+              {!path.includes("users") && <ShortCenteredLinedTableTd onClick={() =>  window.open(`/users/${question.appUser.id}`, "_blank") }>
+                <LinedTableLink>{question.appUser.name}</LinedTableLink>
+              </ShortCenteredLinedTableTd> }
               {roles.includes("ROLE_ADMIN") && !path.includes("custom-quiz") && (
                 <SquareLinedTableTd onClick={() => deleteQuestion(question.id)}>
                 <TrashImage title="Delete question" src={deleteIcon} alt='delete icon'></TrashImage> 
@@ -135,7 +135,7 @@ export default function QuestionList() {
         </TBody>
       </Table>
     </OverflowFlexContainer>
-      <QuestionListPagination/>
+    <QuestionListPagination/>
     </React.Fragment>
 
   );

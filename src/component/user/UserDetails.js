@@ -17,6 +17,7 @@ import { UsersContext } from "context/UsersContext";
 import { RestoreInputsContext } from "context/RestoreFiltersContext";
 import QuestionList from "component/questions/QuestionList";
 import CustomQuizList from "component/quizzes/custom/customQuizList/CustomQuizList";
+import { DashedBorder } from "./styles";
 
 export default function UserDetails(props) {
   const { id } = props.match.params;
@@ -69,15 +70,15 @@ export default function UserDetails(props) {
         </Table>) : <Help>No user to display.</Help>}
       </OverflowFlexContainer>
       {user != null && user.customQuizzes.length !== 0 && 
-      <React.Fragment>
+      <DashedBorder>
         <H4>Quizzes</H4>
-        <CustomQuizList customQuizzes={user.customQuizzes}/>
-      </React.Fragment>}
+        <CustomQuizList/>
+      </DashedBorder>}
       {user != null && user.questions.length !== 0 &&
-      <React.Fragment>
+      <DashedBorder>
         <H4>Questions</H4>
         <QuestionList/>
-      </React.Fragment>}
+      </DashedBorder>}
     </WiderContentContainer>
   );
 }

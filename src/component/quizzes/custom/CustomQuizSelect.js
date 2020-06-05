@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import {
   ThinnerContentContainer,
   H3,
@@ -8,15 +9,12 @@ import {
   RadioButtonLabel
 } from "style/js/CommonStyles";
 
-export default function CustomQuizSelect(props) {
-  const [selected, setSelected] = useState("");
+export default function CustomQuizSelect() {
+  const history = useHistory();
 
-  const setChoice = e => {
-    setSelected(e.target.value);
-  };
-
-  const goToNext = () => {
-    props.history.push(selected);
+  const goToNext = (e) => {
+    console.log(e.target.value)
+    history.push(e.target.value);
   };
 
   return (
@@ -24,13 +22,24 @@ export default function CustomQuizSelect(props) {
       <H3>Custom quiz</H3>
 
       <InputItem>
+
+      <RadioButton
+          id='list'
+          type='radio'
+          name='answer'
+          value='/custom-quizzes'
+          defaultChecked={false}
+          onClick={goToNext}
+        />
+        <RadioButtonLabel htmlFor='list'>List quizzes</RadioButtonLabel>
+
         <RadioButton
           id='new'
           type='radio'
           name='answer'
           value='/custom-quiz/new'
           defaultChecked={false}
-          onClick={setChoice}
+          onClick={goToNext}
         />
         <RadioButtonLabel htmlFor='new'>Create new quiz</RadioButtonLabel>
 
@@ -40,11 +49,11 @@ export default function CustomQuizSelect(props) {
           name='answer'
           value='/custom-quiz/start'
           defaultChecked={false}
-          onClick={setChoice}
+          onClick={goToNext}
         />
         <RadioButtonLabel htmlFor='start'>Start a quiz</RadioButtonLabel>
+
       </InputItem>
-      <Button onClick={goToNext}>Next</Button>
     </ThinnerContentContainer>
   );
 }

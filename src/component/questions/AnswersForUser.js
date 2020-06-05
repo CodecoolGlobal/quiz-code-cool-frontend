@@ -3,6 +3,7 @@ import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 
 import { shuffle } from "util/arrayUtil";
 import { TableRow, Th, TableData } from "style/js/CommonStyles";
+import { TableDataWithElements } from "./style";
 
 export default function AnswersForUser() {
   const { selectedQuestionState } = useContext(QuestionDetailsContext);
@@ -20,11 +21,11 @@ export default function AnswersForUser() {
   return (
     <TableRow>
       <Th>Possible answers</Th>
-      <TableData>
+      <TableDataWithElements>
         {getShuffledAnswers().map((answer, index) => (
-          <p key={index}>{answer}</p>
+          <div key={index}>{answer}</div>
         ))}
-      </TableData>
+      </TableDataWithElements>
     </TableRow>
   );
 }

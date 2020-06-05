@@ -38,7 +38,7 @@ export const ThinnerContentContainer = styled.div`
 `;
 
 export const WiderContentContainer = styled.div`
-  padding: 25px 5%;
+  padding: 30px 5% 35px 5%;
   background: ${applicationTheme.mainLightOpaque};
   border-radius: ${applicationTheme.borderRadius3};
   margin: 25px 15% 70px 15%;
@@ -68,7 +68,7 @@ export const H3 = styled.h3`
 `;
 
 export const H4 = styled.h4`
-  margin: 20px 0 5px 0;
+  margin: 10px 0;
   color: ${applicationTheme.color2};
 `;
 
@@ -87,7 +87,7 @@ export const AuthHelp = styled.p`
 
 export const Help = styled.p`
   color: ${applicationTheme.gray};
-  margin: 8px 0;
+  margin: 10px 0;
   font-size: ${applicationTheme.fontSize3};
   font-weight: bolder 
 `;
@@ -193,6 +193,7 @@ export const RadioButton = styled.input`
 `;
 
 export const Table = styled.div`
+  padding: 5px 0;
   width: 100%;
   display: table;
   box-shadow: ${applicationTheme.shadow2};
@@ -213,11 +214,12 @@ export const TBody = styled.div`
 `;
 
 export const Th = styled.div`
-  min-width: 80px;
+  vertical-align: middle;
+  min-width: 90px;
   font-weight: bold;
   display: table-cell;
   font-size: ${applicationTheme.fontSize1};
-  padding: 15px 20px;
+  padding: 15px 15px 15px 25px;
   text-align: left;
 `;
 
@@ -233,7 +235,7 @@ export const TableRow = styled.div`
 export const TableData = styled.div`
   display: table-cell;
   font-size: ${applicationTheme.fontSize1};
-  padding: 15px 20px;
+  padding: 15px 5px 15px 25px;
   text-align: left;
 `;
 
@@ -279,7 +281,15 @@ export const LinedTableTr = styled.div`
   }
 `;
 
-export const LinedTableQuestionTd = styled.div`
+export const LinedTableLink = styled.div`
+  color: inherit;
+  &:hover {
+    color: #fff;
+    cursor: pointer;
+  }
+`;
+
+export const LinedTableLongTd = styled.div`
   vertical-align: middle;
   display: table-cell;
   max-width: 400px;
@@ -290,6 +300,7 @@ export const LinedTableQuestionTd = styled.div`
 
 export const SquareLinedTableTd = styled.div`
   vertical-align: middle;
+  text-align: center;
   display: table-cell;
   padding: 8px 10px;
 `;

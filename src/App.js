@@ -11,6 +11,8 @@ import RandomQuizStarterForm from "component/quizzes/random/randomquizstarterfor
 import CustomQuizStarterForm from "component/quizzes/custom/customquizstarterform/CustomQuizStarterForm";
 import AddNewQuestionForm from "component/newquestion/NewQuestionForm";
 import AllQuestionsList from "component/questions/AllQuestionsList";
+import AllCustomQuizzesList from "component/quizzes/custom/customQuizList/AllCustomQuizzesList";
+
 import QuestionDetails from "component/questions/QuestionDetails";
 import QuestionCard from "component/quizzes/questioncard/QuestionCard";
 import Result from "component/quizzes/result/Result";
@@ -82,6 +84,11 @@ function App() {
                                         exact
                                         path='/random-quiz'
                                         component={RandomQuizStarterForm}
+                                      />
+                                      <PrivateRoute
+                                        exact
+                                        path='/custom-quizzes'
+                                        component={AllCustomQuizzesList}
                                       />
                                       <PrivateRoute
                                         exact

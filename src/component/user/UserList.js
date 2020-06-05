@@ -25,20 +25,20 @@ export default function UserList() {
     };
 
     return (
-        <ThinnerContentContainer>
-      <H3>User list</H3>
-      <OverflowFlexContainer>
-        {users != null ? (
-        <Table>
-          <TBody>{
-            users.map(user => (
-            <TableRow key={user.id}>
-              <FormattedNavLink to={`/users/${user.id}`}><TableData>{user.username}</TableData></FormattedNavLink>
-            </TableRow>
-            ))}
-          </TBody>
-        </Table>) : <Help>No user to display.</Help>}
-      </OverflowFlexContainer>
+      <ThinnerContentContainer>
+        <H3>User list</H3>
+        <OverflowFlexContainer>
+          {users != null ? (
+          <Table>
+            <TBody>{
+              users.map(user => (
+              <TableRow key={user.id}>
+                <FormattedNavLink target='_blank' to={`/users/${user.id}`}><TableData>{user.username}</TableData></FormattedNavLink>
+              </TableRow>
+              ))}
+            </TBody>
+          </Table>) : <Help>No user to display.</Help>}
+        </OverflowFlexContainer>
     </ThinnerContentContainer>
     )
 }
