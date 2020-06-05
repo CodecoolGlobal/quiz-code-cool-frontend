@@ -34,7 +34,7 @@ export default function QuestionList() {
   const { rolesState,  isExpired } = useContext(UserContext);
   const roles = rolesState[0];
 
-  const {toggleQuestionId, selectedQuestionsState} = useContext(NewQuizContext);
+  const {toggleQuestionId, selectedQuestionsState, recalculateIsReadyToProceed} = useContext(NewQuizContext);
   const [selectedQuestionIds, setSelectedQuestionIds] = selectedQuestionsState;
   const selectedCategoryId = useContext(CategoryContext).categoryInput[0];
   const selectedStatus = useContext(StatusContext)[0];
@@ -65,6 +65,10 @@ export default function QuestionList() {
     isExpired();
     setSelectedQuestionIds([]);
   }, [])
+
+  useEffect(() => {
+    recalculateIsReadyToProceed();
+  }, [selectedQuestionIds])
 
   const deleteQuestion = async (id) => {
     try {

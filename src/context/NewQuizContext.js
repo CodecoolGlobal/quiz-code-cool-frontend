@@ -21,10 +21,10 @@ export const NewQuizProvider = (props) => {
     } else {
       setSelectedQuestionIds([...selectedQuestionIds, id]);
     }
-    recalculateIsReadyToProceed();
   }
 
   const recalculateIsReadyToProceed = () => {
+    console.log(selectedQuestionIds)
     if (
       quizNameInput.length > 0 &&
       quizNameInput.trim() !== "" &&
