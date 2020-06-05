@@ -44,7 +44,7 @@ export default function UserDetails(props) {
 
   return (
     <WiderContentContainer>
-      <H3>{user != null ? user.username : "..."}'s page</H3>
+      {user != null && <H3>{`${user.username}'s page`}</H3>}
       <OverflowFlexContainer>
         {user != null ? (
         <Table>

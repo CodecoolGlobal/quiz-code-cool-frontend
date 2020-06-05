@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { ThinnerContentContainer, H3, OverflowFlexContainer, Table, Th, TableRow, Help, TableData, Thead, TBody, FormattedNavLink } from 'style/js/CommonStyles'
+import { ThinnerContentContainer, H3, OverflowFlexContainer, Table, Help, TableRow, TableData, TBody, FormattedNavLink } from 'style/js/CommonStyles'
 import { api_getUsers } from 'api/UserConnection';
 import { handleError } from 'util/errorUtil';
 import { UserContext } from "context/UserContext";
@@ -30,11 +30,6 @@ export default function UserList() {
       <OverflowFlexContainer>
         {users != null ? (
         <Table>
-          <Thead>
-            <TableRow>
-              <Th>Username</Th>
-            </TableRow>
-          </Thead>
           <TBody>{
             users.map(user => (
             <TableRow key={user.id}>

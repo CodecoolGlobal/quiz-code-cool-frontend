@@ -154,6 +154,9 @@ export const HeaderButton = styled.button`
 export const QuestionsImage = styled.img`
   display: block;
   height: 60px;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const UserImage = styled.img`

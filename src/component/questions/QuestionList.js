@@ -8,6 +8,7 @@ import { StatusContext } from 'context/StatusContext';
 import { NewQuizContext } from 'context/NewQuizContext';
 import { UserContext } from "context/UserContext";
 import {
+  SquareLinedTableTd,
   Help,
   Table,
   OverflowFlexContainer,
@@ -15,7 +16,7 @@ import {
   TableRow,
   TBody,
   LinedTableTh,
-  LongLinedTableTd,
+  LinedTableQuestionTd,
   LinedTableTr,
   ShortCenteredLinedTableTd,
 } from 'style/js/CommonStyles';
@@ -84,7 +85,7 @@ export default function QuestionList() {
   }
 
   return questions.length === 0 ? (
-    <Help>No questions to display.</Help>
+    <Help>No question to display.</Help>
   ) : (
     <React.Fragment>
     <Help size='small'>Page: {page} / {getPageNumber()}</Help>
@@ -105,15 +106,15 @@ export default function QuestionList() {
         <TBody>
           {getQuestionsToDisplay().map(question => (
             <LinedTableTr key={question.id} onClick={() => handleClick(question.id)} className={selectedQuestionIds.includes(question.id) ? "selected" : ""}>
-              <LongLinedTableTd>{question.id}</LongLinedTableTd>
+              <SquareLinedTableTd>{question.id}</SquareLinedTableTd>
               {!path.includes("custom-quiz") ? (
-                <LongLinedTableTd onClick={() =>  window.open(`/questions/${question.id}`, "_blank") }>
+                <LinedTableQuestionTd onClick={() =>  window.open(`/questions/${question.id}`, "_blank") }>
                   <QuestionListLink>
                     {question.question}
                   </QuestionListLink>
-                </LongLinedTableTd>
+                </LinedTableQuestionTd>
               ) : (
-                <LongLinedTableTd>{question.question}</LongLinedTableTd>
+                <LinedTableQuestionTd>{question.question}</LinedTableQuestionTd>
               )}
               <ShortCenteredLinedTableTd>{question.category.name}</ShortCenteredLinedTableTd>
               <ShortCenteredLinedTableTd>{typesMap[question.type]}</ShortCenteredLinedTableTd>
@@ -121,9 +122,9 @@ export default function QuestionList() {
                 {question.validated === true ? 'Validated' : 'Not validated'}
               </ShortCenteredLinedTableTd>
               {roles.includes("ROLE_ADMIN") && !path.includes("custom-quiz") && (
-                <LongLinedTableTd onClick={() => deleteQuestion(question.id)}>
+                <SquareLinedTableTd onClick={() => deleteQuestion(question.id)}>
                 <TrashImage title="Delete question" src={deleteIcon} alt='delete icon'></TrashImage> 
-              </LongLinedTableTd>
+              </SquareLinedTableTd>
               )}
             </LinedTableTr>
           ))}

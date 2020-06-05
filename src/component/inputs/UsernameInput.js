@@ -4,7 +4,7 @@ import {
   InputItem,
   InputLabel,
   TextInput,
-  Help,
+  AuthHelp,
   LeftTextAlignContainer
 } from "style/js/CommonStyles";
 import { AuthContext } from "context/AuthContext";
@@ -29,7 +29,7 @@ export default function UsernameInput() {
       case "/sign-up":
         return (
           <LeftTextAlignContainer>
-            <Help>Between 5 and 20 characters. </Help>
+            <AuthHelp>Between 5 and 20 characters. </AuthHelp>
           </LeftTextAlignContainer>
         );
       default:

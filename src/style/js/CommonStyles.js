@@ -23,16 +23,16 @@ export const applicationTheme = {
 };
 
 export const ThinnerContentContainer = styled.div`
-  padding: 25px 5% 20px 5%;
+  padding: 25px 5%;
   background: ${applicationTheme.mainLightOpaque};
   border-radius: ${applicationTheme.borderRadius3};
   margin: 25px 30% 70px 30%;
   box-shadow: ${applicationTheme.shadow1};
   @media screen and (max-width: 992px) {
-    margin: 25px 25% 70px 25%;
+    margin: 25px 20% 70px 20%;
   }
   @media screen and (max-width: 600px) {
-    margin: 25px 10% 70px 10%;
+    margin: 25px 5% 70px 5%;
     padding: 15px 10%;
   }
 `;
@@ -78,10 +78,18 @@ export const Message = styled.p`
   padding: 5px;
 `;
 
-export const Help = styled.p`
+export const AuthHelp = styled.p`
   color: ${applicationTheme.gray};
   padding: 2px;
   font-size: ${applicationTheme.fontSize3};
+`;
+
+
+export const Help = styled.p`
+  color: ${applicationTheme.gray};
+  margin: 8px 0;
+  font-size: ${applicationTheme.fontSize3};
+  font-weight: bolder 
 `;
 
 export const InputItem = styled.div`
@@ -142,7 +150,7 @@ export const Button = styled.button`
   border-radius: ${applicationTheme.borderRadius4};
   border: 2px solid ${applicationTheme.color2};
   padding: 10px 15px;
-  margin: 15px;
+  margin: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -188,12 +196,10 @@ export const Table = styled.div`
   width: 100%;
   display: table;
   box-shadow: ${applicationTheme.shadow2};
-  margin: 10px;
 `;
 
 export const OverflowFlexContainer = styled.div`
   display: flex;
-  justify-content: center;
   overflow-x: auto;
 `;
 
@@ -206,11 +212,12 @@ export const TBody = styled.div`
 `;
 
 export const Th = styled.div`
+  min-width: 80px;
   font-weight: bold;
   display: table-cell;
   font-size: ${applicationTheme.fontSize1};
-  padding: 10px 15px;
-  margin-bottom: 5px;
+  padding: 15px 20px;
+  text-align: left;
 `;
 
 export const TableRow = styled.div`
@@ -225,7 +232,8 @@ export const TableRow = styled.div`
 export const TableData = styled.div`
   display: table-cell;
   font-size: ${applicationTheme.fontSize1};
-  padding: 10px 15px;
+  padding: 15px 20px;
+  text-align: left;
 `;
 
 export const FormattedNavLink = styled(NavLink)`
@@ -270,10 +278,18 @@ export const LinedTableTr = styled.div`
   }
 `;
 
-export const LongLinedTableTd = styled.div`
+export const LinedTableQuestionTd = styled.div`
   vertical-align: middle;
   display: table-cell;
   max-width: 400px;
+  min-width: 150px;
+  padding: 8px 10px;
+`;
+
+
+export const SquareLinedTableTd = styled.div`
+  vertical-align: middle;
+  display: table-cell;
   padding: 8px 10px;
 `;
 

@@ -4,7 +4,7 @@ import { ProgressContext } from "context/ProgressContext";
 import { AuthContext } from "context/AuthContext";
 import { NavLink } from "react-router-dom";
 
-import { ThinnerContentContainer, H3, Button, Help } from "style/js/CommonStyles";
+import { ThinnerContentContainer, H3, Button, AuthHelp } from "style/js/CommonStyles";
 import UsernameInput from "component/inputs/UsernameInput";
 import PasswordInput from "component/inputs/PasswordInput";
 import EmailInput from "component/inputs/EmailInput";
@@ -38,10 +38,10 @@ export default function AuthForm() {
 
   const pasteSignUpHelp = () => {
     if(path === "/sign-in") {
-      return <Help>
+      return <AuthHelp>
       New to Codecool Quiz? Create an{" "}
       <NavLink to="/sign-up">account.</NavLink>
-    </Help>;
+    </AuthHelp>;
     }
   }
 
