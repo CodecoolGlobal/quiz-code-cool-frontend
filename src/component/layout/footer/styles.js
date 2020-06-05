@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { applicationTheme } from "style/js/CommonStyles";
 
 export const FooterContainer = styled.div`
-  padding: 1%;
+  padding: 10px 1%;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -12,17 +12,9 @@ export const FooterContainer = styled.div`
   background: #fff;
 `;
 
-export const FooterItem = styled.div`
+export const FooterItemEdge = styled.div`
   float: right;
-  width: 33%;
-`;
-
-export const FooterItemCenter = styled.div`
-  font-family: "Capriola", sans-serif;
-  font-weight: bold;
-`;
-
-export const FooterItemRight = styled.div`
+  width: 13%;
   text-align: right;
   & a {
     text-decoration: none;
@@ -34,4 +26,11 @@ export const FooterItemRight = styled.div`
       color: ${applicationTheme.orange}
     }
   }
+`;
+
+export const FooterItemCenter = styled.div`
+  float: right;
+  width: 74%;
+  font-family: "Capriola", sans-serif;
+  font-weight: bold;
 `;
