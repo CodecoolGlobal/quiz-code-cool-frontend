@@ -26,13 +26,13 @@ export const ThinnerContentContainer = styled.div`
   padding: 25px 5% 20px 5%;
   background: ${applicationTheme.mainLightOpaque};
   border-radius: ${applicationTheme.borderRadius3};
-  margin: 25px 30% 60px 30%;
+  margin: 25px 30% 70px 30%;
   box-shadow: ${applicationTheme.shadow1};
   @media screen and (max-width: 992px) {
-    margin: 25px 25% 60px 25%;
+    margin: 25px 25% 70px 25%;
   }
   @media screen and (max-width: 600px) {
-    margin: 25px 10% 60px 10%;
+    margin: 25px 10% 70px 10%;
     padding: 15px 10%;
   }
 `;
@@ -41,13 +41,13 @@ export const WiderContentContainer = styled.div`
   padding: 25px 5%;
   background: ${applicationTheme.mainLightOpaque};
   border-radius: ${applicationTheme.borderRadius3};
-  margin: 25px 15% 60px 15%;
+  margin: 25px 15% 70px 15%;
   box-shadow: ${applicationTheme.shadow1};
   @media screen and (max-width: 992px) {
-    margin: 25px 8% 60px 8%;
+    margin: 25px 8% 70px 8%;
   }
   @media screen and (max-width: 600px) {
-    margin: 25px 0 60px 0;
+    margin: 25px 0 70px 0;
   }
 `;
 
