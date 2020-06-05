@@ -57,7 +57,6 @@ export const AuthProvider = (props) => {
 
   const setUpUserData = (responseData) => {
     const {username, roles, exp, userId} = responseData;
-    console.log(roles)
     localStorage.setItem("username", username);
     localStorage.setItem("roles", roles);
     localStorage.setItem("exp", exp);
