@@ -24,7 +24,7 @@ export default function CustomQuizList(props) {
         </Thead>
         <TBody>
           {customQuizzes.map((quiz) => (
-            <LinedTableTr>
+            <LinedTableTr key={quiz.id}>
               <ShortCenteredLinedTableTd>{quiz.id}</ShortCenteredLinedTableTd>
               <ShortCenteredLinedTableTd>{quiz.name}</ShortCenteredLinedTableTd>
             </LinedTableTr>
