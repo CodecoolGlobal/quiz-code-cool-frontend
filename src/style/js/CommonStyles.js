@@ -80,6 +80,7 @@ export const Message = styled.p`
 `;
 
 export const Help = styled.p`
+  color: ${applicationTheme.gray};
   padding: 2px;
   font-size: ${applicationTheme.fontSize3};
 `;
