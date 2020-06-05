@@ -201,6 +201,7 @@ export const Table = styled.div`
 export const OverflowFlexContainer = styled.div`
   display: flex;
   overflow-x: auto;
+  justify-content: flex-start
 `;
 
 export const Thead = styled.div`
