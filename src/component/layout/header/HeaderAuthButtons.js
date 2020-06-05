@@ -4,7 +4,7 @@ import { AuthContext } from "context/AuthContext";
 
 import { HeaderButton, HeaderNavLink } from "component/layout/header/styles";
 
-export default function HeaderButtons() {
+export default function HeaderAuthButtons() {
   const { usernameState, isExpired } = useContext(UserContext);
   const { signOut } = useContext(AuthContext);
   const username = usernameState[0];

@@ -3,7 +3,7 @@ import { UserContext } from "context/UserContext";
 import user from "style/img/user.png";
 
 import {
-    ToolbarNavigationUl,
+    NavigUl,
     UserImage,
   } from "component/layout/header/styles";
 import { FormattedNavLink } from "style/js/CommonStyles";
@@ -20,12 +20,12 @@ export default function UserInfo() {
     return (
         username ? (
             <div>
-              <ToolbarNavigationUl>
+              <NavigUl>
                 <li>
                   <UserImage src={user}></UserImage>
                   <FormattedNavLink to={`/users/${userId}`}>{username}</FormattedNavLink>
                 </li>
-              </ToolbarNavigationUl>
+              </NavigUl>
             </div>
           ) : (
             <React.Fragment></React.Fragment>

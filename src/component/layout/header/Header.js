@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import ToolBar from "component/layout/header/ToolBar";
-import HeaderButtons from "component/layout/header/HeaderButtons";
+import NavigationBar from "component/layout/header/NavigationBar";
+import HeaderAuthButtons from "component/layout/header/HeaderAuthButtons";
 
 import {
   HeaderContainer,
@@ -20,10 +20,10 @@ export default function Header() {
         </NavLink>
         <div>
           <Title>Codecool Quiz</Title>
-          <HeaderButtons />
+          <HeaderAuthButtons />
         </div>
       </TitleContainer>
-      <ToolBar />
+      <NavigationBar />
     </HeaderContainer>
   );
 }

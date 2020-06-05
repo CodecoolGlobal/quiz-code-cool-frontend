@@ -1,28 +1,25 @@
 import React from "react";
-import MenuToggleButton from "component/layout/header/MenuToggleButton";
-import DropDownMenu from "component/layout/header/DropDownMenu";
+import MenuToggle from "component/layout/header/MenuToogle";
 import UserInfo from "component/layout/header/UserInfo";
-
-
 import {
-  Toolbar,
-  ToolbarNavigation,
-  ToolbarNavigationItems,
-  ToolbarNavigationUl,
+  NavigBar,
+  NavigBarItemContainer,
+  NavigItem,
+  NavigUl,
   Spacer,
 } from "component/layout/header/styles";
 import { FormattedNavLink } from "style/js/CommonStyles";
 
-export default function ToolBar() {
+export default function NavigationBar() {
 
   return (
-    <Toolbar>
-      <ToolbarNavigation>
+    <NavigBar>
+      <NavigBarItemContainer>
         <div>
-          <MenuToggleButton />
+          <MenuToggle />
         </div>
-        <ToolbarNavigationItems>
-          <ToolbarNavigationUl>
+        <NavigItem>
+          <NavigUl>
             <li>
               <FormattedNavLink to='/custom-quiz'>Custom quiz</FormattedNavLink>
             </li>
@@ -40,12 +37,11 @@ export default function ToolBar() {
             <li>
               <FormattedNavLink to='/users'>Users</FormattedNavLink>
             </li>
-          </ToolbarNavigationUl>
-        </ToolbarNavigationItems>
+          </NavigUl>
+        </NavigItem>
         <Spacer />
         <UserInfo />
-      </ToolbarNavigation>
-      <DropDownMenu />
-    </Toolbar>
+      </NavigBarItemContainer>
+    </NavigBar>
   );
 }

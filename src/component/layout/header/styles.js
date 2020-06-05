@@ -21,16 +21,9 @@ export const Title = styled.h2`
   color: ${applicationTheme.color1};
 `;
 
-export const NavigBar = styled.ul`
-  color: ${applicationTheme.color1};
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background: #fff;
-`;
 
 export const MenuNavLink = styled(NavLink)`
-  color: inherit;
+  color: ${applicationTheme.color1};
   font-size: ${applicationTheme.fontSize1};
   text-decoration: none;
   display: block;
@@ -43,8 +36,8 @@ export const MenuNavLink = styled(NavLink)`
 export const MenuNavItem = styled.li`
   margin: 0;
   display: block;
-  padding: 5px 20px;
-  text-align: center;
+  padding: 10px 20px;
+  text-align: left;
   &:hover {
     cursor: pointer;
     background: ${applicationTheme.color4};
@@ -59,28 +52,27 @@ export const HeaderNavLink = styled(NavLink)`
   }
 `;
 
-export const Toolbar = styled.header`
+export const NavigBar = styled.header`
   color: ${applicationTheme.color1};
-  position: sticky;
   height: 40px;
   width: 100%;
   background: #fff;
 `;
 
-export const ToolbarNavigation = styled.nav`
+export const NavigBarItemContainer = styled.nav`
   display: flex;
   height: 100%;
   align-items: center;
   padding: 0 1rem;
 `;
 
-export const ToolbarNavigationItems = styled.div`
+export const NavigItem = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
 `;
 
-export const ToolbarNavigationUl = styled.ul`
+export const NavigUl = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
@@ -93,19 +85,6 @@ export const ToolbarNavigationUl = styled.ul`
 
 export const Spacer = styled.div`
   flex: 1;
-`;
-
-export const ToggleButton = styled.button`
-  height: 30px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  &:focus {
-    outline: none;
-  }
-  @media (min-width: 769px) {
-    display: none;
-  }
 `;
 
 export const HeaderButton = styled.button`
@@ -164,6 +143,10 @@ export const UserImage = styled.img`
   margin-right: 5px;
 `;
 
-export const MenuItemImage = styled.img`
+export const MenuToggleButton = styled.img`
   height: 20px;
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;

@@ -32,7 +32,6 @@ import { CategoryProvider } from "context/CategoryContext";
 import { TypeProvider } from "context/TypeContext";
 import { StatusProvider } from "context/StatusContext";
 import { RestoreInputsProvider } from "context/RestoreFiltersContext";
-import { MenuProvider } from "context/MenuContext";
 import { QuestionFilterProvider } from "context/QuestionFilterContext";
 import { NewQuizProvider } from "context/NewQuizContext";
 import { QuestionDetailsProvider } from "context/QuestionDetailsContext";
@@ -58,9 +57,7 @@ function App() {
                                 <NewQuizProvider>
                                   <AuthProvider>
                                     <QuestionDetailsProvider>
-                                      <MenuProvider>
-                                        <Header />
-                                      </MenuProvider>
+                                      <Header />
                                       <DisableRouteWhenAuthenticated
                                         exact
                                         path='/sign-in'
