@@ -98,6 +98,7 @@ export default function QuestionList() {
             <LinedTableTh>Category</LinedTableTh>
             <LinedTableTh>Type</LinedTableTh>
             <LinedTableTh>Status</LinedTableTh>
+            <LinedTableTh>User</LinedTableTh>
             {roles.includes("ROLE_ADMIN") && !path.includes("custom-quiz") && (
                 <LinedTableTh></LinedTableTh>
               )}
@@ -120,6 +121,9 @@ export default function QuestionList() {
               <ShortCenteredLinedTableTd>{typesMap[question.type]}</ShortCenteredLinedTableTd>
               <ShortCenteredLinedTableTd>
                 {question.validated === true ? 'Validated' : 'Not validated'}
+              </ShortCenteredLinedTableTd>
+              <ShortCenteredLinedTableTd>
+                {question.appUser.name}
               </ShortCenteredLinedTableTd>
               {roles.includes("ROLE_ADMIN") && !path.includes("custom-quiz") && (
                 <SquareLinedTableTd onClick={() => deleteQuestion(question.id)}>

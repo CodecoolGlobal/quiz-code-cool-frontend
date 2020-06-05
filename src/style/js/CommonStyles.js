@@ -298,6 +298,6 @@ export const ShortCenteredLinedTableTd = styled.div`
   vertical-align: middle;
   text-align: center;
   display: table-cell;
-  min-width: 90px;
+  min-width: 80px;
   padding: 8px 10px;
 `;
