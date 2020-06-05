@@ -68,9 +68,8 @@ export const H3 = styled.h3`
 `;
 
 export const H4 = styled.h4`
-  text-align: center;
-  margin: 10px 0 2px 0;
-  color: ${applicationTheme.color4};
+  margin: 20px 0 5px 0;
+  color: ${applicationTheme.color2};
 `;
 
 export const Message = styled.p`
