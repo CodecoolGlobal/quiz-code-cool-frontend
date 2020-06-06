@@ -125,21 +125,17 @@ export default function QuestionList() {
           {getQuestionsToDisplay().map(question => (
             <LinedTableTr key={question.id} onClick={() => handleClick(question.id)} className={selectedQuestionIds.includes(question.id) ? "selected" : ""}>
               <SquareLinedTableTd>{question.id}</SquareLinedTableTd>
-              {weAreOnNewCustomQuizPage() ? (
-                <LinedTableLongTd>{question.question}</LinedTableLongTd>
-              ) : (
-                <LinedTableLongTd onClick={() =>  window.open(`/questions/${question.id}`, "_blank") }>
+              <LinedTableLongTd onClick={(e) => { window.open(`/questions/${question.id}`, "_blank"); e.stopPropagation() }}>
                 <LinedTableLink>
                   {question.question}
                 </LinedTableLink>
               </LinedTableLongTd>
-              )}
               <ShortCenteredLinedTableTd>{question.category.name}</ShortCenteredLinedTableTd>
               <ShortCenteredLinedTableTd>{typesMap[question.type]}</ShortCenteredLinedTableTd>
               <ShortCenteredLinedTableTd>
                 {question.validated === true ? 'Validated' : 'Not validated'}
               </ShortCenteredLinedTableTd>
-              {!weAreOnUserPage() && <ShortCenteredLinedTableTd onClick={() => window.open(`/users/${question.appUser.id}`, "_blank") }>
+              {!weAreOnUserPage() && <ShortCenteredLinedTableTd onClick={(e) => {window.open(`/users/${question.appUser.id}`, "_blank");  e.stopPropagation()}  }>
                 <LinedTableLink>{question.appUser.name}</LinedTableLink>
               </ShortCenteredLinedTableTd> }
               {isAdmin() && !weAreOnNewCustomQuizPage() && (
