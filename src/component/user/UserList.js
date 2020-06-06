@@ -24,6 +24,19 @@ export default function UserList() {
       }
     };
 
+    function compareUsers(a, b) {
+      const userA = a.username;
+      const userB = b.username;
+    
+      let comparison = 0;
+      if (userA > userB) {
+        comparison = 1;
+      } else if (userA < userB) {
+        comparison = -1;
+      }
+      return comparison;
+    }
+
     return (
       <ThinnerContentContainer>
         <H3>User list</H3>
@@ -31,7 +44,7 @@ export default function UserList() {
           {users != null ? (
           <Table>
             <TBody>{
-              users.map(user => (
+              users.sort(compareUsers).map(user => (
               <TableRow key={user.id}>
                 <FormattedNavLink target='_blank' to={`/users/${user.id}`}><TableData>{user.username}</TableData></FormattedNavLink>
               </TableRow>

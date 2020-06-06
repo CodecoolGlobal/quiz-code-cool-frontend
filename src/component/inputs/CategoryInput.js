@@ -22,10 +22,24 @@ export default function CategoryInput(props) {
   const getCategories = async () => {
     try {
       const categories = await api_getCategories();
-      setAllCategories(categories);
+      setAllCategories(categories.sort(compareCategories));
     } catch(error) {
       handleError(error);
     }
+  }
+
+  function compareCategories(a, b) {
+    // Use toUpperCase() to ignore character casing
+    const categA = a.name.toUpperCase();
+    const categB = b.name.toUpperCase();
+  
+    let comparison = 0;
+    if (categA > categB) {
+      comparison = 1;
+    } else if (categA < categB) {
+      comparison = -1;
+    }
+    return comparison;
   }
 
   const handleCategory = e => {
