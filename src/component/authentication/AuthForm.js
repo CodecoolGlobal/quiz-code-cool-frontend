@@ -1,0 +1,66 @@
+import React, { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { ProgressContext } from "context/ProgressContext";
+import { AuthContext } from "context/AuthContext";
+import { NavLink } from "react-router-dom";
+
+import { ThinnerContentContainer, H3, Button, AuthHelp } from "style/js/CommonStyles";
+import UsernameInput from "component/inputs/UsernameInput";
+import PasswordInput from "component/inputs/PasswordInput";
+import EmailInput from "component/inputs/EmailInput";
+
+export default function AuthForm() {
+  const [isReadyToProceed, setIsReadyToProceed] = useContext(ProgressContext);
+  const { clearCredentials, signUp, signIn } = useContext(AuthContext);
+  const path = useHistory().location.pathname;
+
+  useEffect(() => {
+    clearCredentials();
+  }, []);
+
+  const submit = () => {
+    setIsReadyToProceed(false);
+    switch (path) {
+      case "/sign-up":
+        signUp();
+        break;
+      default:
+        signIn();
+        break;
+    }
+  };
+
+  const pasteEmail = () => {
+    if(path === "/sign-up") {
+      return <EmailInput />;
+    }
+  }
+
+  const pasteSignUpHelp = () => {
+    if(path === "/sign-in") {
+      return <AuthHelp>
+      New to Codecool Quiz? Create an{" "}
+      <NavLink to="/sign-up">account.</NavLink>
+    </AuthHelp>;
+    }
+  }
+
+  const getTitle = () => {
+    return path === "/sign-in" ? "Sign in" : "Sign up";
+  }
+
+  return (
+    <ThinnerContentContainer>
+      <H3>{getTitle()}</H3>
+      <div>
+        <UsernameInput />
+        {pasteEmail()}
+        <PasswordInput />
+      </div>
+      {pasteSignUpHelp()}
+      <Button disabled={!isReadyToProceed} onClick={submit}>
+      {getTitle()}
+      </Button>
+    </ThinnerContentContainer>
+  );
+}
