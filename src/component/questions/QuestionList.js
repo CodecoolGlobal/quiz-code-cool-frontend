@@ -51,7 +51,7 @@ export default function QuestionList() {
     QuestionFilterContext
   );
   const [questions, setQuestions] = filteredQuestionsState;
-  const page = pageState[0];
+  const [page, setPage] = pageState;
 
   const handleClick = (id) => {
       if (weAreOnNewCustomQuizPage(path))
@@ -70,6 +70,12 @@ export default function QuestionList() {
   useEffect(() => {
     recalculateIsReadyToProceed();
   }, [selectedQuestionIds])
+
+  useEffect(() => {
+    if (page > getPageNumber())
+      setPage(1);
+  }, [questions])
+
 
   const deleteQuestion = async (id) => {
     try {
