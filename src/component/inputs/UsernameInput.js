@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import {routes} from "util/routes"
 import {
   InputItem,
   InputLabel,
@@ -26,7 +27,7 @@ export default function UsernameInput() {
 
   const getHelperContainer = () => {
     switch (history.location.pathname) {
-      case "/sign-up":
+      case routes.auth.signUp:
         return (
           <LeftTextAlignContainer>
             <AuthHelp>Between 5 and 20 characters. </AuthHelp>

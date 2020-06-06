@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import {routes} from "util/routes";
 import QuestionListPagination from 'component/questions/QuestionListPagination';
 import { QuestionFilterContext } from 'context/QuestionFilterContext';
 import { CategoryContext } from 'context/CategoryContext';
@@ -53,7 +54,7 @@ export default function QuestionList() {
   const page = pageState[0];
 
   const handleClick = (id) => {
-      if (path.includes("custom-quiz"))
+      if (weAreOnNewCustomQuizPage(path))
         toggleQuestionId(id);
   };
 
@@ -88,6 +89,18 @@ export default function QuestionList() {
     return questions.slice(getDisplayedQuestionsStartIndex(), getDisplayedQuestionsStartIndex() + QUESTIONS_PER_PAGE);
   }
 
+  const isAdmin = () => {
+    return roles.includes("ROLE_ADMIN");
+  }
+
+  const weAreOnNewCustomQuizPage = () => {
+    return path === routes.customQuiz.new;
+  }
+
+  const weAreOnUserPage = () => {
+    return path.includes(routes.user.all);
+  }
+
   return questions.length === 0 ? (
     <Help>No question to display.</Help>
   ) : (
@@ -102,8 +115,8 @@ export default function QuestionList() {
             <LinedTableTh>Category</LinedTableTh>
             <LinedTableTh>Type</LinedTableTh>
             <LinedTableTh>Status</LinedTableTh>
-            {!path.includes("users") && <LinedTableTh>User</LinedTableTh>}            
-            {roles.includes("ROLE_ADMIN") && !path.includes("custom-quiz") && (
+            {!weAreOnUserPage() && <LinedTableTh>User</LinedTableTh>}            
+            {isAdmin() && !weAreOnNewCustomQuizPage() && (
                 <LinedTableTh></LinedTableTh>
               )}
           </TableRow>
@@ -112,24 +125,24 @@ export default function QuestionList() {
           {getQuestionsToDisplay().map(question => (
             <LinedTableTr key={question.id} onClick={() => handleClick(question.id)} className={selectedQuestionIds.includes(question.id) ? "selected" : ""}>
               <SquareLinedTableTd>{question.id}</SquareLinedTableTd>
-              {!path.includes("custom-quiz") ? (
-                <LinedTableLongTd onClick={() =>  window.open(`/questions/${question.id}`, "_blank") }>
-                  <LinedTableLink>
-                    {question.question}
-                  </LinedTableLink>
-                </LinedTableLongTd>
-              ) : (
+              {weAreOnNewCustomQuizPage() ? (
                 <LinedTableLongTd>{question.question}</LinedTableLongTd>
+              ) : (
+                <LinedTableLongTd onClick={() =>  window.open(`/questions/${question.id}`, "_blank") }>
+                <LinedTableLink>
+                  {question.question}
+                </LinedTableLink>
+              </LinedTableLongTd>
               )}
               <ShortCenteredLinedTableTd>{question.category.name}</ShortCenteredLinedTableTd>
               <ShortCenteredLinedTableTd>{typesMap[question.type]}</ShortCenteredLinedTableTd>
               <ShortCenteredLinedTableTd>
                 {question.validated === true ? 'Validated' : 'Not validated'}
               </ShortCenteredLinedTableTd>
-              {!path.includes("users") && <ShortCenteredLinedTableTd onClick={() =>  window.open(`/users/${question.appUser.id}`, "_blank") }>
+              {!weAreOnUserPage() && <ShortCenteredLinedTableTd onClick={() => window.open(`/users/${question.appUser.id}`, "_blank") }>
                 <LinedTableLink>{question.appUser.name}</LinedTableLink>
               </ShortCenteredLinedTableTd> }
-              {roles.includes("ROLE_ADMIN") && !path.includes("custom-quiz") && (
+              {isAdmin() && !weAreOnNewCustomQuizPage() && (
                 <SquareLinedTableTd onClick={() => deleteQuestion(question.id)}>
                 <TrashImage title="Delete question" src={deleteIcon} alt='delete icon'></TrashImage> 
               </SquareLinedTableTd>

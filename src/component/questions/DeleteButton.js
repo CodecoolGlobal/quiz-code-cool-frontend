@@ -5,6 +5,7 @@ import { UserContext } from "context/UserContext";
 import { Button } from "style/js/CommonStyles";
 import { api_deleteQuestion } from "api/questionConnection";
 import { handleError } from "util/errorUtil";
+import {routes} from "util/routes";
 
 export default function DeleteButton() {
   const history = useHistory();
@@ -21,7 +22,7 @@ export default function DeleteButton() {
     try {
       await api_deleteQuestion(question.id);
       alert("Question deleted successfully.");
-      history.push("/questions");
+      history.push(routes.question.all);
     } catch (error) {
       handleError(error);
     }

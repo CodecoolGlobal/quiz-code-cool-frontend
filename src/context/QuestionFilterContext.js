@@ -6,12 +6,11 @@ import { useHistory } from 'react-router-dom';
 import { api_getQuestions } from "api/questionConnection";
 import { handleError } from "util/errorUtil";
 import { UsersContext } from "./UsersContext";
-
+import {routes} from "util/routes";
 
 export const QuestionFilterContext = createContext();
 
 export const QuestionFilterProvider = props => {
-  const NEW_CUSTOM_QUIZ_PATH = "/custom-quiz/new";
   const QUESTIONS_PER_PAGE = 10;
 
   const [page, setPage] = useState(1);
@@ -32,7 +31,7 @@ export const QuestionFilterProvider = props => {
 
   const getValidatedPart = () => {
     const pathname = history.location.pathname;
-    if (pathname === NEW_CUSTOM_QUIZ_PATH)
+    if (pathname === routes.customQuiz.new)
         return "&validated=true";
     return selectedStatus === "" ? selectedStatus : `&validated=${selectedStatus}`;
   }

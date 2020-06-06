@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import {routes} from "util/routes";
 import { ProgressContext } from "context/ProgressContext";
 import { AuthContext } from "context/AuthContext";
 import { NavLink } from "react-router-dom";
@@ -21,7 +22,7 @@ export default function AuthForm() {
   const submit = () => {
     setIsReadyToProceed(false);
     switch (path) {
-      case "/sign-up":
+      case routes.auth.signUp:
         signUp();
         break;
       default:
@@ -31,22 +32,22 @@ export default function AuthForm() {
   };
 
   const pasteEmail = () => {
-    if(path === "/sign-up") {
+    if(path === routes.auth.signUp) {
       return <EmailInput />;
     }
   }
 
   const pasteSignUpHelp = () => {
-    if(path === "/sign-in") {
+    if(path === routes.auth.signIn) {
       return <AuthHelp>
       New to Codecool Quiz? Create an{" "}
-      <NavLink to="/sign-up">account.</NavLink>
+      <NavLink to={routes.auth.signUp}>account.</NavLink>
     </AuthHelp>;
     }
   }
 
   const getTitle = () => {
-    return path === "/sign-in" ? "Sign in" : "Sign up";
+    return path === routes.auth.signIn ? "Sign in" : "Sign up";
   }
 
   return (

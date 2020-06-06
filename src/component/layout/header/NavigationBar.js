@@ -1,4 +1,5 @@
 import React from "react";
+import {routes} from "util/routes"
 import MenuToggle from "component/layout/header/MenuToogle";
 import UserInfo from "component/layout/header/UserInfo";
 import {
@@ -21,16 +22,16 @@ export default function NavigationBar() {
         <NavigItem>
           <NavigUl>
             <li>
-              <FormattedNavLink to='/custom-quiz'>Custom quiz</FormattedNavLink>
+              <FormattedNavLink to={routes.customQuiz.base}>Custom quiz</FormattedNavLink>
             </li>
             <li>
-              <FormattedNavLink to='/random-quiz'>Random quiz</FormattedNavLink>
+              <FormattedNavLink to={routes.randomQuiz}>Random quiz</FormattedNavLink>
             </li>
             <li>
-              <FormattedNavLink to='/question'>Questions</FormattedNavLink>
+              <FormattedNavLink to={routes.question.base}>Questions</FormattedNavLink>
             </li>
             <li>
-              <FormattedNavLink to='/users'>Users</FormattedNavLink>
+              <FormattedNavLink to={routes.user.all}>Users</FormattedNavLink>
             </li>
           </NavigUl>
         </NavigItem>

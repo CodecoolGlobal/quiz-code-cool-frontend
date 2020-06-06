@@ -4,6 +4,7 @@ import { RestoreInputsContext } from "context/RestoreFiltersContext";
 import { api_postNewQuiz } from "api/customQuizConnection";
 import { handleError } from "util/errorUtil";
 import { useHistory } from "react-router-dom";
+import {routes} from "util/routes";
 
 export const NewQuizContext = createContext();
 
@@ -49,7 +50,7 @@ export const NewQuizProvider = (props) => {
     try {
       await api_postNewQuiz(newQuiz);
       clearStates();
-      history.push("/custom-quiz/start");
+      history.push(routes.customQuiz.start);
     } catch(error) {
       handleError(error, "Failed to post new quiz.");
     }

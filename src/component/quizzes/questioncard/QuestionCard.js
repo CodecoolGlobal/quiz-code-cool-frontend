@@ -1,18 +1,15 @@
 import React, { useState, useContext } from "react";
-
 import Answers from "component/quizzes/questioncard/Answers";
 import PlayerData from "component/quizzes/questioncard/PlayerData";
-
+import {routes} from "util/routes";
 import { QuizContext } from "context/QuizContext";
 import { PlayerContext } from "context/PlayerContext";
 import { ProgressContext } from "context/ProgressContext";
 import { AnswerCorrectnessContext } from "context/AnswerCorrectnessContext";
-
 import {
   H3,
   Button
 } from "../../../style/js/CommonStyles";
-
 import { QuestionCardContainer, QuestionContainer, CategoryTitle,} from "component/quizzes/questioncard/styles";
 
 export default function QuestionCard(props) {
@@ -64,7 +61,7 @@ export default function QuestionCard(props) {
     setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
 
     if (currentQuestionIndex === questions.length - 1) {
-      props.history.push("/results");
+      props.history.push(routes.result);
     }
     setIsReadyToProceed(false);
 

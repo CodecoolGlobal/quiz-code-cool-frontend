@@ -4,6 +4,7 @@ import { ProgressContext } from "context/ProgressContext";
 import { UserContext } from "context/UserContext";
 import { api_signUp, api_signOut, api_signIn } from "api/authConnection";
 import { handleError } from "util/errorUtil";
+import {routes} from "util/routes";
 
 export const AuthContext = createContext();
 
@@ -30,10 +31,10 @@ export const AuthProvider = (props) => {
       /^(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,20}$/.test(passwordInput)
     ) {
       if (
-        (path === "/sign-up" &&
+        (path === routes.auth.signUp &&
           emailInput.length > 0 &&
           isEmailValid(emailInput)) ||
-        (path === "/sign-in" && emailInput === "")
+        (path === routes.auth.signIn && emailInput === "")
       ) {
         setIsReadyToProceed(true);
         return;
@@ -93,7 +94,7 @@ export const AuthProvider = (props) => {
         password: passwordInput,
       });
       setUpUserData(responseData);
-      history.push("/");
+      history.push(routes.home);
     } catch (error) {
       if (error.response && error.response.status === 403) {
         alert("Incorrect username or password.");

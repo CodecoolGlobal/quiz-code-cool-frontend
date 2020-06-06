@@ -29,7 +29,7 @@ export default function Result(props) {
   return (
     <ThinnerContentContainer>
       <H3>Game over!</H3>
-      <H2>Results</H2>
+      <H2>Result</H2>
       <OverflowFlexContainer>
         <Table>
           <Thead>

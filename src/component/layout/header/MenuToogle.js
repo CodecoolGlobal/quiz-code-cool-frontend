@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {routes} from "util/routes"
 import menuButton from "style/img/menu-button.png";
 import {
   MenuToggleButton,
@@ -38,16 +39,16 @@ export default function MenuToggle() {
           horizontal: "left",
         }}
       >
-        <MenuNavLink onClick={handleClose} to='/custom-quiz'>
+        <MenuNavLink onClick={handleClose} to={routes.customQuiz.base}>
           <MenuNavItem>Custom quiz</MenuNavItem>
         </MenuNavLink>
-        <MenuNavLink onClick={handleClose} to='/random-quiz'>
+        <MenuNavLink onClick={handleClose} to={routes.randomQuiz}>
           <MenuNavItem>Random quiz</MenuNavItem>
         </MenuNavLink>
-        <MenuNavLink onClick={handleClose} to='/question'>
+        <MenuNavLink onClick={handleClose} to={routes.question.base}>
           <MenuNavItem>Questions</MenuNavItem>
         </MenuNavLink>
-        <MenuNavLink onClick={handleClose} to='/users'>
+        <MenuNavLink onClick={handleClose} to={routes.user.all}>
           <MenuNavItem>Users</MenuNavItem>
         </MenuNavLink>
       </Menu>

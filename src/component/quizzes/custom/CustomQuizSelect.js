@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import {routes} from "util/routes"
 import {
   ThinnerContentContainer,
   H3,
@@ -25,7 +26,7 @@ export default function CustomQuizSelect() {
           id='list'
           type='radio'
           name='answer'
-          value='/custom-quizzes'
+          value={routes.customQuiz.all}
           defaultChecked={false}
           onClick={goToNext}
         />
@@ -35,7 +36,7 @@ export default function CustomQuizSelect() {
           id='new'
           type='radio'
           name='answer'
-          value='/custom-quiz/new'
+          value={routes.customQuiz.new}
           defaultChecked={false}
           onClick={goToNext}
         />
@@ -45,7 +46,7 @@ export default function CustomQuizSelect() {
           id='start'
           type='radio'
           name='answer'
-          value='/custom-quiz/start'
+          value={routes.customQuiz.start}
           defaultChecked={false}
           onClick={goToNext}
         />

@@ -1,6 +1,8 @@
 import React, {useContext, useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
+import {routes} from "util/routes"
 import { UsersContext } from "context/UsersContext";
+import {weAreOnUserPage} from "util/routes";
 import {
   Table,
   Thead,
@@ -25,7 +27,7 @@ export default function CustomQuizList() {
 
   const getCustomQuizzes = async () => {
     try {
-      const quizzes = path.includes('custom-quizzes') ? await api_getCustomQuizzes() : await api_getCustomQuizzesByUserId(selectedUserId);
+      const quizzes = path.includes(routes.customQuiz.all) ? await api_getCustomQuizzes() : await api_getCustomQuizzesByUserId(selectedUserId);
       setCustomQuizzes(quizzes);
     } catch(error) {
       handleError(error);
@@ -35,6 +37,10 @@ export default function CustomQuizList() {
   useEffect(() => {
     getCustomQuizzes();
   }, []);
+
+  const weAreOnUserPage = () => {
+    return path.includes(routes.user.all);
+  }
 
   return (
     customQuizzes.length === 0 ? (
@@ -48,7 +54,7 @@ export default function CustomQuizList() {
             <LinedTableTh>Quiz</LinedTableTh>
             <LinedTableTh>Question number</LinedTableTh>
             <LinedTableTh>Created</LinedTableTh>
-            {!path.includes("users") && <LinedTableTh>User</LinedTableTh>}
+            {!weAreOnUserPage() && <LinedTableTh>User</LinedTableTh>}
           </TableRow>
         </Thead>
         <TBody>
@@ -58,7 +64,7 @@ export default function CustomQuizList() {
               <ShortCenteredLinedTableTd>{quiz.name}</ShortCenteredLinedTableTd>
               <ShortCenteredLinedTableTd>{quiz.questions.length}</ShortCenteredLinedTableTd>
               <ShortCenteredLinedTableTd>{quiz.creationDate}</ShortCenteredLinedTableTd>
-              { !path.includes("users") &&
+              { !weAreOnUserPage() &&
                 <ShortCenteredLinedTableTd onClick={() =>  window.open(`/users/${quiz.appUser.id}`, "_blank") }><LinedTableLink>{quiz.appUser.name}</LinedTableLink></ShortCenteredLinedTableTd>
               }
                 </LinedTableTr>

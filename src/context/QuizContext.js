@@ -7,11 +7,11 @@ import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
 import { UserContext } from 'context/UserContext'
 import Player from "context/Player";
-
+import { handleError } from "util/errorUtil";
 import { shuffle } from "util/arrayUtil";
+import {routes} from "util/routes"
 import { api_getQuestions } from "api/questionConnection";
 import { api_getCustomQuizQuestions } from "api/customQuizConnection";
-import { handleError } from "util/errorUtil";
 
 export const QuizContext = createContext();
 
@@ -21,7 +21,7 @@ export const QuizProvider = (props) => {
   const type = useContext(TypeContext).selectedTypeInput[0];
 
   //RandomQuiz
-  const RANDOM_PATH = "/random-quiz";
+  const RANDOM_PATH = routes.randomQuiz;
 
   const {
     questionsPerPlayerState,
@@ -33,7 +33,7 @@ export const QuizProvider = (props) => {
   const [names, setNames] = nameInputsState;
 
   //Custom quiz
-  const CUSTOM_PATH = "/custom-quiz/start";
+  const CUSTOM_PATH = routes.customQuiz.start;
   const { selectedCustomQuiz } = useContext(CustomQuizContext);
   const selectedCustomQuizId = selectedCustomQuiz[0];
 
@@ -109,7 +109,7 @@ export const QuizProvider = (props) => {
         setUpPlayers(location);
         setCurrentQuestionNumber(1);
         setCurrentQuizUrl(location);
-        history.push("/quiz");
+        history.push(routes.quiz);
       }
     } catch(error) {
       handleError(error, "Failed to load questions.")

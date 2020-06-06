@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import {routes} from "util/routes"
 import {
   ThinnerContentContainer,
   H3,
@@ -25,7 +26,7 @@ export default function QuestionSelect() {
           id='list'
           type='radio'
           name='answer'
-          value='/questions'
+          value={routes.question.all}
           defaultChecked={false}
           onClick={goToNext}
         />
@@ -35,7 +36,7 @@ export default function QuestionSelect() {
           id='new'
           type='radio'
           name='answer'
-          value='/add-question'
+          value={routes.question.new}
           defaultChecked={false}
           onClick={goToNext}
         />

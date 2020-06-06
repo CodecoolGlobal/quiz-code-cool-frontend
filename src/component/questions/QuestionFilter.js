@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import {routes} from "util/routes"
 
 import CategoryInput from "component/inputs/CategoryInput";
 import StatusInput from "component/inputs/StatusInput";
@@ -21,7 +22,7 @@ export default function QuestionFilter() {
     <OverflowFlexContainer>
       <CategoryInput />
       <TypeInput />
-      { !history.location.pathname.includes('custom-quiz') && <StatusInput />}
+      { history.location.pathname !== routes.customQuiz.new && <StatusInput />}
       <UserInput/>
     </OverflowFlexContainer>
   );
