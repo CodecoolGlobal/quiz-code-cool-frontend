@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { PlayerContext } from "context/PlayerContext";
 import { QuizContext } from "context/QuizContext";
+import { Redirect } from "react-router-dom";
 
 import {
   ThinnerContentContainer,
@@ -20,6 +21,8 @@ import ColorsForPlayers from "style/js/PlayerColors";
 export default function Result(props) {
   const players = useContext(PlayerContext)[0];
   const currentQuizUrl = useContext(QuizContext).currentQuizUrlState[0];
+  const { allQuestionsState } = useContext(QuizContext);
+  const questions = allQuestionsState[0];
 
   const handleRestart = () => {
     const route = currentQuizUrl;
@@ -27,6 +30,7 @@ export default function Result(props) {
   };
 
   return (
+    players.length === 0 ? <Redirect to={{pathname: '/' }}/> :
     <ThinnerContentContainer>
       <H3>Game over!</H3>
       <H2>Result</H2>
@@ -42,7 +46,7 @@ export default function Result(props) {
             {players.map((player, index) => (
               <TableRow playerTheme={ColorsForPlayers[index]} key={index}>
                 <TableData>{player.name}</TableData>
-                <TableData>{player.score}</TableData>
+                <TableData><i>{player.score} / {questions.length / players.length}</i></TableData>
               </TableRow>
             ))}
           </TBody>
