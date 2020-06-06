@@ -146,6 +146,9 @@ export const UserImage = styled.img`
 export const MenuToggleButton = styled.img`
   height: 20px;
   display: none;
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: 768px) {
     display: block;
   }
