@@ -8,7 +8,7 @@ import {
   RadioButtonLabel
 } from "style/js/CommonStyles";
 
-export default function CustomQuizSelect() {
+export default function QuestionSelect() {
   const history = useHistory();
 
   const goToNext = (e) => {
@@ -17,7 +17,7 @@ export default function CustomQuizSelect() {
 
   return (
     <ThinnerContentContainer>
-      <H3>Custom quiz</H3>
+      <H3>Questions</H3>
 
       <InputItem>
 
@@ -25,32 +25,21 @@ export default function CustomQuizSelect() {
           id='list'
           type='radio'
           name='answer'
-          value='/custom-quizzes'
+          value='/questions'
           defaultChecked={false}
           onClick={goToNext}
         />
-        <RadioButtonLabel htmlFor='list'>List quizzes</RadioButtonLabel>
+        <RadioButtonLabel htmlFor='list'>List questions</RadioButtonLabel>
 
         <RadioButton
           id='new'
           type='radio'
           name='answer'
-          value='/custom-quiz/new'
+          value='/add-question'
           defaultChecked={false}
           onClick={goToNext}
         />
-        <RadioButtonLabel htmlFor='new'>Create new quiz</RadioButtonLabel>
-
-        <RadioButton
-          id='start'
-          type='radio'
-          name='answer'
-          value='/custom-quiz/start'
-          defaultChecked={false}
-          onClick={goToNext}
-        />
-        <RadioButtonLabel htmlFor='start'>Start a quiz</RadioButtonLabel>
-
+        <RadioButtonLabel htmlFor='new'>Create new question</RadioButtonLabel>
       </InputItem>
     </ThinnerContentContainer>
   );

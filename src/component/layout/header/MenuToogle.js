@@ -44,11 +44,8 @@ export default function MenuToggle() {
         <MenuNavLink onClick={handleClose} to='/random-quiz'>
           <MenuNavItem>Random quiz</MenuNavItem>
         </MenuNavLink>
-        <MenuNavLink onClick={handleClose} to='/add-question'>
-          <MenuNavItem>Add question</MenuNavItem>
-        </MenuNavLink>
-        <MenuNavLink onClick={handleClose} to='/questions'>
-          <MenuNavItem>All questions</MenuNavItem>
+        <MenuNavLink onClick={handleClose} to='/question'>
+          <MenuNavItem>Questions</MenuNavItem>
         </MenuNavLink>
         <MenuNavLink onClick={handleClose} to='/users'>
           <MenuNavItem>Users</MenuNavItem>

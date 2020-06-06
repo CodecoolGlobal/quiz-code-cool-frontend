@@ -19,6 +19,7 @@ import Result from "component/quizzes/result/Result";
 import Header from "component/layout/header/Header";
 import Footer from "component/layout/footer/Footer";
 import CustomQuizSelect from "component/quizzes/custom/CustomQuizSelect";
+import QuestionSelect from "component/questions/QuestionSelect"
 import NewCustomQuiz from "component/quizzes/custom/newcustomquiz/NewCustomQuiz";
 import { AuthProvider } from "context/AuthContext";
 
@@ -124,6 +125,11 @@ function App() {
                                           component={AddNewQuestionForm}
                                         />
                                       </NewQuestionFormProvider>
+                                      <PrivateRoute
+                                          exact
+                                          path='/question'
+                                          component={QuestionSelect}
+                                        />
                                       <PrivateRoute
                                         exact
                                         path='/questions'

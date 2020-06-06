@@ -27,12 +27,7 @@ export default function NavigationBar() {
               <FormattedNavLink to='/random-quiz'>Random quiz</FormattedNavLink>
             </li>
             <li>
-              <FormattedNavLink to='/add-question'>
-                Add question
-              </FormattedNavLink>
-            </li>
-            <li>
-              <FormattedNavLink to='/questions'>All questions</FormattedNavLink>
+              <FormattedNavLink to='/question'>Questions</FormattedNavLink>
             </li>
             <li>
               <FormattedNavLink to='/users'>Users</FormattedNavLink>
