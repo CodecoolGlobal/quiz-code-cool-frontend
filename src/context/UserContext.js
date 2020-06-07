@@ -9,7 +9,8 @@ export const UserProvider = props => {
   const [exp, setExp] = useState(parseInt(localStorage.getItem("exp")));
   
   const isExpired = () => {
-    if (exp != null && new Date(exp) < Date.now()) {
+    if (localStorage.getItem("exp") != null && new Date(exp) < Date.now()) {
+      alert("Access denied.")
       setUsername(null);
       setRoles(null);
       setUserId(null);

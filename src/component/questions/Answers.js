@@ -5,12 +5,8 @@ import AnswersForUser from "component/questions/AnswersForUser"
 import { UserContext } from "context/UserContext";
 
 export default function Answers() {
-  const { rolesState, isExpired } = useContext(UserContext);
+  const { rolesState } = useContext(UserContext);
   const roles = rolesState[0];
-
-  useEffect(() => {
-    isExpired();
-  }, [])
 
   return (
       roles.includes("ROLE_ADMIN") ? <AnswersForAdmin /> : <AnswersForUser/> 

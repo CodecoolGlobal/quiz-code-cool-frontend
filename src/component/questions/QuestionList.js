@@ -32,7 +32,7 @@ import { UsersContext } from 'context/UsersContext';
 
 export default function QuestionList() {
 
-  const { rolesState,  isExpired } = useContext(UserContext);
+  const { rolesState } = useContext(UserContext);
   const roles = rolesState[0];
 
   const {toggleQuestionId, selectedQuestionsState, recalculateIsReadyToProceed} = useContext(NewQuizContext);
@@ -63,7 +63,6 @@ export default function QuestionList() {
   }, [selectedCategoryId, selectedType, selectedStatus, selectedUserId, page]);
 
   useEffect(() => {
-    isExpired();
     setSelectedQuestionIds([]);
   }, [])
 

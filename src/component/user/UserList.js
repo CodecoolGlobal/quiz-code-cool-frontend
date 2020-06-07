@@ -2,16 +2,12 @@ import React, { useState, useContext, useEffect } from 'react'
 import { ThinnerContentContainer, H3, OverflowFlexContainer, Table, Help, TableRow, TableData, TBody, FormattedNavLink } from 'style/js/CommonStyles'
 import { api_getUsers } from 'api/UserConnection';
 import { handleError } from 'util/errorUtil';
-import { UserContext } from "context/UserContext";
 
 
 export default function UserList() {
   const [users, setUsers] = useState(null);
-  const { isExpired } = useContext(UserContext);
-
   
     useEffect(() => {
-      isExpired();
       getUsers();
     }, []);
   

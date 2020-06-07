@@ -1,10 +1,15 @@
-import React, {useContext} from "react";
-import { Route, Redirect } from "react-router-dom";
+import React, {useContext, useEffect} from "react";
+import { Route, Redirect, useHistory } from "react-router-dom";
 import { UserContext } from 'context/UserContext'
 
 export default function PrivateRoute({ component: Component, ...rest }) {
-  const {usernameState} = useContext(UserContext);
+  const {usernameState, isExpired} = useContext(UserContext);
   const username = usernameState[0];
+  const history = useHistory();
+
+  useEffect(() => {
+    isExpired();
+  }, [history.location])
 
   return (
     <Route

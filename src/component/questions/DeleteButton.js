@@ -9,14 +9,10 @@ import {routes} from "util/routes";
 
 export default function DeleteButton() {
   const history = useHistory();
-  const { rolesState, isExpired } = useContext(UserContext);
+  const { rolesState } = useContext(UserContext);
   const { selectedQuestionState } = useContext(QuestionDetailsContext);
   const question = selectedQuestionState[0];
   const roles = rolesState[0];
-
-  useEffect(() => {
-    isExpired();
-  }, [])
 
   const deleteQuestion = async () => {
     try {

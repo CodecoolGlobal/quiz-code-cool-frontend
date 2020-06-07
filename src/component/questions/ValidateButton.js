@@ -8,15 +8,11 @@ import { handleError } from "util/errorUtil";
 
 export default function ValidateButton() {
   const history = useHistory();
-  const { rolesState, isExpired } = useContext(UserContext);
+  const { rolesState } = useContext(UserContext);
   const roles = rolesState[0];
 
   const { selectedQuestionState } = useContext(QuestionDetailsContext);
   const question = selectedQuestionState[0];
-
-  useEffect(() => {
-    isExpired();
-  }, [])
 
   const validateQuestion = async () => {
     try {

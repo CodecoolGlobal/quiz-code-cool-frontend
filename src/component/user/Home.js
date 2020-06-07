@@ -4,12 +4,8 @@ import { UserContext } from "context/UserContext";
 import { H3, ThinnerContentContainer, Message } from "style/js/CommonStyles";
 
 export default function Home() {
-  const { usernameState, isExpired } = useContext(UserContext);
+  const { usernameState } = useContext(UserContext);
   const username = usernameState[0];
-
-  useEffect(() => {
-    isExpired();
-  }, [])
 
   return (
     <ThinnerContentContainer>

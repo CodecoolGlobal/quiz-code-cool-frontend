@@ -9,13 +9,10 @@ import {
 import { FormattedNavLink } from "style/js/CommonStyles";
 
 export default function UserInfo() {
-    const { usernameState, userIdState, isExpired } = useContext(UserContext);
+    const { usernameState, userIdState } = useContext(UserContext);
     const username = usernameState[0];
     const userId = userIdState[0]
 
-    useEffect(() => {
-      isExpired();
-    }, [])
 
     return (
         username ? (
