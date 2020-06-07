@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import QuestionList from 'component/questions/QuestionList';
 import QuestionFilter from 'component/questions/QuestionFilter';
 import NewQuizNameInput from 'component/inputs/NewQuizNameInput';
+import SelectedQuestions from './SelectedQuestions';
 import { ProgressContext } from 'context/ProgressContext';
 import { NewQuizContext } from 'context/NewQuizContext';
 
@@ -17,7 +18,7 @@ export default function NewCustomQuiz(props) {
       <WiderContentContainer>
         <H3>Create custom quiz</H3>
         <NewQuizNameInput />
-        {selectedQuestionIds.length !== 0 && <AuthHelp>Selected questions: {selectedQuestionIds.map(id => <span>{id} </span>)}</AuthHelp>}
+        <SelectedQuestions />
         <QuestionFilter />
         <QuestionList />
         <Button disabled={!isReadyToProceed} onClick={() => submit()}>
