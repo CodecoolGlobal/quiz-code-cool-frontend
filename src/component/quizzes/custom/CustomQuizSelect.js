@@ -53,6 +53,7 @@ export default function CustomQuizSelect() {
         <RadioButtonLabel htmlFor='start'>Start a quiz</RadioButtonLabel>
 
       </InputItem>
+      <br/>
     </ThinnerContentContainer>
   );
 }

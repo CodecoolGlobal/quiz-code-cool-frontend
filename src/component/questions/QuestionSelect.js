@@ -42,6 +42,7 @@ export default function QuestionSelect() {
         />
         <RadioButtonLabel htmlFor='new'>Create new question</RadioButtonLabel>
       </InputItem>
+      <br/>
     </ThinnerContentContainer>
   );
 }

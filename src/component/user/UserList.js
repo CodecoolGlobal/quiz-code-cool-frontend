@@ -48,6 +48,7 @@ export default function UserList() {
             </TBody>
           </Table>) : <Help>No user to display.</Help>}
         </OverflowFlexContainer>
+        <br/>
     </ThinnerContentContainer>
     )
 }
