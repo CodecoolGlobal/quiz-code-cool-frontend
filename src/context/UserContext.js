@@ -10,7 +10,7 @@ export const UserProvider = props => {
   
   const isExpired = () => {
     const localStorageExp = localStorage.getItem("exp");
-    if (localStorageExp && new Date(localStorageExp) < Date.now()) {
+    if (localStorageExp && new Date(parseInt(localStorageExp)) < Date.now()) {
       alert("Access denied.")
       setUsername(null);
       setRoles(null);
