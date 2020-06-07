@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 
 import { shuffle } from "util/arrayUtil";
-import { TableRow, Th, TableData } from "style/js/CommonStyles";
+import { TableRow, Th } from "style/js/CommonStyles";
 import { TableDataWithElements } from "./style";
 
 export default function AnswersForUser() {

@@ -6,11 +6,10 @@ import SelectedQuestions from './SelectedQuestions';
 import { ProgressContext } from 'context/ProgressContext';
 import { NewQuizContext } from 'context/NewQuizContext';
 
-import { WiderContentContainer, H3, Button, AuthHelp } from 'style/js/CommonStyles';
+import { WiderContentContainer, H3, Button } from 'style/js/CommonStyles';
 
 export default function NewCustomQuiz(props) {
-  const {submit, selectedQuestionsState} = useContext(NewQuizContext);
-  const selectedQuestionIds = selectedQuestionsState[0];
+  const {submit} = useContext(NewQuizContext);
   const isReadyToProceed = useContext(ProgressContext)[0];
 
   return (

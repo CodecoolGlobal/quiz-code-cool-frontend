@@ -6,7 +6,7 @@ import {
   MenuNavLink,
   MenuNavItem,
 } from "component/layout/header/styles";
-import { Menu, MenuItem } from "@material-ui/core";
+import { Menu } from "@material-ui/core";
 
 export default function MenuToggle() {
   const [anchorEl, setAnchorEl] = useState(null);

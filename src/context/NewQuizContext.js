@@ -25,7 +25,6 @@ export const NewQuizProvider = (props) => {
   }
 
   const recalculateIsReadyToProceed = () => {
-    console.log(selectedQuestionIds)
     if (
       quizNameInput.length > 0 &&
       quizNameInput.trim() !== "" &&

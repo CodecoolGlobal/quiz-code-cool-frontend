@@ -1,6 +1,6 @@
 import React from "react";
 
-import {FooterContainer, FooterItem, FooterItemEdge, FooterItemCenter } from "component/layout/footer/styles";
+import {FooterContainer, FooterItemEdge, FooterItemCenter } from "component/layout/footer/styles";
 
 export default function Footer() {
   return (
