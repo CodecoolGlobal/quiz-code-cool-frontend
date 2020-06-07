@@ -30,3 +30,7 @@ export const api_getCustomQuizQuestions = async (id) => {
   export const api_postNewQuiz = async (quizData) => {
     await axios.post(CUSTOM_QUIZ_URL, quizData, { withCredentials: true });
   };
+    
+  export const api_deleteCustomQuiz = async (id) => {
+    await axios.delete(`${CUSTOM_QUIZ_URL}/${id}`, { withCredentials: true });
+  };

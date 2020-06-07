@@ -312,3 +312,10 @@ export const ShortCenteredLinedTableTd = styled.div`
   min-width: 80px;
   padding: 8px 10px;
 `;
+
+export const TrashImage = styled.img`
+  height: 15px;
+  &:hover {
+    cursor: pointer;
+  }
+`;

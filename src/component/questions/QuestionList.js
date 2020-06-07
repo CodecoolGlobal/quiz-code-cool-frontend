@@ -20,11 +20,9 @@ import {
   LinedTableLongTd,
   LinedTableTr,
   ShortCenteredLinedTableTd,
-  LinedTableLink
+  LinedTableLink,
+  TrashImage
 } from 'style/js/CommonStyles';
-import {  
-  TrashImage,
-} from 'component/questions/style'
 import deleteIcon from "style/img/delete-icon.png";
 import { api_deleteQuestion } from 'api/questionConnection';
 import { handleError } from 'util/errorUtil';
