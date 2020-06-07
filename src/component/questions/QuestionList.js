@@ -60,7 +60,7 @@ export default function QuestionList() {
 
   useEffect(() => {
     getFilteredQuestions();
-  }, [selectedCategoryId, selectedType, selectedStatus, selectedUserId, page]);
+  }, [selectedCategoryId, selectedType, selectedStatus, selectedUserId]);
 
   useEffect(() => {
     setSelectedQuestionIds([]);
