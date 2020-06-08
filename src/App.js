@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import {routes} from "util/routes"
+import { routes } from "util/routes";
 import PrivateRoute from "component/RouteModifiers/PrivateRoute";
 import DisableRouteWhenAuthenticated from "component/RouteModifiers/DisableRouteWhenAuthenticated";
 
@@ -16,7 +16,7 @@ import QuestionDetails from "component/questions/QuestionDetails";
 import QuestionCard from "component/quizzes/questioncard/QuestionCard";
 import Result from "component/quizzes/result/Result";
 import CustomQuizSelect from "component/quizzes/custom/CustomQuizSelect";
-import QuestionSelect from "component/questions/QuestionSelect"
+import QuestionSelect from "component/questions/QuestionSelect";
 import NewCustomQuiz from "component/quizzes/custom/newcustomquiz/NewCustomQuiz";
 import UserList from "component/user/UserList";
 
@@ -41,6 +41,39 @@ import { NewQuizProvider } from "context/NewQuizContext";
 import { QuestionDetailsProvider } from "context/QuestionDetailsContext";
 import { UsersProvider } from "context/UsersContext";
 
+import { applicationTheme } from "style/js/CommonStyles";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  overrides: {
+    // Style sheet name ⚛️
+    MuiPaginationItem: {
+      // Name of the rule
+      root: {
+        // Some CSS
+        color: applicationTheme.color1,
+      },
+    },
+    MuiPagination: {
+      ul: {
+        margin: "10px",
+        justifyContent: "center",
+      },
+    },
+    MuiCircularProgress: {
+      colorPrimary: {
+        // Some CSS
+        color: applicationTheme.color2,
+      },
+    },
+    MuiSlider: {
+      colorPrimary: {
+        color: applicationTheme.color3,
+      }
+    }
+  },
+});
+
 function App() {
   return (
     <div className='App'>
@@ -60,91 +93,93 @@ function App() {
                                 <NewQuizProvider>
                                   <AuthProvider>
                                     <QuestionDetailsProvider>
-                                      <Header />
-                                      <DisableRouteWhenAuthenticated
-                                        exact
-                                        path={routes.auth.signIn}
-                                        component={AuthForm}
-                                      />
-                                      <DisableRouteWhenAuthenticated
-                                        exact
-                                        path={routes.auth.signUp}
-                                        component={AuthForm}
-                                      />
-                                      <PrivateRoute
-                                        exact
-                                        path={routes.home}
-                                        component={Home}
-                                      />
-                                      <PrivateRoute
-                                        exact
-                                        path={routes.randomQuiz}
-                                        component={RandomQuizStarterForm}
-                                      />
-                                      <PrivateRoute
-                                        exact
-                                        path={routes.customQuiz.all}
-                                        component={AllCustomQuizzesList}
-                                      />
-                                      <PrivateRoute
-                                        exact
-                                        path={routes.customQuiz.new}
-                                        component={NewCustomQuiz}
-                                      />
-                                      <PrivateRoute
-                                        exact
-                                        path={routes.customQuiz.start}
-                                        component={CustomQuizStarterForm}
-                                      />
-                                      <PrivateRoute
-                                        exact
-                                        path={routes.customQuiz.base}
-                                        component={CustomQuizSelect}
-                                      />
-                                      <AnswerCorrectnessProvider>
+                                      <ThemeProvider theme={theme}>
+                                        <Header />
+                                        <DisableRouteWhenAuthenticated
+                                          exact
+                                          path={routes.auth.signIn}
+                                          component={AuthForm}
+                                        />
+                                        <DisableRouteWhenAuthenticated
+                                          exact
+                                          path={routes.auth.signUp}
+                                          component={AuthForm}
+                                        />
                                         <PrivateRoute
                                           exact
-                                          path={routes.quiz}
-                                          component={QuestionCard}
+                                          path={routes.home}
+                                          component={Home}
                                         />
-                                      </AnswerCorrectnessProvider>
-                                      <PrivateRoute
-                                        exact
-                                        path={routes.result}
-                                        component={Result}
-                                      />
-                                      <NewQuestionFormProvider>
                                         <PrivateRoute
                                           exact
-                                          path={routes.question.new}
-                                          component={AddNewQuestionForm}
+                                          path={routes.randomQuiz}
+                                          component={RandomQuizStarterForm}
                                         />
-                                      </NewQuestionFormProvider>
-                                      <PrivateRoute
+                                        <PrivateRoute
+                                          exact
+                                          path={routes.customQuiz.all}
+                                          component={AllCustomQuizzesList}
+                                        />
+                                        <PrivateRoute
+                                          exact
+                                          path={routes.customQuiz.new}
+                                          component={NewCustomQuiz}
+                                        />
+                                        <PrivateRoute
+                                          exact
+                                          path={routes.customQuiz.start}
+                                          component={CustomQuizStarterForm}
+                                        />
+                                        <PrivateRoute
+                                          exact
+                                          path={routes.customQuiz.base}
+                                          component={CustomQuizSelect}
+                                        />
+                                        <AnswerCorrectnessProvider>
+                                          <PrivateRoute
+                                            exact
+                                            path={routes.quiz}
+                                            component={QuestionCard}
+                                          />
+                                        </AnswerCorrectnessProvider>
+                                        <PrivateRoute
+                                          exact
+                                          path={routes.result}
+                                          component={Result}
+                                        />
+                                        <NewQuestionFormProvider>
+                                          <PrivateRoute
+                                            exact
+                                            path={routes.question.new}
+                                            component={AddNewQuestionForm}
+                                          />
+                                        </NewQuestionFormProvider>
+                                        <PrivateRoute
                                           exact
                                           path={routes.question.base}
                                           component={QuestionSelect}
                                         />
-                                      <PrivateRoute
-                                        exact
-                                        path={routes.question.all}
-                                        component={AllQuestionsList}
-                                      />
-                                      <PrivateRoute
-                                        exact
-                                        path={routes.question.id}
-                                        component={QuestionDetails}
-                                      />
-                                      <PrivateRoute
-                                        exact
-                                        path={routes.user.all}
-                                        component={UserList}
-                                      />
-                                      <PrivateRoute
-                                        exact
-                                        path={routes.user.id}
-                                        component={UserDetails}
-                                      />
+                                        <PrivateRoute
+                                          exact
+                                          path={routes.question.all}
+                                          component={AllQuestionsList}
+                                        />
+                                        <PrivateRoute
+                                          exact
+                                          path={routes.question.id}
+                                          component={QuestionDetails}
+                                        />
+                                        <PrivateRoute
+                                          exact
+                                          path={routes.user.all}
+                                          component={UserList}
+                                        />
+                                        <PrivateRoute
+                                          exact
+                                          path={routes.user.id}
+                                          component={UserDetails}
+                                        />
+                                      </ThemeProvider>
                                     </QuestionDetailsProvider>
                                   </AuthProvider>
                                 </NewQuizProvider>

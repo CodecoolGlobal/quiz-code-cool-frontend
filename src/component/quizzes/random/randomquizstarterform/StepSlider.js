@@ -40,7 +40,6 @@ export const StepSlider = () => {
     <InputItem>
       <InputLabel>Number of players</InputLabel>
       <Slider
-        style={{ color: "#35a79c" }}
         min={1}
         max={6}
         ValueLabelComponent={ValueLabelComponent}
