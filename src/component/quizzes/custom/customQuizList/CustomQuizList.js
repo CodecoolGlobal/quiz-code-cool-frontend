@@ -41,7 +41,7 @@ export default function CustomQuizList() {
 
   useEffect(() => {
     getCustomQuizzes();
-  }, []);
+  }, [selectedUserId]);
 
   const weAreOnUserPage = () => {
     return path.includes(routes.user.all);
