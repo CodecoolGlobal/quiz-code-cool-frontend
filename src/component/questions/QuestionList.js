@@ -38,7 +38,7 @@ export default function QuestionList() {
   const selectedCategoryId = useContext(CategoryContext).categoryInput[0];
   const selectedStatus = useContext(StatusContext)[0];
   const {selectedUserIdState, clearSelectedUser} = useContext(UsersContext);
-  const [selectedUserId] = selectedUserIdState[0];
+  const selectedUserId = selectedUserIdState[0];
 
 
   const { typesMap, selectedTypeInput } = useContext(TypeContext);
