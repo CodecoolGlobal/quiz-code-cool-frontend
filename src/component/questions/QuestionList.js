@@ -63,6 +63,7 @@ export default function QuestionList() {
   }, [selectedCategoryId, selectedType, selectedStatus, selectedUserId]);
 
   useEffect(() => {
+    setPage(1);
     if (path === routes.question.all)
       clearSelectedUser();
     setSelectedQuestionIds([]);
