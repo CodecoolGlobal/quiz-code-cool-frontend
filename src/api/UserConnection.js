@@ -9,7 +9,7 @@ export const api_getUser = async (id) => {
     return response.data;
   };
 
-  export const api_getUsers = async (id) => {
+  export const api_getUsers = async () => {
     const response = await axios.get(`${CATEGORY_URL}`, {
       withCredentials: true,
     });
