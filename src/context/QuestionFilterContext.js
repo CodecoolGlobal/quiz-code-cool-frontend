@@ -14,7 +14,7 @@ export const QuestionFilterProvider = props => {
   const QUESTIONS_PER_PAGE = 10;
 
   const [page, setPage] = useState(1);
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState(null);
 
   const {categoryInput, DEFAULT_CATEGORY} = useContext(CategoryContext);
   const selectedCategoryId = categoryInput[0];
@@ -61,7 +61,7 @@ export const QuestionFilterProvider = props => {
   }
 
   const getPageNumber = () => {
-    return Math.ceil(questions.length / QUESTIONS_PER_PAGE)
+    return questions ? Math.ceil(questions.length / QUESTIONS_PER_PAGE) : null;
   }
 
   return (

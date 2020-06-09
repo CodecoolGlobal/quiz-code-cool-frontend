@@ -1,9 +1,9 @@
-import React, {useContext, useState, useEffect} from "react";
-import {useHistory} from "react-router-dom";
-import {routes} from "util/routes"
+import React, { useContext, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { routes } from "util/routes";
 import { UsersContext } from "context/UsersContext";
 import { UserContext } from "context/UserContext";
-import { api_deleteCustomQuiz } from 'api/customQuizConnection';
+import { api_deleteCustomQuiz } from "api/customQuizConnection";
 import deleteIcon from "style/img/delete-icon.png";
 import {
   Table,
@@ -17,29 +17,35 @@ import {
   LinedTableLink,
   Help,
   TBody,
-  TrashImage
+  TrashImage,
 } from "style/js/CommonStyles";
-import { api_getCustomQuizzes, api_getCustomQuizzesByUserId } from "api/customQuizConnection";
+import {
+  api_getCustomQuizzes,
+  api_getCustomQuizzesByUserId,
+} from "api/customQuizConnection";
 import { handleError } from "util/errorUtil";
+import { CircularProgress } from "@material-ui/core";
 
 export default function CustomQuizList() {
   const { rolesState } = useContext(UserContext);
   const roles = rolesState[0];
   const selectedUserId = useContext(UsersContext).selectedUserIdState[0];
-  const [customQuizzes, setCustomQuizzes] = useState([]);
+  const [customQuizzes, setCustomQuizzes] = useState(null);
   const path = useHistory().location.pathname;
-
 
   const getCustomQuizzes = async () => {
     try {
-      const quizzes = path.includes(routes.customQuiz.all) ? await api_getCustomQuizzes() : await api_getCustomQuizzesByUserId(selectedUserId);
+      const quizzes = path.includes(routes.customQuiz.all)
+        ? await api_getCustomQuizzes()
+        : await api_getCustomQuizzesByUserId(selectedUserId);
       setCustomQuizzes(quizzes);
-    } catch(error) {
+    } catch (error) {
       handleError(error);
     }
   };
 
   useEffect(() => {
+    setCustomQuizzes(null);
     getCustomQuizzes();
   }, [selectedUserId]);
 
@@ -61,10 +67,11 @@ export default function CustomQuizList() {
     }
   };
 
-  return (
-    customQuizzes.length === 0 ? (
-      <Help>No custom quiz to display.</Help>
-    ) : (
+  return !customQuizzes ? (
+    <CircularProgress />
+  ) : customQuizzes.length === 0 ? (
+    <Help>No custom quiz to display.</Help>
+  ) : (
     <OverflowFlexContainer>
       <Table>
         <Thead>
@@ -74,7 +81,7 @@ export default function CustomQuizList() {
             <LinedTableTh>Question number</LinedTableTh>
             <LinedTableTh>Created</LinedTableTh>
             {!weAreOnUserPage() && <LinedTableTh>User</LinedTableTh>}
-            {isAdmin()&& (<LinedTableTh></LinedTableTh>)}
+            {isAdmin() && <LinedTableTh></LinedTableTh>}
           </TableRow>
         </Thead>
         <TBody>
@@ -82,21 +89,34 @@ export default function CustomQuizList() {
             <LinedTableTr key={quiz.id}>
               <SquareLinedTableTd>{quiz.id}</SquareLinedTableTd>
               <ShortCenteredLinedTableTd>{quiz.name}</ShortCenteredLinedTableTd>
-              <ShortCenteredLinedTableTd>{quiz.questions.length}</ShortCenteredLinedTableTd>
-              <ShortCenteredLinedTableTd>{quiz.creationDate}</ShortCenteredLinedTableTd>
-              { !weAreOnUserPage() &&
-                <ShortCenteredLinedTableTd onClick={() =>  window.open(`/users/${quiz.appUser.id}`, "_blank") }><LinedTableLink>{quiz.appUser.name}</LinedTableLink></ShortCenteredLinedTableTd>
-              }
-              {isAdmin()&& (
-              <SquareLinedTableTd onClick={() => deleteCustomQuiz(quiz.id)}>
-              <TrashImage title="Delete quiz" src={deleteIcon} alt='delete icon'></TrashImage> 
-              </SquareLinedTableTd>
+              <ShortCenteredLinedTableTd>
+                {quiz.questions.length}
+              </ShortCenteredLinedTableTd>
+              <ShortCenteredLinedTableTd>
+                {quiz.creationDate}
+              </ShortCenteredLinedTableTd>
+              {!weAreOnUserPage() && (
+                <ShortCenteredLinedTableTd
+                  onClick={() =>
+                    window.open(`/users/${quiz.appUser.id}`, "_blank")
+                  }
+                >
+                  <LinedTableLink>{quiz.appUser.name}</LinedTableLink>
+                </ShortCenteredLinedTableTd>
               )}
-                </LinedTableTr>
+              {isAdmin() && (
+                <SquareLinedTableTd onClick={() => deleteCustomQuiz(quiz.id)}>
+                  <TrashImage
+                    title='Delete quiz'
+                    src={deleteIcon}
+                    alt='delete icon'
+                  ></TrashImage>
+                </SquareLinedTableTd>
+              )}
+            </LinedTableTr>
           ))}
         </TBody>
       </Table>
     </OverflowFlexContainer>
-  )
-  )
+  );
 }
