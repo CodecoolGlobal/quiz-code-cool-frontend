@@ -42,7 +42,7 @@ import { QuestionDetailsProvider } from "context/QuestionDetailsContext";
 import { UsersProvider } from "context/UsersContext";
 
 import { applicationTheme } from "style/js/CommonStyles";
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
   overrides: {
@@ -69,8 +69,14 @@ const theme = createMuiTheme({
     MuiSlider: {
       colorPrimary: {
         color: applicationTheme.color3,
-      }
-    }
+      },
+    },
+    MuiBackdrop: {
+      root: {
+        zIndex: 10,
+        color: "#fff",
+      },
+    },
   },
 });
 

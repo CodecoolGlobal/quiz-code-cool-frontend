@@ -13,6 +13,7 @@ export const AuthProvider = (props) => {
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
+  const [isBackdropActive, setIsBackdropActive] = useState(false);
 
   const setIsReadyToProceed = useContext(ProgressContext)[1];
 
@@ -84,6 +85,8 @@ export const AuthProvider = (props) => {
         handleError(error);
       }
       setIsReadyToProceed(false);
+    } finally {
+      setIsBackdropActive(false);
     }
   };
 
@@ -100,11 +103,14 @@ export const AuthProvider = (props) => {
         alert("Incorrect username or password.");
       } else {
         handleError(error);
-      }
+      } 
+    } finally {
+      setIsBackdropActive(false);
     }
   };
 
   const signOut = async () => {
+    setIsBackdropActive(true);
     localStorage.clear();
     try {
       setUsername(null);
@@ -114,6 +120,8 @@ export const AuthProvider = (props) => {
       await api_signOut();
     } catch (error) {
       handleError(error);
+    } finally {
+      setIsBackdropActive(false);
     }
   };
 
@@ -123,6 +131,7 @@ export const AuthProvider = (props) => {
         recalculateIsReadyToProceed,
         usernameInputState: [usernameInput, setUsernameInput],
         passwordInputState: [passwordInput, setPasswordInput],
+        backdropState: [isBackdropActive, setIsBackdropActive],
         emailInputState: [emailInput, setEmailInput],
         signUp,
         signIn,
