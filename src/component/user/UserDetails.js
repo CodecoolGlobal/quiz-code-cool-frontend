@@ -1,23 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import {
-  H3,
-  Table,
-  TableData,
-  TableRow,
-  Th,
   WiderContentContainer,
-  OverflowFlexContainer,
   Help,
-  TBody,
-  H4,
 } from "style/js/CommonStyles";
 import { api_getUser } from "api/UserConnection";
 import { handleError } from "util/errorUtil";
 import { UsersContext } from "context/UsersContext";
 import { RestoreInputsContext } from "context/RestoreFiltersContext";
-import QuestionList from "component/questions/QuestionList";
-import CustomQuizList from "component/quizzes/custom/customQuizList/CustomQuizList";
-import { DashedBorder } from "./styles";
+import UserData from "./UserData";
+import UserQuizzes from "./UserQuizzes";
+import UserQuestions from "./UserQuestions";
 
 export default function UserDetails(props) {
   const { id } = props.match.params;
@@ -44,41 +36,11 @@ export default function UserDetails(props) {
   };
 
   return (
+    user === null ? <Help>No user to display.</Help> :
     <WiderContentContainer>
-      {user != null && <H3>{`${user.username}'s page`}</H3>}
-      <OverflowFlexContainer>
-        {user != null ? (
-        <Table>
-          <TBody>
-            <TableRow>
-              <Th>Registration Date</Th>
-              <TableData>{user.registrationDate}</TableData>
-            </TableRow>
-            {user.questions != null &&
-            <TableRow>
-              <Th>Posted Questions</Th>
-              <TableData>{user.questions.length}</TableData>
-            </TableRow>
-            }
-            {user.customQuizzes != null &&
-            <TableRow>
-              <Th>Created custom quizzes</Th>
-              <TableData>{user.customQuizzes.length}</TableData>
-            </TableRow>
-            }
-          </TBody>
-        </Table>) : <Help>No user to display.</Help>}
-      </OverflowFlexContainer>
-      {user != null && user.customQuizzes.length !== 0 && 
-      <DashedBorder>
-        <H4>Quizzes</H4>
-        <CustomQuizList/>
-      </DashedBorder>}
-      {user != null && user.questions.length !== 0 &&
-      <DashedBorder>
-        <H4>Questions</H4>
-        <QuestionList/>
-      </DashedBorder>}
+      <UserData user={user}/>
+      <UserQuizzes user={user}/>
+      <UserQuestions user={user}/>
     </WiderContentContainer>
   );
 }
