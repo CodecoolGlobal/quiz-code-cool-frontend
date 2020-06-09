@@ -7,6 +7,7 @@ import { RestoreInputsContext } from "context/RestoreFiltersContext";
 import UserData from "./UserData";
 import UserQuizzes from "./UserQuizzes";
 import UserQuestions from "./UserQuestions";
+import { CircularProgress } from "@material-ui/core";
 
 export default function UserDetails(props) {
   const { id } = props.match.params;
@@ -15,6 +16,7 @@ export default function UserDetails(props) {
   const { clearQuestionsFilterInputs } = useContext(RestoreInputsContext);
 
   useEffect(() => {
+    setUser(null);
     clearQuestionsFilterInputs();
   }, []);
 
@@ -28,6 +30,7 @@ export default function UserDetails(props) {
       const responseData = await api_getUser(id);
       setUser(responseData);
     } catch (error) {
+      setUser(undefined);
       handleError(error);
     }
   };
@@ -35,6 +38,8 @@ export default function UserDetails(props) {
   return (
     <WiderContentContainer>
       {user === null ? (
+        <CircularProgress />
+      ) : user === undefined ? (
         <Help>No user to display.</Help>
       ) : (
         <React.Fragment>
