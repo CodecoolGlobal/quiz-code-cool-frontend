@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-  WiderContentContainer,
-  Help,
-} from "style/js/CommonStyles";
+import { WiderContentContainer, Help } from "style/js/CommonStyles";
 import { api_getUser } from "api/UserConnection";
 import { handleError } from "util/errorUtil";
 import { UsersContext } from "context/UsersContext";
@@ -19,11 +16,11 @@ export default function UserDetails(props) {
 
   useEffect(() => {
     clearQuestionsFilterInputs();
-  }, [])
+  }, []);
 
   useEffect(() => {
     getUserDetails();
-    setSelectedUserId(id)
+    setSelectedUserId(id);
   }, [id]);
 
   const getUserDetails = async () => {
@@ -36,11 +33,16 @@ export default function UserDetails(props) {
   };
 
   return (
-    user === null ? <Help>No user to display.</Help> :
     <WiderContentContainer>
-      <UserData user={user}/>
-      <UserQuizzes user={user}/>
-      <UserQuestions user={user}/>
+      {user === null ? (
+        <Help>No user to display.</Help>
+      ) : (
+        <React.Fragment>
+          <UserData user={user} />
+          <UserQuizzes user={user} />
+          <UserQuestions user={user} />
+        </React.Fragment>
+      )}
     </WiderContentContainer>
   );
 }
