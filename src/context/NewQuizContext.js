@@ -1,13 +1,15 @@
 import React, { useState, createContext, useContext } from "react";
 import { ProgressContext } from "context/ProgressContext";
+import { ErrorContext } from 'context/ErrorContext';
 import { api_postNewQuiz } from "api/customQuizConnection";
-import { handleError } from "util/errorUtil";
 import { useHistory } from "react-router-dom";
 import {routes} from "util/routes";
 
 export const NewQuizContext = createContext();
 
 export const NewQuizProvider = (props) => {
+  const setError = useContext(ErrorContext)[1];
+
   const history = useHistory();
   const setIsReadyToProceed = useContext(ProgressContext)[1];
 
@@ -48,7 +50,7 @@ export const NewQuizProvider = (props) => {
       clearStates();
       history.push(routes.customQuiz.start);
     } catch(error) {
-      handleError(error, "Failed to post new quiz.");
+      setError(error);
     }
   };
 

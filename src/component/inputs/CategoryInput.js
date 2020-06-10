@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { CategoryContext } from "context/CategoryContext";
+import { ErrorContext } from 'context/ErrorContext'
 import { Select, InputItem, InputLabel } from "style/js/CommonStyles";
 import { api_getCategories } from "api/categoryConnection";
-import { handleError } from "util/errorUtil";
 
 export default function CategoryInput(props) {
+  const setError = useContext(ErrorContext)[1];
 
   const {
     DEFAULT_CATEGORY,
@@ -24,7 +25,7 @@ export default function CategoryInput(props) {
       const categories = await api_getCategories();
       setAllCategories(categories.sort(compareCategories));
     } catch(error) {
-      handleError(error);
+      setError(error);
     }
   }
 

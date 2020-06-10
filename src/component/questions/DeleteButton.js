@@ -1,13 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import { ErrorContext } from 'context/ErrorContext'
 import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 import { UserContext } from "context/UserContext";
 import { Button } from "style/js/CommonStyles";
 import { api_deleteQuestion } from "api/questionConnection";
-import { handleError } from "util/errorUtil";
 import {routes} from "util/routes";
 
 export default function DeleteButton() {
+  const setError = useContext(ErrorContext)[1];
   const history = useHistory();
   const { rolesState } = useContext(UserContext);
   const { selectedQuestionState } = useContext(QuestionDetailsContext);
@@ -20,15 +21,14 @@ export default function DeleteButton() {
       alert("Question deleted successfully.");
       history.push(routes.question.all);
     } catch (error) {
-      handleError(error);
+      setError(error);
     }
   };
 
-  return roles.includes("ROLE_ADMIN") ? (
+  return (
+  roles.includes("ROLE_ADMIN") && 
     <React.Fragment>
       <Button onClick={deleteQuestion}> Delete </Button>
     </React.Fragment>
-  ) : (
-    <React.Fragment></React.Fragment>
-  );
+  )
 }

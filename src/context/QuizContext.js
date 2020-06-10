@@ -3,11 +3,11 @@ import { useHistory } from "react-router-dom";
 import { PlayerContext } from "context/PlayerContext";
 import { CustomQuizContext } from "context/CustomQuizContext";
 import { RandomQuizContext } from "context/RandomQuizContext";
+import { ErrorContext } from 'context/ErrorContext';
 import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
 import { UserContext } from 'context/UserContext'
 import Player from "context/Player";
-import { handleError } from "util/errorUtil";
 import { shuffle } from "util/arrayUtil";
 import {routes} from "util/routes"
 import { api_getQuestions } from "api/questionConnection";
@@ -16,6 +16,8 @@ import { api_getCustomQuizQuestions } from "api/customQuizConnection";
 export const QuizContext = createContext();
 
 export const QuizProvider = (props) => {
+  const setError = useContext(ErrorContext)[1];
+
   const history = useHistory();
   const selectedCategoryId = useContext(CategoryContext).categoryInput[0];
   const type = useContext(TypeContext).selectedTypeInput[0];
@@ -112,7 +114,7 @@ export const QuizProvider = (props) => {
         history.push(routes.quiz);
       }
     } catch(error) {
-      handleError(error, "Failed to load questions.")
+      setError(error);
     }
   }
 

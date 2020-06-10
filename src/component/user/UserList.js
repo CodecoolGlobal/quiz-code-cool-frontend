@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { ErrorContext } from 'context/ErrorContext';
 import {
   ThinnerContentContainer,
   H3,
@@ -11,10 +12,10 @@ import {
   FormattedNavLink,
 } from "style/js/CommonStyles";
 import { api_getUsers } from "api/UserConnection";
-import { handleError } from "util/errorUtil";
 import { CircularProgress } from "@material-ui/core";
 
 export default function UserList() {
+  const setError = useContext(ErrorContext)[1];
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function UserList() {
       const responseData = await api_getUsers();
       setUsers(responseData);
     } catch (error) {
-      handleError(error);
+      setError(error);
     }
   };
 

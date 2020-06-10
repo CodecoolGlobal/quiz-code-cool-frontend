@@ -8,6 +8,7 @@ import { TypeContext } from "context/TypeContext";
 import { StatusContext } from "context/StatusContext";
 import { NewQuizContext } from "context/NewQuizContext";
 import { UserContext } from "context/UserContext";
+import { ErrorContext } from 'context/ErrorContext';
 import {
   SquareLinedTableTd,
   Help,
@@ -25,11 +26,12 @@ import {
 } from "style/js/CommonStyles";
 import deleteIcon from "style/img/delete-icon.png";
 import { api_deleteQuestion } from "api/questionConnection";
-import { handleError } from "util/errorUtil";
 import { UsersContext } from "context/UsersContext";
 import { CircularProgress } from "@material-ui/core";
 
 export default function QuestionList() {
+  const setError = useContext(ErrorContext)[1];
+
   const { rolesState } = useContext(UserContext);
   const roles = rolesState[0];
 
@@ -92,7 +94,7 @@ export default function QuestionList() {
       setQuestions([...questions.filter((question) => question.id !== id)]);
       alert("Question deleted successfully.");
     } catch (error) {
-      handleError(error);
+      setError(error);
     }
   };
 

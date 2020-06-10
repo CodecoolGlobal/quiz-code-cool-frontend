@@ -2,15 +2,17 @@ import React, { useState, createContext, useContext } from "react";
 import {CategoryContext} from "context/CategoryContext"
 import {TypeContext} from "context/TypeContext"
 import { StatusContext } from "context/StatusContext";
+import { ErrorContext } from 'context/ErrorContext';
 import { useHistory } from 'react-router-dom';
 import { api_getQuestions } from "api/questionConnection";
-import { handleError } from "util/errorUtil";
 import { UsersContext } from "./UsersContext";
 import {routes} from "util/routes";
 
 export const QuestionFilterContext = createContext();
 
 export const QuestionFilterProvider = props => {
+  const setError = useContext(ErrorContext)[1];
+
   const QUESTIONS_PER_PAGE = 10;
 
   const [page, setPage] = useState(1);
@@ -56,7 +58,7 @@ export const QuestionFilterProvider = props => {
       const questions = await api_getQuestions(queryString);
       setQuestions(questions);
     } catch(error) {
-      handleError(error, "Failed to load questions.");
+      setError(error);
     }
   }
 

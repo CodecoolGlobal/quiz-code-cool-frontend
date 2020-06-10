@@ -8,9 +8,8 @@ export const UserProvider = props => {
   const [userId, setUserId] = useState(localStorage.getItem("userId"));
   const [exp, setExp] = useState(parseInt(localStorage.getItem("exp")));
   
-  const isExpired = () => {
-    const localStorageExp = localStorage.getItem("exp");
-    if (localStorageExp && new Date(parseInt(localStorageExp)) < Date.now()) {
+  const clearFor403 = () => {
+    if (localStorage.getItem("username") || username) {
       alert("Access denied.")
       setUsername(null);
       setRoles(null);
@@ -22,7 +21,7 @@ export const UserProvider = props => {
 
   return (
     <UserContext.Provider value={{
-        isExpired,
+        clearFor403,
         usernameState: [username, setUsername],
         rolesState: [roles, setRoles],
         userIdState: [userId, setUserId],

@@ -8,7 +8,7 @@ import { NewQuizContext } from 'context/NewQuizContext';
 
 import { WiderContentContainer, H3, Button } from 'style/js/CommonStyles';
 
-export default function NewCustomQuiz(props) {
+export default function NewCustomQuiz() {
   const {submit} = useContext(NewQuizContext);
   const isReadyToProceed = useContext(ProgressContext)[0];
 

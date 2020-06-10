@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { routes } from "util/routes";
 import { UsersContext } from "context/UsersContext";
 import { UserContext } from "context/UserContext";
+import { ErrorContext } from 'context/ErrorContext';
 import { api_deleteCustomQuiz } from "api/customQuizConnection";
 import deleteIcon from "style/img/delete-icon.png";
 import {
@@ -23,10 +24,10 @@ import {
   api_getCustomQuizzes,
   api_getCustomQuizzesByUserId,
 } from "api/customQuizConnection";
-import { handleError } from "util/errorUtil";
 import { CircularProgress } from "@material-ui/core";
 
 export default function CustomQuizList() {
+  const setError = useContext(ErrorContext)[1];
   const { rolesState } = useContext(UserContext);
   const roles = rolesState[0];
   const selectedUserId = useContext(UsersContext).selectedUserIdState[0];
@@ -40,7 +41,7 @@ export default function CustomQuizList() {
         : await api_getCustomQuizzesByUserId(selectedUserId);
       setCustomQuizzes(quizzes);
     } catch (error) {
-      handleError(error);
+      setError(error);
     }
   };
 
@@ -63,7 +64,7 @@ export default function CustomQuizList() {
       setCustomQuizzes([...customQuizzes.filter((quiz) => quiz.id !== id)]);
       alert("Quiz deleted successfully.");
     } catch (error) {
-      handleError(error);
+      setError(error);
     }
   };
 
