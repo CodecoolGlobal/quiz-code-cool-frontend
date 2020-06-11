@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import { Route, Redirect } from "react-router-dom";
 import { UserContext } from 'context/UserContext';
 import {routes} from "util/routes";
-import ErrorHandler from "component/RouteModifiers/ErrorHandler";
+import ErrorHandler from "component/routeModifiers/ErrorHandler";
 
 export default function PrivateRoute({ component: Component, ...rest }) {
   const {usernameState} = useContext(UserContext);

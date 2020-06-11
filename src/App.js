@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { routes } from "util/routes";
-import PrivateRoute from "component/RouteModifiers/PrivateRoute";
+import PrivateRoute from "component/routeModifiers/PrivateRoute";
 
-import DisableRouteWhenAuthenticated from "component/RouteModifiers/DisableRouteWhenAuthenticated";
+import RouteBlockerWhenUserIn from "component/routeModifiers/RouteBlockerWhenUserIn";
 
 import AuthForm from "component/authentication/AuthForm";
 import UserDetails from "component/user/UserDetails";
@@ -105,12 +105,12 @@ function App() {
                                       <QuestionDetailsProvider>
                                         <ThemeProvider theme={theme}>
                                           <Header />
-                                          <DisableRouteWhenAuthenticated
+                                          <RouteBlockerWhenUserIn
                                             exact
                                             path={routes.auth.signIn}
                                             component={AuthForm}
                                           />
-                                          <DisableRouteWhenAuthenticated
+                                          <RouteBlockerWhenUserIn
                                             exact
                                             path={routes.auth.signUp}
                                             component={AuthForm}
