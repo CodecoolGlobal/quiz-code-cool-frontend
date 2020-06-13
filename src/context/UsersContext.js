@@ -1,5 +1,5 @@
 import React, { useState, useContext, createContext } from "react";
-import { api_getUsers } from "api/UserConnection";
+import { api_getUsers } from "api/userConnection";
 import { ErrorContext } from 'context/ErrorContext';
 
 export const UsersContext = createContext();

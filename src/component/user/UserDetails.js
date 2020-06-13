@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { WiderContentContainer, Help } from "style/js/CommonStyles";
-import { api_getUser } from "api/UserConnection";
+import { api_getUser } from "api/userConnection";
 import { ErrorContext } from 'context/ErrorContext';
 import { UsersContext } from "context/UsersContext";
 import { RestoreInputsContext } from "context/RestoreFiltersContext";

@@ -103,7 +103,6 @@ export const AuthProvider = (props) => {
       if (error.response && error.response.status === 403) {
         alert("Incorrect username or password.");
       } else {
-        setError(error);
       } 
     } finally {
       setIsBackdropActive(false);

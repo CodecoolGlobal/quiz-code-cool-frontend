@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "api/config";
 import Question from "context/Question";
 
 const CUSTOM_QUIZ_URL = process.env.REACT_APP_CUSTOM_QUIZ_URL;

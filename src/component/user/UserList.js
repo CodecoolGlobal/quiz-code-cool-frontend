@@ -11,7 +11,7 @@ import {
   TBody,
   FormattedNavLink,
 } from "style/js/CommonStyles";
-import { api_getUsers } from "api/UserConnection";
+import { api_getUsers } from "api/userConnection";
 import { CircularProgress } from "@material-ui/core";
 
 export default function UserList() {

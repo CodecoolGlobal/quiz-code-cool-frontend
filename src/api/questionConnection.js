@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "api/config";
 import Question from "context/Question";
 
 const QUESTIONS_URL = process.env.REACT_APP_QUESTIONS_URL;
