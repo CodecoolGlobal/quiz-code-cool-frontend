@@ -44,8 +44,9 @@ import { UsersProvider } from "context/UsersContext";
 
 import { applicationTheme } from "style/js/CommonStyles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import ErrorPage from "component/error/ErrorPage";
+import CustomErrorPage from "component/error/CustomErrorPage";
 import NotFoundPage from "component/error/NotFoundPage";
+import NetworkErrorPage from "component/error/NetworkErrorPage";
 
 const theme = createMuiTheme({
   overrides: {
@@ -182,11 +183,6 @@ function App() {
                                                 path={routes.user.id}
                                                 component={UserDetails}
                                               />
-                                              <Route
-                                                exact
-                                                path={routes.error}
-                                                component={ErrorPage}
-                                              />
                                               <PrivateRoute
                                                 exact
                                                 path={routes.quiz}
@@ -196,6 +192,16 @@ function App() {
                                                 exact
                                                 path={routes.question.new}
                                                 component={AddNewQuestionForm}
+                                              />
+                                              <Route
+                                                exact
+                                                path={routes.customError}
+                                                component={CustomErrorPage}
+                                              />
+                                              <Route
+                                                exact
+                                                path={routes.networkError}
+                                                component={NetworkErrorPage}
                                               />
                                               <Route component={NotFoundPage} />
                                             </Switch>

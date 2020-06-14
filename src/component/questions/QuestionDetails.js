@@ -17,6 +17,7 @@ import {
   FormattedNavLink,
 } from "../../style/js/CommonStyles";
 import { api_getQuestion } from "api/questionConnection";
+import NotFoundPage from "component/error/NotFoundPage";
 
 export default function QuestionDetails(props) {
   const { selectedQuestionState } = useContext(QuestionDetailsContext);
@@ -29,6 +30,8 @@ export default function QuestionDetails(props) {
       const respQuestion = await api_getQuestion(id);
       setQuestion(new Question(respQuestion));
     } catch (error) {
+      if (error.response && error.response.status === 404)
+        setQuestion(undefined);
     }
   };
 
@@ -36,7 +39,9 @@ export default function QuestionDetails(props) {
     getQuestion();
   }, []);
 
-  return (
+  return question === undefined ? (
+    <NotFoundPage />
+  ) : (
     <ThinnerContentContainer>
       <H3>Details</H3>
       <OverflowFlexContainer>
@@ -56,9 +61,13 @@ export default function QuestionDetails(props) {
               <TableRow>
                 <Th>Created By</Th>
                 <TableData>
-                  {question.appUser
-                    ? <FormattedNavLink to={`/users/${question.appUser.id}`}>{question.appUser.name}</FormattedNavLink>
-                    : "No author found"}
+                  {question.appUser ? (
+                    <FormattedNavLink to={`/users/${question.appUser.id}`}>
+                      {question.appUser.name}
+                    </FormattedNavLink>
+                  ) : (
+                    "No author found"
+                  )}
                 </TableData>
               </TableRow>
               <TableRow>

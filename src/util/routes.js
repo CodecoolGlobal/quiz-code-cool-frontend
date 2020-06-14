@@ -23,5 +23,6 @@ export const routes = {
     all: "/users",
     id: "/users/:id",
   },
-  error: "/error/:status"
+  customError: "/error/:status",
+  networkError: "/network-error"
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { WiderContentContainer, Help } from "style/js/CommonStyles";
+import { WiderContentContainer } from "style/js/CommonStyles";
 import { api_getUser } from "api/userConnection";
 import { UsersContext } from "context/UsersContext";
 import { RestoreInputsContext } from "context/RestoreFiltersContext";
@@ -7,6 +7,7 @@ import UserData from "./UserData";
 import UserQuizzes from "./UserQuizzes";
 import UserQuestions from "./UserQuestions";
 import { CircularProgress } from "@material-ui/core";
+import NotFoundPage from "component/error/NotFoundPage";
 
 export default function UserDetails(props) {
   const { id } = props.match.params;
@@ -33,12 +34,12 @@ export default function UserDetails(props) {
     }
   };
 
-  return (
+  return user === undefined ? (
+    <NotFoundPage />
+  ) : (
     <WiderContentContainer>
       {user === null ? (
         <CircularProgress />
-      ) : user === undefined ? (
-        <Help>No user to display.</Help>
       ) : (
         <React.Fragment>
           <UserData user={user} />

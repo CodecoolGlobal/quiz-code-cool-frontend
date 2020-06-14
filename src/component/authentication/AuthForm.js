@@ -26,7 +26,7 @@ export default function AuthForm() {
 
   useEffect(() => {
     clearCredentials();
-  }, []);
+  }, [path]);
 
   const submit = () => {
     setIsReadyToProceed(false);

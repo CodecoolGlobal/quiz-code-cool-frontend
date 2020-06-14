@@ -79,7 +79,7 @@ export const AuthProvider = (props) => {
       clearCredentials();
     } catch (error) {
       if (error.response && error.response.status === 409) 
-        alert(error.response.data.message);
+      alert(error.response.data.message);
       setIsReadyToProceed(false);
     } finally {
       setIsBackdropActive(false);
@@ -97,9 +97,10 @@ export const AuthProvider = (props) => {
     } catch (error) {
       if (error.response && error.response.status === 403) {
         alert("Incorrect username or password.");
-      } else {
-      } 
+      }
     } finally {
+      setPasswordInput("");
+      setUsernameInput("");
       setIsBackdropActive(false);
     }
   };
@@ -113,9 +114,9 @@ export const AuthProvider = (props) => {
       setUserId(null);
       setExp(null);
       await api_signOut();
-      history.push(routes.signIn);
     } catch (error) {
     } finally {
+      history.push(routes.signIn);
       setIsBackdropActive(false);
     }
   };
