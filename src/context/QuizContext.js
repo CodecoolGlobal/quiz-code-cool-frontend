@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { PlayerContext } from "context/PlayerContext";
 import { CustomQuizContext } from "context/CustomQuizContext";
 import { RandomQuizContext } from "context/RandomQuizContext";
-import { ErrorContext } from 'context/ErrorContext';
 import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
 import { UserContext } from 'context/UserContext'
@@ -16,7 +15,6 @@ import { api_getCustomQuizQuestions } from "api/customQuizConnection";
 export const QuizContext = createContext();
 
 export const QuizProvider = (props) => {
-  const setError = useContext(ErrorContext)[1];
 
   const history = useHistory();
   const selectedCategoryId = useContext(CategoryContext).categoryInput[0];
@@ -114,7 +112,6 @@ export const QuizProvider = (props) => {
         history.push(routes.quiz);
       }
     } catch(error) {
-      setError(error);
     }
   }
 

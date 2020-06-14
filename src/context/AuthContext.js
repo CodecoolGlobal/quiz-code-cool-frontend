@@ -2,14 +2,12 @@ import React, { useState, createContext, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { ProgressContext } from "context/ProgressContext";
 import { UserContext } from "context/UserContext";
-import { ErrorContext } from 'context/ErrorContext';
 import { api_signUp, api_signOut, api_signIn } from "api/authConnection";
 import {routes} from "util/routes";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = (props) => {
-  const setError = useContext(ErrorContext)[1];
   const history = useHistory();
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
@@ -80,11 +78,8 @@ export const AuthProvider = (props) => {
       alert(`Successful registration for username "${responseData}".`);
       clearCredentials();
     } catch (error) {
-      if (error.response && error.response.status === 409) {
+      if (error.response && error.response.status === 409) 
         alert(error.response.data.message);
-      } else {
-      setError(error);
-      }
       setIsReadyToProceed(false);
     } finally {
       setIsBackdropActive(false);
@@ -118,8 +113,8 @@ export const AuthProvider = (props) => {
       setUserId(null);
       setExp(null);
       await api_signOut();
+      history.push(routes.signIn);
     } catch (error) {
-      setError(error);
     } finally {
       setIsBackdropActive(false);
     }

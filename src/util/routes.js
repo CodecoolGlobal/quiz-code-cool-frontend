@@ -23,5 +23,5 @@ export const routes = {
     all: "/users",
     id: "/users/:id",
   },
-  error: "/error"
+  error: "/error/:status"
 };

@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CustomQuizContext } from "context/CustomQuizContext";
 import { ProgressContext } from "context/ProgressContext";
-import { ErrorContext } from 'context/ErrorContext';
 import { Select, InputItem, InputLabel } from "style/js/CommonStyles";
 import { api_getCustomQuizzes } from "api/customQuizConnection";
 
 export default function CustomQuizInput() {
-  const setError = useContext(ErrorContext)[1];
 
   const [customQuizzes, setCustomQuizzes] = useState([]);
   const { selectedCustomQuiz } = useContext(CustomQuizContext);
@@ -18,7 +16,6 @@ export default function CustomQuizInput() {
       const quizzes = await api_getCustomQuizzes();
       setCustomQuizzes(quizzes);
     } catch(error) {
-      setError(error);
     }
   };
 

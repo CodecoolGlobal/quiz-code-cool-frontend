@@ -2,12 +2,10 @@ import React, {  useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { QuestionDetailsContext } from "context/QuestionDetailsContext";
 import { UserContext } from "context/UserContext";
-import { ErrorContext } from 'context/ErrorContext';
 import { Button } from "style/js/CommonStyles";
 import { api_validateQuestion } from "api/questionConnection";
 
 export default function ValidateButton() {
-  const setError = useContext(ErrorContext)[1];
   const history = useHistory();
   const { rolesState } = useContext(UserContext);
   const roles = rolesState[0];
@@ -21,7 +19,6 @@ export default function ValidateButton() {
       alert(`Question ${question.id} validated successfully.`);
       history.push('/questions');
     } catch(error) {
-      setError(error);
 
     }
   }

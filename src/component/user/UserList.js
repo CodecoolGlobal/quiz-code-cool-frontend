@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
-import { ErrorContext } from 'context/ErrorContext';
+import React, { useState, useEffect } from "react";
 import {
   ThinnerContentContainer,
   H3,
@@ -15,7 +14,6 @@ import { api_getUsers } from "api/userConnection";
 import { CircularProgress } from "@material-ui/core";
 
 export default function UserList() {
-  const setError = useContext(ErrorContext)[1];
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
@@ -28,7 +26,6 @@ export default function UserList() {
       const responseData = await api_getUsers();
       setUsers(responseData);
     } catch (error) {
-      setError(error);
     }
   };
 

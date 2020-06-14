@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import NavigationBar from "component/layout/header/NavigationBar";
 import HeaderAuthButtons from "component/layout/header/HeaderAuthButtons";
 
@@ -11,7 +11,12 @@ import {
 } from "component/layout/header/styles";
 import mainLogo from "style/img/ideas.png";
 
+export let history;
+
 export default function Header() {
+
+  history = useHistory();
+
   return (
     <HeaderContainer>
       <TitleContainer>

@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from "react";
 import { QuestionDetailsContext } from "context/QuestionDetailsContext";
-import { ErrorContext } from 'context/ErrorContext'
 import Question from "context/Question";
 import Answers from "component/questions/Answers";
 import ValidateButton from "component/questions/ValidateButton";
@@ -20,7 +19,6 @@ import {
 import { api_getQuestion } from "api/questionConnection";
 
 export default function QuestionDetails(props) {
-  const setError = useContext(ErrorContext)[1];
   const { selectedQuestionState } = useContext(QuestionDetailsContext);
   const [question, setQuestion] = selectedQuestionState;
 
@@ -31,7 +29,6 @@ export default function QuestionDetails(props) {
       const respQuestion = await api_getQuestion(id);
       setQuestion(new Question(respQuestion));
     } catch (error) {
-      setError(error);
     }
   };
 

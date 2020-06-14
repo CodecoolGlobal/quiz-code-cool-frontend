@@ -1,11 +1,9 @@
 import React, { useState, useContext, createContext } from "react";
 import { api_getUsers } from "api/userConnection";
-import { ErrorContext } from 'context/ErrorContext';
 
 export const UsersContext = createContext();
 
 export const UsersProvider = props => {
-    const setError = useContext(ErrorContext)[1];
 
     const DEFAULT_USER = {
         id: "0",
@@ -19,7 +17,6 @@ export const UsersProvider = props => {
             const responseData = await api_getUsers();
             setUsers(responseData);
         } catch(error) {
-          setError(error);
         }
     }
 

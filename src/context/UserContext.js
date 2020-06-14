@@ -10,7 +10,6 @@ export const UserProvider = props => {
   
   const clearFor403 = () => {
     if (localStorage.getItem("username") || username) {
-      alert("Access denied.")
       setUsername(null);
       setRoles(null);
       setUserId(null);

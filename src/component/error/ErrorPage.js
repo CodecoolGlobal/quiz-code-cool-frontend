@@ -1,22 +1,22 @@
 import React, { useContext, useEffect } from "react";
-import { ErrorContext } from "context/ErrorContext";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { routes } from "util/routes";
 import { WiderContentContainer, H3, Help, H4 } from "style/js/CommonStyles";
 import { UserContext } from "context/UserContext";
 
 export default function ErrorPage(props) {
-  const [error, setError] = useContext(ErrorContext);
+  const error = props.location.state ? props.location.state.error : null;
   const { clearFor403 } = useContext(UserContext);
+  const history = useHistory()
 
   useEffect(() => {
-    if (error && error.response && error.response.status === 403) {
+    if (!error) history.push(routes.home);
+    else if (error.response && error.response.status === 403) {
       clearFor403();
-      setError(null);
     }
   }, []);
 
-  return error ? (
+  return error && (
     <WiderContentContainer>
       <H3>Something went wrong :(</H3>
       {error.response ? (
@@ -31,9 +31,5 @@ export default function ErrorPage(props) {
         </div>
       )}
     </WiderContentContainer>
-  ) : (
-    <React.Fragment>
-      <Redirect to={props.location.path ? props.location.path : routes.home} />
-    </React.Fragment>
   );
 }

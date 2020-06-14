@@ -1,9 +1,9 @@
 import React, { useState, createContext, useContext } from "react";
 import { useHistory } from "react-router-dom";
+
 import { CategoryContext } from "context/CategoryContext";
 import { TypeContext } from "context/TypeContext";
 import { RestoreInputsContext } from "context/RestoreFiltersContext";
-import { ErrorContext } from 'context/ErrorContext';
 import {routes} from "util/routes";
 import Question from "context/Question";
 import { api_postNewQuestion } from "api/questionConnection";
@@ -11,11 +11,8 @@ import { api_postNewQuestion } from "api/questionConnection";
 export const NewQuestionFormContext = createContext();
 
 export const NewQuestionFormProvider = props => {
-  const setError = useContext(ErrorContext)[1];
-
   const history = useHistory();
 
-  // States
   const { categoryInput, allCategoriesState } = useContext(CategoryContext);
   const selectedCategoryId = categoryInput[0];
   const allCategories = allCategoriesState[0];
@@ -79,7 +76,6 @@ export const NewQuestionFormProvider = props => {
       clearAddNewQuestionContext();
       history.push(routes.question.all);
     } catch(error) {
-      setError(error);
     }
   };
 
