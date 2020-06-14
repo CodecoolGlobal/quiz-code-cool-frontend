@@ -3,6 +3,7 @@ import { WiderContentContainer, H3, Help, H4 } from "style/js/CommonStyles";
 import { UserContext } from "context/UserContext";
 import { Redirect } from "react-router-dom";
 import { routes } from "util/routes";
+import { BackNavLink } from "./styles";
 
 export default function CustomErrorPage(props) {
   const error = props.location.state ? props.location.state.error : null;
@@ -20,9 +21,10 @@ export default function CustomErrorPage(props) {
       <div>
         <H4>{error.response.data.message}</H4>
         <Help>{error.response.data.timestamp}</Help>
+        <BackNavLink to={routes.home}>Back to home</BackNavLink>
       </div>
     </WiderContentContainer>
   ) : (
-    <Redirect to={routes.home}/>
+    <Redirect to={routes.home} />
   );
 }
